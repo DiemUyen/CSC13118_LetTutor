@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/routes/forgot_password.dart';
-import 'package:let_tutor/routes/sign_in_form.dart';
-import 'package:let_tutor/routes/sign_up_form.dart';
+import 'package:let_tutor/routes/authentication/forgot_password.dart';
+import 'package:let_tutor/routes/authentication/sign_in_form.dart';
+import 'package:let_tutor/routes/authentication/sign_up_form.dart';
+import 'package:let_tutor/widgets/bottom_navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const SafeArea(
         child: Scaffold(
+          bottomNavigationBar: BottomNavBar(),
           body: ForgotPassword(),
         ),
       ),
