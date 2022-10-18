@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:let_tutor/routes/authentication/forgot_password.dart';
 import 'package:let_tutor/routes/authentication/sign_in_form.dart';
 import 'package:let_tutor/routes/authentication/sign_up_form.dart';
-import 'package:let_tutor/widgets/bottom_navigation_bar.dart';
+import 'package:let_tutor/theme/custom_theme.dart';
+import 'package:let_tutor/widgets/bottom_nav_bar.dart';
+import 'package:let_tutor/widgets/transparent_app_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,22 +18,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const SafeArea(
+      theme: CustomTheme.lightTheme,
+      home: SafeArea(
         child: Scaffold(
-          bottomNavigationBar: BottomNavBar(),
-          body: ForgotPassword(),
+          bottomNavigationBar: const BottomNavBar(),
+          body: Material(
+            child: Column(
+              children: const [
+                TransparentAppBar()
+              ],
+            ),
+          )
         ),
       ),
     );
