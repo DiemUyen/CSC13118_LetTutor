@@ -30,9 +30,10 @@ class TutorInfo extends StatelessWidget {
             ),
             // Rating star
             StarRating(
-                initialRating: 3.5,
-                ignoreGestures: true,
-                ratingUpgrade: (double rating) {}
+              initialRating: 3.5,
+              ignoreGestures: true,
+              ratingUpgrade: (double rating) {},
+              itemSize: 16,
             )
           ],
         )
