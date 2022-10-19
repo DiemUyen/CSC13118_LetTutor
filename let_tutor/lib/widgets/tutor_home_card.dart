@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:let_tutor/widgets/specialities.dart';
-import 'package:let_tutor/widgets/star_rating.dart';
+import 'package:let_tutor/widgets/tutor_info.dart';
 
 class TutorHomeCard extends StatelessWidget {
   const TutorHomeCard({Key? key}) : super(key: key);
@@ -29,38 +29,7 @@ class TutorHomeCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   // Information tutor
-                  Row(
-                    children: [
-                      // Avatar
-                      CircleAvatar(
-                        backgroundColor: Colors.brown.shade800,
-                        child: const Text('AH'),
-                      ),
-                      const SizedBox(width: 8,),
-                      // Infor
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Name
-                          const Text("April"),
-                          Row(
-                            children: const [
-                              // Icon flag
-
-                              // Nationality
-                              Text("France"),
-                            ],
-                          ),
-                          // Rating star
-                          StarRating(
-                              initialRating: 3.5,
-                              ignoreGestures: true,
-                              ratingUpgrade: (double rating) {}
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                  TutorInfo(),
                   const SizedBox(height: 16,),
                   // Specialities
                   const Align(
@@ -68,7 +37,7 @@ class TutorHomeCard extends StatelessWidget {
                     child: Specialities(),
                   ),
                   const SizedBox(height: 16,),
-                  // Text
+                  // Introduction
                   const Text('lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
                   const SizedBox(height: 32,),
                 ],
