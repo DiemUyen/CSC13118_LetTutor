@@ -5,6 +5,5 @@ class CustomTheme{
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'Roboto',
     textTheme: CustomText.textTheme,
-    colorScheme: const ColorScheme.light()
   );
 }
