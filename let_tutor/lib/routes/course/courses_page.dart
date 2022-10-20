@@ -34,7 +34,7 @@ class _CousesPageState extends State<CousesPage> with SingleTickerProviderStateM
             hintText: 'Enter a course name',
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 8),
+            margin: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
               color: Colors.grey[100],
               borderRadius: BorderRadius.circular(12),
@@ -53,7 +53,7 @@ class _CousesPageState extends State<CousesPage> with SingleTickerProviderStateM
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 8),
+            margin: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
               color: Colors.grey[100],
               borderRadius: BorderRadius.circular(12),
@@ -72,7 +72,7 @@ class _CousesPageState extends State<CousesPage> with SingleTickerProviderStateM
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 8),
+            margin: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
               color: Colors.grey[100],
               borderRadius: BorderRadius.circular(12),
@@ -124,7 +124,15 @@ class _CousesPageState extends State<CousesPage> with SingleTickerProviderStateM
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return const CourseCard();
+                    return CourseCard(bottomWidget: Row(
+                      children: const [
+                        // Level
+                        Text('Intermediate'),
+                        SizedBox(width: 8,),
+                        // The number of lessons
+                        Text('9 lessons')
+                      ],
+                    ));
                   },
                 ),
                 // Second tab view
@@ -133,11 +141,11 @@ class _CousesPageState extends State<CousesPage> with SingleTickerProviderStateM
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return const CourseCard();
+                    return const CourseCard(bottomWidget: Align(alignment: Alignment.centerLeft, child: Text('Intermediate')));
                   },
                 ),
                 // Third tab view
-                Container(child: Center(child: Text('No data'),))
+                Container(child: const Center(child: Text('No data'),))
               ],
             ),
           ),

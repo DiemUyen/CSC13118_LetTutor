@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
-  const CourseCard({Key? key}) : super(key: key);
+  const CourseCard({Key? key, required this.bottomWidget}) : super(key: key);
+
+  final Widget bottomWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +24,7 @@ class CourseCard extends StatelessWidget {
               // Description
               const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut euismod nulla, ac placerat nisi. Ut at venenatis eros, sed.'),
               const SizedBox(height: 48,),
-              Row(
-                children: const [
-                  // Level
-                  Text('Intermediate'),
-                  SizedBox(width: 8,),
-                  // The number of lessons
-                  Text('9 lessons')
-                ],
-              )
+              bottomWidget
             ],
           ),
         ),
