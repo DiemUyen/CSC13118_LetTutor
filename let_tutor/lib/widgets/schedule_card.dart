@@ -34,7 +34,7 @@ class _ScheduleCardState extends State<ScheduleCard> {
                 ],
               ),
               const SizedBox(height: 4,),
-              OutlinedButton.icon(
+              TextButton.icon(
                 icon: const Icon(Icons.chat_bubble_outline, size: 20,),
                 label: const Text('Direct Message'),
                 onPressed: () { },
