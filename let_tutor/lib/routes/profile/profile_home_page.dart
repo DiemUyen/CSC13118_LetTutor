@@ -9,8 +9,8 @@ class ProfileHomePage extends StatefulWidget {
 
 class _ProfileHomePageState extends State<ProfileHomePage> {
 
-  List<IconData> icons = <IconData>[ Icons.person_outline, Icons.wallet_outlined, Icons.calendar_today_outlined, Icons.history_outlined, Icons.my_library_books_outlined, Icons.key_outlined, Icons.settings_outlined, Icons.co_present, Icons.logout];
-  List<String> titles = <String>[ 'My profile', 'My wallet', 'My schedule', 'My history', 'My courses', 'Change password', 'Settings', 'Become a tutor', 'Log out'];
+  List<IconData> icons = <IconData>[ Icons.person_outline, Icons.wallet_outlined, Icons.calendar_today_outlined, Icons.history_outlined, Icons.my_library_books_outlined, Icons.key_outlined, Icons.co_present, Icons.logout];
+  List<String> titles = <String>[ 'My profile', 'My wallet', 'My schedule', 'My history', 'My courses', 'Change password', 'Become a tutor', 'Log out'];
 
   Widget item(BuildContext context, IconData icon, String title) {
     return Row(
