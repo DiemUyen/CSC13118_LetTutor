@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:let_tutor/routes/course/course_detail.dart';
+import 'package:let_tutor/routes/course/courses_page.dart';
 import 'package:let_tutor/routes/course/my_courses_page.dart';
 import 'package:let_tutor/routes/meeting_page.dart';
+import 'package:let_tutor/routes/profile/become_tutor_page.dart';
 import 'package:let_tutor/routes/profile/change_password_page.dart';
 import 'package:let_tutor/routes/profile/history_detail.dart';
 import 'package:let_tutor/routes/profile/history_page.dart';
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
                   TransparentAppBar(),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: WalletPage(),
+                    child: BecomeTutorPage(),
                   )
                 ],
               ),
