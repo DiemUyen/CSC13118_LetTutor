@@ -7,6 +7,7 @@ import 'package:let_tutor/routes/profile/history_page.dart';
 import 'package:let_tutor/routes/profile/my_profile_page.dart';
 import 'package:let_tutor/routes/profile/profile_home_page.dart';
 import 'package:let_tutor/routes/profile/schedule_page.dart';
+import 'package:let_tutor/routes/profile/wallet_page.dart';
 import 'package:let_tutor/routes/setting_page.dart';
 import 'package:let_tutor/routes/tutor/tutor_home_page.dart';
 import 'package:let_tutor/theme/custom_theme.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
                   TransparentAppBar(),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: MeetingPage(),
+                    child: WalletPage(),
                   )
                 ],
               ),
