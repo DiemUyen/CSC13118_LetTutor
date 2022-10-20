@@ -4,6 +4,7 @@ import 'package:let_tutor/routes/authentication/sign_in_form.dart';
 import 'package:let_tutor/routes/authentication/sign_up_form.dart';
 import 'package:let_tutor/routes/course/course_detail.dart';
 import 'package:let_tutor/routes/course/courses_page.dart';
+import 'package:let_tutor/routes/course/topics_page.dart';
 import 'package:let_tutor/routes/tutor/tutor_detail.dart';
 import 'package:let_tutor/routes/tutor/tutor_home_page.dart';
 import 'package:let_tutor/routes/tutor/tutor_reviews.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
                   TransparentAppBar(),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: CourseDetail(),
+                    child: TopicsPage(),
                   )
                 ],
               ),
