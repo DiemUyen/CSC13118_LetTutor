@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/routes/course/course_detail.dart';
-import 'package:let_tutor/routes/course/courses_page.dart';
-import 'package:let_tutor/routes/course/my_courses_page.dart';
+import 'package:let_tutor/routes.dart';
+import 'package:let_tutor/routes/authentication/sign_in_form.dart';
+import 'package:let_tutor/routes/authentication/sign_up_form.dart';
 import 'package:let_tutor/routes/meeting_page.dart';
-import 'package:let_tutor/routes/profile/become_tutor_page.dart';
-import 'package:let_tutor/routes/profile/change_password_page.dart';
-import 'package:let_tutor/routes/profile/history_detail.dart';
-import 'package:let_tutor/routes/profile/history_page.dart';
-import 'package:let_tutor/routes/profile/my_profile_page.dart';
-import 'package:let_tutor/routes/profile/profile_home_page.dart';
-import 'package:let_tutor/routes/profile/schedule_page.dart';
-import 'package:let_tutor/routes/profile/wallet_page.dart';
-import 'package:let_tutor/routes/setting_page.dart';
 import 'package:let_tutor/routes/tutor/tutor_home_page.dart';
 import 'package:let_tutor/theme/custom_theme.dart';
 import 'package:let_tutor/widgets/bottom_nav_bar.dart';
 import 'package:let_tutor/widgets/transparent_app_bar.dart';
+import 'package:let_tutor/widgets/tutor_info.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,25 +20,32 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Let Tutor',
       theme: CustomTheme.lightTheme,
-      home: SafeArea(
-        child: Scaffold(
-          bottomNavigationBar: const BottomNavBar(),
-          body: Material(
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  TransparentAppBar(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: BecomeTutorPage(),
-                  )
-                ],
-              ),
-            ),
-          )
-        ),
+
+      // Generate routes
+      onGenerateRoute: RouteGenerator.generateRoute,
+
+      // home: SafeArea(
+      //   child: Scaffold(
+      //     bottomNavigationBar: const BottomNavBar(),
+      //     body: Material(
+      //       child: SingleChildScrollView(
+      //         child: Column(
+      //           children: const [
+      //             TransparentAppBar(),
+      //             Padding(
+      //               padding: EdgeInsets.symmetric(horizontal: 16.0),
+      //               child: SignUpForm(),
+      //             )
+      //           ],
+      //         ),
+      //       ),
+      //     )
+      //   ),
+      // ),
+      home: const SafeArea(
+        child: SignUpForm(),
       ),
     );
   }

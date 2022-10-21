@@ -279,39 +279,41 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return SizedBox(
-        width: constraints.maxWidth,
-        height: 800,
-        child: Stepper(
-          type: StepperType.horizontal,
-          currentStep: _index,
-          onStepCancel: () {
-            if (_index > 0) {
+    return Scaffold(
+      body: LayoutBuilder(builder: (context, constraints) {
+        return SizedBox(
+          width: constraints.maxWidth,
+          height: 800,
+          child: Stepper(
+            type: StepperType.horizontal,
+            currentStep: _index,
+            onStepCancel: () {
+              if (_index > 0) {
+                setState(() {
+                  _index -= 1;
+                });
+              }
+            },
+            onStepContinue: () {
+              if (_index < 2) {
+                setState(() {
+                  _index += 1;
+                });
+              }
+            },
+            onStepTapped: (int index) {
               setState(() {
-                _index -= 1;
+                _index = index;
               });
-            }
-          },
-          onStepContinue: () {
-            if (_index < 2) {
-              setState(() {
-                _index += 1;
-              });
-            }
-          },
-          onStepTapped: (int index) {
-            setState(() {
-              _index = index;
-            });
-          },
-          steps: <Step>[
-            stepOne(context),
-            stepTwo(context),
-            stepThree(context)
-          ],
-        ),
-      );
-    });
+            },
+            steps: <Step>[
+              stepOne(context),
+              stepTwo(context),
+              stepThree(context)
+            ],
+          ),
+        );
+      }),
+    );
   }
 }

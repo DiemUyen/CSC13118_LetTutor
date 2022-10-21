@@ -10,90 +10,103 @@ class ChangePasswordPage extends StatefulWidget {
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return SizedBox(
-        width: constraints.maxWidth/2,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Change Password', style: Theme.of(context).textTheme.headline6,),
-            SizedBox(height: 16,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Text('Old Password', textAlign: TextAlign.end,),
-                ),
-                SizedBox(width: 8,),
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12)
-                      ),
-                      hintText: '',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 16,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
+    return Scaffold(
+      body: LayoutBuilder(builder: (context, constraints) {
+        return SizedBox(
+          width: constraints.maxWidth/2,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Change Password', style: Theme.of(context).textTheme.headline6,),
+              const SizedBox(height: 16,),
+
+              // Old password
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Expanded(
                     flex: 1,
-                    child: Text('New Password', textAlign: TextAlign.end,)
-                ),
-                SizedBox(width: 8,),
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12)
+                    child: Text('Old Password', textAlign: TextAlign.end,),
+                  ),
+                  const SizedBox(width: 8,),
+                  Expanded(
+                    flex: 2,
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12)
+                        ),
+                        hintText: '',
                       ),
-                      hintText: ''
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 16,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Text('Confirm New Password', textAlign: TextAlign.end,),
-                ),
-                SizedBox(width: 8,),
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12)
+                ],
+              ),
+
+              const SizedBox(height: 16,),
+
+              // New password
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Expanded(
+                      flex: 1,
+                      child: Text('New Password', textAlign: TextAlign.end,)
+                  ),
+                  const SizedBox(width: 8,),
+                  Expanded(
+                    flex: 2,
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12)
+                        ),
+                        hintText: ''
                       ),
-                      hintText: ''
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 16,),
-            ElevatedButton(
-              child: Text('Change Password'),
-              onPressed: () { },
-            )
-          ],
-        ),
-      );
-    });
+                ],
+              ),
+
+              const SizedBox(height: 16,),
+
+              // Confirm new password
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Expanded(
+                    flex: 1,
+                    child: Text('Confirm New Password', textAlign: TextAlign.end,),
+                  ),
+                  const SizedBox(width: 8,),
+                  Expanded(
+                    flex: 2,
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12)
+                        ),
+                        hintText: ''
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 16,),
+
+              // Button 'Save password'
+              ElevatedButton(
+                child: const Text('Change Password'),
+                onPressed: () { },
+              )
+            ],
+          ),
+        );
+      }),
+    );
   }
 }

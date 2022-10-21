@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
+import 'package:let_tutor/routes.dart';
 import 'package:let_tutor/widgets/search_bar.dart';
 import 'package:let_tutor/widgets/tutor_home_card.dart';
 import 'package:intl/intl.dart';
@@ -23,57 +24,66 @@ class TutorHomePage extends StatefulWidget {
 class _TutorHomePageState extends State<TutorHomePage> {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth > 800) {
-        crossAxisCount = 4;
-      } else {
-        crossAxisCount = 2;
-      }
-      
-      width = constraints.maxWidth;
-      height = constraints.minHeight;
+    return Scaffold(
+      body: LayoutBuilder(builder: (context, constraints) {
+        if (constraints.maxWidth > 800) {
+          crossAxisCount = 4;
+        } else {
+          crossAxisCount = 2;
+        }
+        
+        width = constraints.maxWidth;
+        height = constraints.minHeight;
 
-      return SingleChildScrollView(
-        padding: const EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Upcoming lesson
-            Card(
-              child: SizedBox(
-                width: constraints.maxWidth,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Text("Upcoming lesson", style: Theme.of(context).textTheme.headline5,),
-                      Text(""),
-                      ElevatedButton.icon(onPressed: () {}, label: Text("Enter lesson room"), icon: Icon(Icons.play_circle_fill_outlined),)
-                    ],
+        return SingleChildScrollView(
+          padding: const EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Upcoming lesson
+              Card(
+                child: SizedBox(
+                  width: constraints.maxWidth,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Upcoming lesson",
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        const Text(""),
+                        ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.pushNamed(context, RouteGenerator.meetingPage);
+                          },
+                          label: const Text("Enter lesson room"),
+                          icon: const Icon(Icons.play_circle_fill_outlined),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 16,),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    // Search bar
-                    Expanded(
-                      flex: 1,
-                      child: SearchBar(hintText: 'Enter tutor name')
-                    ),
-                    SizedBox(width: 16,),
-                    // Filter
-                    IconButton(icon: Icon(Icons.filter_list_outlined), onPressed: () { setState(() {
-                      visibilityFilter = !visibilityFilter;
-                    }); },),
-                  ],
-                ),
-                const SizedBox(height: 8,),
-                Container(
-                  child: Visibility(
+              const SizedBox(height: 16,),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      // Search bar
+                      const Expanded(
+                        flex: 1,
+                        child: SearchBar(hintText: 'Enter tutor name')
+                      ),
+                      const SizedBox(width: 16,),
+                      // Filter
+                      IconButton(icon: const Icon(Icons.filter_list_outlined), onPressed: () { setState(() {
+                        visibilityFilter = !visibilityFilter;
+                      }); },),
+                    ],
+                  ),
+                  const SizedBox(height: 8,),
+                  Visibility(
                     visible: visibilityFilter,
                     child: Column(
                       children: [
@@ -83,7 +93,7 @@ class _TutorHomePageState extends State<TutorHomePage> {
                             color: Colors.grey[100],
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: DropdownButton<String>(
                             isExpanded: true,
                             underline: Container(
@@ -103,15 +113,15 @@ class _TutorHomePageState extends State<TutorHomePage> {
                             color: Colors.grey[100],
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: TextFormField(
                             decoration: InputDecoration(
-                              icon: Icon(Icons.calendar_today_outlined, size: 20,),
+                              icon: const Icon(Icons.calendar_today_outlined, size: 20,),
                               border: const OutlineInputBorder(
                                 borderSide: BorderSide.none,
                               ),
                               hintText: datePicker,
-                              hintStyle: TextStyle(color: Colors.black)
+                              hintStyle: const TextStyle(color: Colors.black)
                             ),
                             readOnly: true,
                             onTap: () async {
@@ -139,12 +149,12 @@ class _TutorHomePageState extends State<TutorHomePage> {
                           ),
                           child: TextFormField(
                             decoration: InputDecoration(
-                                icon: Icon(Icons.access_time),
+                                icon: const Icon(Icons.access_time),
                                 border: const OutlineInputBorder(
                                   borderSide: BorderSide.none,
                                 ),
                                 hintText: startTimePicker,
-                                hintStyle: TextStyle(color: Colors.black)
+                                hintStyle: const TextStyle(color: Colors.black)
                             ),
                             readOnly: true,
                             onTap: () async {
@@ -169,12 +179,12 @@ class _TutorHomePageState extends State<TutorHomePage> {
                           ),
                           child: TextFormField(
                             decoration: InputDecoration(
-                                icon: Icon(Icons.access_time),
+                                icon: const Icon(Icons.access_time),
                                 border: const OutlineInputBorder(
                                   borderSide: BorderSide.none,
                                 ),
                                 hintText: endTimePicker,
-                                hintStyle: TextStyle(color: Colors.black)
+                                hintStyle: const TextStyle(color: Colors.black)
                             ),
                             readOnly: true,
                             onTap: () async {
@@ -192,54 +202,60 @@ class _TutorHomePageState extends State<TutorHomePage> {
                         )
                       ],
                     ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(height: 16,),
-            // Specialities
-            Text('Specialities', style: Theme.of(context).textTheme.subtitle2,),
-            SizedBox(height: 8,),
-            Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  FilterChip(label: Text('English for Business'), onSelected: (bool value) {  },),
-                  FilterChip(label: Text('TOEIC'), onSelected: (bool value) {  },),
-                  FilterChip(label: Text('English for Conversation'), onSelected: (bool value) {  },),
-                  FilterChip(label: Text('SMARTER'), onSelected: (bool value) {  },),
-                  FilterChip(label: Text('English for Business'), onSelected: (bool value) {  },),
-                ]
-            ),
-            SizedBox(height: 16,),
-            // Tutor list
-            Text('Tutor list', style: Theme.of(context).textTheme.subtitle2),
-            // GridView.builder(
-            //   shrinkWrap: true,
-            //   scrollDirection: Axis.vertical,
-            //   itemCount: 7,
-            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //     crossAxisCount: 2,
-            //     //mainAxisSpacing: 8,
-            //     crossAxisSpacing: 16
-            //   ),
-            //   itemBuilder: (context, index) {
-            //     return TutorHomeCard();
-            //     //return Text('$width - $height');
-            //   },
-            // )
-            ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                return TutorHomeCard();
-              },
-            )
-          ],
-        ),
-      );
-    });
+                  )
+                ],
+              ),
+              const SizedBox(height: 16,),
+              // Specialities
+              Text('Specialities', style: Theme.of(context).textTheme.subtitle2,),
+              const SizedBox(height: 8,),
+              Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    FilterChip(label: const Text('English for Business'), onSelected: (bool value) {  },),
+                    FilterChip(label: const Text('TOEIC'), onSelected: (bool value) {  },),
+                    FilterChip(label: const Text('English for Conversation'), onSelected: (bool value) {  },),
+                    FilterChip(label: const Text('SMARTER'), onSelected: (bool value) {  },),
+                    FilterChip(label: const Text('English for Business'), onSelected: (bool value) {  },),
+                  ]
+              ),
+              const SizedBox(height: 16,),
+              // Tutor list
+              Text('Tutor list', style: Theme.of(context).textTheme.subtitle2),
+              // GridView.builder(
+              //   shrinkWrap: true,
+              //   scrollDirection: Axis.vertical,
+              //   itemCount: 7,
+              //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              //     crossAxisCount: 2,
+              //     //mainAxisSpacing: 8,
+              //     crossAxisSpacing: 16
+              //   ),
+              //   itemBuilder: (context, index) {
+              //     return TutorHomeCard();
+              //     //return Text('$width - $height');
+              //   },
+              // )
+
+              ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: 7,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteGenerator.tutorDetailPage);
+                    },
+                    child: const TutorHomeCard()
+                  );
+                },
+              )
+            ],
+          ),
+        );
+      }),
+    );
   }
 }
 

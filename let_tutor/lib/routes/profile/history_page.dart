@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:let_tutor/routes.dart';
 import 'package:let_tutor/widgets/history_card.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -14,30 +15,37 @@ class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth > 1600) {
-        crossAxisCount = 8;
-      }
-      else if (constraints.maxWidth > 800) {
-        crossAxisCount = 4;
-      }
-      else {
-        crossAxisCount = 2;
-      }
+    return Scaffold(
+      body: LayoutBuilder(builder: (context, constraints) {
+        if (constraints.maxWidth > 1600) {
+          crossAxisCount = 8;
+        }
+        else if (constraints.maxWidth > 800) {
+          crossAxisCount = 4;
+        }
+        else {
+          crossAxisCount = 2;
+        }
 
-      return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisSpacing: 16,
-          crossAxisSpacing: 16,
-          crossAxisCount: crossAxisCount
-        ),
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return const HistoryCard();
-        },
-      );
-    });
+        return GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
+            crossAxisCount: crossAxisCount
+          ),
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, RouteGenerator.historyDetailPage);
+              },
+              child: const HistoryCard()
+            );
+          },
+        );
+      }),
+    );
   }
 }

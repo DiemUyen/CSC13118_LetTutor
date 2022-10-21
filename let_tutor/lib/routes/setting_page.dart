@@ -13,44 +13,46 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          // Dark theme
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Dark theme'),
-              Switch(
-                value: dark,
-                activeColor: Colors.blueAccent[100],
-                onChanged: (bool value) {
-                  setState(() {
-                    dark = !dark;
-                  });
-                },
-              )
-            ],
-          ),
-          const Divider(),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            // Dark theme
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Dark theme'),
+                Switch(
+                  value: dark,
+                  activeColor: Colors.blueAccent[100],
+                  onChanged: (bool value) {
+                    setState(() {
+                      dark = !dark;
+                    });
+                  },
+                )
+              ],
+            ),
+            const Divider(),
 
-          // Language
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Language'),
-              Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: CircleAvatar(
-                  backgroundColor: Colors.brown,
-                  child: Text('Eng', style: TextStyle(fontSize: 8),),
-                  radius: 12,
-                ),
-              )
-            ],
-          )
-        ],
+            // Language
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text('Language'),
+                Padding(
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.brown,
+                    radius: 12,
+                    child: Text('Eng', style: TextStyle(fontSize: 8),),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

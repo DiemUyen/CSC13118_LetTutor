@@ -71,30 +71,31 @@ class _HistoryDetailState extends State<HistoryDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: Column(
-        children: [
-          // Tutor taught this lesson
-          inforTutor(context, 'April Hazure', Icons.flag_outlined, 'France'),
-          SizedBox(height: 24,),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: Column(
+          children: [
+            // Tutor taught this lesson
+            inforTutor(context, 'April Hazure', Icons.flag_outlined, 'France'),
+            const SizedBox(height: 24,),
 
-          // Time
-          header(context, 'Lesson Time'),
-          description(context, 'Fri, 14 Oct 22'),
-          description(context, '10:30 - 10:55'),
-          SizedBox(height: 16,),
+            // Time
+            header(context, 'Lesson Time'),
+            description(context, 'Fri, 14 Oct 22'),
+            description(context, '10:30 - 10:55'),
+            const SizedBox(height: 16,),
 
-          // Request for lesson
-          header(context, 'Request for Lesson'),
-          description(context, 'No request for lesson'),
-          SizedBox(height: 16,),
+            // Request for lesson
+            header(context, 'Request for Lesson'),
+            description(context, 'No request for lesson'),
+            const SizedBox(height: 16,),
 
-          // Review from tutor
-          header(context, 'Review from Tutor'),
-          description(
-              context,
-              '''Session 1: 00:00 - 00:25
+            // Review from tutor
+            header(context, 'Review from Tutor'),
+            description(
+                context,
+                '''Session 1: 00:00 - 00:25
 Lesson status: On progress
 Book: test book - Unit: test unit - Lesson: test lesson - Page: test page
 Lesson progress: test progreess
@@ -103,33 +104,38 @@ Listening (⭐⭐⭐):
 Speaking (⭐⭐):
 Vocabulary (⭐⭐⭐):
 Overall comment: cần cải thiện
-              '''
-          ),
+                '''
+            ),
 
-          // Interact
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              OutlinedButton.icon(
-                icon: Icon(Icons.report_gmailerrorred_outlined, color: Colors.redAccent,),
-                label: Text('Report', style: TextStyle(color: Colors.redAccent),),
-                onPressed: () { },
-              ),
-              SizedBox(width: 40,),
-              OutlinedButton.icon(
-                icon: Icon(Icons.star_outline),
-                label: Text('Rating'),
-                onPressed: () { },
-              ),
-            ],
-          ),
-          SizedBox(height: 16,),
+            // Interact
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Report
+                OutlinedButton.icon(
+                  icon: const Icon(Icons.report_gmailerrorred_outlined, color: Colors.redAccent,),
+                  label: const Text('Report', style: TextStyle(color: Colors.redAccent),),
+                  onPressed: () { },
+                ),
 
-          // Record if have
-          header(context, 'Record session'),
-          SizedBox(height: 16,),
-          Placeholder()
-        ],
+                const SizedBox(width: 40,),
+
+                // Rating
+                OutlinedButton.icon(
+                  icon: const Icon(Icons.star_outline),
+                  label: const Text('Rating'),
+                  onPressed: () { },
+                ),
+              ],
+            ),
+            const SizedBox(height: 16,),
+
+            // Record if have
+            header(context, 'Record session'),
+            const SizedBox(height: 16,),
+            const Placeholder()
+          ],
+        ),
       ),
     );
   }
