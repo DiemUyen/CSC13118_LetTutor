@@ -40,23 +40,31 @@ class _TopicsPageState extends State<TopicsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const CourseCard(bottomWidget: SizedBox(height: 0)),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: Divider(),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              const CourseCard(bottomWidget: SizedBox(height: 0)),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: Divider(),
+              ),
+
+              // List topics
+              listTopics(context, topicsName),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: Divider(),
+              ),
+
+              // PDF Viewer
+              const Placeholder(),
+            ],
           ),
-          // List topics
-          listTopics(context, topicsName),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: Divider(),
-          ),
-          // PDF Viewer
-          const Placeholder(),
-        ],
+        ),
       ),
     );
   }
