@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/routes.dart';
 import 'package:let_tutor/widgets/star_rating.dart';
 
 class WritingReviewPage extends StatefulWidget {

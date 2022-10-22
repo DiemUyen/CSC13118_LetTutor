@@ -9,59 +9,66 @@ class HistoryDetail extends StatefulWidget {
 
 class _HistoryDetailState extends State<HistoryDetail> {
 
-    Widget inforTutor(BuildContext context, String tutorName, IconData flag, String nationality) {
-    return Row(
-      children: [
-        const CircleAvatar(
-          backgroundColor: Colors.brown,
-          radius: 40,
-          child: Text('AH'),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(tutorName, style: Theme
-                  .of(context)
-                  .textTheme
-                  .subtitle2,),
-              const SizedBox(height: 4,),
-              Row(
-                children: [
-                  Icon(flag),
-                  const SizedBox(width: 4,),
-                  Text(nationality)
-                ],
-              ),
-              const SizedBox(height: 4,),
-              TextButton.icon(
-                icon: const Icon(Icons.chat_bubble_outline, size: 20,),
-                label: const Text('Direct Message'),
-                onPressed: () {},
-              )
-            ],
+  Widget inforTutor(String tutorName, IconData flag, String nationality) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const CircleAvatar(
+            backgroundColor: Colors.brown,
+            radius: 36,
+            child: Text('AH'),
           ),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(tutorName, style: Theme
+                    .of(context)
+                    .textTheme
+                    .subtitle2,),
+                const SizedBox(height: 4,),
+                Row(
+                  children: [
+                    Icon(flag),
+                    const SizedBox(width: 4,),
+                    Text(nationality)
+                  ],
+                ),
+                const SizedBox(height: 4,),
+                TextButton.icon(
+                  icon: const Icon(Icons.chat_bubble_outline, size: 20,),
+                  label: const Text('Direct Message'),
+                  onPressed: () {},
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
   Widget header(BuildContext context, String header) {
-    return Row(
-      children: [
-        const SizedBox(width: 24, child: Divider(),),
-        const SizedBox(width: 8,),
-        Text(header, style: Theme.of(context).textTheme.headline6,),
-        const SizedBox(width: 8,),
-        const Expanded(child: Divider())
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          const SizedBox(width: 24, child: Divider(),),
+          const SizedBox(width: 8,),
+          Text(header, style: Theme.of(context).textTheme.headline6,),
+          const SizedBox(width: 8,),
+          const Expanded(child: Divider())
+        ],
+      ),
     );
   }
   
-  Widget description(BuildContext context, String content) {
+  Widget description(String content) {
       return Padding(
-        padding: const EdgeInsets.only(left: 32, top: 8),
+        padding: const EdgeInsets.only(left: 48, top: 8),
         child: Align(
             alignment: Alignment.topLeft,
             child: Text(content, textAlign: TextAlign.left,)
@@ -69,72 +76,75 @@ class _HistoryDetailState extends State<HistoryDetail> {
       );
   }
 
+  Widget reportButton() {
+    return OutlinedButton.icon(
+      icon: const Icon(Icons.report_gmailerrorred_outlined, color: Colors.redAccent,),
+      label: const Text('Report', style: TextStyle(color: Colors.redAccent),),
+      onPressed: () { },
+    );
+  }
+
+  Widget ratingButton() {
+    return OutlinedButton.icon(
+      icon: const Icon(Icons.star_outline),
+      label: const Text('Rating'),
+      onPressed: () { },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: Column(
-          children: [
-            // Tutor taught this lesson
-            inforTutor(context, 'April Hazure', Icons.flag_outlined, 'France'),
-            const SizedBox(height: 24,),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Tutor taught this lesson
+              inforTutor('April Hazure', Icons.flag_outlined, 'France'),
+              const SizedBox(height: 24,),
 
-            // Time
-            header(context, 'Lesson Time'),
-            description(context, 'Fri, 14 Oct 22'),
-            description(context, '10:30 - 10:55'),
-            const SizedBox(height: 16,),
+              // Time
+              header(context, 'Lesson Time'),
+              description('Fri, 14 Oct 22'),
+              description('10:30 - 10:55'),
+              const SizedBox(height: 16,),
 
-            // Request for lesson
-            header(context, 'Request for Lesson'),
-            description(context, 'No request for lesson'),
-            const SizedBox(height: 16,),
+              // Request for lesson
+              header(context, 'Request for Lesson'),
+              description('No request for lesson'),
+              const SizedBox(height: 16,),
 
-            // Review from tutor
-            header(context, 'Review from Tutor'),
-            description(
-                context,
-                '''Session 1: 00:00 - 00:25
-Lesson status: On progress
-Book: test book - Unit: test unit - Lesson: test lesson - Page: test page
-Lesson progress: test progreess
-Behavior (⭐⭐⭐⭐):
-Listening (⭐⭐⭐):
-Speaking (⭐⭐):
-Vocabulary (⭐⭐⭐):
-Overall comment: cần cải thiện
-                '''
-            ),
+              // Review from tutor
+              header(context, 'Review from Tutor'),
+              description(
+                'Session 1: 00:00 - 00:25\nLesson status: On progress\nBook: test book - Unit: test unit - Lesson: test lesson - Page: test page\nLesson progress: test progreess\nBehavior (⭐⭐⭐⭐):\nListening (⭐⭐⭐):\nSpeaking (⭐⭐):\nVocabulary (⭐⭐⭐):\nOverall comment: cần cải thiện'
+              ),
 
-            // Interact
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Report
-                OutlinedButton.icon(
-                  icon: const Icon(Icons.report_gmailerrorred_outlined, color: Colors.redAccent,),
-                  label: const Text('Report', style: TextStyle(color: Colors.redAccent),),
-                  onPressed: () { },
-                ),
+              // Interact
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Report
+                  reportButton(),
+                  const SizedBox(width: 40,),
+                  // Rating
+                  ratingButton(),
+                ],
+              ),
+              const SizedBox(height: 16,),
 
-                const SizedBox(width: 40,),
-
-                // Rating
-                OutlinedButton.icon(
-                  icon: const Icon(Icons.star_outline),
-                  label: const Text('Rating'),
-                  onPressed: () { },
-                ),
-              ],
-            ),
-            const SizedBox(height: 16,),
-
-            // Record if have
-            header(context, 'Record session'),
-            const SizedBox(height: 16,),
-            const Placeholder()
-          ],
+              // Record if have
+              header(context, 'Record session'),
+              const SizedBox(height: 16,),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Placeholder(),
+              )
+            ],
+          ),
         ),
       ),
     );

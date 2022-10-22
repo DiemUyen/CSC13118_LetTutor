@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:let_tutor/routes.dart';
 import 'package:let_tutor/widgets/person_review_card.dart';
-import 'package:let_tutor/widgets/star_rating.dart';
 
 class TutorReviewPage extends StatefulWidget {
   const TutorReviewPage({Key? key}) : super(key: key);

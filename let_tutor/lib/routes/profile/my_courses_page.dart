@@ -6,19 +6,15 @@ class MyCoursesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text("No data"),
-          const SizedBox(height: 8,),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, RouteGenerator.profileHomePage);
-            },
-            child: const Text('Back Home'),
-          )
-        ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(),
+        body: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Center(
+            child: Text("No data"),
+          ),
+        ),
       ),
     );
   }

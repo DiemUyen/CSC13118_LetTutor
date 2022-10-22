@@ -21,7 +21,7 @@ class PersonReviewCard extends StatelessWidget {
                 const SizedBox(width: 8,),
                 Column(
                   children: [
-                    Text('Lavendaire'),
+                    const Text('Lavendaire'),
                     Text(DateFormat('dd/MM/yyyy').format(DateTime.now())),
                     StarRating(
                       initialRating: 4,
@@ -34,7 +34,7 @@ class PersonReviewCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 8,),
-            Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',),
+            const Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',),
           ],
         ),
       ),

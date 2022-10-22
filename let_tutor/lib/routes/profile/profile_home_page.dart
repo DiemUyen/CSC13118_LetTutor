@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:let_tutor/routes.dart';
-import 'package:let_tutor/widgets/bottom_nav_bar.dart';
 
 class ProfileHomePage extends StatefulWidget {
   const ProfileHomePage({Key? key}) : super(key: key);
@@ -20,23 +19,53 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
   List<String> routes = <String>[ RouteGenerator.myProfilePage, RouteGenerator.myWalletPage, RouteGenerator.mySchedulePage, RouteGenerator.myHistoryPage,
     RouteGenerator.myCoursesPage, RouteGenerator.changePasswordPage, RouteGenerator.becomeTutorPage, RouteGenerator.signInPage];
 
-  Widget item(BuildContext context, IconData icon, String title) {
+  Widget avatar() {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.blueAccent, width: 4),
+          borderRadius: BorderRadius.circular(200)
+      ),
+      padding: const EdgeInsets.all(4),
+      child: CircleAvatar(
+        backgroundColor: Colors.brown.shade800,
+        radius: 100,
+        child: const Text('AH'),
+      ),
+    );
+  }
+
+  Widget item(BuildContext context, int index) {
     return Row(
       children: [
         Expanded(
           child: OutlinedButton.icon(
             style: ButtonStyle(
-              //elevation: MaterialStateProperty.all(4),
               alignment: Alignment.centerLeft,
               fixedSize: MaterialStateProperty.all(const Size.fromHeight(48)),
               backgroundColor: MaterialStateProperty.all(Colors.transparent)
             ),
-            icon: Icon(icon),
-            label: Text(title),
-            onPressed: () { },
+            icon: Icon(icons[index]),
+            label: Text(titles[index]),
+            onPressed: () {
+              Navigator.pushNamed(context, routes[index]);
+            },
           ),
         )
       ],
+    );
+  }
+
+  Widget itemList() {
+    return ListView.builder(
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
+      itemCount: titles.length,
+      itemBuilder: (context, index) {
+        return Container(
+            margin: const EdgeInsets.symmetric(vertical: 8),
+            child: item(context, index)
+        );
+      },
     );
   }
 
@@ -44,38 +73,16 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.blueAccent, width: 4),
-                borderRadius: BorderRadius.circular(200)
-              ),
-              padding: const EdgeInsets.all(4),
-              child: CircleAvatar(
-                backgroundColor: Colors.brown.shade800,
-                radius: 100,
-                child: const Text('AH'),
-              ),
-            ),
-            const SizedBox(height: 32,),
-            ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemCount: titles.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, routes[index]);
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    child: item(context, icons[index], titles[index])
-                  ),
-                );
-              },
-            )
-          ],
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              avatar(),
+              const SizedBox(height: 32,),
+
+              itemList(),
+            ],
+          ),
         ),
       ),
     );
