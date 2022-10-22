@@ -35,7 +35,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       // Text field to enter email address
                       TextFormField(
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
+                            border: OutlineInputBorder(),
                           hintText: "Email"
                         ),
                       ),

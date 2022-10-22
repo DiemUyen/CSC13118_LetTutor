@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:let_tutor/routes.dart';
-import 'package:let_tutor/theme/app_color.dart';
-import 'package:let_tutor/widgets/bottom_nav_bar.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -29,10 +27,9 @@ class _SignUpFormState extends State<SignUpForm> {
       flex: 3,
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: AppColor.lineColor, width: 0.5),
-            borderRadius: BorderRadius.circular(4)
+          borderRadius: BorderRadius.circular(4)
         ),
-        child: TextButton.icon(
+        child: ElevatedButton.icon(
           onPressed: () {},
           icon: Icon(iconName, size: 16,),
           label: Text(label),
@@ -98,11 +95,11 @@ class _SignUpFormState extends State<SignUpForm> {
                           // Divider
                           Row(
                             children: const [
-                              Expanded(child: Divider(color: AppColor.lineColor, thickness: 0.5,)),
+                              Expanded(child: Divider(thickness: 0.5,)),
                               SizedBox(width: 8,),
                               Text("or"),
                               SizedBox(width: 8,),
-                              Expanded(child: Divider(color: AppColor.lineColor, thickness: 0.5,))
+                              Expanded(child: Divider(thickness: 0.5,))
                             ],
                           ),
                         ],

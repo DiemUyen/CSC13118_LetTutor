@@ -14,7 +14,7 @@ class SearchBar extends StatelessWidget {
       ),
       child: TextFormField(
         decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search_outlined),
+            prefixIcon: const Icon(Icons.search_outlined),
             border: InputBorder.none,
             hintText: hintText
         ),

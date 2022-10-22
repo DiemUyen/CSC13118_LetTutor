@@ -5,6 +5,7 @@ import 'package:let_tutor/routes/authentication/sign_up_form.dart';
 import 'package:let_tutor/routes/course/courses_page.dart';
 import 'package:let_tutor/routes/course/course_detail.dart';
 import 'package:let_tutor/routes/course/topics_page.dart';
+import 'package:let_tutor/routes/home.dart';
 import 'package:let_tutor/routes/meeting_page.dart';
 import 'package:let_tutor/routes/profile/become_tutor_page.dart';
 import 'package:let_tutor/routes/profile/change_password_page.dart';
@@ -19,6 +20,7 @@ import 'package:let_tutor/routes/setting_page.dart';
 import 'package:let_tutor/routes/tutor/tutor_detail.dart';
 import 'package:let_tutor/routes/tutor/tutor_home_page.dart';
 import 'package:let_tutor/routes/tutor/tutor_reviews.dart';
+import 'package:let_tutor/routes/tutor/write_review.dart';
 import 'package:let_tutor/routes/unknown_page.dart';
 
 
@@ -28,10 +30,14 @@ class RouteGenerator {
   static const String signUpPage = '/signUp';
   static const String forgotPasswordPage = '/forgotPassword';
 
+  // Home page
+  static const String homePage = '/home';
+
   // Tutor pages
   static const String tutorHomePage = '/tutorHome';
   static const String tutorDetailPage = '/tutorDetail';
   static const String tutorReviewsPage = '/tutorReviews';
+  static const String writingReviewPage = '/writingReview';
 
   // Course pages
   static const String coursesHomePage = '/coursesHome';
@@ -75,6 +81,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) => const ForgotPassword(),
         );
+      case homePage:
+        return MaterialPageRoute(
+          builder: (context) => const Home(),
+        );
       case tutorHomePage:
         return MaterialPageRoute(
           builder: (context) => const TutorHomePage(),
@@ -86,6 +96,10 @@ class RouteGenerator {
       case tutorReviewsPage:
         return MaterialPageRoute(
           builder: (context) => const TutorReviewPage(),
+        );
+      case writingReviewPage:
+        return MaterialPageRoute(
+          builder: (context) => const WritingReviewPage(),
         );
       case coursesHomePage:
         return MaterialPageRoute(

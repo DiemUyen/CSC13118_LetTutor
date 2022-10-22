@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/theme/app_color.dart';
 import 'package:let_tutor/theme/custom_text.dart';
 
 class CustomTheme{
@@ -7,18 +6,16 @@ class CustomTheme{
     fontFamily: 'Roboto',
     textTheme: CustomText.textTheme,
     brightness: Brightness.light,
-    colorSchemeSeed: AppColor.mainColor,
+    //colorSchemeSeed: Colors.green,
+    useMaterial3: false,
 
-    scaffoldBackgroundColor: AppColor.backgroundColor,
-    
     appBarTheme: const AppBarTheme(
       color: Colors.transparent,
       elevation: 0,
-      foregroundColor: AppColor.secondaryColor,
+      foregroundColor: Colors.blue
     ),
-    
+
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppColor.onMainColor,
       selectedLabelStyle: TextStyle(
         fontWeight: FontWeight.bold
       ),
@@ -31,6 +28,7 @@ class CustomTheme{
     fontFamily: 'Roboto',
     textTheme: CustomText.textTheme,
     brightness: Brightness.dark,
-    useMaterial3: true
+    useMaterial3: false,
+    colorSchemeSeed: Colors.green
   );
 }

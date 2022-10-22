@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:let_tutor/routes.dart';
-import 'package:let_tutor/theme/app_color.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -28,10 +27,9 @@ class _SignInFormState extends State<SignInForm> {
       flex: 3,
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: AppColor.lineColor, width: 0.5),
-            borderRadius: BorderRadius.circular(4)
+          borderRadius: BorderRadius.circular(4),
         ),
-        child: TextButton.icon(
+        child: ElevatedButton.icon(
           onPressed: () {},
           icon: Icon(iconName, size: 16,),
           label: Text(label),
@@ -99,11 +97,11 @@ class _SignInFormState extends State<SignInForm> {
                           // Divider
                           Row(
                             children: const [
-                              Expanded(child: Divider(color: AppColor.lineColor, thickness: 0.5,)),
+                              Expanded(child: Divider(thickness: 0.5,)),
                               SizedBox(width: 8,),
                               Text("or"),
                               SizedBox(width: 8,),
-                              Expanded(child: Divider(color: AppColor.lineColor, thickness: 0.5,))
+                              Expanded(child: Divider(thickness: 0.5,))
                             ],
                           ),
                         ],
@@ -129,7 +127,8 @@ class _SignInFormState extends State<SignInForm> {
                           // Button 'Sign in'
                           ElevatedButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, RouteGenerator.tutorHomePage);
+                                //Navigator.pushNamed(context, RouteGenerator.homePage);
+                                Navigator.pushNamedAndRemoveUntil(context, RouteGenerator.homePage, (route) => false);
                               },
                               child: const Text("Sign In")
                           ),

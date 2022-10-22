@@ -1,27 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:let_tutor/routes.dart';
 
-class TransparentAppBar extends StatelessWidget {
+class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget{
   const TransparentAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Hello,", style: Theme.of(context).textTheme.headline6,),
-                Text("Diem Uyen", style: Theme.of(context).textTheme.headline6,)
-              ],
-            ),
-          ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings_outlined))
-        ],
+    return AppBar(
+      title: RichText(
+        maxLines: 3,
+        text: const TextSpan(
+            children: [
+              TextSpan(text: 'Hello', style: TextStyle(
+                  fontWeight: FontWeight.bold
+              )),
+              TextSpan(text: '\n'),
+              TextSpan(text: 'Diem Uyen', style: TextStyle(
+                  fontWeight: FontWeight.bold
+              ))
+            ]
+        ),
       ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.settings_outlined, color: Colors.black,),
+          onPressed: () {
+            Navigator.pushNamed(context, RouteGenerator.settingPage);
+          },
+        )
+      ],
     );
   }
+
+  @override
+  // Implement preferredSize
+  Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
 }

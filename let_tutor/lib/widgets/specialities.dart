@@ -13,7 +13,6 @@ class Specialities extends StatelessWidget {
           Chip(label: Text('TOEIC')),
           Chip(label: Text('English for Conversation')),
           Chip(label: Text('SMARTER')),
-          Chip(label: Text('English for Business')),
         ]
     );
   }

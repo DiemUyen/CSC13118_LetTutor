@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 
       // Generate routes
       onGenerateRoute: RouteGenerator.generateRoute,
-      
+
       home: const SignUpForm()
     );
   }

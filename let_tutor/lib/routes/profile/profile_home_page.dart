@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:let_tutor/routes.dart';
+import 'package:let_tutor/widgets/bottom_nav_bar.dart';
 
 class ProfileHomePage extends StatefulWidget {
   const ProfileHomePage({Key? key}) : super(key: key);
@@ -41,39 +42,41 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.blueAccent, width: 4),
-              borderRadius: BorderRadius.circular(200)
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent, width: 4),
+                borderRadius: BorderRadius.circular(200)
+              ),
+              padding: const EdgeInsets.all(4),
+              child: CircleAvatar(
+                backgroundColor: Colors.brown.shade800,
+                radius: 100,
+                child: const Text('AH'),
+              ),
             ),
-            padding: const EdgeInsets.all(4),
-            child: CircleAvatar(
-              backgroundColor: Colors.brown.shade800,
-              radius: 100,
-              child: const Text('AH'),
-            ),
-          ),
-          const SizedBox(height: 32,),
-          ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemCount: titles.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, routes[index]);
-                },
-                child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8),
-                  child: item(context, icons[index], titles[index])
-                ),
-              );
-            },
-          )
-        ],
+            const SizedBox(height: 32,),
+            ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: titles.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, routes[index]);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8),
+                    child: item(context, icons[index], titles[index])
+                  ),
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }
