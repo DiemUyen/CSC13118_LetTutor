@@ -11,7 +11,7 @@ class TopicsPage extends StatefulWidget {
 
 class _TopicsPageState extends State<TopicsPage> {
 
-  List<String> topicsName = <String>['Foods You Love', 'Your Job', 'Playing and Watching Sports', 'The Best Pet', 'Hobbies'];
+  final topicsName = ['The Internet', 'Artificial Intelligence', 'Social Media', 'Internet Privacy', 'Live Streaming'];
 
   Widget topicsDropdownList() {
     return DropdownButton<String>(

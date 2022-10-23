@@ -19,9 +19,8 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const CircleAvatar(
-            backgroundColor: Colors.brown,
-            radius: 36,
-            child: Text('AH'),
+            backgroundImage: AssetImage('assets/avatar_tutor.jpg'),
+            radius: 36
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -126,7 +125,7 @@ class _ScheduleDetailState extends State<ScheduleDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Tutor taught this lesson
-                    inforTutor('April Hazure', Icons.flag_outlined, 'France'),
+                    inforTutor('April Azure', Icons.flag_outlined, 'France'),
                     const SizedBox(height: 24,),
 
                     // Time

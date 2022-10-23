@@ -146,12 +146,12 @@ class _TutorDetailState extends State<TutorDetail> {
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 3,
+      itemCount: 1,
       itemBuilder: (context, index) {
         return Row(
           children: [
             const Text(
-              'Basic Conversation Topics',
+              'Life in the Internet Age',
               style: TextStyle(
                 fontWeight: FontWeight.bold
               ),
@@ -187,7 +187,7 @@ class _TutorDetailState extends State<TutorDetail> {
                   ),
                   minimumSize: MaterialStateProperty.all(const Size(100, 48))
               ),
-              child: const Text('Book'),
+              child: const Text('Book Now'),
             ),
           ),
         ],
@@ -216,7 +216,7 @@ class _TutorDetailState extends State<TutorDetail> {
                       const SizedBox(height: 8,),
 
                       // Paragraph about tutor
-                      const Text('lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo'),
+                      const Text('Hello! My name is April Baldo, you can just call me Teacher April. I am an English teacher and currently teaching in senior high school. I have been teaching grammar and literature for almost 10 years. I am fond of reading and teaching literature as one way of knowing one’s beliefs and culture. I am friendly and full of positivity. I love teaching because I know each student has something to bring on. Molding them to become an individual is a great success.'),
 
                       // Favorite, Report and Review
                       Container(
@@ -256,13 +256,13 @@ class _TutorDetailState extends State<TutorDetail> {
                       // Interests
                       header(context, 'Interests'),
                       const SizedBox(height: 8,),
-                      const Text('lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod ...'),
+                      const Text('Dancing, Sewing'),
                       const SizedBox(height: 16,),
 
                       // Teaching experience
                       header(context, 'Teaching Experience'),
                       const SizedBox(height: 8,),
-                      const Text('lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod ...'),
+                      const Text('10 years of English tutor'),
                       const SizedBox(height: 16,),
                     ],
                   ),

@@ -11,8 +11,7 @@ class Specialities extends StatelessWidget {
         children: const [
           Chip(label: Text('English for Business')),
           Chip(label: Text('TOEIC')),
-          Chip(label: Text('English for Conversation')),
-          Chip(label: Text('SMARTER')),
+          Chip(label: Text('English for Conversation'))
         ]
     );
   }

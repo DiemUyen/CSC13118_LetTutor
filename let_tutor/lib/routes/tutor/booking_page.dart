@@ -134,7 +134,7 @@ class _BookingPageState extends State<BookingPage> {
           }
         );
       },
-      child: const Text('Book Now'),
+      child: const Text('Book Now')
     );
   }
 
@@ -144,7 +144,7 @@ class _BookingPageState extends State<BookingPage> {
       child: Scaffold(
         appBar: AppBar(),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
               // Select date

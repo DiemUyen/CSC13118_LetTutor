@@ -22,7 +22,7 @@ class CourseCard extends StatelessWidget {
               Text('Life in the Internet Age', style: Theme.of(context).textTheme.headline6,),
               const SizedBox(height: 8,),
               // Description
-              const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut euismod nulla, ac placerat nisi. Ut at venenatis eros, sed.'),
+              const Text("Let's discuss how technology is changing the way we live"),
               const SizedBox(height: 48,),
               bottomWidget
             ],

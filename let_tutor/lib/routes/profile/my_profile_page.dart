@@ -178,7 +178,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
               const SizedBox(height: 16,),
 
               // Username title
-              Text('April Hanzure', style: Theme.of(context).textTheme.headline6,),
+              Text('Diem Uyen', style: Theme.of(context).textTheme.headline6,),
               const Text('You have 100 lessons left'),
               const SizedBox(height: 8,),
               TextButton(

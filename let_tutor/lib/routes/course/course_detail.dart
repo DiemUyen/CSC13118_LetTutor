@@ -4,6 +4,8 @@ import 'package:let_tutor/widgets/course_card.dart';
 
 class CourseDetail extends StatelessWidget {
   const CourseDetail({Key? key}) : super(key: key);
+
+  static const topics = ['The Internet', 'Artificial Intelligence', 'Social Media', 'Internet Privacy', 'Live Streaming'];
   
   Widget header(BuildContext context, String header) {
     return Row(
@@ -41,7 +43,7 @@ class CourseDetail extends StatelessWidget {
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 5,
+      itemCount: topics.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -55,7 +57,7 @@ class CourseDetail extends StatelessWidget {
                 children: [
                   Text('${index + 1}.'),
                   const SizedBox(height: 8,),
-                  const Text('Your job'),
+                  Text(topics[index]),
                 ],
               ),
             ),
@@ -115,9 +117,9 @@ class CourseDetail extends StatelessWidget {
               // Overview
               header(context, 'Overview'),
               const SizedBox(height: 8,),
-              description(context, Icons.question_mark_outlined, 'Why take this course', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut euismod nulla, ac placerat nisi. Ut at venenatis eros, sed.'),
+              description(context, Icons.question_mark_outlined, 'Why take this course', "Our world is rapidly changing thanks to new technology, and the vocabulary needed to discuss modern life is evolving almost daily. In this course you will learn the most up-to-date terminology from expertly crafted lessons as well from your native-speaking tutor."),
               const SizedBox(height: 8,),
-              description(context, Icons.question_mark_outlined, 'What will you be able to do', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut euismod nulla, ac placerat nisi. Ut at venenatis eros, sed.'),
+              description(context, Icons.question_mark_outlined, 'What will you be able to do', "You will learn vocabulary related to timely topics like remote work, artificial intelligence, online privacy, and more. In addition to discussion questions, you will practice intermediate level speaking tasks such as using data to describe trends."),
               const SizedBox(height: 16,),
 
               // Experience level

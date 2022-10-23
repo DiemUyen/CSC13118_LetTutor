@@ -25,7 +25,7 @@ class PersonReviewCard extends StatelessWidget {
                     const Text('Lavendaire', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                     Text(DateFormat('dd/MM/yyyy').format(DateTime.now())),
                     StarRating(
-                      initialRating: 4,
+                      initialRating: 4.5,
                       ignoreGestures: false,
                       ratingUpgrade: (double value) { },
                       itemSize: 16,
@@ -35,7 +35,7 @@ class PersonReviewCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 8,),
-            const Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',),
+            const Text('This is a very good teacher. I love teaching with her.',),
           ],
         ),
       ),
