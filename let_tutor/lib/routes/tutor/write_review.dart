@@ -58,7 +58,7 @@ class _WritingReviewPageState extends State<WritingReviewPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
-        body: Padding(
+        body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [

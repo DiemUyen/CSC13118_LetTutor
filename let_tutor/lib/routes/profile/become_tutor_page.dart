@@ -8,6 +8,8 @@ class BecomeTutorPage extends StatefulWidget {
   State<BecomeTutorPage> createState() => _BecomeTutorPageState();
 }
 
+enum LevelStudent { Beginner, Intermediate, Advanced }
+
 class _BecomeTutorPageState extends State<BecomeTutorPage> {
 
   var _index = 0;
@@ -15,6 +17,11 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
   List<String> countries = ['Australia', 'Canada', 'China', 'Colombia', 'France', 'Indonesia', 'Japan', 'Malaysia', 'Philippines', 'UK', 'USA', 'Vietnam', 'Others'];
   var datePicker = '';
   List<String> tips = ['Find a clean and quiet space', 'Smile and look at the camera', 'Dress smart', 'Speak for 1 - 3 mintues', 'Brand yourself and have fun!'];
+  var certificates = {0: {'Certificate Type': 'TOEIC', 'Certificate':'.png'}, 1: {'Certificate Type':'IELTS', 'Certificate':'.png'}};
+  var certificateType = ['TOEIC', 'IELTS', 'TOEFL'];
+  LevelStudent? _levelStudent = LevelStudent.Beginner;
+  var selectedSpecialities = [false, false, false, false, false];
+  var specialities = ['English for Kids', 'English for Business', 'TOEIC', 'IELTS', 'TOEFL'];
 
   Widget header(BuildContext context, String header) {
     return Row(
@@ -154,6 +161,66 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
     );
   }
 
+  Widget certificateDialog() {
+    return SizedBox(
+      width: 300,
+      height: 150,
+      child: Column(
+        children: [
+          DropdownButton<String>(
+            isExpanded: true,
+            underline: Container(
+              height: 0,
+            ),
+            value: certificateType.first,
+            items: certificateType.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(value: value, child: Text(value));
+            }).toList(),
+            onChanged: (String? value) { },
+          ),
+          TextField(
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Upload image'
+            ),
+            onTap: () { },
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget addNewCertificateButton() {
+    return OutlinedButton(
+      child: const Text('Add new certificate'),
+      onPressed: () async{
+        return showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('Add certificate'),
+                content: certificateDialog(),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, 'Cancel');
+                    },
+                    child: const Text('Cancel'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context, 'Submit');
+                    },
+                    child: const Text('Submit'),
+                  )
+                ],
+              );
+            }
+        );
+      },
+    );
+  }
+
   Widget languagesField() {
     return TextFormField(
       maxLines: null,
@@ -173,6 +240,64 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
           hintText: "Example: 'I was a doctor and can help you practice business and medical English'",
           labelText: 'Introduction'
       ),
+    );
+  }
+
+  Widget selectLevelStudents() {
+    return Column(
+      children: [
+        RadioListTile(
+          title: const Text('Beginner'),
+          value: LevelStudent.Beginner,
+          groupValue: _levelStudent,
+          onChanged: (LevelStudent? value) {
+            setState(() {
+              _levelStudent = value;
+            });
+          },
+        ),
+
+        RadioListTile(
+          title: const Text('Intermediate'),
+          value: LevelStudent.Intermediate,
+          groupValue: _levelStudent,
+          onChanged: (LevelStudent? value) {
+            setState(() {
+              _levelStudent = value;
+            });
+          },
+        ),
+
+        RadioListTile(
+          title: const Text('Advanced'),
+          value: LevelStudent.Advanced,
+          groupValue: _levelStudent,
+          onChanged: (LevelStudent? value) {
+            setState(() {
+              _levelStudent = value;
+            });
+          },
+        )
+      ],
+    );
+  }
+
+  Widget selectSpecialities() {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: specialities.length,
+      itemBuilder: (context, index) {
+        return CheckboxListTile(
+          value: selectedSpecialities[index],
+          title: Text(specialities[index]),
+          onChanged: (bool? value) {
+            setState(() {
+              selectedSpecialities[index] = value!;
+            });
+          },
+        );
+      },
     );
   }
 
@@ -217,11 +342,30 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
             positionField(),
             const SizedBox(height: 8,),
             // Certificate
-            // TODO: Add table to see certificate
-            OutlinedButton(
-              child: const Text('Add new certificate'),
-              onPressed: () { },
+            Row(
+              children: const [
+                Expanded(flex: 2, child: Text('Certificate Type', style: TextStyle(fontWeight: FontWeight.bold),)),
+                Expanded(flex: 2, child: Text('Certificate', style: TextStyle(fontWeight: FontWeight.bold),)),
+                Expanded(child: Text('Action', style: TextStyle(fontWeight: FontWeight.bold),))
+              ],
             ),
+            ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: certificates.length,
+              itemBuilder: (context, index) {
+                return Row(
+                  children: [
+                    Expanded(flex: 2, child: Text(certificates[index]!['Certificate Type']!)),
+                    Expanded(flex: 2, child: Text(certificates[index]!['Certificate']!)),
+                    Expanded(child: IconButton(onPressed: () { }, icon: const Icon(Icons.delete_outline),))
+                  ],
+                );
+              },
+            ),
+            const SizedBox(height: 8,),
+            addNewCertificateButton(),
             const SizedBox(height: 16,),
 
             // Languages I speak
@@ -238,7 +382,17 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
             const SizedBox(height: 8,),
 
             // Best teaching
-            //TODO: best teaching + Specialities
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text('I am best at teaching students who are', style: TextStyle(fontWeight: FontWeight.bold))
+            ),
+            selectLevelStudents(),
+            const SizedBox(height: 8,),
+            const Align(
+                alignment: Alignment.centerLeft,
+                child: Text('My specialities are', style: TextStyle(fontWeight: FontWeight.bold))
+            ),
+            selectSpecialities()
           ],
         )
     );
@@ -356,9 +510,11 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
               }
             },
             onStepTapped: (int index) {
-              setState(() {
-                _index = index;
-              });
+              if (_index < 2) {
+                setState(() {
+                  _index = index;
+                });
+              }
             },
             steps: <Step>[
               stepOne(context),

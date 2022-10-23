@@ -48,7 +48,12 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
             icon: Icon(icons[index]),
             label: Text(titles[index]),
             onPressed: () {
-              Navigator.pushNamed(context, routes[index]);
+              if (routes[index] == RouteGenerator.signInPage) {
+                Navigator.pushNamedAndRemoveUntil(context, routes[index], (route) => false);
+              }
+              else {
+                Navigator.pushNamed(context, routes[index]);
+              }
             },
           ),
         )
