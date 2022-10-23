@@ -88,12 +88,14 @@ class _TutorDetailState extends State<TutorDetail> {
               title: const Text('Report April'),
               content: contentReportDialog(),
               actions: [
-                TextButton(
+                OutlinedButton(
                   onPressed: () {
                     Navigator.pop(context, 'Cancel');
                   },
                   child: const Text('Cancel'),
                 ),
+
+                const SizedBox(height: 8,),
 
                 ElevatedButton(
                   onPressed: () {
@@ -134,7 +136,7 @@ class _TutorDetailState extends State<TutorDetail> {
       children: [
         const SizedBox(width: 24, child: Divider(),),
         const SizedBox(width: 8,),
-        Text(header, style: Theme.of(context).textTheme.headline6,),
+        Text(header, style: Theme.of(context).textTheme.titleMedium,),
         const SizedBox(width: 8,),
         const Expanded(child: Divider())
       ],

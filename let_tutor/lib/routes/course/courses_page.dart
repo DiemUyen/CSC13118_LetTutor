@@ -44,68 +44,35 @@ class _CoursesPageState extends State<CoursesPage> with SingleTickerProviderStat
   }
 
   Widget levelFilter() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: DropdownButton<String>(
-        isExpanded: true,
-        underline: Container(
-          height: 0,
-        ),
-        value: levels.first,
-        items: levels.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(value: value, child: Text(value));
-        }).toList(),
-        onChanged: (String? value) { },
-      ),
+    return DropdownButton<String>(
+      isExpanded: true,
+      value: levels.first,
+      items: levels.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(value: value, child: Text(value));
+      }).toList(),
+      onChanged: (String? value) { },
     );
   }
 
   Widget categoriesFilter() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: DropdownButton<String>(
-        isExpanded: true,
-        underline: Container(
-          height: 0,
-        ),
-        value: categories.first,
-        items: categories.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(value: value, child: Text(value));
-        }).toList(),
-        onChanged: (String? value) { },
-      ),
+    return DropdownButton<String>(
+      isExpanded: true,
+      value: categories.first,
+      items: categories.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(value: value, child: Text(value));
+      }).toList(),
+      onChanged: (String? value) { },
     );
   }
 
   Widget sortLevel() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: DropdownButton<String>(
-        isExpanded: true,
-        underline: Container(
-          height: 0,
-        ),
-        value: sortLevels.first,
-        items: sortLevels.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(value: value, child: Text(value));
-        }).toList(),
-        onChanged: (String? value) { },
-      ),
+    return DropdownButton<String>(
+      isExpanded: true,
+      value: sortLevels.first,
+      items: sortLevels.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(value: value, child: Text(value));
+      }).toList(),
+      onChanged: (String? value) { },
     );
   }
 
@@ -117,13 +84,7 @@ class _CoursesPageState extends State<CoursesPage> with SingleTickerProviderStat
         elevation: 0,
         bottom: TabBar(
           controller: _tabController,
-          labelColor: Colors.black,
           isScrollable: true,
-          indicatorSize: TabBarIndicatorSize.tab,
-          indicator: ShapeDecoration(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            color: Colors.blue[200]
-          ),
           tabs: const [
             Tab(text: 'Courses',),
             Tab(text: 'E-Book',),
@@ -147,7 +108,7 @@ class _CoursesPageState extends State<CoursesPage> with SingleTickerProviderStat
          child: CourseCard(bottomWidget: Row(
            children: const [
              // Level
-             Text('Intermediate'),
+             Text('Intermediate', style: TextStyle(fontWeight: FontWeight.bold),),
              SizedBox(width: 8,),
              // The number of lessons
              Text('9 lessons')

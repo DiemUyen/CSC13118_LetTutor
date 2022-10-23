@@ -85,11 +85,17 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   }
 
   Widget changePasswordButton() {
-    return ElevatedButton(
-      child: const Text('Change'),
-      onPressed: () {
-        Navigator.pop(context);
-      },
+    return Row(
+      children: [
+        Expanded(
+          child: ElevatedButton(
+            child: const Text('Change'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -104,7 +110,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Change Password', style: Theme.of(context).textTheme.headline6,),
+                Text('Change Password', style: Theme.of(context).textTheme.headlineSmall,),
                 const SizedBox(height: 16,),
 
                 // Old password

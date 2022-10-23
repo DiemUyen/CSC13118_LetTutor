@@ -119,11 +119,17 @@ class _SignUpFormState extends State<SignUpForm> {
                           const SizedBox(height: 8,),
 
                           // Button 'Sign up'
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, RouteGenerator.signInPage);
-                              },
-                              child: const Text("Sign Up")
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, RouteGenerator.signInPage);
+                                    },
+                                    child: const Text("Sign Up")
+                                ),
+                              ),
+                            ],
                           )
                         ],
                       ),

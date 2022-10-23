@@ -142,13 +142,19 @@ class _MyProfilePageState extends State<MyProfilePage> {
   }
 
   Widget saveChangesButton() {
-    return ElevatedButton(
-      child: const Text('Save Changes'),
-      onPressed: () {
-        setState(() {
+    return Row(
+      children: [
+        Expanded(
+          child: ElevatedButton(
+            child: const Text('Save Changes'),
+            onPressed: () {
+              setState(() {
 
-        });
-      },
+              });
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -178,7 +184,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
               const SizedBox(height: 16,),
 
               // Username title
-              Text('Diem Uyen', style: Theme.of(context).textTheme.headline6,),
+              Text('Diem Uyen', style: Theme.of(context).textTheme.headlineSmall,),
               const Text('You have 100 lessons left'),
               const SizedBox(height: 8,),
               TextButton(

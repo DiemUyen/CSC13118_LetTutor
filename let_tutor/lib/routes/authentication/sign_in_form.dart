@@ -120,12 +120,18 @@ class _SignInFormState extends State<SignInForm> {
                           const SizedBox(height: 8,),
 
                           // Button 'Sign in'
-                          ElevatedButton(
-                              onPressed: () {
-                                //Navigator.pushNamed(context, RouteGenerator.homePage);
-                                Navigator.pushNamedAndRemoveUntil(context, RouteGenerator.homePage, (route) => false);
-                              },
-                              child: const Text("Sign In")
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      //Navigator.pushNamed(context, RouteGenerator.homePage);
+                                      Navigator.pushNamedAndRemoveUntil(context, RouteGenerator.homePage, (route) => false);
+                                    },
+                                    child: const Text("Sign In")
+                                ),
+                              ),
+                            ],
                           ),
 
                           // Button 'Forgot password'

@@ -19,7 +19,7 @@ class CourseCard extends StatelessWidget {
               Expanded(child: Image.asset('assets/life_in_Internet.jpg')),
               const SizedBox(height: 8,),
               // Name
-              Text('Life in the Internet Age', style: Theme.of(context).textTheme.headline6,),
+              Text('Life in the Internet Age', style: Theme.of(context).textTheme.headlineSmall,),
               const SizedBox(height: 8,),
               // Description
               const Text("Let's discuss how technology is changing the way we live"),

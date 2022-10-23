@@ -20,9 +20,9 @@ class LessonCard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('April', style: Theme.of(context).textTheme.headline6,),
+                  Text('April', style: Theme.of(context).textTheme.headlineSmall,),
                   const SizedBox(height: 8,),
-                  Text('Study date', style: Theme.of(context).textTheme.subtitle2,),
+                  Text('Study date', style: Theme.of(context).textTheme.titleMedium,),
                   const SizedBox(height: 8,),
                   const Text('Start time : End time')
                 ],

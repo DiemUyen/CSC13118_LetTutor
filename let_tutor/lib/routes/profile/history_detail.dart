@@ -27,7 +27,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
                 Text(tutorName, style: Theme
                     .of(context)
                     .textTheme
-                    .subtitle2,),
+                    .headlineSmall,),
                 const SizedBox(height: 4,),
                 Row(
                   children: [
@@ -57,7 +57,7 @@ class _HistoryDetailState extends State<HistoryDetail> {
         children: [
           const SizedBox(width: 24, child: Divider(),),
           const SizedBox(width: 8,),
-          Text(header, style: Theme.of(context).textTheme.headline6,),
+          Text(header, style: Theme.of(context).textTheme.titleMedium,),
           const SizedBox(width: 8,),
           const Expanded(child: Divider())
         ],

@@ -31,7 +31,7 @@ class _TutorHomePageState extends State<TutorHomePage> {
             children: [
               Text(
                 "Upcoming lesson",
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(height: 8,),
               Text("Fri, 11 Nov 22 18:30 - 18:55 (starts in ${DateTime(2022, 11, 11).difference(DateTime.now())})", textAlign: TextAlign.center,),
@@ -74,16 +74,9 @@ class _TutorHomePageState extends State<TutorHomePage> {
 
   Widget nationalitiesFilter() {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
-      ),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: DropdownButton<String>(
         isExpanded: true,
-        underline: Container(
-          height: 0,
-        ),
         value: listNationalities.first,
         items: listNationalities.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(value: value, child: Text(value));
@@ -94,101 +87,76 @@ class _TutorHomePageState extends State<TutorHomePage> {
   }
 
   Widget availableDateFilter() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
+    return TextFormField(
+      decoration: InputDecoration(
+          icon: const Icon(Icons.calendar_today_outlined),
+          border: const OutlineInputBorder(),
+          hintText: datePicker,
+          hintStyle: const TextStyle(color: Colors.black)
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: TextFormField(
-        decoration: InputDecoration(
-            icon: const Icon(Icons.calendar_today_outlined, size: 20,),
-            border: const OutlineInputBorder(
-              borderSide: BorderSide.none,
-            ),
-            hintText: datePicker,
-            hintStyle: const TextStyle(color: Colors.black)
-        ),
-        readOnly: true,
-        onTap: () async {
-          DateTime? picked = await showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime.now(),
-            lastDate: DateTime(DateTime.now().year + 1),
-            helpText: 'Select available tutoring day'
-          );
-          if (picked != null) {
-            setState(() {
-              datePicker = DateFormat('dd/MM/yyyy').format(picked);
-            });
-          }
-        },
-      ),
+      readOnly: true,
+      onTap: () async {
+        DateTime? picked = await showDatePicker(
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: DateTime.now(),
+          lastDate: DateTime(DateTime.now().year + 1),
+          helpText: 'Select available tutoring day'
+        );
+        if (picked != null) {
+          setState(() {
+            datePicker = DateFormat('dd/MM/yyyy').format(picked);
+          });
+        }
+      },
     );
   }
 
   Widget startTimeFilter() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
+    return TextFormField(
+      decoration: InputDecoration(
+          icon: const Icon(Icons.access_time),
+          border: const OutlineInputBorder(),
+          hintText: startTimePicker,
+          hintStyle: const TextStyle(color: Colors.black)
       ),
-      child: TextFormField(
-        decoration: InputDecoration(
-            icon: const Icon(Icons.access_time),
-            border: const OutlineInputBorder(
-              borderSide: BorderSide.none,
-            ),
-            hintText: startTimePicker,
-            hintStyle: const TextStyle(color: Colors.black)
-        ),
-        readOnly: true,
-        onTap: () async {
-          TimeOfDay? picked = await showTimePicker(
-            context: context,
-            initialTime: TimeOfDay.now(),
-            helpText: 'Select start time'
-          );
-          if (picked != null) {
-            setState(() {
-              startTimePicker = picked.format(context);
-            });
-          }
-        },
-      ),
+      readOnly: true,
+      onTap: () async {
+        TimeOfDay? picked = await showTimePicker(
+          context: context,
+          initialTime: TimeOfDay.now(),
+          helpText: 'Select start time'
+        );
+        if (picked != null) {
+          setState(() {
+            startTimePicker = picked.format(context);
+          });
+        }
+      },
     );
   }
 
   Widget endTimeFilter() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
+    return TextFormField(
+      decoration: InputDecoration(
+          icon: const Icon(Icons.access_time),
+          border: const OutlineInputBorder(),
+          hintText: endTimePicker,
+          hintStyle: const TextStyle(color: Colors.black)
       ),
-      child: TextFormField(
-        decoration: InputDecoration(
-            icon: const Icon(Icons.access_time),
-            border: const OutlineInputBorder(
-              borderSide: BorderSide.none,
-            ),
-            hintText: endTimePicker,
-            hintStyle: const TextStyle(color: Colors.black)
-        ),
-        readOnly: true,
-        onTap: () async {
-          TimeOfDay? picked = await showTimePicker(
-            context: context,
-            initialTime: TimeOfDay.now(),
-            helpText: 'Select end time'
-          );
-          if (picked != null) {
-            setState(() {
-              endTimePicker = picked.format(context);
-            });
-          }
-        },
-      ),
+      readOnly: true,
+      onTap: () async {
+        TimeOfDay? picked = await showTimePicker(
+          context: context,
+          initialTime: TimeOfDay.now(),
+          helpText: 'Select end time'
+        );
+        if (picked != null) {
+          setState(() {
+            endTimePicker = picked.format(context);
+          });
+        }
+      },
     );
   }
 
@@ -260,13 +228,13 @@ class _TutorHomePageState extends State<TutorHomePage> {
                 const SizedBox(height: 16,),
 
                 // Specialities
-                Text('Specialities', style: Theme.of(context).textTheme.subtitle2,),
+                Text('Specialities', style: Theme.of(context).textTheme.titleMedium,),
                 const SizedBox(height: 8,),
                 specialitiesChips(),
                 const SizedBox(height: 16,),
 
                 // Tutor list
-                Text('Tutor list', style: Theme.of(context).textTheme.subtitle2),
+                Text('Tutor list', style: Theme.of(context).textTheme.titleMedium),
                 tutorList()
               ],
             ),

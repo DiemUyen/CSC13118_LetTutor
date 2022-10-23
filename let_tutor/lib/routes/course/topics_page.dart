@@ -16,9 +16,6 @@ class _TopicsPageState extends State<TopicsPage> {
   Widget topicsDropdownList() {
     return DropdownButton<String>(
       isExpanded: true,
-      underline: Container(
-        height: 0,
-      ),
       value: topicsName.first,
       items: topicsName.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(value: value, child: Text(

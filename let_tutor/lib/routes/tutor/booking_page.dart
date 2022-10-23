@@ -18,7 +18,7 @@ class _BookingPageState extends State<BookingPage> {
       children: [
         const SizedBox(width: 24, child: Divider(),),
         const SizedBox(width: 8,),
-        Text(header, style: Theme.of(context).textTheme.headline6,),
+        Text(header, style: Theme.of(context).textTheme.titleMedium,),
         const SizedBox(width: 8,),
         const Expanded(child: Divider())
       ],

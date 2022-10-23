@@ -28,7 +28,7 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
       children: [
         const SizedBox(width: 24, child: Divider(),),
         const SizedBox(width: 8,),
-        Text(header, style: Theme.of(context).textTheme.headline6,),
+        Text(header, style: Theme.of(context).textTheme.headlineSmall,),
         const SizedBox(width: 8,),
         const Expanded(child: Divider())
       ],
@@ -39,7 +39,7 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
     return Column(
       children: [
         const Icon(Icons.person_outline),
-        Text('Set up your tutor profile', style: Theme.of(context).textTheme.headline6,),
+        Text('Set up your tutor profile', style: Theme.of(context).textTheme.headlineSmall,),
         const Text('Your tutor profile is your chance to market yourself to students on Tutoring. You can make edits later on your profile settings page.'),
         const Text('New students may browse tutor profiles to find a tutor that fits their learning goals and personality. Returning students may use the tutor profiles to find tutors they\'ve had great experiences with already.')
       ],
@@ -343,10 +343,10 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
             const SizedBox(height: 8,),
             // Certificate
             Row(
-              children: const [
-                Expanded(flex: 2, child: Text('Certificate Type', style: TextStyle(fontWeight: FontWeight.bold),)),
-                Expanded(flex: 2, child: Text('Certificate', style: TextStyle(fontWeight: FontWeight.bold),)),
-                Expanded(child: Text('Action', style: TextStyle(fontWeight: FontWeight.bold),))
+              children: [
+                Expanded(flex: 2, child: Text('Certificate Type', style: Theme.of(context).textTheme.labelLarge,)),
+                Expanded(flex: 2, child: Text('Certificate', style: Theme.of(context).textTheme.labelLarge,)),
+                Expanded(child: Text('Action', style: Theme.of(context).textTheme.labelLarge,))
               ],
             ),
             ListView.builder(
@@ -382,15 +382,15 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
             const SizedBox(height: 8,),
 
             // Best teaching
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
-              child: Text('I am best at teaching students who are', style: TextStyle(fontWeight: FontWeight.bold))
+              child: Text('I am best at teaching students who are', style: Theme.of(context).textTheme.labelLarge)
             ),
             selectLevelStudents(),
             const SizedBox(height: 8,),
-            const Align(
+            Align(
                 alignment: Alignment.centerLeft,
-                child: Text('My specialities are', style: TextStyle(fontWeight: FontWeight.bold))
+                child: Text('My specialities are', style: Theme.of(context).textTheme.labelLarge)
             ),
             selectSpecialities()
           ],
@@ -402,7 +402,7 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
     return Column(
       children: [
         const Icon(Icons.video_stable_outlined),
-        Text('Introduce yourself', style: Theme.of(context).textTheme.headline6,),
+        Text('Introduce yourself', style: Theme.of(context).textTheme.headlineSmall,),
         const Text('Let students know what they can expect from a lesson with you by recording a video highlighting your teaching style, expertise and personality. Students can be nervous to speak with a foreigner, so it really helps to have a friendly video that introduces yourself and invites students to call you.'),
       ],
     );
@@ -426,7 +426,7 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    Text('A few helpful tips', style: Theme.of(context).textTheme.subtitle2,),
+                    Text('A few helpful tips', style: Theme.of(context).textTheme.labelLarge,),
                     ListView.builder(
                       shrinkWrap: true,
                       itemCount: tips.length,
@@ -462,11 +462,17 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
               const Text('You have done all the steps'),
               const Text('Please wait for the operator\'s approval'),
               const SizedBox(height: 16,),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Back Home'),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Back Home'),
+                    ),
+                  ),
+                ],
               )
             ],
           ),

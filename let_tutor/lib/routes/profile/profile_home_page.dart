@@ -23,7 +23,7 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
   Widget avatar() {
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.blueAccent, width: 4),
+          border: Border.all(color: Theme.of(context).primaryColor, width: 4),
           borderRadius: BorderRadius.circular(200)
       ),
       padding: const EdgeInsets.all(4),

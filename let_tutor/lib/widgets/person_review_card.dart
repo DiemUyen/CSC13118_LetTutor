@@ -16,13 +16,13 @@ class PersonReviewCard extends StatelessWidget {
               children: [
                 const CircleAvatar(
                   backgroundImage: AssetImage('assets/avatar_student.jpg'),
-                  radius: 40,
+                  radius: 32,
                 ),
                 const SizedBox(width: 8,),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Lavendaire', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+                    Text('Lavendaire', style: Theme.of(context).textTheme.titleMedium),
                     Text(DateFormat('dd/MM/yyyy').format(DateTime.now())),
                     StarRating(
                       initialRating: 4.5,

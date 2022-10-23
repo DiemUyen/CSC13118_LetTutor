@@ -43,13 +43,17 @@ class _WritingReviewPageState extends State<WritingReviewPage> {
   }
 
   Widget saveButton() {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: const Text('Save')
-      )
+    return Row(
+      children: [
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Save')
+          ),
+        ),
+      ]
     );
   }
 

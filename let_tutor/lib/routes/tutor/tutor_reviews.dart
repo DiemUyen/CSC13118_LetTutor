@@ -33,7 +33,7 @@ class _TutorReviewPageState extends State<TutorReviewPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // List reviews from others
-                Text('Reviews', style: Theme.of(context).textTheme.headline6,),
+                Text('Reviews', style: Theme.of(context).textTheme.headlineSmall,),
                 const SizedBox(height: 8,),
                 ListView.builder(
                  shrinkWrap: true,

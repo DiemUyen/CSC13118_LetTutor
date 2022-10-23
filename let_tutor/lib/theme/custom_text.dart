@@ -2,68 +2,73 @@ import 'package:flutter/material.dart';
 
 class CustomText {
   static TextTheme textTheme = const TextTheme(
-    headline1: TextStyle(
-        fontSize: 96,
-        fontWeight: FontWeight.normal,
-        letterSpacing: -1.5
+    headlineLarge: TextStyle(
+      fontFamily: 'Roboto Regular',
+      fontWeight: FontWeight.w400,
+      fontSize: 32
     ),
-    headline2: TextStyle(
-        fontSize: 60,
-        fontWeight: FontWeight.normal,
-        letterSpacing: -0.5
+    headlineMedium: TextStyle(
+      fontFamily: 'Roboto Regular',
+      fontWeight: FontWeight.w400,
+      fontSize: 28
     ),
-    headline3: TextStyle(
-        fontSize: 48,
-        fontWeight: FontWeight.normal
+    headlineSmall: TextStyle(
+      fontFamily: 'Roboto Regular',
+      fontWeight: FontWeight.w400,
+      fontSize: 24
     ),
-    headline4: TextStyle(
-        fontSize: 34,
-        fontWeight: FontWeight.normal,
-        letterSpacing: 0.25
+    titleLarge: TextStyle(
+      fontFamily: 'Roboto Regular',
+      fontWeight: FontWeight.w400,
+      fontSize: 22
     ),
-    headline5: TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.normal
+    titleMedium: TextStyle(
+      fontFamily: 'Roboto Medium',
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      letterSpacing: 0.15
     ),
-    headline6: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 0.15
+    titleSmall: TextStyle(
+      fontFamily: 'Roboto Medium',
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      letterSpacing: 0.1
     ),
-    subtitle1: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.normal,
-        letterSpacing: 0.15
+    labelLarge: TextStyle(
+      fontFamily: 'Roboto Medium',
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      letterSpacing: 0.1
     ),
-    subtitle2: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 0.1
+    labelMedium: TextStyle(
+      fontFamily: 'Roboto Medium',
+      fontWeight: FontWeight.w500,
+      fontSize: 12,
+      letterSpacing: 0.5
     ),
-    bodyText1: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.normal,
-        letterSpacing: 0.5
+    labelSmall: TextStyle(
+      fontFamily: 'Roboto Medium',
+      fontWeight: FontWeight.w500,
+      fontSize: 11,
+      letterSpacing: 0.5
     ),
-    bodyText2: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-        letterSpacing: 0.25
+    bodyLarge: TextStyle(
+      fontFamily: 'Roboto Medium',
+      fontWeight: FontWeight.w400,
+      fontSize: 16,
+      letterSpacing: 0.5
     ),
-    button: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 1.25
+    bodyMedium: TextStyle(
+      fontFamily: 'Roboto Regular',
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
+      letterSpacing: 0.25
     ),
-    caption: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-        letterSpacing: 0.4
-    ),
-    overline: TextStyle(
-        fontSize: 10,
-        fontWeight: FontWeight.normal,
-        letterSpacing: 1.5
-    ),
+    bodySmall: TextStyle(
+      fontFamily: 'Roboto Regular',
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      letterSpacing: 0.4
+    )
   );
 }

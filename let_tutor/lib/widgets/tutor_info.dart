@@ -11,7 +11,7 @@ class TutorInfo extends StatelessWidget {
         // Avatar
         const CircleAvatar(
           backgroundImage: AssetImage('assets/avatar_tutor.jpg'),
-          radius: 40,
+          radius: 32,
         ),
         const SizedBox(width: 8,),
         // Infor
@@ -19,7 +19,7 @@ class TutorInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Name
-            const Text("April", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+            Text("April", style: Theme.of(context).textTheme.headlineSmall),
             Row(
               children: const [
                 // Icon flag

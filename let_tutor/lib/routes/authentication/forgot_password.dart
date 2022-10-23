@@ -25,7 +25,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // Title Reset password
-                      const Text("Reset Password", style: TextStyle(fontSize: 24),),
+                      Text("Reset Password", style: Theme.of(context).textTheme.titleLarge),
                       const SizedBox(height: 8,),
 
                       // Title Enter your email address
@@ -43,11 +43,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       const SizedBox(height: 8,),
 
                       // Button 'Send link'
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, RouteGenerator.signInPage);
-                          },
-                          child: const Text("Send Link")
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, RouteGenerator.signInPage);
+                                },
+                                child: const Text("Send Link")
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

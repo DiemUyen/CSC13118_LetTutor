@@ -19,9 +19,9 @@ class _WalletPageState extends State<WalletPage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text('Total Lessons', style: Theme.of(context).textTheme.headline6,),
+              Text('Total Lessons', style: Theme.of(context).textTheme.headlineSmall,),
               const SizedBox(height: 8,),
-              Text('3121', style: Theme.of(context).textTheme.headline6,),
+              Text('3121', style: Theme.of(context).textTheme.titleLarge,),
               const SizedBox(height: 8,),
               Text(DateFormat('yyyy-MM-dd').format(DateTime.now()))
             ],
@@ -40,9 +40,9 @@ class _WalletPageState extends State<WalletPage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text('Bonus', style: Theme.of(context).textTheme.headline6,),
+              Text('Bonus', style: Theme.of(context).textTheme.headlineSmall,),
               const SizedBox(height: 8,),
-              Text('0 VND', style: Theme.of(context).textTheme.headline6,),
+              Text('0 VND', style: Theme.of(context).textTheme.titleLarge,),
               const SizedBox(height: 8,),
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -54,9 +54,15 @@ class _WalletPageState extends State<WalletPage> {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () { },
-                child: const Text('Charge'),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () { },
+                      child: const Text('Charge'),
+                    ),
+                  ),
+                ],
               )
             ],
           ),
@@ -76,7 +82,7 @@ class _WalletPageState extends State<WalletPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Book Keegan', style: Theme.of(context).textTheme.subtitle2,),
+                  Text('Book Keegan', style: Theme.of(context).textTheme.labelLarge,),
                   const Text('2022-10-20')
                 ],
               ),
@@ -111,7 +117,7 @@ class _WalletPageState extends State<WalletPage> {
                 const SizedBox(height: 16,),
 
                 // Transactions
-                Text('Transactions', style: Theme.of(context).textTheme.headline6,),
+                Text('Transactions', style: Theme.of(context).textTheme.headlineSmall,),
                 ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,

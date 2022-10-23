@@ -12,7 +12,7 @@ class CourseDetail extends StatelessWidget {
       children: [
         const SizedBox(width: 24, child: Divider(),),
         const SizedBox(width: 8,),
-        Text(header, style: Theme.of(context).textTheme.headline6,),
+        Text(header, style: Theme.of(context).textTheme.titleMedium,),
         const SizedBox(width: 8,),
         const Expanded(child: Divider())
       ],
@@ -27,7 +27,7 @@ class CourseDetail extends StatelessWidget {
           children: [
             Icon(icon),
             const SizedBox(width: 8,),
-            Text(title, style: Theme.of(context).textTheme.subtitle2,),
+            Text(title, style: Theme.of(context).textTheme.labelLarge,),
           ],
         ),
         Padding(
@@ -104,13 +104,17 @@ class CourseDetail extends StatelessWidget {
           child: Column(
             children: [
               CourseCard(
-                bottomWidget: Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, RouteGenerator.topicsPage);
-                    },
-                    child: const Text('Discover'),
-                  ),
+                bottomWidget: Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, RouteGenerator.topicsPage);
+                        },
+                        child: const Text('Discover'),
+                      ),
+                    ),
+                  ],
                 )
               ),
 
