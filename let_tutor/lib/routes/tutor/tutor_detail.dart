@@ -13,6 +13,10 @@ class TutorDetail extends StatefulWidget {
 
 class _TutorDetailState extends State<TutorDetail> {
 
+  var reasonReports = <String>[ 'This tutor is annoying me', 'This profile is pretending be someone or is fake',
+    'Inappropriate profile photo'];
+  var isChecked = <bool>[ false, false, false];
+
   Widget favoriteButton() {
     return GestureDetector(
       onTap: () { },
@@ -25,9 +29,82 @@ class _TutorDetailState extends State<TutorDetail> {
     );
   }
 
+  Widget contentReportDialog() {
+    return Wrap(
+      children: [
+        Column(
+          children: [
+            Row(
+              children: const [
+                Icon(Icons.report),
+                SizedBox(width: 8,),
+                Text('Help us understand what\'s happening?')
+              ],
+            ),
+            const SizedBox(height: 8,),
+
+            SizedBox(
+              height: 150,
+              width: 300,
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: reasonReports.length,
+                itemBuilder: (context, index) {
+                  return CheckboxListTile(
+                    title: Text(reasonReports[index]),
+                    value: isChecked[index],
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked[index] = value!;
+                      });
+                    },
+                  );
+                },
+              ),
+            ),
+
+            const TextField(
+              maxLines: 10,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Please let us know details about your problem',
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   Widget reportButton() {
     return GestureDetector(
-      onTap: () { },
+      onTap: () async {
+        return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Report April'),
+              content: contentReportDialog(),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'Cancel');
+                  },
+                  child: const Text('Cancel'),
+                ),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'Submit');
+                  },
+                  child: const Text('Submit'),
+                )
+              ],
+            );
+          }
+        );
+      },
       child: Column(
         children: const [
           Icon(Icons.report_outlined),
