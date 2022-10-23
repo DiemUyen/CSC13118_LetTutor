@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:let_tutor/routes.dart';
-import 'package:let_tutor/widgets/history_card.dart';
+import 'package:let_tutor/widgets/lesson_card.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   onTap: () {
                     Navigator.pushNamed(context, RouteGenerator.historyDetailPage);
                   },
-                  child: const HistoryCard()
+                  child: const LessonCard()
                 );
               },
             ),

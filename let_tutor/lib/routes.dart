@@ -14,6 +14,7 @@ import 'package:let_tutor/routes/profile/history_page.dart';
 import 'package:let_tutor/routes/profile/my_courses_page.dart';
 import 'package:let_tutor/routes/profile/my_profile_page.dart';
 import 'package:let_tutor/routes/profile/profile_home_page.dart';
+import 'package:let_tutor/routes/profile/schedule_detail.dart';
 import 'package:let_tutor/routes/profile/schedule_page.dart';
 import 'package:let_tutor/routes/profile/wallet_page.dart';
 import 'package:let_tutor/routes/setting_page.dart';
@@ -51,6 +52,7 @@ class RouteGenerator {
   static const String myProfilePage = '/myProfile';
   static const String myWalletPage = '/myWallet';
   static const String mySchedulePage = '/mySchedule';
+  static const String scheduleDetailPage = '/scheduleDetail';
   static const String myHistoryPage = '/myHistory';
   static const String historyDetailPage = '/historyDetail';
   static const String myCoursesPage = '/myCourses';
@@ -134,6 +136,10 @@ class RouteGenerator {
       case mySchedulePage:
         return MaterialPageRoute(
           builder: (context) => const SchedulePage(),
+        );
+      case scheduleDetailPage:
+        return MaterialPageRoute(
+          builder: (context) => const ScheduleDetail(),
         );
       case myHistoryPage:
         return MaterialPageRoute(

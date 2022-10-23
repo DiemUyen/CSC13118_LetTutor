@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/widgets/schedule_card.dart';
+import 'package:let_tutor/routes.dart';
+import 'package:let_tutor/widgets/lesson_card.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({Key? key}) : super(key: key);
@@ -9,56 +10,47 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
+
+  var crossAxisCount = 2;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Introduction
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 4,
-                      height: 48,
-                      child: Container(color: Colors.grey,),
-                    ),
-                    const SizedBox(width: 4,),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text('Here is a list of the sessions you have booked'),
-                          Text(
-                            'You can track when the meeting starts, join the meeting with one click or can cancel the meeting before 2 hours',
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(),
+        body: LayoutBuilder(builder: (context, constraints) {
+          if (constraints.maxWidth > 1600) {
+            crossAxisCount = 8;
+          }
+          else if (constraints.maxWidth > 800) {
+            crossAxisCount = 4;
+          }
+          else {
+            crossAxisCount = 2;
+          }
 
-              // List schedule sessions
-              ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return const ScheduleCard();
-                },
-              )
-            ],
-          ),
-        ),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 8,
+                  crossAxisCount: crossAxisCount
+              ),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteGenerator.scheduleDetailPage);
+                    },
+                    child: const LessonCard()
+                );
+              },
+            ),
+          );
+        }),
       ),
     );
   }
