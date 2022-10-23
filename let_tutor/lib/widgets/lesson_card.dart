@@ -12,8 +12,8 @@ class LessonCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const CircleAvatar(
-              backgroundColor: Colors.brown,
-              child: Text('AH'),
+              backgroundImage: AssetImage('assets/avatar_tutor.jpg'),
+              radius: 24,
             ),
             const SizedBox(height: 8,),
             Expanded(

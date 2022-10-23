@@ -27,10 +27,9 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
           borderRadius: BorderRadius.circular(200)
       ),
       padding: const EdgeInsets.all(4),
-      child: CircleAvatar(
-        backgroundColor: Colors.brown.shade800,
+      child: const CircleAvatar(
+        backgroundImage: AssetImage('assets/avatar_user.jpg'),
         radius: 100,
-        child: const Text('AH'),
       ),
     );
   }

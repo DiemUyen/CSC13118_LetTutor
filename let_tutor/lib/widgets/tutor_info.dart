@@ -9,9 +9,9 @@ class TutorInfo extends StatelessWidget {
     return Row(
       children: [
         // Avatar
-        CircleAvatar(
-          backgroundColor: Colors.brown.shade800,
-          child: const Text('AH'),
+        const CircleAvatar(
+          backgroundImage: AssetImage('assets/avatar_tutor.jpg'),
+          radius: 40,
         ),
         const SizedBox(width: 8,),
         // Infor
@@ -19,7 +19,7 @@ class TutorInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Name
-            const Text("April"),
+            const Text("April", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
             Row(
               children: const [
                 // Icon flag

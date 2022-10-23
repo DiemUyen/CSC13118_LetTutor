@@ -36,9 +36,9 @@ class _SettingsPageState extends State<SettingsPage> {
         Padding(
           padding: EdgeInsets.only(right: 10.0),
           child: CircleAvatar(
-            backgroundColor: Colors.brown,
-            radius: 12,
-            child: Text('Eng', style: TextStyle(fontSize: 8),),
+            backgroundColor: Colors.transparent,
+            backgroundImage: AssetImage('assets/united-kingdom.png'),
+            radius: 20
           ),
         )
       ],

@@ -20,9 +20,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
 
   Widget avatar() {
     return const CircleAvatar(
-      backgroundColor: Colors.indigo,
-      radius: 100,
-      child: Text('AH'),
+      backgroundImage: AssetImage('assets/avatar_user.jpg'),
+      radius: 100
     );
   }
 

@@ -15,10 +15,7 @@ class _SignUpFormState extends State<SignUpForm> {
     return SizedBox(
       height: size,
       width: size,
-      child: Placeholder(
-        fallbackWidth: size,
-        fallbackHeight: size,
-      ),
+      child: Image.asset('assets/logo.png', width: size, height: size,)
     );
   }
   
@@ -62,7 +59,6 @@ class _SignUpFormState extends State<SignUpForm> {
     return SafeArea(
       child: Scaffold(
         body: LayoutBuilder(
-          //TODO: insert logo app
             builder: (context, constraints) {
 
               return SingleChildScrollView(
@@ -77,7 +73,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       Column(
                         children: [
                           // Logo app
-                          logoApp(context, 100),
+                          logoApp(context, 150),
                           const SizedBox(height: 32),
 
                           // Sign up with Facebook or Google

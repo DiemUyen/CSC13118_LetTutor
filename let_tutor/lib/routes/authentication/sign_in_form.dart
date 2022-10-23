@@ -15,10 +15,7 @@ class _SignInFormState extends State<SignInForm> {
     return SizedBox(
       height: size,
       width: size,
-      child: Placeholder(
-        fallbackWidth: size,
-        fallbackHeight: size,
-      ),
+      child: Image.asset('assets/logo.png', width: size, height: size,)
     );
   }
 
@@ -62,9 +59,7 @@ class _SignInFormState extends State<SignInForm> {
     return SafeArea(
       child: Scaffold(
         body: LayoutBuilder(
-            //TODO: insert logo app
             builder: (context, constraints) {
-              var baseLogoWidth = 100.0;
 
               return SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -78,7 +73,7 @@ class _SignInFormState extends State<SignInForm> {
                       Column(
                         children: [
                           // Logo app
-                          logoApp(context, 100),
+                          logoApp(context, 150),
                           const SizedBox(height: 32,),
 
                           // Sign in with Facebook or Google

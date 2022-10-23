@@ -30,48 +30,51 @@ class _TutorDetailState extends State<TutorDetail> {
   }
 
   Widget contentReportDialog() {
-    return Column(
-      children: [
-        Row(
-          children: const [
-            Icon(Icons.report),
-            SizedBox(width: 8,),
-            Flexible(
-              child: Text('Help us understand what\'s happening?', overflow: TextOverflow.fade,),
-            )
-          ],
-        ),
-        const SizedBox(height: 8,),
-
-        SizedBox(
-          height: 200,
-          width: 300,
-          child: ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: reasonReports.length,
-            itemBuilder: (context, index) {
-              return CheckboxListTile(
-                title: Text(reasonReports[index]),
-                value: isChecked[index],
-                onChanged: (bool? value) {
-                  setState(() {
-                    isChecked[index] = value!;
-                  });
-                },
-              );
-            },
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            children: const [
+              Icon(Icons.report),
+              SizedBox(width: 8,),
+              Flexible(
+                child: Text('Help us understand what\'s happening?', overflow: TextOverflow.fade,),
+              )
+            ],
           ),
-        ),
+          const SizedBox(height: 8,),
 
-        const TextField(
-          maxLines: 10,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Please let us know details about your problem',
+          SizedBox(
+            height: 200,
+            width: 300,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: const ClampingScrollPhysics(),
+              itemCount: reasonReports.length,
+              itemBuilder: (context, index) {
+                return CheckboxListTile(
+                  title: Text(reasonReports[index]),
+                  value: isChecked[index],
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isChecked[index] = value!;
+                    });
+                  },
+                );
+              },
+            ),
           ),
-        ),
-      ],
+
+          const TextField(
+            maxLines: 10,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Please let us know details about your problem',
+            ),
+          ),
+        ],
+      ),
     );
   }
 
