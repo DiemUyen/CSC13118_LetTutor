@@ -24,7 +24,7 @@ class _SignUpFormState extends State<SignUpForm> {
   
   Widget thirdPartySignUp(BuildContext context, IconData iconName, String label) {
     return Expanded(
-      flex: 3,
+      flex: 4,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4)

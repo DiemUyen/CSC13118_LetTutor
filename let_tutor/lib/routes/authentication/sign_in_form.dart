@@ -24,7 +24,7 @@ class _SignInFormState extends State<SignInForm> {
 
   Widget thirdPartySignIn(BuildContext context, IconData iconName, String label) {
     return Expanded(
-      flex: 3,
+      flex: 4,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),

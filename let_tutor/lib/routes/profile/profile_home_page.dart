@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:let_tutor/routes.dart';
+import 'package:let_tutor/widgets/transparent_app_bar.dart';
 
 class ProfileHomePage extends StatefulWidget {
   const ProfileHomePage({Key? key}) : super(key: key);
@@ -59,6 +60,7 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: titles.length,
       itemBuilder: (context, index) {
         return Container(
@@ -73,8 +75,9 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: const TransparentAppBar(),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 0),
           child: Column(
             children: [
               avatar(),

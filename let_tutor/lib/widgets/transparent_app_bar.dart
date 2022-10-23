@@ -10,15 +10,18 @@ class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget{
       title: RichText(
         maxLines: 3,
         text: const TextSpan(
-            children: [
-              TextSpan(text: 'Hello', style: TextStyle(
-                  fontWeight: FontWeight.bold
-              )),
-              TextSpan(text: '\n'),
-              TextSpan(text: 'Diem Uyen', style: TextStyle(
-                  fontWeight: FontWeight.bold
-              ))
-            ]
+          style: TextStyle(
+            color: Colors.black
+          ),
+          children: [
+            TextSpan(text: 'Hello', style: TextStyle(
+                fontWeight: FontWeight.bold
+            )),
+            TextSpan(text: '\n'),
+            TextSpan(text: 'Diem Uyen', style: TextStyle(
+                fontWeight: FontWeight.bold
+            ))
+          ]
         ),
       ),
       actions: [

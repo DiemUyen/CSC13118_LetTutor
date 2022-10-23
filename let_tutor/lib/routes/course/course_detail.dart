@@ -40,6 +40,7 @@ class CourseDetail extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: 5,
       itemBuilder: (context, index) {
         return GestureDetector(
@@ -83,6 +84,7 @@ class CourseDetail extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: 3,
       itemBuilder: (context, index) {
         return suggestedTutor(context, '${index + 1}. April');

@@ -49,7 +49,10 @@ class TutorHomeCard extends StatelessWidget {
       child: Align(
         alignment: Alignment.bottomRight,
         child: OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              // TODO: Navigate to booking page
+              Navigator.pushNamed(context, RouteGenerator.tutorDetailPage);
+            },
             icon: const Icon(Icons.edit_calendar_outlined),
             label: const Text("Book")
         ),
@@ -62,9 +65,6 @@ class TutorHomeCard extends StatelessWidget {
     return Card(
       child: Stack(
         children: [
-          // Icon button 'Favorite'
-          favoriteButton(context),
-
           // Information of tutor
           GestureDetector(
             onTap: () {
@@ -72,6 +72,9 @@ class TutorHomeCard extends StatelessWidget {
             },
             child: inforTutor(context)
           ),
+
+          // Icon button 'Favorite'
+          favoriteButton(context),
 
           // Button 'Book'
           bookButton(context)

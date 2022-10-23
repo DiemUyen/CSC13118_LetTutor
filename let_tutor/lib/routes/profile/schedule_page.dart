@@ -50,6 +50,7 @@ class _SchedulePageState extends State<SchedulePage> {
               ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (context, index) {
                   return const ScheduleCard();

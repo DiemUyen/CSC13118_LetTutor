@@ -33,8 +33,8 @@ class _HistoryPageState extends State<HistoryPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 16,
+                mainAxisSpacing: 4,
+                crossAxisSpacing: 8,
                 crossAxisCount: crossAxisCount
               ),
               shrinkWrap: true,

@@ -35,7 +35,7 @@ class _TutorHomePageState extends State<TutorHomePage> {
                 style: Theme.of(context).textTheme.headline5,
               ),
               const SizedBox(height: 8,),
-              Text("Fri, 11 Nov 22 18:30 - 18:55 (starts in ${DateTime(2022, 11, 11).difference(DateTime.now())})"),
+              Text("Fri, 11 Nov 22 18:30 - 18:55 (starts in ${DateTime(2022, 11, 11).difference(DateTime.now())})", textAlign: TextAlign.center,),
               const SizedBox(height: 8,),
               ElevatedButton.icon(
                 onPressed: () {
@@ -206,6 +206,7 @@ class _TutorHomePageState extends State<TutorHomePage> {
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: 7,
       itemBuilder: (context, index) {
         return const TutorHomeCard();

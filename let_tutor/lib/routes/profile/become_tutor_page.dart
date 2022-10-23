@@ -328,8 +328,20 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
         appBar: AppBar(),
         body: LayoutBuilder(builder: (context, constraints) {
           return Stepper(
+            physics: const ClampingScrollPhysics(),
             type: StepperType.horizontal,
             currentStep: _index,
+            controlsBuilder: (BuildContext context, ControlsDetails details) {
+              if (_index == 2) {
+                return const SizedBox(height: 0,);
+              }
+              return Row(
+                children: [
+                  ElevatedButton(onPressed: details.onStepContinue, child: const Text('Next')),
+                  TextButton(onPressed: details.onStepCancel, child: const Text('Back'),),
+                ],
+              );
+            },
             onStepCancel: () {
               if (_index > 0) {
                 setState(() {

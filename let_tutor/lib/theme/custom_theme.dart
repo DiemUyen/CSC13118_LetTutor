@@ -12,7 +12,7 @@ class CustomTheme{
     appBarTheme: const AppBarTheme(
       color: Colors.transparent,
       elevation: 0,
-      foregroundColor: Colors.blue
+      foregroundColor: Colors.blue,
     ),
 
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(

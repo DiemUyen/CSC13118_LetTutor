@@ -13,28 +13,19 @@ class _TopicsPageState extends State<TopicsPage> {
 
   List<String> topicsName = <String>['Foods You Love', 'Your Job', 'Playing and Watching Sports', 'The Best Pet', 'Hobbies'];
 
-  Widget listTopics(BuildContext context, List<String> topics) {
-    return ListView.builder(
-      shrinkWrap: true,
-      scrollDirection: Axis.vertical,
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return InkWell(
-          focusNode: FocusNode(),
-          onTap: () { },
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(width: 1, color: Colors.black12)
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: Text(
-              '${index + 1}.     ${topics[index]}'
-            ),
-          ),
-        );
-      },
+  Widget topicsDropdownList() {
+    return DropdownButton<String>(
+      isExpanded: true,
+      underline: Container(
+        height: 0,
+      ),
+      value: topicsName.first,
+      items: topicsName.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(value: value, child: Text(
+            '${topicsName.indexOf(value) + 1}.     $value'
+        ),);
+      }).toList(),
+      onChanged: (String? value) { },
     );
   }
 
@@ -54,13 +45,12 @@ class _TopicsPageState extends State<TopicsPage> {
               ),
 
               // List topics
-              listTopics(context, topicsName),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Divider(),
-              ),
+              topicsDropdownList(),
+              const SizedBox(height: 16,),
 
               // PDF Viewer
+              const Text('PDF viewer'),
+              const SizedBox(height: 8,),
               const Placeholder(),
             ],
           ),

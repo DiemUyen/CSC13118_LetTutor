@@ -118,6 +118,7 @@ class _CoursesPageState extends State<CoursesPage> with SingleTickerProviderStat
         bottom: TabBar(
           controller: _tabController,
           labelColor: Colors.black,
+          isScrollable: true,
           indicatorSize: TabBarIndicatorSize.tab,
           indicator: ShapeDecoration(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

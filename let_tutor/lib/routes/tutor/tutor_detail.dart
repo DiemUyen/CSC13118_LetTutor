@@ -69,6 +69,7 @@ class _TutorDetailState extends State<TutorDetail> {
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: 3,
       itemBuilder: (context, index) {
         return Row(

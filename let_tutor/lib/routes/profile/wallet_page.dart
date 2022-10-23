@@ -115,6 +115,7 @@ class _WalletPageState extends State<WalletPage> {
                 ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: 20,
                   itemBuilder: (context, index) {
                     return transaction();

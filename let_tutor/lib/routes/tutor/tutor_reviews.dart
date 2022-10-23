@@ -38,6 +38,7 @@ class _TutorReviewPageState extends State<TutorReviewPage> {
                 ListView.builder(
                  shrinkWrap: true,
                  scrollDirection: Axis.vertical,
+                 physics: const NeverScrollableScrollPhysics(),
                  itemCount: 10,
                  itemBuilder: (context, index) {
                    return const PersonReviewCard();
