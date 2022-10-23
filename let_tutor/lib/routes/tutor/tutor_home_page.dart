@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:let_tutor/routes.dart';
 import 'package:let_tutor/widgets/search_bar.dart';
 import 'package:let_tutor/widgets/transparent_app_bar.dart';
@@ -112,12 +111,12 @@ class _TutorHomePageState extends State<TutorHomePage> {
         ),
         readOnly: true,
         onTap: () async {
-          DateTime? picked = await showRoundedDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime.now(),
-              lastDate: DateTime(DateTime.now().year + 1),
-              borderRadius: 24
+          DateTime? picked = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime.now(),
+            lastDate: DateTime(DateTime.now().year + 1),
+            helpText: 'Select available tutoring day'
           );
           if (picked != null) {
             setState(() {
@@ -146,9 +145,10 @@ class _TutorHomePageState extends State<TutorHomePage> {
         ),
         readOnly: true,
         onTap: () async {
-          TimeOfDay? picked = await showRoundedTimePicker(
+          TimeOfDay? picked = await showTimePicker(
             context: context,
             initialTime: TimeOfDay.now(),
+            helpText: 'Select start time'
           );
           if (picked != null) {
             setState(() {
@@ -177,9 +177,10 @@ class _TutorHomePageState extends State<TutorHomePage> {
         ),
         readOnly: true,
         onTap: () async {
-          TimeOfDay? picked = await showRoundedTimePicker(
+          TimeOfDay? picked = await showTimePicker(
             context: context,
             initialTime: TimeOfDay.now(),
+            helpText: 'Select end time'
           );
           if (picked != null) {
             setState(() {

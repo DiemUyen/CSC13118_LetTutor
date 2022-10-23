@@ -17,6 +17,7 @@ import 'package:let_tutor/routes/profile/profile_home_page.dart';
 import 'package:let_tutor/routes/profile/schedule_page.dart';
 import 'package:let_tutor/routes/profile/wallet_page.dart';
 import 'package:let_tutor/routes/setting_page.dart';
+import 'package:let_tutor/routes/tutor/booking_page.dart';
 import 'package:let_tutor/routes/tutor/tutor_detail.dart';
 import 'package:let_tutor/routes/tutor/tutor_home_page.dart';
 import 'package:let_tutor/routes/tutor/tutor_reviews.dart';
@@ -36,6 +37,7 @@ class RouteGenerator {
   // Tutor pages
   static const String tutorHomePage = '/tutorHome';
   static const String tutorDetailPage = '/tutorDetail';
+  static const String bookingPage = '/booking';
   static const String tutorReviewsPage = '/tutorReviews';
   static const String writingReviewPage = '/writingReview';
 
@@ -92,6 +94,10 @@ class RouteGenerator {
       case tutorDetailPage:
         return MaterialPageRoute(
           builder: (context) => const TutorDetail(),
+        );
+      case bookingPage:
+        return MaterialPageRoute(
+          builder: (context) => const BookingPage(),
         );
       case tutorReviewsPage:
         return MaterialPageRoute(

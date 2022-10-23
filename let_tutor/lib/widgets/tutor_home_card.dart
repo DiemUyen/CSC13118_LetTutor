@@ -50,8 +50,7 @@ class TutorHomeCard extends StatelessWidget {
         alignment: Alignment.bottomRight,
         child: OutlinedButton.icon(
             onPressed: () {
-              // TODO: Navigate to booking page
-              Navigator.pushNamed(context, RouteGenerator.tutorDetailPage);
+              Navigator.pushNamed(context, RouteGenerator.bookingPage);
             },
             icon: const Icon(Icons.edit_calendar_outlined),
             label: const Text("Book")

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:intl/intl.dart';
 
 class MyProfilePage extends StatefulWidget {
@@ -85,12 +84,12 @@ class _MyProfilePageState extends State<MyProfilePage> {
       ),
       readOnly: true,
       onTap: () async {
-        DateTime? picked = await showRoundedDatePicker(
-            context: context,
-            initialDate: DateTime(1990, 1, 1),
-            firstDate: DateTime(1900),
-            lastDate: DateTime.now(),
-            borderRadius: 24
+        DateTime? picked = await showDatePicker(
+          context: context,
+          initialDate: DateTime(1990, 1, 1),
+          firstDate: DateTime(1900),
+          lastDate: DateTime.now(),
+          helpText: 'Select your birthday'
         );
         if (picked != null) {
           setState(() {
@@ -181,6 +180,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
 
               // Username title
               Text('April Hanzure', style: Theme.of(context).textTheme.headline6,),
+              const Text('You have 100 lessons left'),
+              const SizedBox(height: 8,),
               TextButton(
                 child: const Text('Others review you'),
                 onPressed: () {  },

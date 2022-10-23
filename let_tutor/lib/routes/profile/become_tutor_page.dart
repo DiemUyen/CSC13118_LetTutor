@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:intl/intl.dart';
 
 class BecomeTutorPage extends StatefulWidget {
@@ -95,12 +94,12 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
       ),
       readOnly: true,
       onTap: () async {
-        DateTime? picked = await showRoundedDatePicker(
-            context: context,
-            initialDate: DateTime(1990, 1, 1),
-            firstDate: DateTime(1900),
-            lastDate: DateTime.now(),
-            borderRadius: 24
+        DateTime? picked = await showDatePicker(
+          context: context,
+          initialDate: DateTime(1990, 1, 1),
+          firstDate: DateTime(1900),
+          lastDate: DateTime.now(),
+          helpText: 'Select your birthday'
         );
         if (picked != null) {
           setState(() {
