@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:let_tutor/features/application/bloc/application_bloc.dart';
+
+import '../generated/l10n.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -8,41 +12,12 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  late final ApplicationBloc _bloc;
 
-  var dark = false;
-
-  Widget darkThemeSwitch() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text('Dark common'),
-        Switch(
-          value: dark,
-          onChanged: (bool value) {
-            setState(() {
-              dark = !dark;
-            });
-          },
-        )
-      ],
-    );
-  }
-
-  Widget languageSwitcher() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Text('Language'),
-        Padding(
-          padding: EdgeInsets.only(right: 10.0),
-          child: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            backgroundImage: AssetImage('assets/images/united-kingdom.png'),
-            radius: 20
-          ),
-        )
-      ],
-    );
+  @override
+  void initState() {
+    _bloc = BlocProvider.of<ApplicationBloc>(context);
+    super.initState();
   }
 
   @override
@@ -55,12 +30,72 @@ class _SettingsPageState extends State<SettingsPage> {
           child: Column(
             children: [
               // Dark theme
-              darkThemeSwitch(),
+              BlocBuilder<ApplicationBloc, ApplicationState>(
+                bloc: _bloc,
+                builder: (context, state) {
+                  return SwitchListTile(
+                    value: state.isDarkMode,
+                    onChanged: (value) {
+                      _bloc.add(
+                        ApplicationDarkModeChanged(enable: value),
+                      );
+                    },
+                    title: Text(
+                      S.current.dark_mode,
+                    ),
+                  );
+                },
+              ),
 
               const Divider(),
 
               // Language
-              languageSwitcher()
+              BlocBuilder<ApplicationBloc, ApplicationState>(
+                bloc: _bloc,
+                builder: (context, state) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16.0),
+                        child: Text(
+                          S.current.app_language,
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      RadioListTile<String>(
+                        value: 'en',
+                        groupValue: state.locale,
+                        onChanged: (value) {
+                          _bloc.add(
+                            const ApplicationLocaleChanged(locale: 'en'),
+                          );
+                        },
+                        title: Text(
+                          S.current.english,
+                        ),
+                      ),
+                      RadioListTile<String>(
+                        value: 'vi',
+                        groupValue: state.locale,
+                        onChanged: (value) {
+                          _bloc.add(
+                            const ApplicationLocaleChanged(locale: 'vi'),
+                          );
+                        },
+                        title: Text(
+                          S.current.vietnamese,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              )
             ],
           ),
         ),

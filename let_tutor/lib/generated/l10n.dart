@@ -49,6 +49,46 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Dark mode`
+  String get dark_mode {
+    return Intl.message(
+      'Dark mode',
+      name: 'dark_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get app_language {
+    return Intl.message(
+      'Language',
+      name: 'app_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vietnamese`
+  String get vietnamese {
+    return Intl.message(
+      'Vietnamese',
+      name: 'vietnamese',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
