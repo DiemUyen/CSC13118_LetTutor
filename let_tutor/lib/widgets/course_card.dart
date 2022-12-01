@@ -16,7 +16,7 @@ class CourseCard extends StatelessWidget {
           child: Column(
             children: [
               // Image of course
-              Expanded(child: Image.asset('assets/life_in_Internet.jpg')),
+              Expanded(child: Image.asset('assets/images/life_in_Internet.jpg')),
               const SizedBox(height: 8,),
               // Name
               Text('Life in the Internet Age', style: Theme.of(context).textTheme.headlineSmall,),

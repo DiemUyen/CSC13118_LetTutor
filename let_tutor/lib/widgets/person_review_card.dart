@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:let_tutor/widgets/star_rating.dart';
+
+import 'widgets.dart';
 
 class PersonReviewCard extends StatelessWidget {
   const PersonReviewCard({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class PersonReviewCard extends StatelessWidget {
             Row(
               children: [
                 const CircleAvatar(
-                  backgroundImage: AssetImage('assets/avatar_student.jpg'),
+                  backgroundImage: AssetImage('assets/images/avartar_student.jpg'),
                   radius: 32,
                 ),
                 const SizedBox(width: 8,),

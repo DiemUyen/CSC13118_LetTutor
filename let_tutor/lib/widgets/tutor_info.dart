@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/widgets/star_rating.dart';
+import 'widgets.dart';
 
 class TutorInfo extends StatelessWidget {
   const TutorInfo({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class TutorInfo extends StatelessWidget {
       children: [
         // Avatar
         const CircleAvatar(
-          backgroundImage: AssetImage('assets/avatar_tutor.jpg'),
+          backgroundImage: AssetImage('assets/images/avartar_tutor.jpg'),
           radius: 32,
         ),
         const SizedBox(width: 8,),

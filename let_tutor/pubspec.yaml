@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
 
   # The following adds the Cupertino Icons fonts to your application.
@@ -37,6 +39,12 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   intl: ^0.17.0
   font_awesome_flutter: ^10.2.1
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.5
+  get_it: ^7.2.0
+  freezed_annotation: ^2.2.0
+  dio: ^4.0.6
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -48,9 +56,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.2
+  freezed: ^2.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_gen:
+  output: lib/generated/
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -80,11 +93,13 @@ flutter:
   fonts:
     - family: Roboto
       fonts:
-        - asset: lib/fonts/Roboto-Regular.ttf
-        - asset: lib/fonts/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
           weight: 400
-        - asset: lib/fonts/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
           weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

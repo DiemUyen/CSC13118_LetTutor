@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/routes.dart';
+import '../router/app_router.dart';
+import 'widgets.dart';
 
 class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget{
   const TransparentAppBar({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget{
         IconButton(
           icon: const Icon(Icons.settings_outlined, color: Colors.black,),
           onPressed: () {
-            Navigator.pushNamed(context, RouteGenerator.settingPage);
+            Navigator.pushNamed(context, AppRouter.settingPage);
           },
         )
       ],

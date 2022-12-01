@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/routes.dart';
-import 'package:let_tutor/widgets/specialities.dart';
-import 'package:let_tutor/widgets/tutor_info.dart';
+import '../router/app_router.dart';
+import 'widgets.dart';
 
 class TutorHomeCard extends StatelessWidget {
   const TutorHomeCard({Key? key}) : super(key: key);
@@ -50,7 +49,7 @@ class TutorHomeCard extends StatelessWidget {
         alignment: Alignment.bottomRight,
         child: OutlinedButton.icon(
             onPressed: () {
-              Navigator.pushNamed(context, RouteGenerator.bookingPage);
+              Navigator.pushNamed(context, AppRouter.bookingPage);
             },
             icon: const Icon(Icons.edit_calendar_outlined),
             label: const Text("Book")
@@ -67,7 +66,7 @@ class TutorHomeCard extends StatelessWidget {
           // Information of tutor
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, RouteGenerator.tutorDetailPage);
+              Navigator.pushNamed(context, AppRouter.tutorDetailPage);
             },
             child: inforTutor(context)
           ),
