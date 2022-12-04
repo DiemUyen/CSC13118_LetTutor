@@ -4,6 +4,6 @@ class AppConfig {
   static const String defaultLocale = 'en';
 
   static void configDev() {
-    baseUrl = 'https://sandbox.api.lettutor.com/';
+    baseUrl = 'https://sandbox.api.lettutor.com';
   }
 }
