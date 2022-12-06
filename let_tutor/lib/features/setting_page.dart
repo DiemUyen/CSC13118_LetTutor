@@ -73,7 +73,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         groupValue: state.locale,
                         onChanged: (value) {
                           _bloc.add(
-                            const ApplicationLocaleChanged(locale: 'en'),
+                            ApplicationLocaleChanged(locale: 'en'),
                           );
                         },
                         title: Text(
@@ -85,7 +85,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         groupValue: state.locale,
                         onChanged: (value) {
                           _bloc.add(
-                            const ApplicationLocaleChanged(locale: 'vi'),
+                            ApplicationLocaleChanged(locale: 'vi'),
                           );
                         },
                         title: Text(

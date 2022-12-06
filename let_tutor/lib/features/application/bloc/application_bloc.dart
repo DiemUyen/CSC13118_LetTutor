@@ -1,35 +1,44 @@
 import 'dart:async';
 
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:let_tutor/data/repositories/auth_repository.dart';
 import 'package:let_tutor/services/shared_preferences_service.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
 
 part 'application_event.dart';
 part 'application_state.dart';
-part 'application_bloc.freezed.dart';
 
 class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
   ApplicationBloc({
     required SharedPreferencesService sharedPreferencesService,
+    required AuthRepository authRepository,
   }) : super(const ApplicationState()) {
     _sharedPreferencesService = sharedPreferencesService;
+    _authRepository = authRepository;
     on<ApplicationLoaded>(_onLoaded);
     on<ApplicationLocaleChanged>(_onLocaleChanged);
     on<ApplicationDarkModeChanged>(_onDarkModeChanged);
   }
 
-  late SharedPreferencesService _sharedPreferencesService;
+  late final SharedPreferencesService _sharedPreferencesService;
+  late final AuthRepository _authRepository;
 
-  FutureOr<void> _onLoaded(event, Emitter<ApplicationState> emit) {
+  FutureOr<void> _onLoaded(event, Emitter<ApplicationState> emit) async {
     emit(state.copyWith(
       status: UIStatus.loading,
     ));
 
     final String locale = _sharedPreferencesService.locale;
     final bool isDarkMode = _sharedPreferencesService.isDarkMode;
+
+    final String authenticated = await _authRepository.verifyAccount();
+    if (kDebugMode) {
+      print(authenticated);
+    }
 
     emit(state.copyWith(
       status: UIStatus.loadSuccess,

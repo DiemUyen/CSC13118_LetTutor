@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:let_tutor/injector/bloc_module.dart';
 import 'package:let_tutor/injector/repository_module.dart';

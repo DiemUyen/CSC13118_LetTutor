@@ -1,4 +1,5 @@
 import 'package:let_tutor/features/application/bloc/application_bloc.dart';
+import 'package:let_tutor/features/authentication/forgot_password/bloc/forgot_password_bloc.dart';
 import 'package:let_tutor/injector/injector.dart';
 
 class BlocModule {
@@ -10,6 +11,13 @@ class BlocModule {
     injector.registerSingleton<ApplicationBloc>(
       ApplicationBloc(
         sharedPreferencesService: injector(),
+        authRepository: injector(),
+      ),
+    );
+
+    injector.registerFactory(
+      () => ForgotPasswordBloc(
+        authRepository: injector(),
       ),
     );
   }

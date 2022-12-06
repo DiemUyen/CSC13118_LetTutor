@@ -1,12 +1,34 @@
 part of 'application_bloc.dart';
 
-@Freezed()
-class ApplicationState with _$ApplicationState {
-  const factory ApplicationState({
-    @Default(UIStatus.loading) UIStatus status,
-    @Default('en') String locale,
-    @Default(false) bool isDarkMode,
-  }) = _ApplicationState;
+class ApplicationState extends Equatable {
+  const ApplicationState({
+    this.status = UIStatus.loading,
+    this.locale = 'en',
+    this.isDarkMode = false,
+    this.authStatus = AuthStatus.unauthenticated,
+  });
+
+  final UIStatus status;
+  final String locale;
+  final bool isDarkMode;
+  final AuthStatus authStatus;
+
+  ApplicationState copyWith({
+    UIStatus? status,
+    String? locale,
+    bool? isDarkMode,
+    AuthStatus? authStatus,
+  }) {
+    return ApplicationState(
+      status: status ?? this.status,
+      locale: locale ?? this.locale,
+      isDarkMode: isDarkMode ?? this.isDarkMode,
+      authStatus: authStatus ?? this.authStatus,
+    );
+  }
+
+  @override
+  List<Object?> get props => [status, locale, isDarkMode];
 }
 
 enum UIStatus {
@@ -14,4 +36,9 @@ enum UIStatus {
   loading,
   loadSuccess,
   loadFailed,
+}
+
+enum AuthStatus {
+  unauthenticated,
+  authenticated,
 }

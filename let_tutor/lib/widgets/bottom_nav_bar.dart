@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({Key? key, this.selectedIndex, required this.onClicked}) : super(key: key);
+  const BottomNavBar({Key? key, required this.selectedIndex, required this.onClicked}) : super(key: key);
 
-  final selectedIndex;
+  final int selectedIndex;
   final ValueChanged<int> onClicked;
 
 

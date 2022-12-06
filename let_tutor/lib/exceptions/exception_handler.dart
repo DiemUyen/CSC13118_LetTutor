@@ -5,7 +5,13 @@ class DioExceptionHandler {
 
   late String message;
 
-  DioExceptionHandler.fromDioError(DioError dioError) {
+  static handleException(Object error) {
+    if (error is DioError) {
+      DioExceptionHandler._fromDioError(error);
+    }
+  }
+
+  DioExceptionHandler._fromDioError(DioError dioError) {
     switch (dioError.type) {
       case DioErrorType.cancel:
         message = 'Request to API server was cancelled';

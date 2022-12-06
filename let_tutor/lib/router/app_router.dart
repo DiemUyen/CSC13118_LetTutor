@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../features/authentication/forgot_password.dart';
+import '../features/authentication/forgot_password/views/forgot_password.dart';
 import '../features/authentication/sign_in_form.dart';
 import '../features/authentication/sign_up_form.dart';
 import '../features/course/course_detail.dart';

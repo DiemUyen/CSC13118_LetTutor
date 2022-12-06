@@ -1,12 +1,28 @@
 part of 'application_bloc.dart';
 
-@Freezed()
-class ApplicationEvent with _$ApplicationEvent {
-  const factory ApplicationEvent.loaded() = ApplicationLoaded;
-  const factory ApplicationEvent.localeChanged({
-    required String locale,
-}) = ApplicationLocaleChanged;
-  const factory ApplicationEvent.darkModeChanged({
-    required bool enable,
-}) = ApplicationDarkModeChanged;
+class ApplicationEvent extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class ApplicationLoaded extends ApplicationEvent {}
+
+class ApplicationLocaleChanged extends ApplicationEvent {
+  ApplicationLocaleChanged({required this.locale});
+
+  final String locale;
+
+  @override
+  List<Object?> get props => [locale];
+}
+
+class ApplicationDarkModeChanged extends ApplicationEvent {
+  ApplicationDarkModeChanged({
+    required this.enable,
+  });
+
+  final bool enable;
+
+  @override
+  List<Object?> get props => [enable];
 }

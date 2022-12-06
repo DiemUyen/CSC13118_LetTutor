@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:let_tutor/configs/app_config.dart';
+import 'package:let_tutor/data/data_providers/auth_provider.dart';
 import 'package:let_tutor/injector/injector.dart';
+import 'package:let_tutor/services/shared_preferences_service.dart';
 
 class RestClientModule {
   RestClientModule._();
@@ -15,6 +17,8 @@ class RestClientModule {
         final Dio dio = Dio(
           BaseOptions(
             baseUrl: AppConfig.baseUrl,
+            connectTimeout: 5000,
+            receiveTimeout: 3000,
           ),
         );
         if (!kReleaseMode) {
@@ -29,6 +33,13 @@ class RestClientModule {
         return dio;
       },
       instanceName: dioInstance,
+    );
+
+    injector.registerFactory<AuthProvider>(
+      () => AuthProvider(
+        injector(instanceName: dioInstance),
+        injector(),
+      ),
     );
   }
 }
