@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:let_tutor/common/app_themes.dart';
-import 'package:let_tutor/features/authentication/forgot_password/bloc/forgot_password_event.dart';
 
 import '../../../../generated/l10n.dart';
 import '../bloc/forgot_password_bloc.dart';
-import '../bloc/forgot_password_state.dart';
 
 class ForgotPasswordView extends StatelessWidget {
   const ForgotPasswordView({Key? key}) : super(key: key);

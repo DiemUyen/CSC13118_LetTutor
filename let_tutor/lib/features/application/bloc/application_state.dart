@@ -5,7 +5,7 @@ class ApplicationState extends Equatable {
     this.status = UIStatus.loading,
     this.locale = 'en',
     this.isDarkMode = false,
-    this.authStatus = AuthStatus.unauthenticated,
+    this.authStatus = AuthStatus.initial,
   });
 
   final UIStatus status;
@@ -39,6 +39,7 @@ enum UIStatus {
 }
 
 enum AuthStatus {
+  initial,
   unauthenticated,
   authenticated,
 }

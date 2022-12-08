@@ -37,8 +37,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error reset password"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "have_an_account":
+            MessageLookupByLibrary.simpleMessage("Have an account?"),
         "not_have_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "or": MessageLookupByLibrary.simpleMessage("or"),
         "password_empty":
             MessageLookupByLibrary.simpleMessage("Password is not empty"),
         "return_sign_in":
@@ -49,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_in_failed":
             MessageLookupByLibrary.simpleMessage("Sign in failed!"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "sign_up_failed":
+            MessageLookupByLibrary.simpleMessage("Sign up failed!"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Vietnamese")
       };
 }

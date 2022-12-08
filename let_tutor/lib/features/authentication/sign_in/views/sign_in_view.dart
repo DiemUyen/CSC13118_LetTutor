@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:let_tutor/common/app_themes.dart';
-import 'package:let_tutor/features/authentication/sign_in/bloc/sign_in_event.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
 import '../bloc/sign_in_bloc.dart';
-import '../bloc/sign_in_state.dart';
 
 class SignInView extends StatelessWidget {
   const SignInView({Key? key}) : super(key: key);
@@ -72,19 +70,19 @@ class SignInView extends StatelessWidget {
                       height: 16,
                     ),
                     Row(
-                      children: const [
-                        Expanded(
+                      children: [
+                        const Expanded(
                             child: Divider(
                           thickness: 0.5,
                         )),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
-                        Text("or"),
-                        SizedBox(
+                        Text(S.current.or),
+                        const SizedBox(
                           width: 8,
                         ),
-                        Expanded(
+                        const Expanded(
                             child: Divider(
                           thickness: 0.5,
                         ))

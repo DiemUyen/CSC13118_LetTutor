@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'forgot_password_bloc.dart';
 
 class ForgotPasswordEvent extends Equatable {
   @override

@@ -15,5 +15,8 @@
     "sign_up": "Sign Up",
     "return_sign_in": "Return Sign In",
     "error_reset_password": "Error reset password",
-    "sign_in_failed": "Sign in failed!"
+    "sign_in_failed": "Sign in failed!",
+    "or": "or",
+    "sign_up_failed": "Sign up failed!",
+    "have_an_account": "Have an account?"
 }

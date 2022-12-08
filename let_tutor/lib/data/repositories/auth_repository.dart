@@ -9,7 +9,7 @@ abstract class AuthRepository {
 
   Future<AuthResponse> loginByFacebook(String accessToken);
 
-  Future<String> verifyAccount();
+  Future<bool> verifyAccount();
 
   Future<AuthResponse> refreshToken();
 

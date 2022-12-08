@@ -49,5 +49,7 @@ class SharedPreferencesService {
     return _preferences.get(key);
   }
 
-  void setValue({required String key, required value}) {}
+  Future<bool> setValue({required String key, required String value}) async {
+    return await _preferences.setString(key, value);
+  }
 }

@@ -219,6 +219,36 @@ class S {
       args: [],
     );
   }
+
+  /// `or`
+  String get or {
+    return Intl.message(
+      'or',
+      name: 'or',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up failed!`
+  String get sign_up_failed {
+    return Intl.message(
+      'Sign up failed!',
+      name: 'sign_up_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have an account?`
+  String get have_an_account {
+    return Intl.message(
+      'Have an account?',
+      name: 'have_an_account',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

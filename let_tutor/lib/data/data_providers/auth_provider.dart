@@ -23,11 +23,11 @@ class AuthProvider {
     return authResponse;
   }
 
-  Future<String> verifyAccount() async {
+  Future<bool> verifyAccount() async {
     final token = _sharedPreferencesService.token ?? '';
     var response = await _dio
         .get('/auth/verifyAccount', queryParameters: {'token': token});
-    return response.data.toString();
+    return !response.data.toString().contains('statusCode');
   }
 
   Future<AuthResponse> refreshToken() async {

@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:let_tutor/data/models/responses/auth_response.dart';
 import 'package:let_tutor/data/repositories/auth_repository.dart';
 import 'package:let_tutor/services/shared_preferences_service.dart';
+import 'package:equatable/equatable.dart';
 
 import '../../../../generated/l10n.dart';
-import 'sign_in_event.dart';
-import 'sign_in_state.dart';
+
+part 'sign_in_event.dart';
+part 'sign_in_state.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc({

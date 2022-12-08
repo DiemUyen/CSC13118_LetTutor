@@ -56,7 +56,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<String> verifyAccount() async {
+  Future<bool> verifyAccount() async {
     // TODO: implement verifyAccount
     return await _authProvider
         .verifyAccount()

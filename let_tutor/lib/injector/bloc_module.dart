@@ -3,6 +3,7 @@ import 'package:let_tutor/features/authentication/forgot_password/bloc/forgot_pa
 import 'package:let_tutor/injector/injector.dart';
 
 import '../features/authentication/sign_in/bloc/sign_in_bloc.dart';
+import '../features/authentication/sign_up/bloc/sign_up_bloc.dart';
 
 class BlocModule {
   BlocModule._();
@@ -27,6 +28,13 @@ class BlocModule {
       () => SignInBloc(
         authRepository: injector(),
         preferencesService: injector(),
+      ),
+    );
+
+    injector.registerFactory(
+      () => SignUpBloc(
+        authRepository: injector(),
+        sharedPreferencesService: injector(),
       ),
     );
   }

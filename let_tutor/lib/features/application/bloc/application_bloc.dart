@@ -35,16 +35,34 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
     final String locale = _sharedPreferencesService.locale;
     final bool isDarkMode = _sharedPreferencesService.isDarkMode;
 
-    final String authenticated = await _authRepository.verifyAccount();
-    if (kDebugMode) {
-      print(authenticated);
+    try {
+      final bool verifyResponse = await _authRepository.verifyAccount();
+      emit(state.copyWith(
+          status: UIStatus.loadSuccess,
+          locale: locale,
+          isDarkMode: isDarkMode,
+          authStatus: AuthStatus.authenticated));
+    } catch (exception) {
+      try {
+        final refreshTokenResponse = await _authRepository.refreshToken();
+        _sharedPreferencesService
+            .setToken(refreshTokenResponse.tokens!.access!.token!);
+        _sharedPreferencesService.setValue(
+            key: 'refreshToken',
+            value: refreshTokenResponse.tokens!.refresh!.token!);
+        emit(state.copyWith(
+            status: UIStatus.loadSuccess,
+            locale: locale,
+            isDarkMode: isDarkMode,
+            authStatus: AuthStatus.authenticated));
+      } catch (e) {
+        emit(state.copyWith(
+            status: UIStatus.loadSuccess,
+            locale: locale,
+            isDarkMode: isDarkMode,
+            authStatus: AuthStatus.unauthenticated));
+      }
     }
-
-    emit(state.copyWith(
-      status: UIStatus.loadSuccess,
-      locale: locale,
-      isDarkMode: isDarkMode,
-    ));
   }
 
   FutureOr<void> _onLocaleChanged(

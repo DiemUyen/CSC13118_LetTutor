@@ -11,9 +11,12 @@
     "email_wrong_format": "Email không đúng định dạng",
     "password_empty": "Mật khẩu không được để trống",
     "sign_in": "Đăng nhập",
-    "not_have_account": "Chưa có tài khoản",
+    "not_have_account": "Chưa có tài khoản?",
     "sign_up": "Đăng ký",
     "return_sign_in": "Trở về Đăng nhập",
     "error_reset_password": "Không thể làm mới mật khẩu",
-    "sign_in_failed": "Đăng nhập thất bại!"
+    "sign_in_failed": "Đăng nhập thất bại!",
+    "or": "hoặc",
+    "sign_up_failed": "Tạo tài khoản không thành công!",
+    "have_an_account": "Đã có tài khoản?"
 }

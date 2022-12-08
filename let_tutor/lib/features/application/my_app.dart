@@ -60,6 +60,42 @@ class _MyAppState extends State<MyApp> {
           }
         },
         builder: (context, state) {
+          if (state.authStatus == AuthStatus.initial) {
+            return MaterialApp(
+              localizationsDelegates: [
+                appLocalizationDelegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: appLocalizationDelegate.supportedLocales,
+              locale: Locale(_locale),
+              themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
+              theme: AppThemes.lightTheme,
+              darkTheme: AppThemes.darkTheme,
+              onGenerateRoute: AppRouter.generateRoute,
+              title: 'LetTutor',
+              debugShowCheckedModeBanner: false,
+              home: SafeArea(
+                child: Scaffold(
+                  body: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: const [
+                      Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+
           return MaterialApp(
             localizationsDelegates: [
               appLocalizationDelegate,

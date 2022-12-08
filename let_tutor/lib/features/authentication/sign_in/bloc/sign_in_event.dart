@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'sign_in_bloc.dart';
 
 class SignInEvent extends Equatable {
   @override

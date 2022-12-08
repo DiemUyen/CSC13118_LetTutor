@@ -38,8 +38,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Không thể làm mới mật khẩu"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
+        "have_an_account":
+            MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
         "not_have_account":
-            MessageLookupByLibrary.simpleMessage("Chưa có tài khoản"),
+            MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
+        "or": MessageLookupByLibrary.simpleMessage("hoặc"),
         "password_empty": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được để trống"),
         "return_sign_in":
@@ -50,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_in_failed":
             MessageLookupByLibrary.simpleMessage("Đăng nhập thất bại!"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "sign_up_failed": MessageLookupByLibrary.simpleMessage(
+            "Tạo tài khoản không thành công!"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt")
       };
 }
