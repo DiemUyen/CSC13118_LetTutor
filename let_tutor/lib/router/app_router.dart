@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../features/authentication/forgot_password/views/forgot_password.dart';
-import '../features/authentication/sign_in_form.dart';
+import '../features/authentication/forgot_password/views/forgot_password_page.dart';
+import '../features/authentication/sign_in/views/sign_in_page.dart';
 import '../features/authentication/sign_up_form.dart';
 import '../features/course/course_detail.dart';
 import '../features/course/courses_page.dart';
@@ -80,7 +80,7 @@ class AppRouter {
         );
       case forgotPasswordPage:
         return MaterialPageRoute(
-          builder: (context) => const ForgotPassword(),
+          builder: (context) => const ForgotPasswordPage(),
         );
       case homePage:
         return MaterialPageRoute(

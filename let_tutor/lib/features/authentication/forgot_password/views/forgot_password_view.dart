@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:let_tutor/common/app_themes.dart';
 import 'package:let_tutor/features/authentication/forgot_password/bloc/forgot_password_event.dart';
 
-import '../../../../router/app_router.dart';
+import '../../../../generated/l10n.dart';
 import '../bloc/forgot_password_bloc.dart';
 import '../bloc/forgot_password_state.dart';
 
@@ -25,15 +26,15 @@ class ForgotPasswordView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Title Reset password
-                    Text("Reset Password",
+                    Text(S.current.forgot_password,
                         style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(
                       height: 8,
                     ),
 
                     // Title Enter your email address
-                    const Text(
-                      "Please enter your email address to search for your account.",
+                    Text(
+                      S.current.email_reset_password,
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
@@ -48,6 +49,19 @@ class ForgotPasswordView extends StatelessWidget {
 
                     // Button 'Send link'
                     const _SendLinkButton(),
+                    const SizedBox(
+                      height: 8,
+                    ),
+
+                    OutlinedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all(const Size.fromHeight(48)),
+                      ),
+                      child: Text(S.current.return_sign_in),
+                    )
                   ],
                 ),
               ),
@@ -77,7 +91,9 @@ class _EmailInputTextField extends StatelessWidget {
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
             hintText: "Email",
-            errorText: state.status == ForgotPasswordStatus.emailInvalid ? state.error : null,
+            errorText: state.status == ForgotPasswordStatus.emailInvalid
+                ? state.error
+                : null,
           ),
           keyboardType: TextInputType.emailAddress,
         );
@@ -96,37 +112,40 @@ class _SendLinkButton extends StatelessWidget {
     return BlocConsumer<ForgotPasswordBloc, ForgotPasswordState>(
       listener: (context, state) {
         if (state.status == ForgotPasswordStatus.loadSuccess) {
-          Navigator.pushNamed(context, AppRouter.signInPage);
+          //Navigator.pushNamed(context, AppRouter.signInPage);
+          Navigator.pop(context);
         } else if (state.status == ForgotPasswordStatus.loadFailure) {
           showDialog(
               context: context,
               builder: (context) {
-                return const AlertDialog(
-                  title: Text('Error reset password'),
-                  content: Text('Something was wrong when reset password'),
+                return AlertDialog(
+                  icon: const Icon(
+                    Icons.error_outline_rounded,
+                    color: Colors.redAccent,
+                  ),
+                  title: const Text('Error reset password'),
+                  content: Text(S.current.email_not_found),
                 );
               });
         }
       },
       builder: (context, state) {
-        return Row(
-          children: [
-            Expanded(
-              child: ElevatedButton(
-                onPressed: state.status != ForgotPasswordStatus.emailValid
-                    ? null
-                    : () {
-                        context
-                            .read<ForgotPasswordBloc>()
-                            .add(ForgotPasswordSendLinkButtonPressed());
-                      },
-                onLongPress: state.status != ForgotPasswordStatus.emailValid
-                    ? null
-                    : () {},
-                child: const Text("Send Link"),
-              ),
-            ),
-          ],
+        return ElevatedButton(
+          onPressed: state.status != ForgotPasswordStatus.emailValid
+              ? null
+              : () {
+                  context
+                      .read<ForgotPasswordBloc>()
+                      .add(ForgotPasswordSendLinkButtonPressed());
+                },
+          onLongPress:
+              state.status != ForgotPasswordStatus.emailValid ? null : () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppThemes.primaryColor,
+            foregroundColor: Colors.white,
+            minimumSize: const Size.fromHeight(48),
+          ),
+          child: Text(S.current.send_link_reset_password),
         );
       },
     );

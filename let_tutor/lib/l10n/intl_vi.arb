@@ -2,5 +2,18 @@
     "dark_mode": "Chế độ tối",
     "app_language": "Ngôn ngữ ứng dụng",
     "english": "Tiếng Anh",
-    "vietnamese": "Tiếng Việt"
+    "vietnamese": "Tiếng Việt",
+    "forgot_password": "Quên mật khẩu",
+    "email_reset_password": "Vui lòng nhập địa chỉ email để tìm tài khoản của bạn.",
+    "email_not_found": "Email không tồn tại!",
+    "send_link_reset_password": "Gửi liên kết",
+    "email_empty": "Email không được để trống",
+    "email_wrong_format": "Email không đúng định dạng",
+    "password_empty": "Mật khẩu không được để trống",
+    "sign_in": "Đăng nhập",
+    "not_have_account": "Chưa có tài khoản",
+    "sign_up": "Đăng ký",
+    "return_sign_in": "Trở về Đăng nhập",
+    "error_reset_password": "Không thể làm mới mật khẩu",
+    "sign_in_failed": "Đăng nhập thất bại!"
 }

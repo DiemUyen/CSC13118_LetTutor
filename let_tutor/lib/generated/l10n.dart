@@ -89,6 +89,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Forgot Password`
+  String get forgot_password {
+    return Intl.message(
+      'Forgot Password',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email address to search for your account.`
+  String get email_reset_password {
+    return Intl.message(
+      'Please enter your email address to search for your account.',
+      name: 'email_reset_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email doesn't exist!`
+  String get email_not_found {
+    return Intl.message(
+      'Email doesn\'t exist!',
+      name: 'email_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Link`
+  String get send_link_reset_password {
+    return Intl.message(
+      'Send Link',
+      name: 'send_link_reset_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email address is not empty`
+  String get email_empty {
+    return Intl.message(
+      'Email address is not empty',
+      name: 'email_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email address is not right format`
+  String get email_wrong_format {
+    return Intl.message(
+      'Email address is not right format',
+      name: 'email_wrong_format',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is not empty`
+  String get password_empty {
+    return Intl.message(
+      'Password is not empty',
+      name: 'password_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In`
+  String get sign_in {
+    return Intl.message(
+      'Sign In',
+      name: 'sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get not_have_account {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'not_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get sign_up {
+    return Intl.message(
+      'Sign Up',
+      name: 'sign_up',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Return Sign In`
+  String get return_sign_in {
+    return Intl.message(
+      'Return Sign In',
+      name: 'return_sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error reset password`
+  String get error_reset_password {
+    return Intl.message(
+      'Error reset password',
+      name: 'error_reset_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in failed!`
+  String get sign_in_failed {
+    return Intl.message(
+      'Sign in failed!',
+      name: 'sign_in_failed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

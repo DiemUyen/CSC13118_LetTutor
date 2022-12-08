@@ -2,5 +2,18 @@
     "dark_mode": "Dark mode",
     "app_language": "Language",
     "english": "English",
-    "vietnamese": "Vietnamese"
+    "vietnamese": "Vietnamese",
+    "forgot_password": "Forgot Password",
+    "email_reset_password": "Please enter your email address to search for your account.",
+    "email_not_found": "Email doesn't exist!",
+    "send_link_reset_password": "Send Link",
+    "email_empty": "Email address is not empty",
+    "email_wrong_format": "Email address is not right format",
+    "password_empty": "Password is not empty",
+    "sign_in": "Sign In",
+    "not_have_account": "Don't have an account?",
+    "sign_up": "Sign Up",
+    "return_sign_in": "Return Sign In",
+    "error_reset_password": "Error reset password",
+    "sign_in_failed": "Sign in failed!"
 }

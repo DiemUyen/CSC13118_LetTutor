@@ -16,10 +16,10 @@ class AppThemes {
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         showUnselectedLabels: false,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
+      /*elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(primaryColor),
-              foregroundColor: MaterialStateProperty.all(Colors.white))),
+              foregroundColor: MaterialStateProperty.all(Colors.white))),*/
       tabBarTheme: const TabBarTheme(
           indicatorSize: TabBarIndicatorSize.tab,
           labelColor: primaryColor,
@@ -29,6 +29,6 @@ class AppThemes {
       fontFamily: 'Roboto',
       textTheme: AppTextThemes.textTheme,
       brightness: Brightness.dark,
-      useMaterial3: false,
-      colorSchemeSeed: Colors.green);
+      useMaterial3: true,
+      colorSchemeSeed: primaryColor);
 }

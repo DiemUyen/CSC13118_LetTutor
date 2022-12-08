@@ -25,7 +25,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_language":
             MessageLookupByLibrary.simpleMessage("Ngôn ngữ ứng dụng"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Chế độ tối"),
+        "email_empty":
+            MessageLookupByLibrary.simpleMessage("Email không được để trống"),
+        "email_not_found":
+            MessageLookupByLibrary.simpleMessage("Email không tồn tại!"),
+        "email_reset_password": MessageLookupByLibrary.simpleMessage(
+            "Vui lòng nhập địa chỉ email để tìm tài khoản của bạn."),
+        "email_wrong_format":
+            MessageLookupByLibrary.simpleMessage("Email không đúng định dạng"),
         "english": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
+        "error_reset_password":
+            MessageLookupByLibrary.simpleMessage("Không thể làm mới mật khẩu"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
+        "not_have_account":
+            MessageLookupByLibrary.simpleMessage("Chưa có tài khoản"),
+        "password_empty": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu không được để trống"),
+        "return_sign_in":
+            MessageLookupByLibrary.simpleMessage("Trở về Đăng nhập"),
+        "send_link_reset_password":
+            MessageLookupByLibrary.simpleMessage("Gửi liên kết"),
+        "sign_in": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+        "sign_in_failed":
+            MessageLookupByLibrary.simpleMessage("Đăng nhập thất bại!"),
+        "sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt")
       };
 }

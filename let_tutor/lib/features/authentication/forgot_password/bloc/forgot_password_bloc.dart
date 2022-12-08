@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:let_tutor/data/repositories/auth_repository.dart';
 
+import '../../../../generated/l10n.dart';
 import 'forgot_password_event.dart';
 import 'forgot_password_state.dart';
 
@@ -29,11 +30,11 @@ class ForgotPasswordBloc
 
     if (email.isEmpty) {
       emit(state.copyWith(
-          error: 'Email address is not empty',
+          error: S.current.email_empty,
           status: ForgotPasswordStatus.emailInvalid));
     } else if (!regExp.hasMatch(email)) {
       emit(state.copyWith(
-          error: 'Email address is not right format',
+          error: S.current.email_wrong_format,
           status: ForgotPasswordStatus.emailInvalid));
     } else {
       emit(state.copyWith(error: '', status: ForgotPasswordStatus.emailValid));

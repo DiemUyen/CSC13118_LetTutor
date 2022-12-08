@@ -24,7 +24,31 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_language": MessageLookupByLibrary.simpleMessage("Language"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "email_empty":
+            MessageLookupByLibrary.simpleMessage("Email address is not empty"),
+        "email_not_found":
+            MessageLookupByLibrary.simpleMessage("Email doesn\'t exist!"),
+        "email_reset_password": MessageLookupByLibrary.simpleMessage(
+            "Please enter your email address to search for your account."),
+        "email_wrong_format": MessageLookupByLibrary.simpleMessage(
+            "Email address is not right format"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "error_reset_password":
+            MessageLookupByLibrary.simpleMessage("Error reset password"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "not_have_account":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "password_empty":
+            MessageLookupByLibrary.simpleMessage("Password is not empty"),
+        "return_sign_in":
+            MessageLookupByLibrary.simpleMessage("Return Sign In"),
+        "send_link_reset_password":
+            MessageLookupByLibrary.simpleMessage("Send Link"),
+        "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "sign_in_failed":
+            MessageLookupByLibrary.simpleMessage("Sign in failed!"),
+        "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Vietnamese")
       };
 }

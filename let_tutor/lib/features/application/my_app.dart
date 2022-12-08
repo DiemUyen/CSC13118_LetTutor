@@ -6,7 +6,7 @@ import 'package:let_tutor/features/home.dart';
 import '../../common/app_themes.dart';
 import '../../configs/app_config.dart';
 import 'bloc/application_bloc.dart';
-import '../authentication/sign_in_form.dart';
+import '../authentication/sign_in/views/sign_in_page.dart';
 import '../../generated/l10n.dart';
 import '../../injector/injector.dart';
 import '../../router/app_router.dart';
