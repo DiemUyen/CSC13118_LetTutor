@@ -1,5 +1,6 @@
 import 'package:let_tutor/features/application/bloc/application_bloc.dart';
 import 'package:let_tutor/features/authentication/forgot_password/bloc/forgot_password_bloc.dart';
+import 'package:let_tutor/features/tutor/tutor_list/bloc/tutor_list_bloc.dart';
 import 'package:let_tutor/injector/injector.dart';
 
 import '../features/authentication/sign_in/bloc/sign_in_bloc.dart';
@@ -35,6 +36,12 @@ class BlocModule {
       () => SignUpBloc(
         authRepository: injector(),
         sharedPreferencesService: injector(),
+      ),
+    );
+
+    injector.registerFactory(
+      () => TutorListBloc(
+        tutorRepository: injector(),
       ),
     );
   }

@@ -45,6 +45,9 @@ mixin _$User {
   String? get studentGroup => throw _privateConstructorUsedError;
   String? get studentInfo => throw _privateConstructorUsedError;
   int? get avgRating => throw _privateConstructorUsedError;
+  bool? get isPublicRecord => throw _privateConstructorUsedError;
+  String? get caredByStaffId => throw _privateConstructorUsedError;
+  String? get studentGroupId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -81,7 +84,10 @@ abstract class $UserCopyWith<$Res> {
       ReferralInfo? referralInfo,
       String? studentGroup,
       String? studentInfo,
-      int? avgRating});
+      int? avgRating,
+      bool? isPublicRecord,
+      String? caredByStaffId,
+      String? studentGroupId});
 
   $WalletInfoCopyWith<$Res>? get walletInfo;
   $ReferralInfoCopyWith<$Res>? get referralInfo;
@@ -125,6 +131,9 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? studentGroup = freezed,
     Object? studentInfo = freezed,
     Object? avgRating = freezed,
+    Object? isPublicRecord = freezed,
+    Object? caredByStaffId = freezed,
+    Object? studentGroupId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -227,6 +236,18 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.avgRating
           : avgRating // ignore: cast_nullable_to_non_nullable
               as int?,
+      isPublicRecord: freezed == isPublicRecord
+          ? _value.isPublicRecord
+          : isPublicRecord // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      caredByStaffId: freezed == caredByStaffId
+          ? _value.caredByStaffId
+          : caredByStaffId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      studentGroupId: freezed == studentGroupId
+          ? _value.studentGroupId
+          : studentGroupId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -286,7 +307,10 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       ReferralInfo? referralInfo,
       String? studentGroup,
       String? studentInfo,
-      int? avgRating});
+      int? avgRating,
+      bool? isPublicRecord,
+      String? caredByStaffId,
+      String? studentGroupId});
 
   @override
   $WalletInfoCopyWith<$Res>? get walletInfo;
@@ -328,6 +352,9 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? studentGroup = freezed,
     Object? studentInfo = freezed,
     Object? avgRating = freezed,
+    Object? isPublicRecord = freezed,
+    Object? caredByStaffId = freezed,
+    Object? studentGroupId = freezed,
   }) {
     return _then(_$_User(
       id: freezed == id
@@ -430,6 +457,18 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.avgRating
           : avgRating // ignore: cast_nullable_to_non_nullable
               as int?,
+      isPublicRecord: freezed == isPublicRecord
+          ? _value.isPublicRecord
+          : isPublicRecord // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      caredByStaffId: freezed == caredByStaffId
+          ? _value.caredByStaffId
+          : caredByStaffId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      studentGroupId: freezed == studentGroupId
+          ? _value.studentGroupId
+          : studentGroupId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -462,7 +501,10 @@ class _$_User implements _User {
       this.referralInfo,
       this.studentGroup,
       this.studentInfo,
-      this.avgRating})
+      this.avgRating,
+      this.isPublicRecord,
+      this.caredByStaffId,
+      this.studentGroupId})
       : _roles = roles,
         _courses = courses,
         _learnTopics = learnTopics,
@@ -553,10 +595,16 @@ class _$_User implements _User {
   final String? studentInfo;
   @override
   final int? avgRating;
+  @override
+  final bool? isPublicRecord;
+  @override
+  final String? caredByStaffId;
+  @override
+  final String? studentGroupId;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, name: $name, avatar: $avatar, country: $country, phone: $phone, roles: $roles, language: $language, birthday: $birthday, isActivated: $isActivated, walletInfo: $walletInfo, courses: $courses, requireNote: $requireNote, level: $level, learnTopics: $learnTopics, testPreparations: $testPreparations, isPhoneActivated: $isPhoneActivated, timezone: $timezone, studySchedule: $studySchedule, canSendMessage: $canSendMessage, tutorInfo: $tutorInfo, referralInfo: $referralInfo, studentGroup: $studentGroup, studentInfo: $studentInfo, avgRating: $avgRating)';
+    return 'User(id: $id, email: $email, name: $name, avatar: $avatar, country: $country, phone: $phone, roles: $roles, language: $language, birthday: $birthday, isActivated: $isActivated, walletInfo: $walletInfo, courses: $courses, requireNote: $requireNote, level: $level, learnTopics: $learnTopics, testPreparations: $testPreparations, isPhoneActivated: $isPhoneActivated, timezone: $timezone, studySchedule: $studySchedule, canSendMessage: $canSendMessage, tutorInfo: $tutorInfo, referralInfo: $referralInfo, studentGroup: $studentGroup, studentInfo: $studentInfo, avgRating: $avgRating, isPublicRecord: $isPublicRecord, caredByStaffId: $caredByStaffId, studentGroupId: $studentGroupId)';
   }
 
   @override
@@ -604,7 +652,13 @@ class _$_User implements _User {
             (identical(other.studentInfo, studentInfo) ||
                 other.studentInfo == studentInfo) &&
             (identical(other.avgRating, avgRating) ||
-                other.avgRating == avgRating));
+                other.avgRating == avgRating) &&
+            (identical(other.isPublicRecord, isPublicRecord) ||
+                other.isPublicRecord == isPublicRecord) &&
+            (identical(other.caredByStaffId, caredByStaffId) ||
+                other.caredByStaffId == caredByStaffId) &&
+            (identical(other.studentGroupId, studentGroupId) ||
+                other.studentGroupId == studentGroupId));
   }
 
   @JsonKey(ignore: true)
@@ -635,7 +689,10 @@ class _$_User implements _User {
         referralInfo,
         studentGroup,
         studentInfo,
-        avgRating
+        avgRating,
+        isPublicRecord,
+        caredByStaffId,
+        studentGroupId
       ]);
 
   @JsonKey(ignore: true)
@@ -678,7 +735,10 @@ abstract class _User implements User {
       final ReferralInfo? referralInfo,
       final String? studentGroup,
       final String? studentInfo,
-      final int? avgRating}) = _$_User;
+      final int? avgRating,
+      final bool? isPublicRecord,
+      final String? caredByStaffId,
+      final String? studentGroupId}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -732,6 +792,12 @@ abstract class _User implements User {
   String? get studentInfo;
   @override
   int? get avgRating;
+  @override
+  bool? get isPublicRecord;
+  @override
+  String? get caredByStaffId;
+  @override
+  String? get studentGroupId;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

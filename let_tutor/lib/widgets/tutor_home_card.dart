@@ -1,62 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../data/models/tutor/tutor.dart';
+import '../features/tutor/tutor_list/bloc/tutor_list_bloc.dart';
 import '../router/app_router.dart';
 import 'widgets.dart';
 
 class TutorHomeCard extends StatelessWidget {
-  const TutorHomeCard({Key? key}) : super(key: key);
+  const TutorHomeCard({Key? key, required this.tutor}) : super(key: key);
 
-  Widget favoriteButton(BuildContext context) {
-    return Positioned.fill(
-      top: 8,
-      right: 8,
-      child: Align(
-        alignment: Alignment.topRight,
-        child: IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border_outlined)),
-      ),
-    );
-  }
-
-  Widget inforTutor(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const [
-            // Information tutor
-            TutorInfo(),
-            SizedBox(height: 16,),
-            // Specialities
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Specialities(),
-            ),
-            SizedBox(height: 16,),
-            // Introduction
-            Text('Hello! My name is April Baldo, you can just call me Teacher April. I am an English teacher and currently teaching in senior high school.'),
-            SizedBox(height: 40,),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget bookButton(BuildContext context) {
-    return Positioned.fill(
-      right: 8,
-      bottom: 8,
-      child: Align(
-        alignment: Alignment.bottomRight,
-        child: OutlinedButton.icon(
-            onPressed: () {
-              Navigator.pushNamed(context, AppRouter.bookingPage);
-            },
-            icon: const Icon(Icons.edit_calendar_outlined),
-            label: const Text("Book")
-        ),
-      ),
-    );
-  }
+  final Tutor tutor;
 
   @override
   Widget build(BuildContext context) {
@@ -68,16 +21,181 @@ class TutorHomeCard extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, AppRouter.tutorDetailPage);
             },
-            child: inforTutor(context)
+            child: _TutorInformation(tutor: tutor),
           ),
 
           // Icon button 'Favorite'
-          favoriteButton(context),
+          _FavoriteButton(
+            tutor: tutor,
+          ),
 
           // Button 'Book'
-          bookButton(context)
+          const _BookButton(),
         ],
       ),
+    );
+  }
+}
+
+class _TutorInformation extends StatelessWidget {
+  const _TutorInformation({
+    Key? key,
+    required this.tutor,
+  }) : super(key: key);
+
+  final Tutor tutor;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> specialities = tutor.specialties!.split(',');
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          // Information tutor
+          Row(
+            children: [
+              // Avatar
+              CircleAvatar(
+                foregroundImage: NetworkImage(tutor.avatar ?? ''),
+                radius: 32,
+              ),
+              const SizedBox(
+                width: 8,
+              ),
+              // Infor
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Name
+                  Text(tutor.name!,
+                      style: Theme.of(context).textTheme.headlineSmall),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 2,
+                      ),
+                      // Icon flag
+                      const Icon(
+                        FontAwesomeIcons.flag,
+                        size: 12,
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      // Nationality
+                      Text(tutor.country ?? ''),
+                    ],
+                  ),
+                  // Rating star
+                  StarRating(
+                    initialRating: tutor.rating ?? 0,
+                    ignoreGestures: true,
+                    ratingUpgrade: (double rating) {},
+                    itemSize: 16,
+                  )
+                ],
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          // Specialities
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: specialities
+                  .map(
+                    (element) => Chip(
+                      label: Text(element),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          // Introduction
+          Text(tutor.bio ?? ''),
+          const SizedBox(
+            height: 40,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BookButton extends StatelessWidget {
+  const _BookButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      right: 8,
+      bottom: 8,
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: OutlinedButton.icon(
+          onPressed: () {
+            Navigator.pushNamed(context, AppRouter.bookingPage);
+          },
+          icon: const Icon(Icons.edit_calendar_outlined),
+          label: const Text("Book"),
+        ),
+      ),
+    );
+  }
+}
+
+class _FavoriteButton extends StatelessWidget {
+  const _FavoriteButton({
+    Key? key,
+    required this.tutor,
+  }) : super(key: key);
+
+  final Tutor tutor;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<TutorListBloc, TutorListState>(
+      builder: (context, state) {
+        if (state.status == TutorListStatus.loadSuccess) {
+          return Positioned.fill(
+            top: 8,
+            right: 8,
+            child: Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                onPressed: () {
+                  context
+                      .read<TutorListBloc>()
+                      .add(TutorListFavoriteButtonPressed(tutorId: tutor.id!));
+                },
+                icon: state.tutors.favoriteTutor
+                            ?.where((element) =>
+                                element.secondId!.contains(tutor.id!))
+                            .isNotEmpty ??
+                        false
+                    ? const Icon(
+                        Icons.favorite_rounded,
+                        color: Colors.red,
+                      )
+                    : const Icon(Icons.favorite_border_outlined),
+              ),
+            ),
+          );
+        }
+        return Container();
+      },
     );
   }
 }

@@ -1,39 +1,35 @@
 import 'package:dio/dio.dart';
 
-import '../../services/shared_preferences_service.dart';
+import '../../configs/endpoints.dart';
 import '../models/responses/auth_response.dart';
 
 class AuthProvider {
-  const AuthProvider(this._dio, this._sharedPreferencesService);
+  const AuthProvider(this._dio);
 
   final Dio _dio;
-  final SharedPreferencesService _sharedPreferencesService;
 
   Future<AuthResponse> register(String email, String password) async {
     var response = await _dio
-        .post('/auth/register', data: {'email': email, 'password': password});
+        .post(Endpoints.register, data: {'email': email, 'password': password});
     final AuthResponse authResponse = AuthResponse.fromJson(response.data);
     return authResponse;
   }
 
   Future<AuthResponse> login(String email, String password) async {
     var response = await _dio
-        .post('/auth/login', data: {'email': email, 'password': password});
+        .post(Endpoints.login, data: {'email': email, 'password': password});
     final AuthResponse authResponse = AuthResponse.fromJson(response.data);
     return authResponse;
   }
 
-  Future<bool> verifyAccount() async {
-    final token = _sharedPreferencesService.token ?? '';
+  Future<bool> verifyAccount(String token) async {
     var response = await _dio
-        .get('/auth/verifyAccount', queryParameters: {'token': token});
+        .get(Endpoints.verifyAccount, queryParameters: {'token': token});
     return !response.data.toString().contains('statusCode');
   }
 
-  Future<AuthResponse> refreshToken() async {
-    final refreshToken =
-        _sharedPreferencesService.getValue(key: 'refreshToken') ?? '';
-    var response = await _dio.post('/auth/refresh-token',
+  Future<AuthResponse> refreshToken(String refreshToken) async {
+    var response = await _dio.post(Endpoints.refreshToken,
         data: {'refreshToken': refreshToken, 'timezone': 7});
     final AuthResponse authResponse = AuthResponse.fromJson(response.data);
     return authResponse;
@@ -42,7 +38,7 @@ class AuthProvider {
   Future<bool> forgotPassword(String email) async {
     try {
       var response = await _dio.post(
-          '/user/forgotPassword', data: {'email': email});
+          Endpoints.forgotPassword, data: {'email': email});
       var data = response.data.toString();
       return data.contains('Email send success!');
     }

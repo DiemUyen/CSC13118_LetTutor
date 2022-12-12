@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
 import 'course/courses_page.dart';
 import 'profile/profile_home_page.dart';
-import 'tutor/tutor_home_page.dart';
+import 'tutor/tutor_list/views/tutor_list_page.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: const TransparentAppBar(),
         bottomNavigationBar: BottomNavBar(
           selectedIndex: selectedIndex,
           onClicked: (int index) {

@@ -12,6 +12,4 @@ class Access with _$Access {
 
   factory Access.fromJson(Map<String, dynamic> json) =>
       _$AccessFromJson(json);
-
-
 }

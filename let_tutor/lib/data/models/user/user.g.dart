@@ -43,6 +43,9 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       studentGroup: json['studentGroup'] as String?,
       studentInfo: json['studentInfo'] as String?,
       avgRating: json['avgRating'] as int?,
+      isPublicRecord: json['isPublicRecord'] as bool?,
+      caredByStaffId: json['caredByStaffId'] as String?,
+      studentGroupId: json['studentGroupId'] as String?,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -71,4 +74,7 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'studentGroup': instance.studentGroup,
       'studentInfo': instance.studentInfo,
       'avgRating': instance.avgRating,
+      'isPublicRecord': instance.isPublicRecord,
+      'caredByStaffId': instance.caredByStaffId,
+      'studentGroupId': instance.studentGroupId,
     };

@@ -1,7 +1,6 @@
 import 'package:let_tutor/injector/injector.dart';
 
-import '../data/repositories/auth_repository.dart';
-import '../data/repositories/auth_repository_impl.dart';
+import '../data/repositories/repositories.dart';
 
 class RepositoryModule {
   RepositoryModule._();
@@ -12,6 +11,12 @@ class RepositoryModule {
     injector.registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(
         authProvider: injector(),
+      ),
+    );
+
+    injector.registerFactory<TutorRepository>(
+      () => TutorRepositoryImpl(
+        tutorProvider: injector(),
       ),
     );
   }

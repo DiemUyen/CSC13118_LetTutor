@@ -36,6 +36,9 @@ class User with _$User {
     String? studentGroup,
     String? studentInfo,
     int? avgRating,
+    bool? isPublicRecord,
+    String? caredByStaffId,
+    String? studentGroupId,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

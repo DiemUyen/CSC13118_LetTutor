@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:let_tutor/configs/app_config.dart';
-import 'package:let_tutor/data/data_providers/auth_provider.dart';
+import 'package:let_tutor/exceptions/interceptor.dart';
 import 'package:let_tutor/injector/injector.dart';
-import 'package:let_tutor/services/shared_preferences_service.dart';
+
+import '../data/data_providers/data_providers.dart';
 
 class RestClientModule {
   RestClientModule._();
@@ -21,6 +22,11 @@ class RestClientModule {
             receiveTimeout: 3000,
           ),
         );
+
+        dio.interceptors.add(DioInterceptor(
+          dio,
+        ));
+
         if (!kReleaseMode) {
           dio.interceptors.add(LogInterceptor(
             requestHeader: true,
@@ -38,7 +44,12 @@ class RestClientModule {
     injector.registerFactory<AuthProvider>(
       () => AuthProvider(
         injector(instanceName: dioInstance),
-        injector(),
+      ),
+    );
+
+    injector.registerFactory<TutorProvider>(
+      () => TutorProvider(
+        injector(instanceName: dioInstance),
       ),
     );
   }

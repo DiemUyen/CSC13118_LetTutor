@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:let_tutor/data/repositories/auth_repository.dart';
 import 'package:let_tutor/services/shared_preferences_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/repositories/repositories.dart';
 import '../../../generated/l10n.dart';
 
 part 'application_event.dart';
@@ -34,9 +33,12 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
 
     final String locale = _sharedPreferencesService.locale;
     final bool isDarkMode = _sharedPreferencesService.isDarkMode;
+    final String token = _sharedPreferencesService.token ?? '';
+    final String refreshToken =
+        _sharedPreferencesService.getValue(key: 'refreshToken') ?? '';
 
     try {
-      final bool verifyResponse = await _authRepository.verifyAccount();
+      final bool verifyResponse = await _authRepository.verifyAccount(token);
       emit(state.copyWith(
           status: UIStatus.loadSuccess,
           locale: locale,
@@ -44,7 +46,7 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
           authStatus: AuthStatus.authenticated));
     } catch (exception) {
       try {
-        final refreshTokenResponse = await _authRepository.refreshToken();
+        final refreshTokenResponse = await _authRepository.refreshToken(refreshToken);
         _sharedPreferencesService
             .setToken(refreshTokenResponse.tokens!.access!.token!);
         _sharedPreferencesService.setValue(

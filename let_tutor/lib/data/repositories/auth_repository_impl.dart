@@ -1,8 +1,4 @@
-import 'package:let_tutor/data/data_providers/auth_provider.dart';
-import 'package:let_tutor/data/models/responses/auth_response.dart';
-import 'package:let_tutor/exceptions/exception_handler.dart';
-
-import 'auth_repository.dart';
+part of 'auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({
@@ -40,10 +36,10 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<AuthResponse> refreshToken() async {
+  Future<AuthResponse> refreshToken(String refreshToken) async {
     // TODO: implement refreshToken
     return await _authProvider
-        .refreshToken()
+        .refreshToken(refreshToken)
         .catchError(DioExceptionHandler.handleException);
   }
 
@@ -56,10 +52,10 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<bool> verifyAccount() async {
+  Future<bool> verifyAccount(String token) async {
     // TODO: implement verifyAccount
     return await _authProvider
-        .verifyAccount()
+        .verifyAccount(token)
         .catchError(DioExceptionHandler.handleException);
   }
 }

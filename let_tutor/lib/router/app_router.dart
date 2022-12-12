@@ -21,7 +21,7 @@ import '../features/profile/wallet_page.dart';
 import '../features/setting_page.dart';
 import '../features/tutor/booking_page.dart';
 import '../features/tutor/tutor_detail.dart';
-import '../features/tutor/tutor_home_page.dart';
+import '../features/tutor/tutor_list/views/tutor_list_page.dart';
 import '../features/tutor/tutor_reviews.dart';
 import '../features/tutor/write_review.dart';
 import '../features/unknown_page.dart';

@@ -84,6 +84,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       _preferencesService.setToken(authResponse.tokens!.access!.token!);
       _preferencesService.setValue(
           key: 'refreshToken', value: authResponse.tokens!.refresh!.token!);
+      _preferencesService.setValue(key: 'userId', value: authResponse.user!.id!);
+      _preferencesService.setValue(key: 'userName', value: authResponse.user!.name!);
       emit(state.copyWith(status: SignUpStatus.loadSuccess));
     } catch (exception) {
       emit(state.copyWith(status: SignUpStatus.loadFailed));
