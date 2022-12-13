@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../generated/l10n.dart';
 import '../../router/app_router.dart';
 import '../../widgets/widgets.dart';
 
@@ -17,7 +18,7 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
     Icons.my_library_books_outlined, Icons.key_outlined, Icons.co_present, Icons.logout];
 
   List<String> titles = <String>[ 'My profile', 'My wallet', 'My schedule', 'My history',
-    'My courses', 'Change password', 'Become a tutor', 'Log out'];
+    'My courses', S.current.change_password, 'Become a tutor', 'Log out'];
 
   List<String> routes = <String>[ AppRouter.myProfilePage, AppRouter.myWalletPage, AppRouter.mySchedulePage, AppRouter.myHistoryPage,
     AppRouter.myCoursesPage, AppRouter.changePasswordPage, AppRouter.becomeTutorPage, AppRouter.signInPage];
@@ -81,7 +82,6 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const TransparentAppBar(),
         body: SingleChildScrollView(
           padding: const EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 0),
           child: Column(

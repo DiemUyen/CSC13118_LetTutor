@@ -13,7 +13,7 @@ class DioInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    if (!options.path.contains('/auth')) {
+    if (options.path.contains('/auth/change-password') || !options.path.contains('/auth')) {
       String authToken = _preferencesService.token ?? '';
       options.headers['Authorization'] = 'Bearer $authToken';
     }

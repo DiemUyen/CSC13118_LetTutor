@@ -249,6 +249,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Confirm password does not match the new password`
+  String get confirm_password_error {
+    return Intl.message(
+      'Confirm password does not match the new password',
+      name: 'confirm_password_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old password`
+  String get old_password {
+    return Intl.message(
+      'Old password',
+      name: 'old_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get new_password {
+    return Intl.message(
+      'New password',
+      name: 'new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get confirm_password {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Password`
+  String get change_password {
+    return Intl.message(
+      'Change Password',
+      name: 'change_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Password Failed!`
+  String get change_password_error {
+    return Intl.message(
+      'Change Password Failed!',
+      name: 'change_password_error',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

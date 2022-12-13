@@ -23,6 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_language": MessageLookupByLibrary.simpleMessage("Language"),
+        "change_password":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
+        "change_password_error":
+            MessageLookupByLibrary.simpleMessage("Change Password Failed!"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "confirm_password_error": MessageLookupByLibrary.simpleMessage(
+            "Confirm password does not match the new password"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
         "email_empty":
             MessageLookupByLibrary.simpleMessage("Email address is not empty"),
@@ -39,8 +47,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "have_an_account":
             MessageLookupByLibrary.simpleMessage("Have an account?"),
+        "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "not_have_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
         "or": MessageLookupByLibrary.simpleMessage("or"),
         "password_empty":
             MessageLookupByLibrary.simpleMessage("Password is not empty"),

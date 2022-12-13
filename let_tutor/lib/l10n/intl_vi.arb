@@ -17,6 +17,12 @@
     "error_reset_password": "Không thể làm mới mật khẩu",
     "sign_in_failed": "Đăng nhập thất bại!",
     "or": "hoặc",
-    "sign_up_failed": "Tạo tài khoản không thành công!",
-    "have_an_account": "Đã có tài khoản?"
+    "sign_up_failed": "Tạo tài khoản thất bại!",
+    "have_an_account": "Đã có tài khoản?",
+    "confirm_password_error": "Mật khẩu chưa trùng khớp với mật khẩu mới",
+    "old_password": "Mật khẩu cũ",
+    "new_password": "Mật khẩu mới",
+    "confirm_password": "Xác nhận mật khẩu mới",
+    "change_password": "Đổi mật khẩu",
+    "change_password_error": "Đổi mật khẩu thất bại!"
 }

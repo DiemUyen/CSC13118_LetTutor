@@ -12,4 +12,8 @@ class Endpoints {
   static const tutorInformation = '/tutor';
   static const searchTutor = '/tutor/search';
   static const addFavoriteTutor = '/user/manageFavoriteTutor';
+
+  // User
+  static const changePassword = '/auth/change-password';
+  static const userInformation = '/user/info';
 }

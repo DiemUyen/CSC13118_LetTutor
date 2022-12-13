@@ -24,6 +24,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_language":
             MessageLookupByLibrary.simpleMessage("Ngôn ngữ ứng dụng"),
+        "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
+        "change_password_error":
+            MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thất bại!"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
+        "confirm_password_error": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu chưa trùng khớp với mật khẩu mới"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Chế độ tối"),
         "email_empty":
             MessageLookupByLibrary.simpleMessage("Email không được để trống"),
@@ -40,8 +47,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
         "have_an_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
+        "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "not_have_account":
             MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
+        "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
         "or": MessageLookupByLibrary.simpleMessage("hoặc"),
         "password_empty": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được để trống"),
@@ -53,8 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_in_failed":
             MessageLookupByLibrary.simpleMessage("Đăng nhập thất bại!"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),
-        "sign_up_failed": MessageLookupByLibrary.simpleMessage(
-            "Tạo tài khoản không thành công!"),
+        "sign_up_failed":
+            MessageLookupByLibrary.simpleMessage("Tạo tài khoản thất bại!"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt")
       };
 }

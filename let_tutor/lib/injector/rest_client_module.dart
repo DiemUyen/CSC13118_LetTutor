@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:let_tutor/configs/app_config.dart';
+import 'package:let_tutor/data/data_providers/user_provider.dart';
 import 'package:let_tutor/exceptions/interceptor.dart';
 import 'package:let_tutor/injector/injector.dart';
 
@@ -49,6 +50,12 @@ class RestClientModule {
 
     injector.registerFactory<TutorProvider>(
       () => TutorProvider(
+        injector(instanceName: dioInstance),
+      ),
+    );
+
+    injector.registerFactory<UserProvider>(
+      () => UserProvider(
         injector(instanceName: dioInstance),
       ),
     );
