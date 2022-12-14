@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_language": MessageLookupByLibrary.simpleMessage("Language"),
+        "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "change_password_error":
@@ -52,10 +53,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
         "or": MessageLookupByLibrary.simpleMessage("or"),
+        "others_review":
+            MessageLookupByLibrary.simpleMessage("Others review you"),
         "password_empty":
             MessageLookupByLibrary.simpleMessage("Password is not empty"),
+        "phone": MessageLookupByLibrary.simpleMessage("Number phone"),
         "return_sign_in":
             MessageLookupByLibrary.simpleMessage("Return Sign In"),
+        "save_changes": MessageLookupByLibrary.simpleMessage("Save Changes"),
+        "select_birthday":
+            MessageLookupByLibrary.simpleMessage("Select your birthday"),
         "send_link_reset_password":
             MessageLookupByLibrary.simpleMessage("Send Link"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
@@ -64,6 +71,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "sign_up_failed":
             MessageLookupByLibrary.simpleMessage("Sign up failed!"),
+        "study_schedule":
+            MessageLookupByLibrary.simpleMessage("Study Schedule"),
+        "update_failed": MessageLookupByLibrary.simpleMessage("Update Failed!"),
+        "update_success":
+            MessageLookupByLibrary.simpleMessage("Update Success!"),
+        "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "username_empty":
+            MessageLookupByLibrary.simpleMessage("Username is not empty"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Vietnamese")
       };
 }

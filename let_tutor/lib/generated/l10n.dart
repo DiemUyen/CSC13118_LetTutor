@@ -309,6 +309,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Username`
+  String get username {
+    return Intl.message(
+      'Username',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number phone`
+  String get phone {
+    return Intl.message(
+      'Number phone',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birthday`
+  String get birthday {
+    return Intl.message(
+      'Birthday',
+      name: 'birthday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select your birthday`
+  String get select_birthday {
+    return Intl.message(
+      'Select your birthday',
+      name: 'select_birthday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Study Schedule`
+  String get study_schedule {
+    return Intl.message(
+      'Study Schedule',
+      name: 'study_schedule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get save_changes {
+    return Intl.message(
+      'Save Changes',
+      name: 'save_changes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Others review you`
+  String get others_review {
+    return Intl.message(
+      'Others review you',
+      name: 'others_review',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username is not empty`
+  String get username_empty {
+    return Intl.message(
+      'Username is not empty',
+      name: 'username_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Failed!`
+  String get update_failed {
+    return Intl.message(
+      'Update Failed!',
+      name: 'update_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Success!`
+  String get update_success {
+    return Intl.message(
+      'Update Success!',
+      name: 'update_success',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_language":
             MessageLookupByLibrary.simpleMessage("Ngôn ngữ ứng dụng"),
+        "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh nhật"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_error":
             MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thất bại!"),
@@ -52,10 +53,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
         "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
         "or": MessageLookupByLibrary.simpleMessage("hoặc"),
+        "others_review":
+            MessageLookupByLibrary.simpleMessage("Đánh giá về bạn"),
         "password_empty": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được để trống"),
+        "phone": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "return_sign_in":
             MessageLookupByLibrary.simpleMessage("Trở về Đăng nhập"),
+        "save_changes": MessageLookupByLibrary.simpleMessage("Lưu thay đổi"),
+        "select_birthday":
+            MessageLookupByLibrary.simpleMessage("Chọn ngày sinh của bạn"),
         "send_link_reset_password":
             MessageLookupByLibrary.simpleMessage("Gửi liên kết"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
@@ -64,6 +71,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "sign_up_failed":
             MessageLookupByLibrary.simpleMessage("Tạo tài khoản thất bại!"),
+        "study_schedule":
+            MessageLookupByLibrary.simpleMessage("Thời khoá biểu"),
+        "update_failed":
+            MessageLookupByLibrary.simpleMessage("Cập nhật thất bại!"),
+        "update_success":
+            MessageLookupByLibrary.simpleMessage("Cập nhật thành công!"),
+        "username": MessageLookupByLibrary.simpleMessage("Tên người dùng"),
+        "username_empty": MessageLookupByLibrary.simpleMessage(
+            "Tên người dùng không được để trống"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt")
       };
 }

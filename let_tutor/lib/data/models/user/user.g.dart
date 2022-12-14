@@ -36,13 +36,15 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       timezone: json['timezone'] as int?,
       studySchedule: json['studySchedule'] as String?,
       canSendMessage: json['canSendMessage'] as bool?,
-      tutorInfo: json['tutorInfo'] as String?,
+      tutorInfo: json['tutorInfo'] == null
+          ? null
+          : TutorInfo.fromJson(json['tutorInfo'] as Map<String, dynamic>),
       referralInfo: json['referralInfo'] == null
           ? null
           : ReferralInfo.fromJson(json['referralInfo'] as Map<String, dynamic>),
       studentGroup: json['studentGroup'] as String?,
       studentInfo: json['studentInfo'] as String?,
-      avgRating: json['avgRating'] as int?,
+      avgRating: (json['avgRating'] as num?)?.toDouble(),
       isPublicRecord: json['isPublicRecord'] as bool?,
       caredByStaffId: json['caredByStaffId'] as String?,
       studentGroupId: json['studentGroupId'] as String?,

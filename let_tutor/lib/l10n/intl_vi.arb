@@ -24,5 +24,15 @@
     "new_password": "Mật khẩu mới",
     "confirm_password": "Xác nhận mật khẩu mới",
     "change_password": "Đổi mật khẩu",
-    "change_password_error": "Đổi mật khẩu thất bại!"
+    "change_password_error": "Đổi mật khẩu thất bại!",
+    "username": "Tên người dùng",
+    "phone": "Số điện thoại",
+    "birthday": "Ngày sinh nhật",
+    "select_birthday": "Chọn ngày sinh của bạn",
+    "study_schedule": "Thời khoá biểu",
+    "save_changes": "Lưu thay đổi",
+    "others_review": "Đánh giá về bạn",
+    "username_empty": "Tên người dùng không được để trống",
+    "update_failed": "Cập nhật thất bại!",
+    "update_success": "Cập nhật thành công!"
 }

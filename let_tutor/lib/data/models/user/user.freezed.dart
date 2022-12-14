@@ -40,11 +40,11 @@ mixin _$User {
   int? get timezone => throw _privateConstructorUsedError;
   String? get studySchedule => throw _privateConstructorUsedError;
   bool? get canSendMessage => throw _privateConstructorUsedError;
-  String? get tutorInfo => throw _privateConstructorUsedError;
+  TutorInfo? get tutorInfo => throw _privateConstructorUsedError;
   ReferralInfo? get referralInfo => throw _privateConstructorUsedError;
   String? get studentGroup => throw _privateConstructorUsedError;
   String? get studentInfo => throw _privateConstructorUsedError;
-  int? get avgRating => throw _privateConstructorUsedError;
+  double? get avgRating => throw _privateConstructorUsedError;
   bool? get isPublicRecord => throw _privateConstructorUsedError;
   String? get caredByStaffId => throw _privateConstructorUsedError;
   String? get studentGroupId => throw _privateConstructorUsedError;
@@ -80,16 +80,17 @@ abstract class $UserCopyWith<$Res> {
       int? timezone,
       String? studySchedule,
       bool? canSendMessage,
-      String? tutorInfo,
+      TutorInfo? tutorInfo,
       ReferralInfo? referralInfo,
       String? studentGroup,
       String? studentInfo,
-      int? avgRating,
+      double? avgRating,
       bool? isPublicRecord,
       String? caredByStaffId,
       String? studentGroupId});
 
   $WalletInfoCopyWith<$Res>? get walletInfo;
+  $TutorInfoCopyWith<$Res>? get tutorInfo;
   $ReferralInfoCopyWith<$Res>? get referralInfo;
 }
 
@@ -219,7 +220,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       tutorInfo: freezed == tutorInfo
           ? _value.tutorInfo
           : tutorInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as TutorInfo?,
       referralInfo: freezed == referralInfo
           ? _value.referralInfo
           : referralInfo // ignore: cast_nullable_to_non_nullable
@@ -235,7 +236,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       avgRating: freezed == avgRating
           ? _value.avgRating
           : avgRating // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       isPublicRecord: freezed == isPublicRecord
           ? _value.isPublicRecord
           : isPublicRecord // ignore: cast_nullable_to_non_nullable
@@ -260,6 +261,18 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 
     return $WalletInfoCopyWith<$Res>(_value.walletInfo!, (value) {
       return _then(_value.copyWith(walletInfo: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TutorInfoCopyWith<$Res>? get tutorInfo {
+    if (_value.tutorInfo == null) {
+      return null;
+    }
+
+    return $TutorInfoCopyWith<$Res>(_value.tutorInfo!, (value) {
+      return _then(_value.copyWith(tutorInfo: value) as $Val);
     });
   }
 
@@ -303,17 +316,19 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       int? timezone,
       String? studySchedule,
       bool? canSendMessage,
-      String? tutorInfo,
+      TutorInfo? tutorInfo,
       ReferralInfo? referralInfo,
       String? studentGroup,
       String? studentInfo,
-      int? avgRating,
+      double? avgRating,
       bool? isPublicRecord,
       String? caredByStaffId,
       String? studentGroupId});
 
   @override
   $WalletInfoCopyWith<$Res>? get walletInfo;
+  @override
+  $TutorInfoCopyWith<$Res>? get tutorInfo;
   @override
   $ReferralInfoCopyWith<$Res>? get referralInfo;
 }
@@ -440,7 +455,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
       tutorInfo: freezed == tutorInfo
           ? _value.tutorInfo
           : tutorInfo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as TutorInfo?,
       referralInfo: freezed == referralInfo
           ? _value.referralInfo
           : referralInfo // ignore: cast_nullable_to_non_nullable
@@ -456,7 +471,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
       avgRating: freezed == avgRating
           ? _value.avgRating
           : avgRating // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       isPublicRecord: freezed == isPublicRecord
           ? _value.isPublicRecord
           : isPublicRecord // ignore: cast_nullable_to_non_nullable
@@ -586,7 +601,7 @@ class _$_User implements _User {
   @override
   final bool? canSendMessage;
   @override
-  final String? tutorInfo;
+  final TutorInfo? tutorInfo;
   @override
   final ReferralInfo? referralInfo;
   @override
@@ -594,7 +609,7 @@ class _$_User implements _User {
   @override
   final String? studentInfo;
   @override
-  final int? avgRating;
+  final double? avgRating;
   @override
   final bool? isPublicRecord;
   @override
@@ -731,11 +746,11 @@ abstract class _User implements User {
       final int? timezone,
       final String? studySchedule,
       final bool? canSendMessage,
-      final String? tutorInfo,
+      final TutorInfo? tutorInfo,
       final ReferralInfo? referralInfo,
       final String? studentGroup,
       final String? studentInfo,
-      final int? avgRating,
+      final double? avgRating,
       final bool? isPublicRecord,
       final String? caredByStaffId,
       final String? studentGroupId}) = _$_User;
@@ -783,7 +798,7 @@ abstract class _User implements User {
   @override
   bool? get canSendMessage;
   @override
-  String? get tutorInfo;
+  TutorInfo? get tutorInfo;
   @override
   ReferralInfo? get referralInfo;
   @override
@@ -791,7 +806,7 @@ abstract class _User implements User {
   @override
   String? get studentInfo;
   @override
-  int? get avgRating;
+  double? get avgRating;
   @override
   bool? get isPublicRecord;
   @override

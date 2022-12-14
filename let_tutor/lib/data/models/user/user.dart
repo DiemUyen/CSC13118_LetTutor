@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:let_tutor/data/models/tutor/tutor_info.dart';
 import 'package:let_tutor/data/models/user/referral_info.dart';
 import 'package:let_tutor/data/models/user/wallet_info.dart';
 
@@ -31,11 +32,11 @@ class User with _$User {
     int? timezone,
     String? studySchedule,
     bool? canSendMessage,
-    String? tutorInfo,
+    TutorInfo? tutorInfo,
     ReferralInfo? referralInfo,
     String? studentGroup,
     String? studentInfo,
-    int? avgRating,
+    double? avgRating,
     bool? isPublicRecord,
     String? caredByStaffId,
     String? studentGroupId,

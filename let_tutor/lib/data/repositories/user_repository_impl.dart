@@ -14,7 +14,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  FutureOr<User> getUserInformation() async {
+  FutureOr<UserResponse> getUserInformation() async {
     // TODO: implement getUserInformation
     return await _userProvider
         .getUserInformation()
@@ -22,7 +22,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  FutureOr<User> updateUserInformation(
+  FutureOr<UserResponse> updateUserInformation(
       Map<String, dynamic> updateInformation) async {
     // TODO: implement updateUserInformation
     return await _userProvider

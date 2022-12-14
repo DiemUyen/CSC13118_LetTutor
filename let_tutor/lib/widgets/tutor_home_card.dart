@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -58,9 +59,17 @@ class _TutorInformation extends StatelessWidget {
           Row(
             children: [
               // Avatar
-              CircleAvatar(
-                foregroundImage: NetworkImage(tutor.avatar ?? ''),
-                radius: 32,
+              CachedNetworkImage(
+                width: 48,
+                height: 48,
+                imageUrl: tutor.avatar ?? '',
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(
+                  value: downloadProgress.progress,
+                ),
+                errorWidget: (context, url, error) => Image.asset(
+                  'assets/images/default_avatar.png',
+                ),
               ),
               const SizedBox(
                 width: 8,

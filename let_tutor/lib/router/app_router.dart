@@ -13,7 +13,7 @@ import '../features/profile/change_password/views/change_password_page.dart';
 import '../features/profile/history_detail.dart';
 import '../features/profile/history_page.dart';
 import '../features/profile/my_courses_page.dart';
-import '../features/profile/my_profile_page.dart';
+import '../features/profile/update_user_information/views/my_profile_page.dart';
 import '../features/profile/profile_home_page.dart';
 import '../features/profile/schedule_detail.dart';
 import '../features/profile/schedule_page.dart';

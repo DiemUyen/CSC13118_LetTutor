@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:let_tutor/configs/endpoints.dart';
 
-import '../models/user/user.dart';
+import '../models/responses/user_response.dart';
 
 class UserProvider {
   const UserProvider(this._dio);
@@ -21,24 +22,32 @@ class UserProvider {
     }
   }
 
-  Future<User> getUserInformation() async {
+  Future<UserResponse> getUserInformation() async {
     try {
       var response = await _dio.get(Endpoints.userInformation);
-      final User user = User.fromJson(response.data);
+      final UserResponse user = UserResponse.fromJson(response.data);
+      if (kDebugMode) {
+        print('User response: $user');
+      }
       return user;
     } catch (exception) {
-      return const User();
+      if (kDebugMode) {
+        print(exception.toString());
+      }
+      return const UserResponse();
     }
   }
 
-  Future<User> updateUserInformation(Map<String, dynamic> updateInformation) async {
+  Future<UserResponse> updateUserInformation(
+      Map<String, dynamic> updateInformation) async {
     try {
-      var response = await _dio.put(Endpoints.userInformation, data: json.decode(updateInformation.toString()));
-      final User user = User.fromJson(response.data);
+      var response = await _dio.put(Endpoints.userInformation,
+          data: updateInformation);
+      final UserResponse user = UserResponse.fromJson(response.data);
       return user;
-    }
-    catch (exception) {
-      return const User();
+    } catch (exception) {
+      print(exception);
+      return const UserResponse();
     }
   }
 }
