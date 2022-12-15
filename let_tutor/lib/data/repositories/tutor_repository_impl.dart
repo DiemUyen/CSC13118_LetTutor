@@ -32,10 +32,10 @@ class TutorRepositoryImpl extends TutorRepository {
   }
 
   @override
-  Future<Tutors> searchTutor(List<String> specialties) async {
+  Future<Tutors> searchTutor(Map<String, dynamic> filters, String? tutorName) async {
     // TODO: implement searchTutor
     return await _tutorProvider
-        .searchTutor(specialties)
+        .searchTutor(filters, tutorName)
         .catchError(DioExceptionHandler.handleException);
   }
 
@@ -45,6 +45,22 @@ class TutorRepositoryImpl extends TutorRepository {
     // TODO: implement writeReview
     return await _tutorProvider
         .writeReview(bookingId, userId, rating, content)
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<List<LearnTopics>> getLearnTopics() async {
+    // TODO: implement getLearnTopics
+    return await _tutorProvider
+        .getLearnTopics()
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<List<TestPreparation>> getTestPreparation() async {
+    // TODO: implement getTestPreparation
+    return await _tutorProvider
+        .getTestPreparation()
         .catchError(DioExceptionHandler.handleException);
   }
 }

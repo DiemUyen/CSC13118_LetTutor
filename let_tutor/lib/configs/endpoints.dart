@@ -12,6 +12,8 @@ class Endpoints {
   static const tutorInformation = '/tutor';
   static const searchTutor = '/tutor/search';
   static const addFavoriteTutor = '/user/manageFavoriteTutor';
+  static const getLearnTopics = '/learn-topic';
+  static const getTestPreparations = '/test-preparation';
 
   // Course
   static const listCourses = '/course';

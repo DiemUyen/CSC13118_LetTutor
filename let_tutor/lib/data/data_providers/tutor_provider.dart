@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:let_tutor/configs/endpoints.dart';
+import 'package:let_tutor/data/models/user/test_preparation.dart';
 
 import '../models/responses/tutor_response.dart';
 import '../models/tutor/tutor.dart';
 import '../models/tutor/tutors.dart';
+import '../models/user/learn_topics.dart';
 
 class TutorProvider {
   const TutorProvider(this._dio);
@@ -29,8 +33,12 @@ class TutorProvider {
     return tutor;
   }
 
-  Future<Tutors> searchTutor(List<String> specialties) async {
-    var response = await _dio.post(Endpoints.searchTutor);
+  Future<Tutors> searchTutor(
+      Map<String, dynamic> filters, String? tutorName) async {
+    var response = tutorName == null
+        ? await _dio.post(Endpoints.searchTutor, data: {'filters': filters})
+        : await _dio.post(Endpoints.searchTutor,
+            data: {'filters': filters, 'search': tutorName});
     final tutors = Tutors.fromJson(response.data);
     return tutors;
   }
@@ -44,5 +52,23 @@ class TutorProvider {
       'content': content
     });
     return response.statusCode == 200;
+  }
+
+  Future<List<LearnTopics>> getLearnTopics() async {
+    var response = await _dio.get(Endpoints.getLearnTopics);
+    var listLearnTopics = <LearnTopics>[];
+    (response.data as List).forEach((element) {
+      listLearnTopics.add(LearnTopics.fromJson(element));
+    });
+    return listLearnTopics;
+  }
+
+  Future<List<TestPreparation>> getTestPreparation() async {
+    var response = await _dio.get(Endpoints.getTestPreparations);
+    var listTestPreparations = <TestPreparation>[];
+    (response.data as List).forEach((element) {
+      listTestPreparations.add(TestPreparation.fromJson(element));
+    });
+    return listTestPreparations;
   }
 }

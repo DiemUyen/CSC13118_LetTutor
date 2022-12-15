@@ -35,7 +35,8 @@ mixin _$User {
   String? get requireNote => throw _privateConstructorUsedError;
   String? get level => throw _privateConstructorUsedError;
   List<LearnTopics>? get learnTopics => throw _privateConstructorUsedError;
-  List<LearnTopics>? get testPreparations => throw _privateConstructorUsedError;
+  List<TestPreparation>? get testPreparations =>
+      throw _privateConstructorUsedError;
   bool? get isPhoneActivated => throw _privateConstructorUsedError;
   int? get timezone => throw _privateConstructorUsedError;
   String? get studySchedule => throw _privateConstructorUsedError;
@@ -75,7 +76,7 @@ abstract class $UserCopyWith<$Res> {
       String? requireNote,
       String? level,
       List<LearnTopics>? learnTopics,
-      List<LearnTopics>? testPreparations,
+      List<TestPreparation>? testPreparations,
       bool? isPhoneActivated,
       int? timezone,
       String? studySchedule,
@@ -200,7 +201,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       testPreparations: freezed == testPreparations
           ? _value.testPreparations
           : testPreparations // ignore: cast_nullable_to_non_nullable
-              as List<LearnTopics>?,
+              as List<TestPreparation>?,
       isPhoneActivated: freezed == isPhoneActivated
           ? _value.isPhoneActivated
           : isPhoneActivated // ignore: cast_nullable_to_non_nullable
@@ -311,7 +312,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? requireNote,
       String? level,
       List<LearnTopics>? learnTopics,
-      List<LearnTopics>? testPreparations,
+      List<TestPreparation>? testPreparations,
       bool? isPhoneActivated,
       int? timezone,
       String? studySchedule,
@@ -435,7 +436,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
       testPreparations: freezed == testPreparations
           ? _value._testPreparations
           : testPreparations // ignore: cast_nullable_to_non_nullable
-              as List<LearnTopics>?,
+              as List<TestPreparation>?,
       isPhoneActivated: freezed == isPhoneActivated
           ? _value.isPhoneActivated
           : isPhoneActivated // ignore: cast_nullable_to_non_nullable
@@ -507,7 +508,7 @@ class _$_User implements _User {
       this.requireNote,
       this.level,
       final List<LearnTopics>? learnTopics,
-      final List<LearnTopics>? testPreparations,
+      final List<TestPreparation>? testPreparations,
       this.isPhoneActivated,
       this.timezone,
       this.studySchedule,
@@ -581,9 +582,9 @@ class _$_User implements _User {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<LearnTopics>? _testPreparations;
+  final List<TestPreparation>? _testPreparations;
   @override
-  List<LearnTopics>? get testPreparations {
+  List<TestPreparation>? get testPreparations {
     final value = _testPreparations;
     if (value == null) return null;
     if (_testPreparations is EqualUnmodifiableListView)
@@ -741,7 +742,7 @@ abstract class _User implements User {
       final String? requireNote,
       final String? level,
       final List<LearnTopics>? learnTopics,
-      final List<LearnTopics>? testPreparations,
+      final List<TestPreparation>? testPreparations,
       final bool? isPhoneActivated,
       final int? timezone,
       final String? studySchedule,
@@ -788,7 +789,7 @@ abstract class _User implements User {
   @override
   List<LearnTopics>? get learnTopics;
   @override
-  List<LearnTopics>? get testPreparations;
+  List<TestPreparation>? get testPreparations;
   @override
   bool? get isPhoneActivated;
   @override

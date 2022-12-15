@@ -77,7 +77,7 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
       ));
       await S.load(Locale(event.locale));
 
-      _sharedPreferencesService.setLocale(event.locale);
+      await _sharedPreferencesService.setLocale(event.locale);
 
       emit(state.copyWith(
         status: UIStatus.loadSuccess,
@@ -95,7 +95,7 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
         status: UIStatus.loading,
       ));
 
-      _sharedPreferencesService.setIsDarkMode(event.enable);
+      await _sharedPreferencesService.setIsDarkMode(event.enable);
 
       emit(state.copyWith(
         status: UIStatus.loadSuccess,

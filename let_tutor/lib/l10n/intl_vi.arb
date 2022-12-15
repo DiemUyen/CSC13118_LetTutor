@@ -55,5 +55,13 @@
     "what_able_to_do": "Bạn có thể học được gì?",
     "load_failed": "Tải dữ liệu thất bại!",
     "more_info": "Xem thêm",
-    "topics": "Chủ đề"
+    "topics": "Chủ đề",
+    "upcoming_lesson": "Buổi học sắp tới",
+    "enter_lesson_room": "Tham gia buổi học",
+    "reset_filters": "Đặt lại bộ tìm kiếm",
+    "search_tutor_name": "Nhập tên giáo viên",
+    "foreign_tutor": "Gia sư nước ngoài",
+    "vietnamese_tutor": "Gia sư người Việt",
+    "native_english_tutor": "Gia sư tiếng Anh bản ngữ",
+    "select_tutor_nationality": "Chọn quốc tịch gia sư"
 }

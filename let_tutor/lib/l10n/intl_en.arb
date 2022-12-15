@@ -55,5 +55,13 @@
     "what_able_to_do": "What will you be able to do?",
     "load_failed": "Load Failed!",
     "more_info": "More Info",
-    "topics": "Topics"
+    "topics": "Topics",
+    "upcoming_lesson": "Upcoming Lesson",
+    "enter_lesson_room": "Enter lesson room",
+    "reset_filters": "Reset filters",
+    "search_tutor_name": "Enter tutor name",
+    "foreign_tutor": "Foreign Tutor",
+    "vietnamese_tutor": "Vietnamese Tutor",
+    "native_english_tutor": "Native English Tutor",
+    "select_tutor_nationality": "Select tutor nationality"
 }

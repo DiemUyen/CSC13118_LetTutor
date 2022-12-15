@@ -28,7 +28,7 @@ class ApplicationState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, locale, isDarkMode];
+  List<Object?> get props => [status, locale, isDarkMode, authStatus];
 }
 
 enum UIStatus {

@@ -49,10 +49,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "email_wrong_format": MessageLookupByLibrary.simpleMessage(
             "Email address is not right format"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "enter_lesson_room":
+            MessageLookupByLibrary.simpleMessage("Enter lesson room"),
         "error_reset_password":
             MessageLookupByLibrary.simpleMessage("Error reset password"),
         "experience_level":
             MessageLookupByLibrary.simpleMessage("Experience Level"),
+        "foreign_tutor": MessageLookupByLibrary.simpleMessage("Foreign Tutor"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "have_an_account":
@@ -66,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "list_topics": MessageLookupByLibrary.simpleMessage("List Topics"),
         "load_failed": MessageLookupByLibrary.simpleMessage("Load Failed!"),
         "more_info": MessageLookupByLibrary.simpleMessage("More Info"),
+        "native_english_tutor":
+            MessageLookupByLibrary.simpleMessage("Native English Tutor"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "no_data": MessageLookupByLibrary.simpleMessage("No Data"),
         "not_have_account":
@@ -78,13 +83,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_empty":
             MessageLookupByLibrary.simpleMessage("Password is not empty"),
         "phone": MessageLookupByLibrary.simpleMessage("Number phone"),
+        "reset_filters": MessageLookupByLibrary.simpleMessage("Reset filters"),
         "return_sign_in":
             MessageLookupByLibrary.simpleMessage("Return Sign In"),
         "save_changes": MessageLookupByLibrary.simpleMessage("Save Changes"),
         "search_course":
             MessageLookupByLibrary.simpleMessage("Enter a course name"),
+        "search_tutor_name":
+            MessageLookupByLibrary.simpleMessage("Enter tutor name"),
         "select_birthday":
             MessageLookupByLibrary.simpleMessage("Select your birthday"),
+        "select_tutor_nationality":
+            MessageLookupByLibrary.simpleMessage("Select tutor nationality"),
         "send_link_reset_password":
             MessageLookupByLibrary.simpleMessage("Send Link"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
@@ -99,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "suggested_tutors":
             MessageLookupByLibrary.simpleMessage("Suggested Tutors"),
         "topics": MessageLookupByLibrary.simpleMessage("Topics"),
+        "upcoming_lesson":
+            MessageLookupByLibrary.simpleMessage("Upcoming Lesson"),
         "update_failed": MessageLookupByLibrary.simpleMessage("Update Failed!"),
         "update_success":
             MessageLookupByLibrary.simpleMessage("Update Success!"),
@@ -106,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "username_empty":
             MessageLookupByLibrary.simpleMessage("Username is not empty"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Vietnamese"),
+        "vietnamese_tutor":
+            MessageLookupByLibrary.simpleMessage("Vietnamese Tutor"),
         "what_able_to_do": MessageLookupByLibrary.simpleMessage(
             "What will you be able to do?"),
         "why_take_course":

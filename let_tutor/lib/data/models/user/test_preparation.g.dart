@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'learn_topics.dart';
+part of 'test_preparation.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LearnTopics _$$_LearnTopicsFromJson(Map<String, dynamic> json) =>
-    _$_LearnTopics(
+_$_TestPreparation _$$_TestPreparationFromJson(Map<String, dynamic> json) =>
+    _$_TestPreparation(
       id: json['id'] as int?,
       key: json['key'] as String?,
       name: json['name'] as String?,
@@ -15,7 +15,7 @@ _$_LearnTopics _$$_LearnTopicsFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updatedAt'] as String?,
     );
 
-Map<String, dynamic> _$$_LearnTopicsToJson(_$_LearnTopics instance) =>
+Map<String, dynamic> _$$_TestPreparationToJson(_$_TestPreparation instance) =>
     <String, dynamic>{
       'id': instance.id,
       'key': instance.key,

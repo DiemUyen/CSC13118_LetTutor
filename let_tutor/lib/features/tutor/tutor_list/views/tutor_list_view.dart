@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:let_tutor/data/models/user/learn_topics.dart';
 
+import '../../../../data/models/user/test_preparation.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
 import '../../../../widgets/widgets.dart';
 import '../bloc/tutor_list_bloc.dart';
@@ -21,8 +24,40 @@ class TutorListView extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              const _SearchBar(),
-              const SizedBox(height: 16,),
+              _SearchBar(),
+              const SizedBox(
+                height: 8,
+              ),
+              BlocBuilder<TutorListBloc, TutorListState>(
+                  builder: (context, state) {
+                return Visibility(
+                  visible: state.isSearching,
+                  child: Column(
+                    children: const [
+                      _NationalitiesFilter(),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      _AvailableDateFilter(),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      _StartTimeFilter(),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      _EndTimeFilter(),
+                    ],
+                  ),
+                );
+              }),
+              const SizedBox(
+                height: 16,
+              ),
+              _SpecialitiesChip(),
+              const SizedBox(
+                height: 16,
+              ),
               BlocBuilder<TutorListBloc, TutorListState>(
                 builder: (context, state) {
                   if (state.status == TutorListStatus.loading) {
@@ -33,11 +68,10 @@ class TutorListView extends StatelessWidget {
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: state.tutors.tutors?.rows?.length ?? 0,
-                      itemBuilder: (context, index) =>
-                          TutorHomeCard(
-                            tutor: state.tutors.tutors!.rows![index],
-                          ),
+                      itemCount: state.filteredTutors.length ?? 0,
+                      itemBuilder: (context, index) => TutorHomeCard(
+                        tutor: state.filteredTutors[index],
+                      ),
                     );
                   }
                   return Container();
@@ -62,7 +96,7 @@ class _UpcomingLesson extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Upcoming lesson",
+              S.current.upcoming_lesson,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(
@@ -79,7 +113,7 @@ class _UpcomingLesson extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, AppRouter.meetingPage);
               },
-              label: const Text("Enter lesson room"),
+              label: Text(S.current.enter_lesson_room),
               icon: const Icon(Icons.play_circle_fill_outlined),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.primary,
@@ -94,14 +128,31 @@ class _UpcomingLesson extends StatelessWidget {
 }
 
 class _SearchBar extends StatelessWidget {
-  const _SearchBar({Key? key}) : super(key: key);
+  _SearchBar({Key? key}) : super(key: key);
+
+  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         // Search bar
-        const Expanded(flex: 1, child: SearchBar(hintText: 'Enter tutor name')),
+        Expanded(
+          flex: 1,
+          child: TextField(
+            controller: controller,
+            onChanged: (value) {
+              context
+                  .read<TutorListBloc>()
+                  .add(TutorListNameSearched(tutorName: value));
+            },
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.search_outlined),
+              border: const OutlineInputBorder(),
+              hintText: S.current.search_tutor_name,
+            ),
+          ),
+        ),
         const SizedBox(
           width: 16,
         ),
@@ -109,7 +160,7 @@ class _SearchBar extends StatelessWidget {
         IconButton(
           icon: const Icon(Icons.filter_list_outlined),
           onPressed: () {
-            // todo add event filter button pressed
+            context.read<TutorListBloc>().add(TutorListFilterButtonPressed());
           },
         ),
       ],
@@ -117,21 +168,40 @@ class _SearchBar extends StatelessWidget {
   }
 }
 
-class _NationalitiesFilter extends StatelessWidget {
+class _NationalitiesFilter extends StatefulWidget {
   const _NationalitiesFilter({Key? key}) : super(key: key);
+
+  @override
+  State<_NationalitiesFilter> createState() => _NationalitiesFilterState();
+}
+
+class _NationalitiesFilterState extends State<_NationalitiesFilter> {
+  static Map<String, Map<String, bool>> nationalities = {
+    S.current.vietnamese_tutor: {'isVietnamese': true},
+    S.current.native_english_tutor: {'isNative': true},
+    S.current.foreign_tutor: {'isVietnamese': false, 'isNative': false},
+  };
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        /*padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: DropdownButton<String>(
-            isExpanded: true,
-            value: listNationalities.first,
-            items: listNationalities.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(value: value, child: Text(value));
-            }).toList(),
-            onChanged: (String? value) { }
-        ),*/
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: DropdownButton<String>(
+        isExpanded: true,
+        hint: Text(S.current.select_tutor_nationality),
+        items: nationalities.keys.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(value: value, child: Text(value));
+        }).toList(),
+        value: selectedValue,
+        onChanged: (String? value) {
+          context.read<TutorListBloc>().add(
+              TutorListNationalityChanged(nationality: nationalities[value]!));
+          setState(() {
+            selectedValue = value;
+          });
+        },
+      ),
     );
   }
 }
@@ -142,12 +212,11 @@ class _AvailableDateFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      decoration: InputDecoration(
-          icon: const Icon(Icons.calendar_today_outlined),
-          border: const OutlineInputBorder(),
+      decoration: const InputDecoration(
+          suffixIcon: Icon(Icons.calendar_today_outlined),
+          border: OutlineInputBorder(),
           //hintText: datePicker,
-          hintStyle: const TextStyle(color: Colors.black)
-      ),
+          hintStyle: TextStyle(color: Colors.black)),
       readOnly: true,
       onTap: () async {
         DateTime? picked = await showDatePicker(
@@ -155,11 +224,8 @@ class _AvailableDateFilter extends StatelessWidget {
             initialDate: DateTime.now(),
             firstDate: DateTime.now(),
             lastDate: DateTime(DateTime.now().year + 1),
-            helpText: 'Select available tutoring day'
-        );
-        if (picked != null) {
-
-        }
+            helpText: 'Select available tutoring day');
+        if (picked != null) {}
       },
     );
   }
@@ -171,22 +237,18 @@ class _StartTimeFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      decoration: InputDecoration(
-          icon: const Icon(Icons.access_time),
-          border: const OutlineInputBorder(),
+      decoration: const InputDecoration(
+          suffixIcon: Icon(Icons.access_time),
+          border: OutlineInputBorder(),
           //hintText: startTimePicker,
-          hintStyle: const TextStyle(color: Colors.black)
-      ),
+          hintStyle: TextStyle(color: Colors.black)),
       readOnly: true,
       onTap: () async {
         TimeOfDay? picked = await showTimePicker(
             context: context,
             initialTime: TimeOfDay.now(),
-            helpText: 'Select start time'
-        );
-        if (picked != null) {
-
-        }
+            helpText: 'Select start time');
+        if (picked != null) {}
       },
     );
   }
@@ -198,19 +260,17 @@ class _EndTimeFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      decoration: InputDecoration(
-          icon: const Icon(Icons.access_time),
-          border: const OutlineInputBorder(),
+      decoration: const InputDecoration(
+          suffixIcon: Icon(Icons.access_time),
+          border: OutlineInputBorder(),
           //hintText: endTimePicker,
-          hintStyle: const TextStyle(color: Colors.black)
-      ),
+          hintStyle: TextStyle(color: Colors.black)),
       readOnly: true,
       onTap: () async {
         TimeOfDay? picked = await showTimePicker(
             context: context,
             initialTime: TimeOfDay.now(),
-            helpText: 'Select end time'
-        );
+            helpText: 'Select end time');
         if (picked != null) {
           /*setState(() {
             endTimePicker = picked.format(context);
@@ -222,18 +282,72 @@ class _EndTimeFilter extends StatelessWidget {
 }
 
 class _SpecialitiesChip extends StatelessWidget {
-  const _SpecialitiesChip({Key? key}) : super(key: key);
+  _SpecialitiesChip({Key? key}) : super(key: key);
+
+  List<LearnTopics> learnTopics = [];
+  List<TestPreparation> testPreparations = [];
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-    /*return Wrap(
-        spacing: 8,
-        runSpacing: 8,
-        children:
-        specialities.map<Widget>((String speciality) {
-          return FilterChip(label: Text(speciality), onSelected: (bool value) { });
-        }).toList()
-    );*/
+    return BlocBuilder<TutorListBloc, TutorListState>(
+      builder: (context, state) {
+        if (state.status == TutorListStatus.loadSuccess) {
+          learnTopics = state.learnTopics;
+          testPreparations = state.testPreparations;
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: learnTopics.map<Widget>((LearnTopics speciality) {
+                  return FilterChip(
+                      label: Text(speciality.name ?? ''),
+                      selected: (state.filters['specialties'] as List<String>)
+                          .contains(speciality.key ?? '0'),
+                      onSelected: (bool value) {
+                        context.read<TutorListBloc>().add(
+                            TutorListSpecialityChosen(
+                                speciality: speciality.key ?? ''));
+                      });
+                }).toList(),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children:
+                    testPreparations.map<Widget>((TestPreparation speciality) {
+                  return FilterChip(
+                      label: Text(speciality.name ?? ''),
+                      selected: (state.filters['specialties'] as List<String>)
+                          .contains(speciality.key ?? '0'),
+                      onSelected: (bool value) {
+                        context.read<TutorListBloc>().add(
+                            TutorListSpecialityChosen(
+                                speciality: speciality.key ?? ''));
+                      });
+                }).toList(),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  context
+                      .read<TutorListBloc>()
+                      .add(TutorListResetFilterButtonPressed());
+                },
+                child: Text(S.current.reset_filters),
+              ),
+            ],
+          );
+        }
+        return Container();
+      },
+    );
   }
 }

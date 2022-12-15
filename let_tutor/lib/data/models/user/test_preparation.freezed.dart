@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'learn_topics.dart';
+part of 'test_preparation.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-LearnTopics _$LearnTopicsFromJson(Map<String, dynamic> json) {
-  return _LearnTopics.fromJson(json);
+TestPreparation _$TestPreparationFromJson(Map<String, dynamic> json) {
+  return _TestPreparation.fromJson(json);
 }
 
 /// @nodoc
-mixin _$LearnTopics {
+mixin _$TestPreparation {
   int? get id => throw _privateConstructorUsedError;
   String? get key => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
@@ -28,15 +28,15 @@ mixin _$LearnTopics {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LearnTopicsCopyWith<LearnTopics> get copyWith =>
+  $TestPreparationCopyWith<TestPreparation> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LearnTopicsCopyWith<$Res> {
-  factory $LearnTopicsCopyWith(
-          LearnTopics value, $Res Function(LearnTopics) then) =
-      _$LearnTopicsCopyWithImpl<$Res, LearnTopics>;
+abstract class $TestPreparationCopyWith<$Res> {
+  factory $TestPreparationCopyWith(
+          TestPreparation value, $Res Function(TestPreparation) then) =
+      _$TestPreparationCopyWithImpl<$Res, TestPreparation>;
   @useResult
   $Res call(
       {int? id,
@@ -47,9 +47,9 @@ abstract class $LearnTopicsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LearnTopicsCopyWithImpl<$Res, $Val extends LearnTopics>
-    implements $LearnTopicsCopyWith<$Res> {
-  _$LearnTopicsCopyWithImpl(this._value, this._then);
+class _$TestPreparationCopyWithImpl<$Res, $Val extends TestPreparation>
+    implements $TestPreparationCopyWith<$Res> {
+  _$TestPreparationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,11 +91,11 @@ class _$LearnTopicsCopyWithImpl<$Res, $Val extends LearnTopics>
 }
 
 /// @nodoc
-abstract class _$$_LearnTopicsCopyWith<$Res>
-    implements $LearnTopicsCopyWith<$Res> {
-  factory _$$_LearnTopicsCopyWith(
-          _$_LearnTopics value, $Res Function(_$_LearnTopics) then) =
-      __$$_LearnTopicsCopyWithImpl<$Res>;
+abstract class _$$_TestPreparationCopyWith<$Res>
+    implements $TestPreparationCopyWith<$Res> {
+  factory _$$_TestPreparationCopyWith(
+          _$_TestPreparation value, $Res Function(_$_TestPreparation) then) =
+      __$$_TestPreparationCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$_LearnTopicsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LearnTopicsCopyWithImpl<$Res>
-    extends _$LearnTopicsCopyWithImpl<$Res, _$_LearnTopics>
-    implements _$$_LearnTopicsCopyWith<$Res> {
-  __$$_LearnTopicsCopyWithImpl(
-      _$_LearnTopics _value, $Res Function(_$_LearnTopics) _then)
+class __$$_TestPreparationCopyWithImpl<$Res>
+    extends _$TestPreparationCopyWithImpl<$Res, _$_TestPreparation>
+    implements _$$_TestPreparationCopyWith<$Res> {
+  __$$_TestPreparationCopyWithImpl(
+      _$_TestPreparation _value, $Res Function(_$_TestPreparation) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_LearnTopicsCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_$_LearnTopics(
+    return _then(_$_TestPreparation(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -150,12 +150,12 @@ class __$$_LearnTopicsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LearnTopics implements _LearnTopics {
-  const _$_LearnTopics(
+class _$_TestPreparation implements _TestPreparation {
+  const _$_TestPreparation(
       {this.id, this.key, this.name, this.createdAt, this.updatedAt});
 
-  factory _$_LearnTopics.fromJson(Map<String, dynamic> json) =>
-      _$$_LearnTopicsFromJson(json);
+  factory _$_TestPreparation.fromJson(Map<String, dynamic> json) =>
+      _$$_TestPreparationFromJson(json);
 
   @override
   final int? id;
@@ -170,14 +170,14 @@ class _$_LearnTopics implements _LearnTopics {
 
   @override
   String toString() {
-    return 'LearnTopics(id: $id, key: $key, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TestPreparation(id: $id, key: $key, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LearnTopics &&
+            other is _$_TestPreparation &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.name, name) || other.name == name) &&
@@ -195,27 +195,27 @@ class _$_LearnTopics implements _LearnTopics {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LearnTopicsCopyWith<_$_LearnTopics> get copyWith =>
-      __$$_LearnTopicsCopyWithImpl<_$_LearnTopics>(this, _$identity);
+  _$$_TestPreparationCopyWith<_$_TestPreparation> get copyWith =>
+      __$$_TestPreparationCopyWithImpl<_$_TestPreparation>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LearnTopicsToJson(
+    return _$$_TestPreparationToJson(
       this,
     );
   }
 }
 
-abstract class _LearnTopics implements LearnTopics {
-  const factory _LearnTopics(
+abstract class _TestPreparation implements TestPreparation {
+  const factory _TestPreparation(
       {final int? id,
       final String? key,
       final String? name,
       final String? createdAt,
-      final String? updatedAt}) = _$_LearnTopics;
+      final String? updatedAt}) = _$_TestPreparation;
 
-  factory _LearnTopics.fromJson(Map<String, dynamic> json) =
-      _$_LearnTopics.fromJson;
+  factory _TestPreparation.fromJson(Map<String, dynamic> json) =
+      _$_TestPreparation.fromJson;
 
   @override
   int? get id;
@@ -229,6 +229,6 @@ abstract class _LearnTopics implements LearnTopics {
   String? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_LearnTopicsCopyWith<_$_LearnTopics> get copyWith =>
+  _$$_TestPreparationCopyWith<_$_TestPreparation> get copyWith =>
       throw _privateConstructorUsedError;
 }

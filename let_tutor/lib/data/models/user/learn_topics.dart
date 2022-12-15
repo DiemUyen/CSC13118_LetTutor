@@ -9,6 +9,8 @@ class LearnTopics with _$LearnTopics {
     int? id,
     String? key,
     String? name,
+    String? createdAt,
+    String? updatedAt,
   }) = _LearnTopics;
 
   factory LearnTopics.fromJson(Map<String, dynamic> json) =>

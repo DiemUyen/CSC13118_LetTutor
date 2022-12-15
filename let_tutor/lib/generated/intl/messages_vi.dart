@@ -50,10 +50,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "email_wrong_format":
             MessageLookupByLibrary.simpleMessage("Email không đúng định dạng"),
         "english": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
+        "enter_lesson_room":
+            MessageLookupByLibrary.simpleMessage("Tham gia buổi học"),
         "error_reset_password":
             MessageLookupByLibrary.simpleMessage("Không thể làm mới mật khẩu"),
         "experience_level":
             MessageLookupByLibrary.simpleMessage("Trình độ yêu cầu"),
+        "foreign_tutor":
+            MessageLookupByLibrary.simpleMessage("Gia sư nước ngoài"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
         "have_an_account":
@@ -68,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "load_failed":
             MessageLookupByLibrary.simpleMessage("Tải dữ liệu thất bại!"),
         "more_info": MessageLookupByLibrary.simpleMessage("Xem thêm"),
+        "native_english_tutor":
+            MessageLookupByLibrary.simpleMessage("Gia sư tiếng Anh bản ngữ"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "no_data": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "not_have_account":
@@ -80,13 +86,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_empty": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được để trống"),
         "phone": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
+        "reset_filters":
+            MessageLookupByLibrary.simpleMessage("Đặt lại bộ tìm kiếm"),
         "return_sign_in":
             MessageLookupByLibrary.simpleMessage("Trở về Đăng nhập"),
         "save_changes": MessageLookupByLibrary.simpleMessage("Lưu thay đổi"),
         "search_course":
             MessageLookupByLibrary.simpleMessage("Tìm tên khoá học"),
+        "search_tutor_name":
+            MessageLookupByLibrary.simpleMessage("Nhập tên giáo viên"),
         "select_birthday":
             MessageLookupByLibrary.simpleMessage("Chọn ngày sinh của bạn"),
+        "select_tutor_nationality":
+            MessageLookupByLibrary.simpleMessage("Chọn quốc tịch gia sư"),
         "send_link_reset_password":
             MessageLookupByLibrary.simpleMessage("Gửi liên kết"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
@@ -102,6 +114,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "suggested_tutors":
             MessageLookupByLibrary.simpleMessage("Gợi ý gia sư"),
         "topics": MessageLookupByLibrary.simpleMessage("Chủ đề"),
+        "upcoming_lesson":
+            MessageLookupByLibrary.simpleMessage("Buổi học sắp tới"),
         "update_failed":
             MessageLookupByLibrary.simpleMessage("Cập nhật thất bại!"),
         "update_success":
@@ -110,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "username_empty": MessageLookupByLibrary.simpleMessage(
             "Tên người dùng không được để trống"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
+        "vietnamese_tutor":
+            MessageLookupByLibrary.simpleMessage("Gia sư người Việt"),
         "what_able_to_do":
             MessageLookupByLibrary.simpleMessage("Bạn có thể học được gì?"),
         "why_take_course": MessageLookupByLibrary.simpleMessage(

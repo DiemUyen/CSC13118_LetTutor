@@ -24,12 +24,21 @@ class TutorListFilterButtonPressed extends TutorListEvent {
 }
 
 class TutorListFilterChanged extends TutorListEvent {
-  final String filters;
+  final Map<String, dynamic> filters;
 
   const TutorListFilterChanged({required this.filters});
 
   @override
   List<Object?> get props => [filters];
+}
+
+class TutorListNationalityChanged extends TutorListEvent {
+  final Map<String, bool> nationality;
+
+  const TutorListNationalityChanged({required this.nationality});
+
+  @override
+  List<Object?> get props => [nationality];
 }
 
 class TutorListSpecialityChosen extends TutorListEvent {
@@ -41,13 +50,9 @@ class TutorListSpecialityChosen extends TutorListEvent {
   List<Object?> get props => [speciality];
 }
 
-class TutorListSpecialitiesChanged extends TutorListEvent {
-  final List<String> specialities;
-
-  const TutorListSpecialitiesChanged({required this.specialities});
-
+class TutorListResetFilterButtonPressed extends TutorListEvent {
   @override
-  List<Object?> get props => [specialities];
+  List<Object?> get props => [];
 }
 
 class TutorListFavoriteButtonPressed extends TutorListEvent {

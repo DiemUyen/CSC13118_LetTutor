@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:let_tutor/data/models/tutor/tutor_info.dart';
 import 'package:let_tutor/data/models/user/referral_info.dart';
+import 'package:let_tutor/data/models/user/test_preparation.dart';
 import 'package:let_tutor/data/models/user/wallet_info.dart';
 
 import '../course/courses.dart';
@@ -27,7 +28,7 @@ class User with _$User {
     String? requireNote,
     String? level,
     List<LearnTopics>? learnTopics,
-    List<LearnTopics>? testPreparations,
+    List<TestPreparation>? testPreparations,
     bool? isPhoneActivated,
     int? timezone,
     String? studySchedule,

@@ -30,7 +30,7 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
           ?.map((e) => LearnTopics.fromJson(e as Map<String, dynamic>))
           .toList(),
       testPreparations: (json['testPreparations'] as List<dynamic>?)
-          ?.map((e) => LearnTopics.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => TestPreparation.fromJson(e as Map<String, dynamic>))
           .toList(),
       isPhoneActivated: json['isPhoneActivated'] as bool?,
       timezone: json['timezone'] as int?,

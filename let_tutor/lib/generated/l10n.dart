@@ -619,6 +619,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Upcoming Lesson`
+  String get upcoming_lesson {
+    return Intl.message(
+      'Upcoming Lesson',
+      name: 'upcoming_lesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter lesson room`
+  String get enter_lesson_room {
+    return Intl.message(
+      'Enter lesson room',
+      name: 'enter_lesson_room',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset filters`
+  String get reset_filters {
+    return Intl.message(
+      'Reset filters',
+      name: 'reset_filters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter tutor name`
+  String get search_tutor_name {
+    return Intl.message(
+      'Enter tutor name',
+      name: 'search_tutor_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Foreign Tutor`
+  String get foreign_tutor {
+    return Intl.message(
+      'Foreign Tutor',
+      name: 'foreign_tutor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vietnamese Tutor`
+  String get vietnamese_tutor {
+    return Intl.message(
+      'Vietnamese Tutor',
+      name: 'vietnamese_tutor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Native English Tutor`
+  String get native_english_tutor {
+    return Intl.message(
+      'Native English Tutor',
+      name: 'native_english_tutor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select tutor nationality`
+  String get select_tutor_nationality {
+    return Intl.message(
+      'Select tutor nationality',
+      name: 'select_tutor_nationality',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
