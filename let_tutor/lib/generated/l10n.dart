@@ -509,6 +509,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Discover`
+  String get discover {
+    return Intl.message(
+      'Discover',
+      name: 'discover',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overview`
+  String get overview {
+    return Intl.message(
+      'Overview',
+      name: 'overview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Experience Level`
+  String get experience_level {
+    return Intl.message(
+      'Experience Level',
+      name: 'experience_level',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course Length`
+  String get course_length {
+    return Intl.message(
+      'Course Length',
+      name: 'course_length',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `List Topics`
+  String get list_topics {
+    return Intl.message(
+      'List Topics',
+      name: 'list_topics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Suggested Tutors`
+  String get suggested_tutors {
+    return Intl.message(
+      'Suggested Tutors',
+      name: 'suggested_tutors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Why take this course?`
+  String get why_take_course {
+    return Intl.message(
+      'Why take this course?',
+      name: 'why_take_course',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What will you be able to do?`
+  String get what_able_to_do {
+    return Intl.message(
+      'What will you be able to do?',
+      name: 'what_able_to_do',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Load Failed!`
+  String get load_failed {
+    return Intl.message(
+      'Load Failed!',
+      name: 'load_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More Info`
+  String get more_info {
+    return Intl.message(
+      'More Info',
+      name: 'more_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Topics`
+  String get topics {
+    return Intl.message(
+      'Topics',
+      name: 'topics',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -8,3 +8,4 @@ export 'star_rating.dart';
 export 'transparent_app_bar.dart';
 export 'tutor_home_card.dart';
 export 'tutor_info.dart';
+export 'course_detail_item.dart';

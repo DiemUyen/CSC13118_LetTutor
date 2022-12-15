@@ -36,7 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_password_error": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu chưa trùng khớp với mật khẩu mới"),
         "course": MessageLookupByLibrary.simpleMessage("Khoá học"),
+        "course_length":
+            MessageLookupByLibrary.simpleMessage("Thời lượng khoá học"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Chế độ tối"),
+        "discover": MessageLookupByLibrary.simpleMessage("Khám phá"),
         "ebook": MessageLookupByLibrary.simpleMessage("E-book"),
         "email_empty":
             MessageLookupByLibrary.simpleMessage("Email không được để trống"),
@@ -49,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "english": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
         "error_reset_password":
             MessageLookupByLibrary.simpleMessage("Không thể làm mới mật khẩu"),
+        "experience_level":
+            MessageLookupByLibrary.simpleMessage("Trình độ yêu cầu"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
         "have_an_account":
@@ -59,6 +64,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Độ khó giảm dần"),
         "level_increasing":
             MessageLookupByLibrary.simpleMessage("Độ khó tăng dần"),
+        "list_topics": MessageLookupByLibrary.simpleMessage("Danh sách chủ đề"),
+        "load_failed":
+            MessageLookupByLibrary.simpleMessage("Tải dữ liệu thất bại!"),
+        "more_info": MessageLookupByLibrary.simpleMessage("Xem thêm"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "no_data": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "not_have_account":
@@ -67,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "or": MessageLookupByLibrary.simpleMessage("hoặc"),
         "others_review":
             MessageLookupByLibrary.simpleMessage("Đánh giá về bạn"),
+        "overview": MessageLookupByLibrary.simpleMessage("Tổng quan"),
         "password_empty": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được để trống"),
         "phone": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
@@ -89,6 +99,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sắp xếp theo độ khó"),
         "study_schedule":
             MessageLookupByLibrary.simpleMessage("Thời khoá biểu"),
+        "suggested_tutors":
+            MessageLookupByLibrary.simpleMessage("Gợi ý gia sư"),
+        "topics": MessageLookupByLibrary.simpleMessage("Chủ đề"),
         "update_failed":
             MessageLookupByLibrary.simpleMessage("Cập nhật thất bại!"),
         "update_success":
@@ -96,6 +109,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Tên người dùng"),
         "username_empty": MessageLookupByLibrary.simpleMessage(
             "Tên người dùng không được để trống"),
-        "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt")
+        "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
+        "what_able_to_do":
+            MessageLookupByLibrary.simpleMessage("Bạn có thể học được gì?"),
+        "why_take_course": MessageLookupByLibrary.simpleMessage(
+            "Tại sao bạn nên chọn khoá học này?")
       };
 }

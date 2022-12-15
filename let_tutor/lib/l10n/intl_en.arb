@@ -44,5 +44,16 @@
     "interactive_ebook": "Interactive E-book",
     "choose_level": "Select level",
     "choose_categories": "Select category",
-    "no_data": "No Data"
+    "no_data": "No Data",
+    "discover": "Discover",
+    "overview": "Overview",
+    "experience_level": "Experience Level",
+    "course_length": "Course Length",
+    "list_topics": "List Topics",
+    "suggested_tutors": "Suggested Tutors",
+    "why_take_course": "Why take this course?",
+    "what_able_to_do": "What will you be able to do?",
+    "load_failed": "Load Failed!",
+    "more_info": "More Info",
+    "topics": "Topics"
 }

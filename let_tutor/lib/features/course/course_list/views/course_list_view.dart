@@ -274,7 +274,7 @@ class _FirstTabView extends StatelessWidget {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, AppRouter.courseDetailPage);
+                  Navigator.pushNamed(context, AppRouter.courseDetailPage, arguments: state.courses[index].id);
                 },
                 child: CourseListItem(
                   course: state.courses[index],

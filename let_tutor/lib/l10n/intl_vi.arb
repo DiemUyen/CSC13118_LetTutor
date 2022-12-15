@@ -44,5 +44,16 @@
     "interactive_ebook": "Interactive E-book",
     "choose_level": "Chọn cấp độ",
     "choose_categories": "Chọn danh mục",
-    "no_data": "Không có dữ liệu"
+    "no_data": "Không có dữ liệu",
+    "discover": "Khám phá",
+    "overview": "Tổng quan",
+    "experience_level": "Trình độ yêu cầu",
+    "course_length": "Thời lượng khoá học",
+    "list_topics": "Danh sách chủ đề",
+    "suggested_tutors": "Gợi ý gia sư",
+    "why_take_course": "Tại sao bạn nên chọn khoá học này?",
+    "what_able_to_do": "Bạn có thể học được gì?",
+    "load_failed": "Tải dữ liệu thất bại!",
+    "more_info": "Xem thêm",
+    "topics": "Chủ đề"
 }

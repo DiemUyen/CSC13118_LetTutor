@@ -36,7 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_password_error": MessageLookupByLibrary.simpleMessage(
             "Confirm password does not match the new password"),
         "course": MessageLookupByLibrary.simpleMessage("Course"),
+        "course_length": MessageLookupByLibrary.simpleMessage("Course Length"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "ebook": MessageLookupByLibrary.simpleMessage("E-book"),
         "email_empty":
             MessageLookupByLibrary.simpleMessage("Email address is not empty"),
@@ -49,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "error_reset_password":
             MessageLookupByLibrary.simpleMessage("Error reset password"),
+        "experience_level":
+            MessageLookupByLibrary.simpleMessage("Experience Level"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "have_an_account":
@@ -59,6 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Level decreasing"),
         "level_increasing":
             MessageLookupByLibrary.simpleMessage("Level increasing"),
+        "list_topics": MessageLookupByLibrary.simpleMessage("List Topics"),
+        "load_failed": MessageLookupByLibrary.simpleMessage("Load Failed!"),
+        "more_info": MessageLookupByLibrary.simpleMessage("More Info"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "no_data": MessageLookupByLibrary.simpleMessage("No Data"),
         "not_have_account":
@@ -67,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "or": MessageLookupByLibrary.simpleMessage("or"),
         "others_review":
             MessageLookupByLibrary.simpleMessage("Others review you"),
+        "overview": MessageLookupByLibrary.simpleMessage("Overview"),
         "password_empty":
             MessageLookupByLibrary.simpleMessage("Password is not empty"),
         "phone": MessageLookupByLibrary.simpleMessage("Number phone"),
@@ -88,12 +96,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "sort_level": MessageLookupByLibrary.simpleMessage("Sort by level"),
         "study_schedule":
             MessageLookupByLibrary.simpleMessage("Study Schedule"),
+        "suggested_tutors":
+            MessageLookupByLibrary.simpleMessage("Suggested Tutors"),
+        "topics": MessageLookupByLibrary.simpleMessage("Topics"),
         "update_failed": MessageLookupByLibrary.simpleMessage("Update Failed!"),
         "update_success":
             MessageLookupByLibrary.simpleMessage("Update Success!"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "username_empty":
             MessageLookupByLibrary.simpleMessage("Username is not empty"),
-        "vietnamese": MessageLookupByLibrary.simpleMessage("Vietnamese")
+        "vietnamese": MessageLookupByLibrary.simpleMessage("Vietnamese"),
+        "what_able_to_do": MessageLookupByLibrary.simpleMessage(
+            "What will you be able to do?"),
+        "why_take_course":
+            MessageLookupByLibrary.simpleMessage("Why take this course?")
       };
 }
