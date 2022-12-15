@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -6,8 +5,8 @@ import 'package:let_tutor/configs/endpoints.dart';
 
 import '../models/responses/user_response.dart';
 
-class UserProvider {
-  const UserProvider(this._dio);
+class UserRepository {
+  const UserRepository(this._dio);
 
   final Dio _dio;
 
@@ -31,9 +30,6 @@ class UserProvider {
       }
       return user;
     } catch (exception) {
-      if (kDebugMode) {
-        print(exception.toString());
-      }
       return const UserResponse();
     }
   }
@@ -46,7 +42,6 @@ class UserProvider {
       final UserResponse user = UserResponse.fromJson(response.data);
       return user;
     } catch (exception) {
-      print(exception);
       return const UserResponse();
     }
   }

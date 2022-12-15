@@ -34,5 +34,15 @@
     "others_review": "Đánh giá về bạn",
     "username_empty": "Tên người dùng không được để trống",
     "update_failed": "Cập nhật thất bại!",
-    "update_success": "Cập nhật thành công!"
+    "update_success": "Cập nhật thành công!",
+    "search_course": "Tìm tên khoá học",
+    "sort_level": "Sắp xếp theo độ khó",
+    "level_increasing": "Độ khó tăng dần",
+    "level_decreasing": "Độ khó giảm dần",
+    "course": "Khoá học",
+    "ebook": "E-book",
+    "interactive_ebook": "Interactive E-book",
+    "choose_level": "Chọn cấp độ",
+    "choose_categories": "Chọn danh mục",
+    "no_data": "Không có dữ liệu"
 }

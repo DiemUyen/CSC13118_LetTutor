@@ -13,6 +13,11 @@ class Endpoints {
   static const searchTutor = '/tutor/search';
   static const addFavoriteTutor = '/user/manageFavoriteTutor';
 
+  // Course
+  static const listCourses = '/course';
+  static const detailCourse = '/course';
+  static const contentCategory = '/content-category';
+
   // User
   static const changePassword = '/auth/change-password';
   static const userInformation = '/user/info';

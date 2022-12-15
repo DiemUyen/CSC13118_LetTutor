@@ -1,5 +1,5 @@
 export 'bottom_nav_bar.dart';
-export 'course_card.dart';
+export 'course_list_item.dart';
 export 'lesson_card.dart';
 export 'person_review_card.dart';
 export 'search_bar.dart';

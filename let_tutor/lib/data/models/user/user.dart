@@ -3,7 +3,7 @@ import 'package:let_tutor/data/models/tutor/tutor_info.dart';
 import 'package:let_tutor/data/models/user/referral_info.dart';
 import 'package:let_tutor/data/models/user/wallet_info.dart';
 
-import '../tutor/courses.dart';
+import '../course/courses.dart';
 import 'learn_topics.dart';
 
 part 'user.freezed.dart';

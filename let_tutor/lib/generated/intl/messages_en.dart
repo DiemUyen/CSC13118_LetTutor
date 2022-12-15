@@ -28,11 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "change_password_error":
             MessageLookupByLibrary.simpleMessage("Change Password Failed!"),
+        "choose_categories":
+            MessageLookupByLibrary.simpleMessage("Select category"),
+        "choose_level": MessageLookupByLibrary.simpleMessage("Select level"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "confirm_password_error": MessageLookupByLibrary.simpleMessage(
             "Confirm password does not match the new password"),
+        "course": MessageLookupByLibrary.simpleMessage("Course"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "ebook": MessageLookupByLibrary.simpleMessage("E-book"),
         "email_empty":
             MessageLookupByLibrary.simpleMessage("Email address is not empty"),
         "email_not_found":
@@ -48,7 +53,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "have_an_account":
             MessageLookupByLibrary.simpleMessage("Have an account?"),
+        "interactive_ebook":
+            MessageLookupByLibrary.simpleMessage("Interactive E-book"),
+        "level_decreasing":
+            MessageLookupByLibrary.simpleMessage("Level decreasing"),
+        "level_increasing":
+            MessageLookupByLibrary.simpleMessage("Level increasing"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
+        "no_data": MessageLookupByLibrary.simpleMessage("No Data"),
         "not_have_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
@@ -61,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "return_sign_in":
             MessageLookupByLibrary.simpleMessage("Return Sign In"),
         "save_changes": MessageLookupByLibrary.simpleMessage("Save Changes"),
+        "search_course":
+            MessageLookupByLibrary.simpleMessage("Enter a course name"),
         "select_birthday":
             MessageLookupByLibrary.simpleMessage("Select your birthday"),
         "send_link_reset_password":
@@ -71,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "sign_up_failed":
             MessageLookupByLibrary.simpleMessage("Sign up failed!"),
+        "sort_level": MessageLookupByLibrary.simpleMessage("Sort by level"),
         "study_schedule":
             MessageLookupByLibrary.simpleMessage("Study Schedule"),
         "update_failed": MessageLookupByLibrary.simpleMessage("Update Failed!"),

@@ -3,10 +3,10 @@ part of 'user_repository.dart';
 class UserRepositoryImpl extends UserRepository {
   UserRepositoryImpl(this._userProvider);
 
-  final UserProvider _userProvider;
+  final UserRepository _userProvider;
 
   @override
-  FutureOr<bool> changePassword(String password, String newPassword) async {
+  Future<bool> changePassword(String password, String newPassword) async {
     // TODO: implement changePassword
     return await _userProvider
         .changePassword(password, newPassword)
@@ -14,7 +14,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  FutureOr<UserResponse> getUserInformation() async {
+  Future<UserResponse> getUserInformation() async {
     // TODO: implement getUserInformation
     return await _userProvider
         .getUserInformation()
@@ -22,7 +22,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  FutureOr<UserResponse> updateUserInformation(
+  Future<UserResponse> updateUserInformation(
       Map<String, dynamic> updateInformation) async {
     // TODO: implement updateUserInformation
     return await _userProvider

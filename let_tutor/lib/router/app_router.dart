@@ -4,7 +4,7 @@ import '../features/authentication/forgot_password/views/forgot_password_page.da
 import '../features/authentication/sign_in/views/sign_in_page.dart';
 import '../features/authentication/sign_up/views/sign_up_page.dart';
 import '../features/course/course_detail.dart';
-import '../features/course/courses_page.dart';
+import '../features/course/course_list/views/courses_list_page.dart';
 import '../features/course/topics_page.dart';
 import '../features/home.dart';
 import '../features/meeting_page.dart';

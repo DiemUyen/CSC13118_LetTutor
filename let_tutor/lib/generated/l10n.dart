@@ -409,6 +409,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Enter a course name`
+  String get search_course {
+    return Intl.message(
+      'Enter a course name',
+      name: 'search_course',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sort by level`
+  String get sort_level {
+    return Intl.message(
+      'Sort by level',
+      name: 'sort_level',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Level increasing`
+  String get level_increasing {
+    return Intl.message(
+      'Level increasing',
+      name: 'level_increasing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Level decreasing`
+  String get level_decreasing {
+    return Intl.message(
+      'Level decreasing',
+      name: 'level_decreasing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course`
+  String get course {
+    return Intl.message(
+      'Course',
+      name: 'course',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-book`
+  String get ebook {
+    return Intl.message(
+      'E-book',
+      name: 'ebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interactive E-book`
+  String get interactive_ebook {
+    return Intl.message(
+      'Interactive E-book',
+      name: 'interactive_ebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select level`
+  String get choose_level {
+    return Intl.message(
+      'Select level',
+      name: 'choose_level',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select category`
+  String get choose_categories {
+    return Intl.message(
+      'Select category',
+      name: 'choose_categories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Data`
+  String get no_data {
+    return Intl.message(
+      'No Data',
+      name: 'no_data',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

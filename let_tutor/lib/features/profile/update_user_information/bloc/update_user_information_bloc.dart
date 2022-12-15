@@ -4,10 +4,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:let_tutor/services/shared_preferences_service.dart';
-import 'package:image_picker/image_picker.dart';
 
-import '../../../../data/data_providers/user_provider.dart';
 import '../../../../data/models/user/user.dart';
+import '../../../../data/repositories/repositories.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../injector/injector.dart';
 
@@ -17,7 +16,7 @@ part 'update_user_information_state.dart';
 class UpdateUserInformationBloc
     extends Bloc<UpdateUserInformationEvent, UpdateUserInformationState> {
   UpdateUserInformationBloc({
-    required UserProvider userProvider,
+    required UserRepository userRepository,
     this.avatarUrl = "",
     this.username = "",
     this.country = "",
@@ -27,7 +26,7 @@ class UpdateUserInformationBloc
     //this.wantToLearn = "",
     this.studySchedule = "",
   }) : super(const UpdateUserInformationState()) {
-    _userProvider = userProvider;
+    _userRepository = userRepository;
     _preferencesService = Injector.instance<SharedPreferencesService>();
     on<UpdateUserInformationLoaded>(_onLoaded);
     on<UpdateUserInformationAvatarChanged>(_onAvatarChanged);
@@ -54,7 +53,7 @@ class UpdateUserInformationBloc
   String level;
   //String wantToLearn;
   String studySchedule;
-  late final UserProvider _userProvider;
+  late final UserRepository _userRepository;
   late final SharedPreferencesService _preferencesService;
 
   FutureOr<void> _onLoaded(UpdateUserInformationLoaded event,
@@ -62,7 +61,7 @@ class UpdateUserInformationBloc
     emit(state.copyWith(status: UpdateUserInformationStatus.loading));
 
     try {
-      var userResponse = await _userProvider.getUserInformation();
+      var userResponse = await _userRepository.getUserInformation();
       avatarUrl = userResponse.user?.avatar ?? '';
       username = userResponse.user?.name ?? '';
       country = userResponse.user?.country ?? '';
@@ -163,7 +162,7 @@ class UpdateUserInformationBloc
 
     try {
       var userResponse =
-          await _userProvider.updateUserInformation(updatedInformation);
+          await _userRepository.updateUserInformation(updatedInformation);
       _preferencesService.setValue(
           key: 'userName', value: userResponse.user?.name ?? '');
       emit(state.copyWith(

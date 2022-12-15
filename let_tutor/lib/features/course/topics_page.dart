@@ -35,7 +35,7 @@ class _TopicsPageState extends State<TopicsPage> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              const CourseCard(bottomWidget: SizedBox(height: 0)),
+              //const CourseListItem(/*bottomWidget: SizedBox(height: 0)*/),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 8),
                 child: Divider(),

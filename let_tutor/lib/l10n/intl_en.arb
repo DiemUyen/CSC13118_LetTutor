@@ -34,5 +34,15 @@
     "others_review": "Others review you",
     "username_empty": "Username is not empty",
     "update_failed": "Update Failed!",
-    "update_success": "Update Success!"
+    "update_success": "Update Success!",
+    "search_course": "Enter a course name",
+    "sort_level": "Sort by level",
+    "level_increasing": "Level increasing",
+    "level_decreasing": "Level decreasing",
+    "course": "Course",
+    "ebook": "E-book",
+    "interactive_ebook": "Interactive E-book",
+    "choose_level": "Select level",
+    "choose_categories": "Select category",
+    "no_data": "No Data"
 }

@@ -28,11 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_error":
             MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thất bại!"),
+        "choose_categories":
+            MessageLookupByLibrary.simpleMessage("Chọn danh mục"),
+        "choose_level": MessageLookupByLibrary.simpleMessage("Chọn cấp độ"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_password_error": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu chưa trùng khớp với mật khẩu mới"),
+        "course": MessageLookupByLibrary.simpleMessage("Khoá học"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Chế độ tối"),
+        "ebook": MessageLookupByLibrary.simpleMessage("E-book"),
         "email_empty":
             MessageLookupByLibrary.simpleMessage("Email không được để trống"),
         "email_not_found":
@@ -48,7 +53,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
         "have_an_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
+        "interactive_ebook":
+            MessageLookupByLibrary.simpleMessage("Interactive E-book"),
+        "level_decreasing":
+            MessageLookupByLibrary.simpleMessage("Độ khó giảm dần"),
+        "level_increasing":
+            MessageLookupByLibrary.simpleMessage("Độ khó tăng dần"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
+        "no_data": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "not_have_account":
             MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
         "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
@@ -61,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "return_sign_in":
             MessageLookupByLibrary.simpleMessage("Trở về Đăng nhập"),
         "save_changes": MessageLookupByLibrary.simpleMessage("Lưu thay đổi"),
+        "search_course":
+            MessageLookupByLibrary.simpleMessage("Tìm tên khoá học"),
         "select_birthday":
             MessageLookupByLibrary.simpleMessage("Chọn ngày sinh của bạn"),
         "send_link_reset_password":
@@ -71,6 +85,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "sign_up_failed":
             MessageLookupByLibrary.simpleMessage("Tạo tài khoản thất bại!"),
+        "sort_level":
+            MessageLookupByLibrary.simpleMessage("Sắp xếp theo độ khó"),
         "study_schedule":
             MessageLookupByLibrary.simpleMessage("Thời khoá biểu"),
         "update_failed":

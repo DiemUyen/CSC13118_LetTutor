@@ -104,8 +104,8 @@ class CourseDetail extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              CourseCard(
-                bottomWidget: Row(
+              /*CourseListItem(
+                *//*bottomWidget: Row(
                   children: [
                     Expanded(
                       child: ElevatedButton(
@@ -116,8 +116,8 @@ class CourseDetail extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
-              ),
+                )*//*
+              ),*/
 
               // Overview
               header(context, 'Overview'),

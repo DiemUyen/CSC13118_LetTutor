@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets.dart';
-import 'course/courses_page.dart';
+import 'course/course_list/views/courses_list_page.dart';
 import 'profile/profile_home_page.dart';
 import 'tutor/tutor_list/views/tutor_list_page.dart';
 
