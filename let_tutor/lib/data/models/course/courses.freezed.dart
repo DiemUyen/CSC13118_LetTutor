@@ -38,7 +38,8 @@ mixin _$Courses {
   String? get updatedAt => throw _privateConstructorUsedError;
   List<Topics>? get topics => throw _privateConstructorUsedError;
   List<Categories>? get categories => throw _privateConstructorUsedError;
-  List<User>? get users => throw _privateConstructorUsedError;
+  List<Users>? get users => throw _privateConstructorUsedError;
+  TutorCourse? get tutorCourse => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -69,7 +70,10 @@ abstract class $CoursesCopyWith<$Res> {
       String? updatedAt,
       List<Topics>? topics,
       List<Categories>? categories,
-      List<User>? users});
+      List<Users>? users,
+      TutorCourse? tutorCourse});
+
+  $TutorCourseCopyWith<$Res>? get tutorCourse;
 }
 
 /// @nodoc
@@ -104,6 +108,7 @@ class _$CoursesCopyWithImpl<$Res, $Val extends Courses>
     Object? topics = freezed,
     Object? categories = freezed,
     Object? users = freezed,
+    Object? tutorCourse = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -181,8 +186,24 @@ class _$CoursesCopyWithImpl<$Res, $Val extends Courses>
       users: freezed == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
+              as List<Users>?,
+      tutorCourse: freezed == tutorCourse
+          ? _value.tutorCourse
+          : tutorCourse // ignore: cast_nullable_to_non_nullable
+              as TutorCourse?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TutorCourseCopyWith<$Res>? get tutorCourse {
+    if (_value.tutorCourse == null) {
+      return null;
+    }
+
+    return $TutorCourseCopyWith<$Res>(_value.tutorCourse!, (value) {
+      return _then(_value.copyWith(tutorCourse: value) as $Val);
+    });
   }
 }
 
@@ -212,7 +233,11 @@ abstract class _$$_CoursesCopyWith<$Res> implements $CoursesCopyWith<$Res> {
       String? updatedAt,
       List<Topics>? topics,
       List<Categories>? categories,
-      List<User>? users});
+      List<Users>? users,
+      TutorCourse? tutorCourse});
+
+  @override
+  $TutorCourseCopyWith<$Res>? get tutorCourse;
 }
 
 /// @nodoc
@@ -244,6 +269,7 @@ class __$$_CoursesCopyWithImpl<$Res>
     Object? topics = freezed,
     Object? categories = freezed,
     Object? users = freezed,
+    Object? tutorCourse = freezed,
   }) {
     return _then(_$_Courses(
       id: freezed == id
@@ -321,7 +347,11 @@ class __$$_CoursesCopyWithImpl<$Res>
       users: freezed == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
+              as List<Users>?,
+      tutorCourse: freezed == tutorCourse
+          ? _value.tutorCourse
+          : tutorCourse // ignore: cast_nullable_to_non_nullable
+              as TutorCourse?,
     ));
   }
 }
@@ -348,7 +378,8 @@ class _$_Courses implements _Courses {
       this.updatedAt,
       final List<Topics>? topics,
       final List<Categories>? categories,
-      final List<User>? users})
+      final List<Users>? users,
+      this.tutorCourse})
       : _topics = topics,
         _categories = categories,
         _users = users;
@@ -408,9 +439,9 @@ class _$_Courses implements _Courses {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<User>? _users;
+  final List<Users>? _users;
   @override
-  List<User>? get users {
+  List<Users>? get users {
     final value = _users;
     if (value == null) return null;
     if (_users is EqualUnmodifiableListView) return _users;
@@ -419,8 +450,11 @@ class _$_Courses implements _Courses {
   }
 
   @override
+  final TutorCourse? tutorCourse;
+
+  @override
   String toString() {
-    return 'Courses(id: $id, name: $name, description: $description, imageUrl: $imageUrl, level: $level, reason: $reason, purpose: $purpose, otherDetails: $otherDetails, defaultPrice: $defaultPrice, coursePrice: $coursePrice, courseType: $courseType, sectionType: $sectionType, visible: $visible, displayOrder: $displayOrder, createdAt: $createdAt, updatedAt: $updatedAt, topics: $topics, categories: $categories, users: $users)';
+    return 'Courses(id: $id, name: $name, description: $description, imageUrl: $imageUrl, level: $level, reason: $reason, purpose: $purpose, otherDetails: $otherDetails, defaultPrice: $defaultPrice, coursePrice: $coursePrice, courseType: $courseType, sectionType: $sectionType, visible: $visible, displayOrder: $displayOrder, createdAt: $createdAt, updatedAt: $updatedAt, topics: $topics, categories: $categories, users: $users, tutorCourse: $tutorCourse)';
   }
 
   @override
@@ -457,7 +491,9 @@ class _$_Courses implements _Courses {
             const DeepCollectionEquality().equals(other._topics, _topics) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            (identical(other.tutorCourse, tutorCourse) ||
+                other.tutorCourse == tutorCourse));
   }
 
   @JsonKey(ignore: true)
@@ -482,7 +518,8 @@ class _$_Courses implements _Courses {
         updatedAt,
         const DeepCollectionEquality().hash(_topics),
         const DeepCollectionEquality().hash(_categories),
-        const DeepCollectionEquality().hash(_users)
+        const DeepCollectionEquality().hash(_users),
+        tutorCourse
       ]);
 
   @JsonKey(ignore: true)
@@ -519,7 +556,8 @@ abstract class _Courses implements Courses {
       final String? updatedAt,
       final List<Topics>? topics,
       final List<Categories>? categories,
-      final List<User>? users}) = _$_Courses;
+      final List<Users>? users,
+      final TutorCourse? tutorCourse}) = _$_Courses;
 
   factory _Courses.fromJson(Map<String, dynamic> json) = _$_Courses.fromJson;
 
@@ -560,7 +598,9 @@ abstract class _Courses implements Courses {
   @override
   List<Categories>? get categories;
   @override
-  List<User>? get users;
+  List<Users>? get users;
+  @override
+  TutorCourse? get tutorCourse;
   @override
   @JsonKey(ignore: true)
   _$$_CoursesCopyWith<_$_Courses> get copyWith =>

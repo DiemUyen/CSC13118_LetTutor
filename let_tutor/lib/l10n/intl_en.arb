@@ -63,5 +63,11 @@
     "foreign_tutor": "Foreign Tutor",
     "vietnamese_tutor": "Vietnamese Tutor",
     "native_english_tutor": "Native English Tutor",
-    "select_tutor_nationality": "Select tutor nationality"
+    "select_tutor_nationality": "Select tutor nationality",
+    "book_now": "Book Now",
+    "language": "Language",
+    "specialties": "Specialties",
+    "suggested_courses": "Suggested Courses",
+    "interests": "Interests",
+    "teaching_experience": "Teaching experience"
 }

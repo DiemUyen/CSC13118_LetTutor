@@ -53,7 +53,7 @@ class Tutor with _$Tutor {
     bool? isNative,
     int? price,
     bool? isOnline,
-    User? user,
+    Users? User,
     bool? isFavorite,
     double? avgRating,
     int? totalFeedback,

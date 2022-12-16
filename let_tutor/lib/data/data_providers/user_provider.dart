@@ -5,8 +5,8 @@ import 'package:let_tutor/configs/endpoints.dart';
 
 import '../models/responses/user_response.dart';
 
-class UserRepository {
-  const UserRepository(this._dio);
+class UserProvider {
+  const UserProvider(this._dio);
 
   final Dio _dio;
 

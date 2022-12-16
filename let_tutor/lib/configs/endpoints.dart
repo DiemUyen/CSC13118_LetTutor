@@ -14,6 +14,16 @@ class Endpoints {
   static const addFavoriteTutor = '/user/manageFavoriteTutor';
   static const getLearnTopics = '/learn-topic';
   static const getTestPreparations = '/test-preparation';
+  static const getCategory = '/category';
+  static const report = '/report';
+
+  // Schedule
+  static const getOwnSchedule = '/schedule';
+  static const getTutorSchedule = '/schedule';
+  static const getBookedClass = '/booking/list/student';
+  static const bookClass = '/booking';
+  static const cancelBookClass = '/booking';
+  static const updateStudentRequest = '/booking/student-request';
 
   // Course
   static const listCourses = '/course';

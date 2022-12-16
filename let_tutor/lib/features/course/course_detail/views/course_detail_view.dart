@@ -127,7 +127,8 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                     ),
                     _Description(
                         iconData: Icons.my_library_books_outlined,
-                        title: '${response.data?.topics?.length.toString() ?? '0'} ${S.current.topics}',
+                        title:
+                            '${response.data?.topics?.length.toString() ?? '0'} ${S.current.topics}',
                         content: ''),
 
                     // List topics
@@ -294,7 +295,10 @@ class _SuggestedTutors extends StatelessWidget {
                   Text(state.detailResponse.data?.users?[index].name ?? ''),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRouter.tutorDetailPage);
+                      Navigator.pushNamed(context, AppRouter.tutorDetailPage,
+                          arguments:
+                              state.detailResponse.data?.users?[index].id ??
+                                  '');
                     },
                     child: Text(S.current.more_info),
                   ),

@@ -64,7 +64,7 @@ mixin _$Tutor {
   bool? get isNative => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   bool? get isOnline => throw _privateConstructorUsedError;
-  User? get user => throw _privateConstructorUsedError;
+  Users? get User => throw _privateConstructorUsedError;
   bool? get isFavorite => throw _privateConstructorUsedError;
   double? get avgRating => throw _privateConstructorUsedError;
   int? get totalFeedback => throw _privateConstructorUsedError;
@@ -126,14 +126,14 @@ abstract class $TutorCopyWith<$Res> {
       bool? isNative,
       int? price,
       bool? isOnline,
-      User? user,
+      Users? User,
       bool? isFavorite,
       double? avgRating,
       int? totalFeedback,
       String? schedulestimes,
       String? isfavoritetutor});
 
-  $UserCopyWith<$Res>? get user;
+  $UsersCopyWith<$Res>? get User;
 }
 
 /// @nodoc
@@ -193,7 +193,7 @@ class _$TutorCopyWithImpl<$Res, $Val extends Tutor>
     Object? isNative = freezed,
     Object? price = freezed,
     Object? isOnline = freezed,
-    Object? user = freezed,
+    Object? User = freezed,
     Object? isFavorite = freezed,
     Object? avgRating = freezed,
     Object? totalFeedback = freezed,
@@ -377,10 +377,10 @@ class _$TutorCopyWithImpl<$Res, $Val extends Tutor>
           ? _value.isOnline
           : isOnline // ignore: cast_nullable_to_non_nullable
               as bool?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+      User: freezed == User
+          ? _value.User
+          : User // ignore: cast_nullable_to_non_nullable
+              as Users?,
       isFavorite: freezed == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
@@ -406,13 +406,13 @@ class _$TutorCopyWithImpl<$Res, $Val extends Tutor>
 
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
+  $UsersCopyWith<$Res>? get User {
+    if (_value.User == null) {
       return null;
     }
 
-    return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
+    return $UsersCopyWith<$Res>(_value.User!, (value) {
+      return _then(_value.copyWith(User: value) as $Val);
     });
   }
 }
@@ -468,7 +468,7 @@ abstract class _$$_TutorCopyWith<$Res> implements $TutorCopyWith<$Res> {
       bool? isNative,
       int? price,
       bool? isOnline,
-      User? user,
+      Users? User,
       bool? isFavorite,
       double? avgRating,
       int? totalFeedback,
@@ -476,7 +476,7 @@ abstract class _$$_TutorCopyWith<$Res> implements $TutorCopyWith<$Res> {
       String? isfavoritetutor});
 
   @override
-  $UserCopyWith<$Res>? get user;
+  $UsersCopyWith<$Res>? get User;
 }
 
 /// @nodoc
@@ -532,7 +532,7 @@ class __$$_TutorCopyWithImpl<$Res> extends _$TutorCopyWithImpl<$Res, _$_Tutor>
     Object? isNative = freezed,
     Object? price = freezed,
     Object? isOnline = freezed,
-    Object? user = freezed,
+    Object? User = freezed,
     Object? isFavorite = freezed,
     Object? avgRating = freezed,
     Object? totalFeedback = freezed,
@@ -716,10 +716,10 @@ class __$$_TutorCopyWithImpl<$Res> extends _$TutorCopyWithImpl<$Res, _$_Tutor>
           ? _value.isOnline
           : isOnline // ignore: cast_nullable_to_non_nullable
               as bool?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+      User: freezed == User
+          ? _value.User
+          : User // ignore: cast_nullable_to_non_nullable
+              as Users?,
       isFavorite: freezed == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
@@ -792,7 +792,7 @@ class _$_Tutor implements _Tutor {
       this.isNative,
       this.price,
       this.isOnline,
-      this.user,
+      this.User,
       this.isFavorite,
       this.avgRating,
       this.totalFeedback,
@@ -900,7 +900,7 @@ class _$_Tutor implements _Tutor {
   @override
   final bool? isOnline;
   @override
-  final User? user;
+  final Users? User;
   @override
   final bool? isFavorite;
   @override
@@ -914,7 +914,7 @@ class _$_Tutor implements _Tutor {
 
   @override
   String toString() {
-    return 'Tutor(level: $level, email: $email, google: $google, facebook: $facebook, apple: $apple, avatar: $avatar, name: $name, country: $country, phone: $phone, language: $language, birthday: $birthday, requestPassword: $requestPassword, isActivated: $isActivated, isPhoneActivated: $isPhoneActivated, requireNote: $requireNote, timezone: $timezone, phoneAuth: $phoneAuth, isPhoneAuthActivated: $isPhoneAuthActivated, studySchedule: $studySchedule, canSendMessage: $canSendMessage, isPublicRecord: $isPublicRecord, caredByStaffId: $caredByStaffId, createdAt: $createdAt, updatedAt: $updatedAt, deleteAt: $deleteAt, studentGroupId: $studentGroupId, feedbacks: $feedbacks, id: $id, userId: $userId, video: $video, bio: $bio, education: $education, experience: $experience, profession: $profession, accent: $accent, targetStudent: $targetStudent, interests: $interests, languages: $languages, specialties: $specialties, resume: $resume, rating: $rating, isNative: $isNative, price: $price, isOnline: $isOnline, user: $user, isFavorite: $isFavorite, avgRating: $avgRating, totalFeedback: $totalFeedback, schedulestimes: $schedulestimes, isfavoritetutor: $isfavoritetutor)';
+    return 'Tutor(level: $level, email: $email, google: $google, facebook: $facebook, apple: $apple, avatar: $avatar, name: $name, country: $country, phone: $phone, language: $language, birthday: $birthday, requestPassword: $requestPassword, isActivated: $isActivated, isPhoneActivated: $isPhoneActivated, requireNote: $requireNote, timezone: $timezone, phoneAuth: $phoneAuth, isPhoneAuthActivated: $isPhoneAuthActivated, studySchedule: $studySchedule, canSendMessage: $canSendMessage, isPublicRecord: $isPublicRecord, caredByStaffId: $caredByStaffId, createdAt: $createdAt, updatedAt: $updatedAt, deleteAt: $deleteAt, studentGroupId: $studentGroupId, feedbacks: $feedbacks, id: $id, userId: $userId, video: $video, bio: $bio, education: $education, experience: $experience, profession: $profession, accent: $accent, targetStudent: $targetStudent, interests: $interests, languages: $languages, specialties: $specialties, resume: $resume, rating: $rating, isNative: $isNative, price: $price, isOnline: $isOnline, User: $User, isFavorite: $isFavorite, avgRating: $avgRating, totalFeedback: $totalFeedback, schedulestimes: $schedulestimes, isfavoritetutor: $isfavoritetutor)';
   }
 
   @override
@@ -994,7 +994,7 @@ class _$_Tutor implements _Tutor {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.isOnline, isOnline) ||
                 other.isOnline == isOnline) &&
-            (identical(other.user, user) || other.user == user) &&
+            (identical(other.User, User) || other.User == User) &&
             (identical(other.isFavorite, isFavorite) ||
                 other.isFavorite == isFavorite) &&
             (identical(other.avgRating, avgRating) ||
@@ -1055,7 +1055,7 @@ class _$_Tutor implements _Tutor {
         isNative,
         price,
         isOnline,
-        user,
+        User,
         isFavorite,
         avgRating,
         totalFeedback,
@@ -1123,7 +1123,7 @@ abstract class _Tutor implements Tutor {
       final bool? isNative,
       final int? price,
       final bool? isOnline,
-      final User? user,
+      final Users? User,
       final bool? isFavorite,
       final double? avgRating,
       final int? totalFeedback,
@@ -1221,7 +1221,7 @@ abstract class _Tutor implements Tutor {
   @override
   bool? get isOnline;
   @override
-  User? get user;
+  Users? get User;
   @override
   bool? get isFavorite;
   @override

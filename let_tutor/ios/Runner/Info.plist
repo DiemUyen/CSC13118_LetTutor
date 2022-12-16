@@ -52,4 +52,9 @@
 <string>Need to upload image</string>
 <key>NSMicrophoneUsageDescription</key>
 <string>Need to upload image</string>
+<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
+</dict>
 </plist>

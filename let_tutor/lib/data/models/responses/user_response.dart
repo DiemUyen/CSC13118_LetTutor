@@ -8,7 +8,7 @@ part 'user_response.g.dart';
 @Freezed(fromJson: true)
 class UserResponse with _$UserResponse {
   const factory UserResponse({
-    User? user,
+    Users? user,
   }) = _UserResponse;
 
   factory UserResponse.fromJson(Map<String, dynamic> json) =>

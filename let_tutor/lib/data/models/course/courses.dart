@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../user/user.dart';
 import 'categories.dart';
 import 'topics.dart';
+import 'tutor_course.dart';
 
 part 'courses.freezed.dart';
 part 'courses.g.dart';
@@ -28,7 +29,8 @@ class Courses with _$Courses {
     String? updatedAt,
     List<Topics>? topics,
     List<Categories>? categories,
-    List<User>? users,
+    List<Users>? users,
+    TutorCourse? tutorCourse,
   }) = _Courses;
 
   factory Courses.fromJson(Map<String, dynamic> json) =>

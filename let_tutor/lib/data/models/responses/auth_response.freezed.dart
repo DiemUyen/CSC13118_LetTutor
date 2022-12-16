@@ -20,7 +20,7 @@ AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthResponse {
-  User? get user => throw _privateConstructorUsedError;
+  Users? get user => throw _privateConstructorUsedError;
   Tokens? get tokens => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,9 +35,9 @@ abstract class $AuthResponseCopyWith<$Res> {
           AuthResponse value, $Res Function(AuthResponse) then) =
       _$AuthResponseCopyWithImpl<$Res, AuthResponse>;
   @useResult
-  $Res call({User? user, Tokens? tokens});
+  $Res call({Users? user, Tokens? tokens});
 
-  $UserCopyWith<$Res>? get user;
+  $UsersCopyWith<$Res>? get user;
   $TokensCopyWith<$Res>? get tokens;
 }
 
@@ -61,7 +61,7 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as Users?,
       tokens: freezed == tokens
           ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
@@ -71,12 +71,12 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
 
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
+  $UsersCopyWith<$Res>? get user {
     if (_value.user == null) {
       return null;
     }
 
-    return $UserCopyWith<$Res>(_value.user!, (value) {
+    return $UsersCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -102,10 +102,10 @@ abstract class _$$_AuthResponseCopyWith<$Res>
       __$$_AuthResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User? user, Tokens? tokens});
+  $Res call({Users? user, Tokens? tokens});
 
   @override
-  $UserCopyWith<$Res>? get user;
+  $UsersCopyWith<$Res>? get user;
   @override
   $TokensCopyWith<$Res>? get tokens;
 }
@@ -128,7 +128,7 @@ class __$$_AuthResponseCopyWithImpl<$Res>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as Users?,
       tokens: freezed == tokens
           ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
@@ -146,7 +146,7 @@ class _$_AuthResponse implements _AuthResponse {
       _$$_AuthResponseFromJson(json);
 
   @override
-  final User? user;
+  final Users? user;
   @override
   final Tokens? tokens;
 
@@ -183,14 +183,14 @@ class _$_AuthResponse implements _AuthResponse {
 }
 
 abstract class _AuthResponse implements AuthResponse {
-  const factory _AuthResponse({final User? user, final Tokens? tokens}) =
+  const factory _AuthResponse({final Users? user, final Tokens? tokens}) =
       _$_AuthResponse;
 
   factory _AuthResponse.fromJson(Map<String, dynamic> json) =
       _$_AuthResponse.fromJson;
 
   @override
-  User? get user;
+  Users? get user;
   @override
   Tokens? get tokens;
   @override

@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_language": MessageLookupByLibrary.simpleMessage("Language"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
+        "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "change_password_error":
@@ -62,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Have an account?"),
         "interactive_ebook":
             MessageLookupByLibrary.simpleMessage("Interactive E-book"),
+        "interests": MessageLookupByLibrary.simpleMessage("Interests"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "level_decreasing":
             MessageLookupByLibrary.simpleMessage("Level decreasing"),
         "level_increasing":
@@ -104,10 +107,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up_failed":
             MessageLookupByLibrary.simpleMessage("Sign up failed!"),
         "sort_level": MessageLookupByLibrary.simpleMessage("Sort by level"),
+        "specialties": MessageLookupByLibrary.simpleMessage("Specialties"),
         "study_schedule":
             MessageLookupByLibrary.simpleMessage("Study Schedule"),
+        "suggested_courses":
+            MessageLookupByLibrary.simpleMessage("Suggested Courses"),
         "suggested_tutors":
             MessageLookupByLibrary.simpleMessage("Suggested Tutors"),
+        "teaching_experience":
+            MessageLookupByLibrary.simpleMessage("Teaching experience"),
         "topics": MessageLookupByLibrary.simpleMessage("Topics"),
         "upcoming_lesson":
             MessageLookupByLibrary.simpleMessage("Upcoming Lesson"),

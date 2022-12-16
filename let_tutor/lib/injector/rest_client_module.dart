@@ -53,8 +53,8 @@ class RestClientModule {
       ),
     );
 
-    injector.registerFactory<UserRepository>(
-      () => UserRepository(
+    injector.registerFactory<UserProvider>(
+      () => UserProvider(
         injector(instanceName: dioInstance),
       ),
     );

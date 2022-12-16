@@ -20,7 +20,7 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserResponse {
-  User? get user => throw _privateConstructorUsedError;
+  Users? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,9 +34,9 @@ abstract class $UserResponseCopyWith<$Res> {
           UserResponse value, $Res Function(UserResponse) then) =
       _$UserResponseCopyWithImpl<$Res, UserResponse>;
   @useResult
-  $Res call({User? user});
+  $Res call({Users? user});
 
-  $UserCopyWith<$Res>? get user;
+  $UsersCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -58,18 +58,18 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as Users?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
+  $UsersCopyWith<$Res>? get user {
     if (_value.user == null) {
       return null;
     }
 
-    return $UserCopyWith<$Res>(_value.user!, (value) {
+    return $UsersCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -83,10 +83,10 @@ abstract class _$$_UserResponseCopyWith<$Res>
       __$$_UserResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User? user});
+  $Res call({Users? user});
 
   @override
-  $UserCopyWith<$Res>? get user;
+  $UsersCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$$_UserResponseCopyWithImpl<$Res>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as Users?,
     ));
   }
 }
@@ -120,7 +120,7 @@ class _$_UserResponse implements _UserResponse {
       _$$_UserResponseFromJson(json);
 
   @override
-  final User? user;
+  final Users? user;
 
   @override
   String toString() {
@@ -154,13 +154,13 @@ class _$_UserResponse implements _UserResponse {
 }
 
 abstract class _UserResponse implements UserResponse {
-  const factory _UserResponse({final User? user}) = _$_UserResponse;
+  const factory _UserResponse({final Users? user}) = _$_UserResponse;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;
 
   @override
-  User? get user;
+  Users? get user;
   @override
   @JsonKey(ignore: true)
   _$$_UserResponseCopyWith<_$_UserResponse> get copyWith =>

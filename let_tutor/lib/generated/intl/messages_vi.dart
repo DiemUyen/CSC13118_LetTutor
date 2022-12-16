@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_language":
             MessageLookupByLibrary.simpleMessage("Ngôn ngữ ứng dụng"),
         "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh nhật"),
+        "book_now": MessageLookupByLibrary.simpleMessage("Đặt lịch ngay"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_error":
             MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thất bại!"),
@@ -64,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản?"),
         "interactive_ebook":
             MessageLookupByLibrary.simpleMessage("Interactive E-book"),
+        "interests": MessageLookupByLibrary.simpleMessage("Sở thích"),
+        "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "level_decreasing":
             MessageLookupByLibrary.simpleMessage("Độ khó giảm dần"),
         "level_increasing":
@@ -109,10 +112,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tạo tài khoản thất bại!"),
         "sort_level":
             MessageLookupByLibrary.simpleMessage("Sắp xếp theo độ khó"),
+        "specialties": MessageLookupByLibrary.simpleMessage("Chuyên ngành"),
         "study_schedule":
             MessageLookupByLibrary.simpleMessage("Thời khoá biểu"),
+        "suggested_courses":
+            MessageLookupByLibrary.simpleMessage("Khoá học tham khảo"),
         "suggested_tutors":
             MessageLookupByLibrary.simpleMessage("Gợi ý gia sư"),
+        "teaching_experience":
+            MessageLookupByLibrary.simpleMessage("Kinh nghiệm giảng dạy"),
         "topics": MessageLookupByLibrary.simpleMessage("Chủ đề"),
         "upcoming_lesson":
             MessageLookupByLibrary.simpleMessage("Buổi học sắp tới"),

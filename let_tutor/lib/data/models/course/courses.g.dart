@@ -30,8 +30,11 @@ _$_Courses _$$_CoursesFromJson(Map<String, dynamic> json) => _$_Courses(
           ?.map((e) => Categories.fromJson(e as Map<String, dynamic>))
           .toList(),
       users: (json['users'] as List<dynamic>?)
-          ?.map((e) => User.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
           .toList(),
+      tutorCourse: json['tutorCourse'] == null
+          ? null
+          : TutorCourse.fromJson(json['tutorCourse'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_CoursesToJson(_$_Courses instance) =>
@@ -55,4 +58,5 @@ Map<String, dynamic> _$$_CoursesToJson(_$_Courses instance) =>
       'topics': instance.topics,
       'categories': instance.categories,
       'users': instance.users,
+      'tutorCourse': instance.tutorCourse,
     };

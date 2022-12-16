@@ -63,5 +63,11 @@
     "foreign_tutor": "Gia sư nước ngoài",
     "vietnamese_tutor": "Gia sư người Việt",
     "native_english_tutor": "Gia sư tiếng Anh bản ngữ",
-    "select_tutor_nationality": "Chọn quốc tịch gia sư"
+    "select_tutor_nationality": "Chọn quốc tịch gia sư",
+    "book_now": "Đặt lịch ngay",
+    "language": "Ngôn ngữ",
+    "specialties": "Chuyên ngành",
+    "suggested_courses": "Khoá học tham khảo",
+    "interests": "Sở thích",
+    "teaching_experience": "Kinh nghiệm giảng dạy"
 }

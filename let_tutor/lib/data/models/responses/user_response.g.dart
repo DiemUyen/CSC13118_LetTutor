@@ -10,7 +10,7 @@ _$_UserResponse _$$_UserResponseFromJson(Map<String, dynamic> json) =>
     _$_UserResponse(
       user: json['user'] == null
           ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+          : Users.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserResponseToJson(_$_UserResponse instance) =>

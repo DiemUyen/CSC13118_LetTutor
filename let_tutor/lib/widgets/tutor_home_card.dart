@@ -20,7 +20,7 @@ class TutorHomeCard extends StatelessWidget {
           // Information of tutor
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, AppRouter.tutorDetailPage);
+              Navigator.pushNamed(context, AppRouter.tutorDetailPage, arguments: tutor.userId);
             },
             child: _TutorInformation(tutor: tutor),
           ),

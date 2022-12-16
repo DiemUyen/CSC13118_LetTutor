@@ -53,9 +53,9 @@ _$_Tutor _$$_TutorFromJson(Map<String, dynamic> json) => _$_Tutor(
       isNative: json['isNative'] as bool?,
       price: json['price'] as int?,
       isOnline: json['isOnline'] as bool?,
-      user: json['user'] == null
+      User: json['User'] == null
           ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+          : Users.fromJson(json['User'] as Map<String, dynamic>),
       isFavorite: json['isFavorite'] as bool?,
       avgRating: (json['avgRating'] as num?)?.toDouble(),
       totalFeedback: json['totalFeedback'] as int?,
@@ -108,7 +108,7 @@ Map<String, dynamic> _$$_TutorToJson(_$_Tutor instance) => <String, dynamic>{
       'isNative': instance.isNative,
       'price': instance.price,
       'isOnline': instance.isOnline,
-      'user': instance.user,
+      'User': instance.User,
       'isFavorite': instance.isFavorite,
       'avgRating': instance.avgRating,
       'totalFeedback': instance.totalFeedback,

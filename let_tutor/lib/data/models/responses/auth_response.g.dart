@@ -10,7 +10,7 @@ _$_AuthResponse _$$_AuthResponseFromJson(Map<String, dynamic> json) =>
     _$_AuthResponse(
       user: json['user'] == null
           ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+          : Users.fromJson(json['user'] as Map<String, dynamic>),
       tokens: json['tokens'] == null
           ? null
           : Tokens.fromJson(json['tokens'] as Map<String, dynamic>),

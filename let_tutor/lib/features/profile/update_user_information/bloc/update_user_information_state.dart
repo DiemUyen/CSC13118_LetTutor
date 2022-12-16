@@ -2,17 +2,17 @@ part of 'update_user_information_bloc.dart';
 
 class UpdateUserInformationState extends Equatable {
   const UpdateUserInformationState({
-    this.user = const User(),
+    this.user = const Users(),
     this.usernameError = '',
     this.status = UpdateUserInformationStatus.initial,
   });
 
-  final User user;
+  final Users user;
   final String usernameError;
   final UpdateUserInformationStatus status;
 
   UpdateUserInformationState copyWith({
-    User? user,
+    Users? user,
     String? usernameError,
     UpdateUserInformationStatus? status,
   }) {

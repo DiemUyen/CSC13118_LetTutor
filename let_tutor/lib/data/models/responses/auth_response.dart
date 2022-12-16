@@ -9,7 +9,7 @@ part 'auth_response.g.dart';
 @Freezed(fromJson: true)
 class AuthResponse with _$AuthResponse {
   const factory AuthResponse({
-    User? user,
+    Users? user,
     Tokens? tokens,
   }) = _AuthResponse;
 
