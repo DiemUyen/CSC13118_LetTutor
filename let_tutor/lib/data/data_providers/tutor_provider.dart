@@ -1,10 +1,9 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:let_tutor/configs/endpoints.dart';
 import 'package:let_tutor/data/models/user/test_preparation.dart';
 
 import '../models/responses/category_response.dart';
+import '../models/responses/feedback_response.dart';
 import '../models/responses/tutor_response.dart';
 import '../models/tutor/tutor.dart';
 import '../models/tutor/tutors.dart';
@@ -83,5 +82,13 @@ class TutorProvider {
     var response = await _dio
         .post(Endpoints.report, data: {'tutorId': tutorId, 'content': content});
     return response.statusCode == 200;
+  }
+
+  Future<FeedbackResponse> getFeedbacks(
+      String tutorId, int page, int perPage) async {
+    var response = await _dio.get('${Endpoints.getFeedbacks}/$tutorId',
+        queryParameters: {'page': page, 'perPage': perPage});
+    var feedbacksResponse = FeedbackResponse.fromJson(response.data);
+    return feedbacksResponse;
   }
 }

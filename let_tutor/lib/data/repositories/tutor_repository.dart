@@ -2,6 +2,7 @@
 import '../../exceptions/exception_handler.dart';
 import '../data_providers/tutor_provider.dart';
 import '../models/responses/category_response.dart';
+import '../models/responses/feedback_response.dart';
 import '../models/responses/tutor_response.dart';
 import '../models/tutor/tutor.dart';
 import '../models/tutor/tutors.dart';
@@ -28,4 +29,6 @@ abstract class TutorRepository {
   Future<CategoryResponse> getCategories();
 
   Future<bool> reportTutor(String tutorId, String content);
+
+  Future<FeedbackResponse> getFeedbacks(String tutorId, int? page, {int? perPage});
 }

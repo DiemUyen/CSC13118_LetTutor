@@ -97,7 +97,9 @@ class _TutorDetailViewState extends State<TutorDetailView> {
                                 children: [
                                   const _FavoriteButton(),
                                   _ReportButton(),
-                                  const _ReviewButton(),
+                                  _ReviewButton(
+                                    tutorId: state.tutor.User?.id ?? '',
+                                  ),
                                 ],
                               ),
                             ),
@@ -438,13 +440,19 @@ class _ReportButton extends StatelessWidget {
 }
 
 class _ReviewButton extends StatelessWidget {
-  const _ReviewButton({Key? key}) : super(key: key);
+  const _ReviewButton({Key? key, required this.tutorId}) : super(key: key);
+
+  final String tutorId;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, AppRouter.tutorReviewsPage);
+        Navigator.pushNamed(
+          context,
+          AppRouter.tutorReviewsPage,
+          arguments: tutorId,
+        );
       },
       child: Column(
         children: const [Icon(Icons.star_outline), Text('Reviews')],

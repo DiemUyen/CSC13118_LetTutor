@@ -16,6 +16,7 @@ class Endpoints {
   static const getTestPreparations = '/test-preparation';
   static const getCategory = '/category';
   static const report = '/report';
+  static const getFeedbacks = '/feedback/v2';
 
   // Schedule
   static const getOwnSchedule = '/schedule';

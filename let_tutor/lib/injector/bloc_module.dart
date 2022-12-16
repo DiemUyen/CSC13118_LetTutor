@@ -10,6 +10,7 @@ import '../features/authentication/sign_up/bloc/sign_up_bloc.dart';
 import '../features/course/course_detail/bloc/course_detail_bloc.dart';
 import '../features/course/course_list/bloc/course_list_bloc.dart';
 import '../features/profile/update_user_information/bloc/update_user_information_bloc.dart';
+import '../features/tutor/feedback/bloc/feedback_bloc.dart';
 
 class BlocModule {
   BlocModule._();
@@ -76,6 +77,12 @@ class BlocModule {
 
     injector.registerFactory(
       () => TutorDetailBloc(
+        tutorRepository: injector(),
+      ),
+    );
+
+    injector.registerFactory(
+      () => FeedbackBloc(
         tutorRepository: injector(),
       ),
     );

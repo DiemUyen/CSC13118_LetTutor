@@ -1,13 +1,24 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:let_tutor/services/shared_preferences_service.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
+import '../data/models/tutor/feedbacks.dart';
+import '../injector/injector.dart';
 import 'widgets.dart';
 
 class PersonReviewCard extends StatelessWidget {
-  const PersonReviewCard({Key? key}) : super(key: key);
+  const PersonReviewCard({Key? key, required this.feedback}) : super(key: key);
+
+  final Feedbacks feedback;
 
   @override
   Widget build(BuildContext context) {
+    SharedPreferencesService service =
+        Injector.instance<SharedPreferencesService>();
+    timeago.setLocaleMessages(service.locale,
+        service.locale == 'vi' ? timeago.ViMessages() : timeago.EnMessages());
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -15,28 +26,40 @@ class PersonReviewCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/avartar_student.jpg'),
-                  radius: 32,
+                CircleAvatar(
+                  backgroundImage: CachedNetworkImageProvider(
+                    feedback.firstInfo?.avatar ?? '',
+                  ),
+                  radius: 24,
                 ),
-                const SizedBox(width: 8,),
+                const SizedBox(
+                  width: 8,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Lavendaire', style: Theme.of(context).textTheme.titleMedium),
-                    Text(DateFormat('dd/MM/yyyy').format(DateTime.now())),
+                    Text(feedback.firstInfo?.name ?? '',
+                        style: Theme.of(context).textTheme.titleMedium),
+                    Text(timeago.format(DateTime.parse(feedback.updatedAt ?? ''))),
                     StarRating(
-                      initialRating: 4.5,
+                      initialRating: (feedback.rating ?? 0).toDouble(),
                       ignoreGestures: false,
-                      ratingUpgrade: (double value) { },
+                      ratingUpgrade: (double value) {},
                       itemSize: 16,
                     )
                   ],
                 )
               ],
             ),
-            const SizedBox(height: 8,),
-            const Text('This is a very good teacher. I love teaching with her.',),
+            const SizedBox(
+              height: 8,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                feedback.content ?? ''
+              ),
+            ),
           ],
         ),
       ),

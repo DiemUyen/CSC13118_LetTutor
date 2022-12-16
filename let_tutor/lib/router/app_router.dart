@@ -23,7 +23,7 @@ import '../features/application/setting_page.dart';
 import '../features/tutor/booking_page.dart';
 import '../features/tutor/tutor_detail/views/tutor_detail_page.dart';
 import '../features/tutor/tutor_list/views/tutor_list_page.dart';
-import '../features/tutor/tutor_reviews.dart';
+import '../features/tutor/feedback/views/tutor_reviews_page.dart';
 import '../features/tutor/write_review.dart';
 import '../features/unknown_page.dart';
 
@@ -101,7 +101,7 @@ class AppRouter {
         );
       case tutorReviewsPage:
         return MaterialPageRoute(
-          builder: (context) => const TutorReviewPage(),
+          builder: (context) => TutorReviewPage(tutorId: settings.arguments as String,),
         );
       case writingReviewPage:
         return MaterialPageRoute(

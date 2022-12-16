@@ -80,4 +80,12 @@ class TutorRepositoryImpl extends TutorRepository {
         .reportTutor(tutorId, content)
         .catchError(DioExceptionHandler.handleException);
   }
+
+  @override
+  Future<FeedbackResponse> getFeedbacks(String tutorId, int? page, {int? perPage}) async {
+    // TODO: implement getFeedbacks
+    return await _tutorProvider
+        .getFeedbacks(tutorId, page ?? 1, perPage ?? 12)
+        .catchError(DioExceptionHandler.handleException);
+  }
 }
