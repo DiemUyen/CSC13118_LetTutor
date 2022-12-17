@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:let_tutor/configs/endpoints.dart';
 
+import '../models/responses/upcoming_response.dart';
 import '../models/responses/schedule_response.dart';
-import '../models/schedule/next_schedule.dart';
 
 class ScheduleProvider {
   const ScheduleProvider(this._dio);
@@ -28,5 +28,13 @@ class ScheduleProvider {
       'note': ''
     });
     return response.statusCode == 200;
+  }
+
+  Future<UpcomingResponse> getUpcomingClass() async {
+    var response = await _dio.get(Endpoints.getUpcomingClass, queryParameters: {
+      'dateTime': DateTime.now().toUtc().millisecondsSinceEpoch
+    });
+    var nextSchedules = UpcomingResponse.fromJson(response.data);
+    return nextSchedules;
   }
 }

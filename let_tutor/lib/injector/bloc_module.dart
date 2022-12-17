@@ -50,6 +50,7 @@ class BlocModule {
       () => TutorListBloc(
         tutorRepository: injector(),
         userRepository: injector(),
+        scheduleRepository: injector(),
       ),
     );
 

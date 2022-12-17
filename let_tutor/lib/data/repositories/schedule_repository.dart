@@ -1,5 +1,5 @@
+import '../models/responses/upcoming_response.dart';
 import '../models/responses/schedule_response.dart';
-import '../models/schedule/next_schedule.dart';
 
 abstract class ScheduleRepository {
   Future<ScheduleResponse> getOwnSchedule();
@@ -7,4 +7,6 @@ abstract class ScheduleRepository {
   Future<ScheduleResponse> getScheduleByTutorId(String tutorId);
 
   Future<bool> bookClass(String scheduleId);
+
+  Future<UpcomingResponse> getUpcomingClass();
 }

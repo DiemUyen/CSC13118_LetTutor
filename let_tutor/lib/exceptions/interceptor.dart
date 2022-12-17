@@ -22,7 +22,7 @@ class DioInterceptor extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) async {
-    if (err.response!.statusCode! == 401 ) {
+    if (err.response?.statusCode! == 401 ) {
       String refreshToken = _preferencesService.getValue(key: 'refreshToken') ?? '';
       final refreshTokenResponse =
           await Injector.instance<AuthRepository>().refreshToken(refreshToken);

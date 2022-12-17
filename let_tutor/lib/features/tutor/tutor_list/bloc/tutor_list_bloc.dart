@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/models/responses/tutor_response.dart';
+import '../../../../data/models/schedule/next_schedule.dart';
 import '../../../../data/models/tutor/tutor.dart';
 import '../../../../data/models/user/learn_topics.dart';
 import '../../../../data/models/user/test_preparation.dart';
@@ -15,10 +16,12 @@ part 'tutor_list_state.dart';
 class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
   TutorListBloc(
       {required TutorRepository tutorRepository,
-      required UserRepository userRepository})
+      required UserRepository userRepository,
+      required ScheduleRepository scheduleRepository})
       : super(const TutorListState()) {
     _tutorRepository = tutorRepository;
     _userRepository = userRepository;
+    _scheduleRepository = scheduleRepository;
     on<TutorListLoaded>(_onLoaded);
     on<TutorListNameSearched>(_onSearchTutorName);
     on<TutorListFilterButtonPressed>(_onFilterButtonPressed);
@@ -27,12 +30,11 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
     on<TutorListSpecialityChosen>(_onSpecialityChosen);
     on<TutorListResetFilterButtonPressed>(_onResetFilterButtonPressed);
     on<TutorListFavoriteButtonPressed>(_onFavoriteButtonPressed);
-
-    //add(TutorListLoaded());
   }
 
   late final TutorRepository _tutorRepository;
   late final UserRepository _userRepository;
+  late final ScheduleRepository _scheduleRepository;
   String? tutorName;
 
   FutureOr<void> _onLoaded(
@@ -49,12 +51,25 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
       var learnTopics = await _tutorRepository.getLearnTopics();
       var testPreparations = await _tutorRepository.getTestPreparation();
       var totalCallMinutes = await _userRepository.getTotalCallMinutes();
+      var upcomingClasses = await _scheduleRepository.getUpcomingClass();
+      upcomingClasses.data?.sort((a, b) {
+        if (a.scheduleDetailInfo?.startPeriodTimestamp == null ||
+            b.scheduleDetailInfo?.startPeriodTimestamp == null) return 0;
+        return (a.scheduleDetailInfo!.startPeriodTimestamp!
+            .compareTo(b.scheduleDetailInfo!.startPeriodTimestamp!));
+      });
+      var upcoming = upcomingClasses.data?.firstWhere((element) => (element
+              .scheduleDetailInfo?.startPeriodTimestamp
+              ?.compareTo(DateTime.now().millisecondsSinceEpoch) ==
+          1)) ?? const NextSchedule();
+
       emit(state.copyWith(
           tutors: tutorResponse,
           filteredTutors: response.rows!,
           learnTopics: learnTopics,
           testPreparations: testPreparations,
           totalMinutes: totalCallMinutes,
+          upcomingClass: upcoming,
           status: TutorListStatus.loadSuccess));
     } catch (exception) {
       emit(state.copyWith(error: 'Load failed!'));

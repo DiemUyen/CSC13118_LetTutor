@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:let_tutor/data/models/user/learn_topics.dart';
 
 import '../../../../data/models/user/test_preparation.dart';
@@ -96,30 +99,75 @@ class _TutorListViewState extends State<TutorListView> {
   }
 }
 
-class _UpcomingLesson extends StatelessWidget {
+class _UpcomingLesson extends StatefulWidget {
   const _UpcomingLesson({Key? key}) : super(key: key);
 
+  @override
+  State<_UpcomingLesson> createState() => _UpcomingLessonState();
+}
+
+class _UpcomingLessonState extends State<_UpcomingLesson> {
+  late Timer _timer;
+
+  @override
+  void initState() {
+    _timer = Timer.periodic(const Duration(microseconds: 1), (timer) {
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              S.current.upcoming_lesson,
-              style: Theme.of(context).textTheme.headlineSmall,
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                S.current.upcoming_lesson,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
             ),
             const SizedBox(
               height: 8,
             ),
             BlocBuilder<TutorListBloc, TutorListState>(
               builder: (context, state) {
+                var startTime = DateTime.fromMillisecondsSinceEpoch(state
+                        .upcomingClass
+                        .scheduleDetailInfo
+                        ?.startPeriodTimestamp ??
+                    0);
+                var endTime = DateTime.fromMillisecondsSinceEpoch(state
+                        .upcomingClass.scheduleDetailInfo?.endPeriodTimestamp ??
+                    0);
                 return Column(
                   children: [
                     Text(
-                      "Fri, 11 Nov 22 18:30 - 18:55 (starts in ${DateTime(2022, 11, 11).difference(DateTime.now())})",
+                      '${DateFormat('EEE, dd MMM yy').format(startTime)} ${DateFormat('HH:mm').format(startTime)} - ${DateFormat('HH:mm').format(endTime)}',
                       textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      'starts in ${startTime.difference(DateTime.now()).toString().split('.').first.padLeft(8, '0')}',
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        color: Theme.of(context).colorScheme.tertiary,
+                      ),
                     ),
                     const SizedBox(
                       height: 8,

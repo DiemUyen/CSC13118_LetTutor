@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'next_schedule_response.dart';
+part of 'upcoming_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-NextScheduleResponse _$NextScheduleResponseFromJson(Map<String, dynamic> json) {
-  return _NextScheduleResponse.fromJson(json);
+UpcomingResponse _$UpcomingResponseFromJson(Map<String, dynamic> json) {
+  return _UpcomingResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NextScheduleResponse {
+mixin _$UpcomingResponse {
   String? get message => throw _privateConstructorUsedError;
   List<NextSchedule>? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NextScheduleResponseCopyWith<NextScheduleResponse> get copyWith =>
+  $UpcomingResponseCopyWith<UpcomingResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NextScheduleResponseCopyWith<$Res> {
-  factory $NextScheduleResponseCopyWith(NextScheduleResponse value,
-          $Res Function(NextScheduleResponse) then) =
-      _$NextScheduleResponseCopyWithImpl<$Res, NextScheduleResponse>;
+abstract class $UpcomingResponseCopyWith<$Res> {
+  factory $UpcomingResponseCopyWith(
+          UpcomingResponse value, $Res Function(UpcomingResponse) then) =
+      _$UpcomingResponseCopyWithImpl<$Res, UpcomingResponse>;
   @useResult
   $Res call({String? message, List<NextSchedule>? data});
 }
 
 /// @nodoc
-class _$NextScheduleResponseCopyWithImpl<$Res,
-        $Val extends NextScheduleResponse>
-    implements $NextScheduleResponseCopyWith<$Res> {
-  _$NextScheduleResponseCopyWithImpl(this._value, this._then);
+class _$UpcomingResponseCopyWithImpl<$Res, $Val extends UpcomingResponse>
+    implements $UpcomingResponseCopyWith<$Res> {
+  _$UpcomingResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -69,22 +68,22 @@ class _$NextScheduleResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_NextScheduleResponseCopyWith<$Res>
-    implements $NextScheduleResponseCopyWith<$Res> {
-  factory _$$_NextScheduleResponseCopyWith(_$_NextScheduleResponse value,
-          $Res Function(_$_NextScheduleResponse) then) =
-      __$$_NextScheduleResponseCopyWithImpl<$Res>;
+abstract class _$$_UpcomingResponseCopyWith<$Res>
+    implements $UpcomingResponseCopyWith<$Res> {
+  factory _$$_UpcomingResponseCopyWith(
+          _$_UpcomingResponse value, $Res Function(_$_UpcomingResponse) then) =
+      __$$_UpcomingResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? message, List<NextSchedule>? data});
 }
 
 /// @nodoc
-class __$$_NextScheduleResponseCopyWithImpl<$Res>
-    extends _$NextScheduleResponseCopyWithImpl<$Res, _$_NextScheduleResponse>
-    implements _$$_NextScheduleResponseCopyWith<$Res> {
-  __$$_NextScheduleResponseCopyWithImpl(_$_NextScheduleResponse _value,
-      $Res Function(_$_NextScheduleResponse) _then)
+class __$$_UpcomingResponseCopyWithImpl<$Res>
+    extends _$UpcomingResponseCopyWithImpl<$Res, _$_UpcomingResponse>
+    implements _$$_UpcomingResponseCopyWith<$Res> {
+  __$$_UpcomingResponseCopyWithImpl(
+      _$_UpcomingResponse _value, $Res Function(_$_UpcomingResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +92,7 @@ class __$$_NextScheduleResponseCopyWithImpl<$Res>
     Object? message = freezed,
     Object? data = freezed,
   }) {
-    return _then(_$_NextScheduleResponse(
+    return _then(_$_UpcomingResponse(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -108,11 +107,11 @@ class __$$_NextScheduleResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NextScheduleResponse implements _NextScheduleResponse {
-  const _$_NextScheduleResponse({this.message, this.data});
+class _$_UpcomingResponse implements _UpcomingResponse {
+  const _$_UpcomingResponse({this.message, this.data});
 
-  factory _$_NextScheduleResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_NextScheduleResponseFromJson(json);
+  factory _$_UpcomingResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_UpcomingResponseFromJson(json);
 
   @override
   final String? message;
@@ -121,14 +120,14 @@ class _$_NextScheduleResponse implements _NextScheduleResponse {
 
   @override
   String toString() {
-    return 'NextScheduleResponse(message: $message, data: $data)';
+    return 'UpcomingResponse(message: $message, data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextScheduleResponse &&
+            other is _$_UpcomingResponse &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
@@ -141,25 +140,24 @@ class _$_NextScheduleResponse implements _NextScheduleResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NextScheduleResponseCopyWith<_$_NextScheduleResponse> get copyWith =>
-      __$$_NextScheduleResponseCopyWithImpl<_$_NextScheduleResponse>(
-          this, _$identity);
+  _$$_UpcomingResponseCopyWith<_$_UpcomingResponse> get copyWith =>
+      __$$_UpcomingResponseCopyWithImpl<_$_UpcomingResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NextScheduleResponseToJson(
+    return _$$_UpcomingResponseToJson(
       this,
     );
   }
 }
 
-abstract class _NextScheduleResponse implements NextScheduleResponse {
-  const factory _NextScheduleResponse(
+abstract class _UpcomingResponse implements UpcomingResponse {
+  const factory _UpcomingResponse(
       {final String? message,
-      final List<NextSchedule>? data}) = _$_NextScheduleResponse;
+      final List<NextSchedule>? data}) = _$_UpcomingResponse;
 
-  factory _NextScheduleResponse.fromJson(Map<String, dynamic> json) =
-      _$_NextScheduleResponse.fromJson;
+  factory _UpcomingResponse.fromJson(Map<String, dynamic> json) =
+      _$_UpcomingResponse.fromJson;
 
   @override
   String? get message;
@@ -167,6 +165,6 @@ abstract class _NextScheduleResponse implements NextScheduleResponse {
   List<NextSchedule>? get data;
   @override
   @JsonKey(ignore: true)
-  _$$_NextScheduleResponseCopyWith<_$_NextScheduleResponse> get copyWith =>
+  _$$_UpcomingResponseCopyWith<_$_UpcomingResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

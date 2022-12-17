@@ -26,9 +26,10 @@ _$_NextSchedule _$$_NextScheduleFromJson(Map<String, dynamic> json) =>
       cancelNote: json['cancelNote'] as String?,
       calendarId: json['calendarId'] as String?,
       isDeleted: json['isDeleted'] as bool?,
-      scheduleInfo: json['scheduleInfo'] == null
+      scheduleDetailInfo: json['scheduleDetailInfo'] == null
           ? null
-          : ScheduleInfo.fromJson(json['scheduleInfo'] as Map<String, dynamic>),
+          : ScheduleDetails.fromJson(
+              json['scheduleDetailInfo'] as Map<String, dynamic>),
       classReview: json['classReview'] as String?,
       showRecordUrl: json['showRecordUrl'] as bool?,
       studentMaterials: json['studentMaterials'] as List<dynamic>?,
@@ -57,7 +58,7 @@ Map<String, dynamic> _$$_NextScheduleToJson(_$_NextSchedule instance) =>
       'cancelNote': instance.cancelNote,
       'calendarId': instance.calendarId,
       'isDeleted': instance.isDeleted,
-      'scheduleInfo': instance.scheduleInfo,
+      'scheduleDetailInfo': instance.scheduleDetailInfo,
       'classReview': instance.classReview,
       'showRecordUrl': instance.showRecordUrl,
       'studentMaterials': instance.studentMaterials,

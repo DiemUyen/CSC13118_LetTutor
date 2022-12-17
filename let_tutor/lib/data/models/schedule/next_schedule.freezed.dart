@@ -38,7 +38,7 @@ mixin _$NextSchedule {
   String? get cancelNote => throw _privateConstructorUsedError;
   String? get calendarId => throw _privateConstructorUsedError;
   bool? get isDeleted => throw _privateConstructorUsedError;
-  ScheduleInfo? get scheduleInfo => throw _privateConstructorUsedError;
+  ScheduleDetails? get scheduleDetailInfo => throw _privateConstructorUsedError;
   String? get classReview => throw _privateConstructorUsedError;
   bool? get showRecordUrl => throw _privateConstructorUsedError;
   List<dynamic>? get studentMaterials => throw _privateConstructorUsedError;
@@ -75,13 +75,13 @@ abstract class $NextScheduleCopyWith<$Res> {
       String? cancelNote,
       String? calendarId,
       bool? isDeleted,
-      ScheduleInfo? scheduleInfo,
+      ScheduleDetails? scheduleDetailInfo,
       String? classReview,
       bool? showRecordUrl,
       List<dynamic>? studentMaterials,
       List<Feedbacks>? feedbacks});
 
-  $ScheduleInfoCopyWith<$Res>? get scheduleInfo;
+  $ScheduleDetailsCopyWith<$Res>? get scheduleDetailInfo;
 }
 
 /// @nodoc
@@ -115,7 +115,7 @@ class _$NextScheduleCopyWithImpl<$Res, $Val extends NextSchedule>
     Object? cancelNote = freezed,
     Object? calendarId = freezed,
     Object? isDeleted = freezed,
-    Object? scheduleInfo = freezed,
+    Object? scheduleDetailInfo = freezed,
     Object? classReview = freezed,
     Object? showRecordUrl = freezed,
     Object? studentMaterials = freezed,
@@ -194,10 +194,10 @@ class _$NextScheduleCopyWithImpl<$Res, $Val extends NextSchedule>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool?,
-      scheduleInfo: freezed == scheduleInfo
-          ? _value.scheduleInfo
-          : scheduleInfo // ignore: cast_nullable_to_non_nullable
-              as ScheduleInfo?,
+      scheduleDetailInfo: freezed == scheduleDetailInfo
+          ? _value.scheduleDetailInfo
+          : scheduleDetailInfo // ignore: cast_nullable_to_non_nullable
+              as ScheduleDetails?,
       classReview: freezed == classReview
           ? _value.classReview
           : classReview // ignore: cast_nullable_to_non_nullable
@@ -219,13 +219,13 @@ class _$NextScheduleCopyWithImpl<$Res, $Val extends NextSchedule>
 
   @override
   @pragma('vm:prefer-inline')
-  $ScheduleInfoCopyWith<$Res>? get scheduleInfo {
-    if (_value.scheduleInfo == null) {
+  $ScheduleDetailsCopyWith<$Res>? get scheduleDetailInfo {
+    if (_value.scheduleDetailInfo == null) {
       return null;
     }
 
-    return $ScheduleInfoCopyWith<$Res>(_value.scheduleInfo!, (value) {
-      return _then(_value.copyWith(scheduleInfo: value) as $Val);
+    return $ScheduleDetailsCopyWith<$Res>(_value.scheduleDetailInfo!, (value) {
+      return _then(_value.copyWith(scheduleDetailInfo: value) as $Val);
     });
   }
 }
@@ -257,14 +257,14 @@ abstract class _$$_NextScheduleCopyWith<$Res>
       String? cancelNote,
       String? calendarId,
       bool? isDeleted,
-      ScheduleInfo? scheduleInfo,
+      ScheduleDetails? scheduleDetailInfo,
       String? classReview,
       bool? showRecordUrl,
       List<dynamic>? studentMaterials,
       List<Feedbacks>? feedbacks});
 
   @override
-  $ScheduleInfoCopyWith<$Res>? get scheduleInfo;
+  $ScheduleDetailsCopyWith<$Res>? get scheduleDetailInfo;
 }
 
 /// @nodoc
@@ -296,7 +296,7 @@ class __$$_NextScheduleCopyWithImpl<$Res>
     Object? cancelNote = freezed,
     Object? calendarId = freezed,
     Object? isDeleted = freezed,
-    Object? scheduleInfo = freezed,
+    Object? scheduleDetailInfo = freezed,
     Object? classReview = freezed,
     Object? showRecordUrl = freezed,
     Object? studentMaterials = freezed,
@@ -375,10 +375,10 @@ class __$$_NextScheduleCopyWithImpl<$Res>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool?,
-      scheduleInfo: freezed == scheduleInfo
-          ? _value.scheduleInfo
-          : scheduleInfo // ignore: cast_nullable_to_non_nullable
-              as ScheduleInfo?,
+      scheduleDetailInfo: freezed == scheduleDetailInfo
+          ? _value.scheduleDetailInfo
+          : scheduleDetailInfo // ignore: cast_nullable_to_non_nullable
+              as ScheduleDetails?,
       classReview: freezed == classReview
           ? _value.classReview
           : classReview // ignore: cast_nullable_to_non_nullable
@@ -421,7 +421,7 @@ class _$_NextSchedule implements _NextSchedule {
       this.cancelNote,
       this.calendarId,
       this.isDeleted,
-      this.scheduleInfo,
+      this.scheduleDetailInfo,
       this.classReview,
       this.showRecordUrl,
       final List<dynamic>? studentMaterials,
@@ -469,7 +469,7 @@ class _$_NextSchedule implements _NextSchedule {
   @override
   final bool? isDeleted;
   @override
-  final ScheduleInfo? scheduleInfo;
+  final ScheduleDetails? scheduleDetailInfo;
   @override
   final String? classReview;
   @override
@@ -497,7 +497,7 @@ class _$_NextSchedule implements _NextSchedule {
 
   @override
   String toString() {
-    return 'NextSchedule(createdAtTimeStamp: $createdAtTimeStamp, updatedAtTimeStamp: $updatedAtTimeStamp, id: $id, userId: $userId, scheduleDetailId: $scheduleDetailId, tutorMeetingLink: $tutorMeetingLink, studentMeetingLink: $studentMeetingLink, studentRequest: $studentRequest, tutorReview: $tutorReview, scoreByTutor: $scoreByTutor, createdAt: $createdAt, updatedAt: $updatedAt, recordUrl: $recordUrl, cancelReasonId: $cancelReasonId, lessonPlanId: $lessonPlanId, cancelNote: $cancelNote, calendarId: $calendarId, isDeleted: $isDeleted, scheduleInfo: $scheduleInfo, classReview: $classReview, showRecordUrl: $showRecordUrl, studentMaterials: $studentMaterials, feedbacks: $feedbacks)';
+    return 'NextSchedule(createdAtTimeStamp: $createdAtTimeStamp, updatedAtTimeStamp: $updatedAtTimeStamp, id: $id, userId: $userId, scheduleDetailId: $scheduleDetailId, tutorMeetingLink: $tutorMeetingLink, studentMeetingLink: $studentMeetingLink, studentRequest: $studentRequest, tutorReview: $tutorReview, scoreByTutor: $scoreByTutor, createdAt: $createdAt, updatedAt: $updatedAt, recordUrl: $recordUrl, cancelReasonId: $cancelReasonId, lessonPlanId: $lessonPlanId, cancelNote: $cancelNote, calendarId: $calendarId, isDeleted: $isDeleted, scheduleDetailInfo: $scheduleDetailInfo, classReview: $classReview, showRecordUrl: $showRecordUrl, studentMaterials: $studentMaterials, feedbacks: $feedbacks)';
   }
 
   @override
@@ -539,8 +539,8 @@ class _$_NextSchedule implements _NextSchedule {
                 other.calendarId == calendarId) &&
             (identical(other.isDeleted, isDeleted) ||
                 other.isDeleted == isDeleted) &&
-            (identical(other.scheduleInfo, scheduleInfo) ||
-                other.scheduleInfo == scheduleInfo) &&
+            (identical(other.scheduleDetailInfo, scheduleDetailInfo) ||
+                other.scheduleDetailInfo == scheduleDetailInfo) &&
             (identical(other.classReview, classReview) ||
                 other.classReview == classReview) &&
             (identical(other.showRecordUrl, showRecordUrl) ||
@@ -573,7 +573,7 @@ class _$_NextSchedule implements _NextSchedule {
         cancelNote,
         calendarId,
         isDeleted,
-        scheduleInfo,
+        scheduleDetailInfo,
         classReview,
         showRecordUrl,
         const DeepCollectionEquality().hash(_studentMaterials),
@@ -614,7 +614,7 @@ abstract class _NextSchedule implements NextSchedule {
       final String? cancelNote,
       final String? calendarId,
       final bool? isDeleted,
-      final ScheduleInfo? scheduleInfo,
+      final ScheduleDetails? scheduleDetailInfo,
       final String? classReview,
       final bool? showRecordUrl,
       final List<dynamic>? studentMaterials,
@@ -660,7 +660,7 @@ abstract class _NextSchedule implements NextSchedule {
   @override
   bool? get isDeleted;
   @override
-  ScheduleInfo? get scheduleInfo;
+  ScheduleDetails? get scheduleDetailInfo;
   @override
   String? get classReview;
   @override

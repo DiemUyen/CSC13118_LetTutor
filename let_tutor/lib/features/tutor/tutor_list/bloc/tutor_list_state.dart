@@ -14,6 +14,7 @@ class TutorListState extends Equatable {
     },
     this.isReset = false,
     this.totalMinutes = 0,
+    this.upcomingClass = const NextSchedule(),
     this.status = TutorListStatus.initial,
   });
 
@@ -26,6 +27,7 @@ class TutorListState extends Equatable {
   final Map<String, dynamic> filters;
   final bool isReset;
   final int totalMinutes;
+  final NextSchedule upcomingClass;
   final TutorListStatus status;
 
   TutorListState copyWith(
@@ -38,6 +40,7 @@ class TutorListState extends Equatable {
       Map<String, dynamic>? filters,
       bool? isReset,
       int? totalMinutes,
+      NextSchedule? upcomingClass,
       TutorListStatus? status}) {
     return TutorListState(
       tutors: tutors ?? this.tutors,
@@ -49,6 +52,7 @@ class TutorListState extends Equatable {
       filters: filters ?? this.filters,
       isReset: isReset ?? this.isReset,
       totalMinutes: totalMinutes ?? this.totalMinutes,
+      upcomingClass: upcomingClass ?? this.upcomingClass,
       status: status ?? this.status,
     );
   }
@@ -64,6 +68,7 @@ class TutorListState extends Equatable {
         filters,
         isReset,
         totalMinutes,
+        upcomingClass,
         status,
       ];
 }

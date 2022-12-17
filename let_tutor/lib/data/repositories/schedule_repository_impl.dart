@@ -1,7 +1,6 @@
-import 'package:let_tutor/data/models/schedule/next_schedule.dart';
-
 import '../../exceptions/exception_handler.dart';
 import '../data_providers/data_providers.dart';
+import '../models/responses/upcoming_response.dart';
 import '../models/responses/schedule_response.dart';
 import 'repositories.dart';
 
@@ -32,6 +31,14 @@ class ScheduleRepositoryImpl extends ScheduleRepository {
     // TODO: implement bookClass
     return await _scheduleProvider
         .bookClass(scheduleId)
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<UpcomingResponse> getUpcomingClass() async {
+    // TODO: implement getUpcomingClass
+    return await _scheduleProvider
+        .getUpcomingClass()
         .catchError(DioExceptionHandler.handleException);
   }
 }

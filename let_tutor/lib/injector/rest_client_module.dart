@@ -18,8 +18,6 @@ class RestClientModule {
         final Dio dio = Dio(
           BaseOptions(
             baseUrl: AppConfig.baseUrl,
-            connectTimeout: 5000,
-            receiveTimeout: 3000,
           ),
         );
 
