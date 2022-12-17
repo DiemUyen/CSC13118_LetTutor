@@ -57,18 +57,18 @@ class TutorProvider {
   Future<List<LearnTopics>> getLearnTopics() async {
     var response = await _dio.get(Endpoints.getLearnTopics);
     var listLearnTopics = <LearnTopics>[];
-    (response.data as List).forEach((element) {
+    for (var element in (response.data as List)) {
       listLearnTopics.add(LearnTopics.fromJson(element));
-    });
+    }
     return listLearnTopics;
   }
 
   Future<List<TestPreparation>> getTestPreparation() async {
     var response = await _dio.get(Endpoints.getTestPreparations);
     var listTestPreparations = <TestPreparation>[];
-    (response.data as List).forEach((element) {
+    for (var element in (response.data as List)) {
       listTestPreparations.add(TestPreparation.fromJson(element));
-    });
+    }
     return listTestPreparations;
   }
 

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'schedule_response.dart';
+part of 'next_schedule_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ScheduleResponse _$ScheduleResponseFromJson(Map<String, dynamic> json) {
-  return _ScheduleResponse.fromJson(json);
+NextScheduleResponse _$NextScheduleResponseFromJson(Map<String, dynamic> json) {
+  return _NextScheduleResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ScheduleResponse {
+mixin _$NextScheduleResponse {
   String? get message => throw _privateConstructorUsedError;
-  List<ScheduleOfTutor>? get data => throw _privateConstructorUsedError;
+  List<NextSchedule>? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ScheduleResponseCopyWith<ScheduleResponse> get copyWith =>
+  $NextScheduleResponseCopyWith<NextScheduleResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ScheduleResponseCopyWith<$Res> {
-  factory $ScheduleResponseCopyWith(
-          ScheduleResponse value, $Res Function(ScheduleResponse) then) =
-      _$ScheduleResponseCopyWithImpl<$Res, ScheduleResponse>;
+abstract class $NextScheduleResponseCopyWith<$Res> {
+  factory $NextScheduleResponseCopyWith(NextScheduleResponse value,
+          $Res Function(NextScheduleResponse) then) =
+      _$NextScheduleResponseCopyWithImpl<$Res, NextScheduleResponse>;
   @useResult
-  $Res call({String? message, List<ScheduleOfTutor>? data});
+  $Res call({String? message, List<NextSchedule>? data});
 }
 
 /// @nodoc
-class _$ScheduleResponseCopyWithImpl<$Res, $Val extends ScheduleResponse>
-    implements $ScheduleResponseCopyWith<$Res> {
-  _$ScheduleResponseCopyWithImpl(this._value, this._then);
+class _$NextScheduleResponseCopyWithImpl<$Res,
+        $Val extends NextScheduleResponse>
+    implements $NextScheduleResponseCopyWith<$Res> {
+  _$NextScheduleResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,28 +63,28 @@ class _$ScheduleResponseCopyWithImpl<$Res, $Val extends ScheduleResponse>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<ScheduleOfTutor>?,
+              as List<NextSchedule>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_ScheduleResponseCopyWith<$Res>
-    implements $ScheduleResponseCopyWith<$Res> {
-  factory _$$_ScheduleResponseCopyWith(
-          _$_ScheduleResponse value, $Res Function(_$_ScheduleResponse) then) =
-      __$$_ScheduleResponseCopyWithImpl<$Res>;
+abstract class _$$_NextScheduleResponseCopyWith<$Res>
+    implements $NextScheduleResponseCopyWith<$Res> {
+  factory _$$_NextScheduleResponseCopyWith(_$_NextScheduleResponse value,
+          $Res Function(_$_NextScheduleResponse) then) =
+      __$$_NextScheduleResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? message, List<ScheduleOfTutor>? data});
+  $Res call({String? message, List<NextSchedule>? data});
 }
 
 /// @nodoc
-class __$$_ScheduleResponseCopyWithImpl<$Res>
-    extends _$ScheduleResponseCopyWithImpl<$Res, _$_ScheduleResponse>
-    implements _$$_ScheduleResponseCopyWith<$Res> {
-  __$$_ScheduleResponseCopyWithImpl(
-      _$_ScheduleResponse _value, $Res Function(_$_ScheduleResponse) _then)
+class __$$_NextScheduleResponseCopyWithImpl<$Res>
+    extends _$NextScheduleResponseCopyWithImpl<$Res, _$_NextScheduleResponse>
+    implements _$$_NextScheduleResponseCopyWith<$Res> {
+  __$$_NextScheduleResponseCopyWithImpl(_$_NextScheduleResponse _value,
+      $Res Function(_$_NextScheduleResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +93,7 @@ class __$$_ScheduleResponseCopyWithImpl<$Res>
     Object? message = freezed,
     Object? data = freezed,
   }) {
-    return _then(_$_ScheduleResponse(
+    return _then(_$_NextScheduleResponse(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -100,34 +101,34 @@ class __$$_ScheduleResponseCopyWithImpl<$Res>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<ScheduleOfTutor>?,
+              as List<NextSchedule>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ScheduleResponse implements _ScheduleResponse {
-  const _$_ScheduleResponse({this.message, this.data});
+class _$_NextScheduleResponse implements _NextScheduleResponse {
+  const _$_NextScheduleResponse({this.message, this.data});
 
-  factory _$_ScheduleResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ScheduleResponseFromJson(json);
+  factory _$_NextScheduleResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_NextScheduleResponseFromJson(json);
 
   @override
   final String? message;
   @override
-  final List<ScheduleOfTutor>? data;
+  final List<NextSchedule>? data;
 
   @override
   String toString() {
-    return 'ScheduleResponse(message: $message, data: $data)';
+    return 'NextScheduleResponse(message: $message, data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ScheduleResponse &&
+            other is _$_NextScheduleResponse &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
@@ -140,31 +141,32 @@ class _$_ScheduleResponse implements _ScheduleResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ScheduleResponseCopyWith<_$_ScheduleResponse> get copyWith =>
-      __$$_ScheduleResponseCopyWithImpl<_$_ScheduleResponse>(this, _$identity);
+  _$$_NextScheduleResponseCopyWith<_$_NextScheduleResponse> get copyWith =>
+      __$$_NextScheduleResponseCopyWithImpl<_$_NextScheduleResponse>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ScheduleResponseToJson(
+    return _$$_NextScheduleResponseToJson(
       this,
     );
   }
 }
 
-abstract class _ScheduleResponse implements ScheduleResponse {
-  const factory _ScheduleResponse(
+abstract class _NextScheduleResponse implements NextScheduleResponse {
+  const factory _NextScheduleResponse(
       {final String? message,
-      final List<ScheduleOfTutor>? data}) = _$_ScheduleResponse;
+      final List<NextSchedule>? data}) = _$_NextScheduleResponse;
 
-  factory _ScheduleResponse.fromJson(Map<String, dynamic> json) =
-      _$_ScheduleResponse.fromJson;
+  factory _NextScheduleResponse.fromJson(Map<String, dynamic> json) =
+      _$_NextScheduleResponse.fromJson;
 
   @override
   String? get message;
   @override
-  List<ScheduleOfTutor>? get data;
+  List<NextSchedule>? get data;
   @override
   @JsonKey(ignore: true)
-  _$$_ScheduleResponseCopyWith<_$_ScheduleResponse> get copyWith =>
+  _$$_NextScheduleResponseCopyWith<_$_NextScheduleResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

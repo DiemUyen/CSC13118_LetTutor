@@ -5,7 +5,7 @@ import '../schedule/schedule_of_tutor.dart';
 part 'schedule_response.freezed.dart';
 part 'schedule_response.g.dart';
 
-@Freezed(fromJson: true)
+@Freezed(fromJson: true, makeCollectionsUnmodifiable: false)
 class ScheduleResponse with _$ScheduleResponse {
   const factory ScheduleResponse({
     String? message,

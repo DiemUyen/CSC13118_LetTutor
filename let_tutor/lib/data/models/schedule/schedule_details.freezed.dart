@@ -30,6 +30,7 @@ mixin _$ScheduleDetails {
   String? get updatedAt => throw _privateConstructorUsedError;
   List<BookingInfo>? get bookingInfo => throw _privateConstructorUsedError;
   bool? get isBooked => throw _privateConstructorUsedError;
+  ScheduleInfo? get scheduleInfo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +54,10 @@ abstract class $ScheduleDetailsCopyWith<$Res> {
       String? createdAt,
       String? updatedAt,
       List<BookingInfo>? bookingInfo,
-      bool? isBooked});
+      bool? isBooked,
+      ScheduleInfo? scheduleInfo});
+
+  $ScheduleInfoCopyWith<$Res>? get scheduleInfo;
 }
 
 /// @nodoc
@@ -79,6 +83,7 @@ class _$ScheduleDetailsCopyWithImpl<$Res, $Val extends ScheduleDetails>
     Object? updatedAt = freezed,
     Object? bookingInfo = freezed,
     Object? isBooked = freezed,
+    Object? scheduleInfo = freezed,
   }) {
     return _then(_value.copyWith(
       startPeriodTimestamp: freezed == startPeriodTimestamp
@@ -121,7 +126,23 @@ class _$ScheduleDetailsCopyWithImpl<$Res, $Val extends ScheduleDetails>
           ? _value.isBooked
           : isBooked // ignore: cast_nullable_to_non_nullable
               as bool?,
+      scheduleInfo: freezed == scheduleInfo
+          ? _value.scheduleInfo
+          : scheduleInfo // ignore: cast_nullable_to_non_nullable
+              as ScheduleInfo?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ScheduleInfoCopyWith<$Res>? get scheduleInfo {
+    if (_value.scheduleInfo == null) {
+      return null;
+    }
+
+    return $ScheduleInfoCopyWith<$Res>(_value.scheduleInfo!, (value) {
+      return _then(_value.copyWith(scheduleInfo: value) as $Val);
+    });
   }
 }
 
@@ -143,7 +164,11 @@ abstract class _$$_ScheduleDetailsCopyWith<$Res>
       String? createdAt,
       String? updatedAt,
       List<BookingInfo>? bookingInfo,
-      bool? isBooked});
+      bool? isBooked,
+      ScheduleInfo? scheduleInfo});
+
+  @override
+  $ScheduleInfoCopyWith<$Res>? get scheduleInfo;
 }
 
 /// @nodoc
@@ -167,6 +192,7 @@ class __$$_ScheduleDetailsCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? bookingInfo = freezed,
     Object? isBooked = freezed,
+    Object? scheduleInfo = freezed,
   }) {
     return _then(_$_ScheduleDetails(
       startPeriodTimestamp: freezed == startPeriodTimestamp
@@ -209,6 +235,10 @@ class __$$_ScheduleDetailsCopyWithImpl<$Res>
           ? _value.isBooked
           : isBooked // ignore: cast_nullable_to_non_nullable
               as bool?,
+      scheduleInfo: freezed == scheduleInfo
+          ? _value.scheduleInfo
+          : scheduleInfo // ignore: cast_nullable_to_non_nullable
+              as ScheduleInfo?,
     ));
   }
 }
@@ -226,7 +256,8 @@ class _$_ScheduleDetails implements _ScheduleDetails {
       this.createdAt,
       this.updatedAt,
       final List<BookingInfo>? bookingInfo,
-      this.isBooked})
+      this.isBooked,
+      this.scheduleInfo})
       : _bookingInfo = bookingInfo;
 
   factory _$_ScheduleDetails.fromJson(Map<String, dynamic> json) =>
@@ -260,10 +291,12 @@ class _$_ScheduleDetails implements _ScheduleDetails {
 
   @override
   final bool? isBooked;
+  @override
+  final ScheduleInfo? scheduleInfo;
 
   @override
   String toString() {
-    return 'ScheduleDetails(startPeriodTimestamp: $startPeriodTimestamp, endPeriodTimestamp: $endPeriodTimestamp, id: $id, scheduleId: $scheduleId, startPeriod: $startPeriod, endPeriod: $endPeriod, createdAt: $createdAt, updatedAt: $updatedAt, bookingInfo: $bookingInfo, isBooked: $isBooked)';
+    return 'ScheduleDetails(startPeriodTimestamp: $startPeriodTimestamp, endPeriodTimestamp: $endPeriodTimestamp, id: $id, scheduleId: $scheduleId, startPeriod: $startPeriod, endPeriod: $endPeriod, createdAt: $createdAt, updatedAt: $updatedAt, bookingInfo: $bookingInfo, isBooked: $isBooked, scheduleInfo: $scheduleInfo)';
   }
 
   @override
@@ -289,7 +322,9 @@ class _$_ScheduleDetails implements _ScheduleDetails {
             const DeepCollectionEquality()
                 .equals(other._bookingInfo, _bookingInfo) &&
             (identical(other.isBooked, isBooked) ||
-                other.isBooked == isBooked));
+                other.isBooked == isBooked) &&
+            (identical(other.scheduleInfo, scheduleInfo) ||
+                other.scheduleInfo == scheduleInfo));
   }
 
   @JsonKey(ignore: true)
@@ -305,7 +340,8 @@ class _$_ScheduleDetails implements _ScheduleDetails {
       createdAt,
       updatedAt,
       const DeepCollectionEquality().hash(_bookingInfo),
-      isBooked);
+      isBooked,
+      scheduleInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -332,7 +368,8 @@ abstract class _ScheduleDetails implements ScheduleDetails {
       final String? createdAt,
       final String? updatedAt,
       final List<BookingInfo>? bookingInfo,
-      final bool? isBooked}) = _$_ScheduleDetails;
+      final bool? isBooked,
+      final ScheduleInfo? scheduleInfo}) = _$_ScheduleDetails;
 
   factory _ScheduleDetails.fromJson(Map<String, dynamic> json) =
       _$_ScheduleDetails.fromJson;
@@ -357,6 +394,8 @@ abstract class _ScheduleDetails implements ScheduleDetails {
   List<BookingInfo>? get bookingInfo;
   @override
   bool? get isBooked;
+  @override
+  ScheduleInfo? get scheduleInfo;
   @override
   @JsonKey(ignore: true)
   _$$_ScheduleDetailsCopyWith<_$_ScheduleDetails> get copyWith =>

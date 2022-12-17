@@ -13,6 +13,7 @@ class TutorListState extends Equatable {
       'nationality': <String, bool>{}
     },
     this.isReset = false,
+    this.totalMinutes = 0,
     this.status = TutorListStatus.initial,
   });
 
@@ -24,6 +25,7 @@ class TutorListState extends Equatable {
   final bool isSearching;
   final Map<String, dynamic> filters;
   final bool isReset;
+  final int totalMinutes;
   final TutorListStatus status;
 
   TutorListState copyWith(
@@ -35,6 +37,7 @@ class TutorListState extends Equatable {
       bool? isSearching,
       Map<String, dynamic>? filters,
       bool? isReset,
+      int? totalMinutes,
       TutorListStatus? status}) {
     return TutorListState(
       tutors: tutors ?? this.tutors,
@@ -45,6 +48,7 @@ class TutorListState extends Equatable {
       isSearching: isSearching ?? this.isSearching,
       filters: filters ?? this.filters,
       isReset: isReset ?? this.isReset,
+      totalMinutes: totalMinutes ?? this.totalMinutes,
       status: status ?? this.status,
     );
   }
@@ -59,6 +63,7 @@ class TutorListState extends Equatable {
         isSearching,
         filters,
         isReset,
+        totalMinutes,
         status,
       ];
 }

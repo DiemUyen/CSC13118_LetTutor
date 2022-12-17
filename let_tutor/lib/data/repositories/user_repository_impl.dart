@@ -1,9 +1,11 @@
 part of 'user_repository.dart';
 
 class UserRepositoryImpl extends UserRepository {
-  UserRepositoryImpl(this._userProvider);
+  UserRepositoryImpl({
+    required UserProvider userProvider,
+  }) : _userProvider = userProvider;
 
-  final UserRepository _userProvider;
+  late final UserProvider _userProvider;
 
   @override
   Future<bool> changePassword(String password, String newPassword) async {
@@ -27,6 +29,14 @@ class UserRepositoryImpl extends UserRepository {
     // TODO: implement updateUserInformation
     return await _userProvider
         .updateUserInformation(updateInformation)
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<int> getTotalCallMinutes() async {
+    // TODO: implement getTotalCallMinutes
+    return await _userProvider
+        .getTotalCallMinutes()
         .catchError(DioExceptionHandler.handleException);
   }
 }

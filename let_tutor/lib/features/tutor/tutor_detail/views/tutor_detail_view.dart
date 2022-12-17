@@ -165,7 +165,7 @@ class _TutorDetailViewState extends State<TutorDetailView> {
                         ),
                       ),
                     ),
-                    const _BookButton(),
+                    _BookButton(tutorId: state.tutor.User?.id ?? '',),
                   ],
                 ),
               ),
@@ -599,7 +599,9 @@ class _SuggestedCourses extends StatelessWidget {
 }
 
 class _BookButton extends StatelessWidget {
-  const _BookButton({Key? key}) : super(key: key);
+  const _BookButton({Key? key, required this.tutorId}) : super(key: key);
+
+  final String tutorId;
 
   @override
   Widget build(BuildContext context) {
@@ -607,7 +609,7 @@ class _BookButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context, AppRouter.bookingPage);
+          Navigator.pushNamed(context, AppRouter.bookingPage, arguments: tutorId);
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.primary,

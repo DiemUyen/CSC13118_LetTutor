@@ -1,3 +1,4 @@
+import 'package:let_tutor/data/repositories/schedule_repository_impl.dart';
 import 'package:let_tutor/injector/injector.dart';
 
 import '../data/repositories/repositories.dart';
@@ -22,13 +23,19 @@ class RepositoryModule {
 
     injector.registerFactory<UserRepository>(
       () => UserRepositoryImpl(
-        injector(),
+        userProvider: injector(),
       ),
     );
 
     injector.registerFactory<CourseRepository>(
       () => CourseRepositoryImpl(
         courseProvider: injector(),
+      ),
+    );
+
+    injector.registerFactory<ScheduleRepository>(
+      () => ScheduleRepositoryImpl(
+        scheduleProvider: injector(),
       ),
     );
   }

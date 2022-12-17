@@ -1,6 +1,5 @@
 
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:let_tutor/configs/endpoints.dart';
 
 import '../models/responses/user_response.dart';
@@ -25,9 +24,6 @@ class UserProvider {
     try {
       var response = await _dio.get(Endpoints.userInformation);
       final UserResponse user = UserResponse.fromJson(response.data);
-      if (kDebugMode) {
-        print('User response: $user');
-      }
       return user;
     } catch (exception) {
       return const UserResponse();
@@ -45,4 +41,12 @@ class UserProvider {
       return const UserResponse();
     }
   }
+
+  Future<int> getTotalCallMinutes() async {
+      var response = await _dio.get(Endpoints.getTotalCall);
+      var total = response.data['total'];
+      return total;
+  }
+
+
 }

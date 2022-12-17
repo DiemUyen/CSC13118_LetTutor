@@ -34,4 +34,5 @@ class Endpoints {
   // User
   static const changePassword = '/auth/change-password';
   static const userInformation = '/user/info';
+  static const getTotalCall = '/call/total';
 }

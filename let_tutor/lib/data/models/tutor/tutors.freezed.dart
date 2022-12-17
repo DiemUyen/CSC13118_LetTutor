@@ -93,7 +93,7 @@ class __$$_TutorsCopyWithImpl<$Res>
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
       rows: freezed == rows
-          ? _value._rows
+          ? _value.rows
           : rows // ignore: cast_nullable_to_non_nullable
               as List<Tutor>?,
     ));
@@ -103,22 +103,15 @@ class __$$_TutorsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Tutors implements _Tutors {
-  const _$_Tutors({this.count, final List<Tutor>? rows}) : _rows = rows;
+  const _$_Tutors({this.count, this.rows});
 
   factory _$_Tutors.fromJson(Map<String, dynamic> json) =>
       _$$_TutorsFromJson(json);
 
   @override
   final int? count;
-  final List<Tutor>? _rows;
   @override
-  List<Tutor>? get rows {
-    final value = _rows;
-    if (value == null) return null;
-    if (_rows is EqualUnmodifiableListView) return _rows;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final List<Tutor>? rows;
 
   @override
   String toString() {
@@ -131,13 +124,13 @@ class _$_Tutors implements _Tutors {
         (other.runtimeType == runtimeType &&
             other is _$_Tutors &&
             (identical(other.count, count) || other.count == count) &&
-            const DeepCollectionEquality().equals(other._rows, _rows));
+            const DeepCollectionEquality().equals(other.rows, rows));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, count, const DeepCollectionEquality().hash(_rows));
+      runtimeType, count, const DeepCollectionEquality().hash(rows));
 
   @JsonKey(ignore: true)
   @override

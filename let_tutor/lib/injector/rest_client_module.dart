@@ -64,5 +64,11 @@ class RestClientModule {
         injector(instanceName: dioInstance),
       ),
     );
+
+    injector.registerFactory<ScheduleProvider>(
+      () => ScheduleProvider(
+        injector(instanceName: dioInstance),
+      ),
+    );
   }
 }

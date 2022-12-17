@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data/models/tutor/tutor.dart';
 import '../features/authentication/forgot_password/views/forgot_password_page.dart';
 import '../features/authentication/sign_in/views/sign_in_page.dart';
 import '../features/authentication/sign_up/views/sign_up_page.dart';
@@ -20,7 +19,7 @@ import '../features/profile/schedule_detail.dart';
 import '../features/profile/schedule_page.dart';
 import '../features/profile/wallet_page.dart';
 import '../features/application/setting_page.dart';
-import '../features/tutor/booking_page.dart';
+import '../features/tutor/booking/view/booking_page.dart';
 import '../features/tutor/tutor_detail/views/tutor_detail_page.dart';
 import '../features/tutor/tutor_list/views/tutor_list_page.dart';
 import '../features/tutor/feedback/views/tutor_reviews_page.dart';
@@ -97,7 +96,7 @@ class AppRouter {
         );
       case bookingPage:
         return MaterialPageRoute(
-          builder: (context) => const BookingPage(),
+          builder: (context) => BookingPage(tutorId: settings.arguments as String,),
         );
       case tutorReviewsPage:
         return MaterialPageRoute(

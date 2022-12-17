@@ -53,10 +53,13 @@ class TutorDetailBloc extends Bloc<TutorDetailEvent, TutorDetailState> {
       Emitter<TutorDetailState> emit) async {
     var response =
         await _tutorRepository.addFavoriteTutor(state.tutor.User?.id ?? '');
-    Tutor updatedTutor =
-        state.tutor.copyWith(isFavorite: !(state.tutor.isFavorite ?? false));
-    emit(state.copyWith(
-        tutor: updatedTutor.copyWith(), status: TutorDetailStatus.loadSuccess));
+    if (response) {
+      Tutor updatedTutor =
+      state.tutor.copyWith(isFavorite: !(state.tutor.isFavorite ?? false));
+      emit(state.copyWith(
+          tutor: updatedTutor.copyWith(),
+          status: TutorDetailStatus.loadSuccess));
+    }
   }
 
   FutureOr<void> _onReportButtonPressed(TutorDetailReportButtonPressed event,

@@ -19,8 +19,10 @@ class TutorHomeCard extends StatelessWidget {
         children: [
           // Information of tutor
           GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, AppRouter.tutorDetailPage, arguments: tutor.userId);
+            onTap: () async {
+              var check = await Navigator.pushNamed(context, AppRouter.tutorDetailPage,
+                  arguments: tutor.userId);
+              context.read<TutorListBloc>().add(TutorListLoaded());
             },
             child: _TutorInformation(tutor: tutor),
           ),
@@ -31,7 +33,7 @@ class TutorHomeCard extends StatelessWidget {
           ),
 
           // Button 'Book'
-          const _BookButton(),
+          _BookButton(tutorId: (tutor.userId ?? ''),),
         ],
       ),
     );
@@ -144,7 +146,10 @@ class _TutorInformation extends StatelessWidget {
 class _BookButton extends StatelessWidget {
   const _BookButton({
     Key? key,
+    required this.tutorId,
   }) : super(key: key);
+
+  final String tutorId;
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +160,8 @@ class _BookButton extends StatelessWidget {
         alignment: Alignment.bottomRight,
         child: OutlinedButton.icon(
           onPressed: () {
-            Navigator.pushNamed(context, AppRouter.bookingPage);
+            Navigator.pushNamed(context, AppRouter.bookingPage,
+                arguments: tutorId);
           },
           icon: const Icon(Icons.edit_calendar_outlined),
           label: const Text("Book"),
@@ -187,13 +193,9 @@ class _FavoriteButton extends StatelessWidget {
                 onPressed: () {
                   context
                       .read<TutorListBloc>()
-                      .add(TutorListFavoriteButtonPressed(tutorId: tutor.id!));
+                      .add(TutorListFavoriteButtonPressed(tutorId: tutor.userId!));
                 },
-                icon: state.tutors.favoriteTutor
-                            ?.where((element) =>
-                                element.secondId!.contains(tutor.id!))
-                            .isNotEmpty ??
-                        false
+                icon: tutor.isfavoritetutor == '1'
                     ? const Icon(
                         Icons.favorite_rounded,
                         color: Colors.red,

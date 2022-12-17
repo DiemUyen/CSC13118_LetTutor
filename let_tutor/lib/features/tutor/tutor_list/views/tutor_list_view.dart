@@ -8,8 +8,19 @@ import '../../../../router/app_router.dart';
 import '../../../../widgets/widgets.dart';
 import '../bloc/tutor_list_bloc.dart';
 
-class TutorListView extends StatelessWidget {
+class TutorListView extends StatefulWidget {
   const TutorListView({Key? key}) : super(key: key);
+
+  @override
+  State<TutorListView> createState() => _TutorListViewState();
+}
+
+class _TutorListViewState extends State<TutorListView> {
+  @override
+  void initState() {
+    context.read<TutorListBloc>().add(TutorListLoaded());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +79,7 @@ class TutorListView extends StatelessWidget {
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: state.filteredTutors.length ?? 0,
+                      itemCount: state.filteredTutors.length,
                       itemBuilder: (context, index) => TutorHomeCard(
                         tutor: state.filteredTutors[index],
                       ),
@@ -102,9 +113,22 @@ class _UpcomingLesson extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            Text(
-              "Fri, 11 Nov 22 18:30 - 18:55 (starts in ${DateTime(2022, 11, 11).difference(DateTime.now())})",
-              textAlign: TextAlign.center,
+            BlocBuilder<TutorListBloc, TutorListState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    Text(
+                      "Fri, 11 Nov 22 18:30 - 18:55 (starts in ${DateTime(2022, 11, 11).difference(DateTime.now())})",
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                        'Total lesson time is ${state.totalMinutes ~/ 60} hours ${state.totalMinutes % 60} minutes'),
+                  ],
+                );
+              },
             ),
             const SizedBox(
               height: 8,
@@ -134,36 +158,43 @@ class _SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Search bar
-        Expanded(
-          flex: 1,
-          child: TextField(
-            controller: controller,
-            onChanged: (value) {
-              context
-                  .read<TutorListBloc>()
-                  .add(TutorListNameSearched(tutorName: value));
-            },
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.search_outlined),
-              border: const OutlineInputBorder(),
-              hintText: S.current.search_tutor_name,
+    return BlocListener<TutorListBloc, TutorListState>(
+      listener: (context, state) {
+        if (state.isReset) {
+          controller.text = '';
+        }
+      },
+      child: Row(
+        children: [
+          // Search bar
+          Expanded(
+            flex: 1,
+            child: TextField(
+              controller: controller,
+              onChanged: (value) {
+                context
+                    .read<TutorListBloc>()
+                    .add(TutorListNameSearched(tutorName: value));
+              },
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.search_outlined),
+                border: const OutlineInputBorder(),
+                hintText: S.current.search_tutor_name,
+              ),
             ),
           ),
-        ),
-        const SizedBox(
-          width: 16,
-        ),
-        // Filter
-        IconButton(
-          icon: const Icon(Icons.filter_list_outlined),
-          onPressed: () {
-            context.read<TutorListBloc>().add(TutorListFilterButtonPressed());
-          },
-        ),
-      ],
+          const SizedBox(
+            width: 16,
+          ),
+          // Filter
+          IconButton(
+            icon: const Icon(Icons.filter_list_outlined),
+            onPressed: () {
+              context.read<TutorListBloc>().add(TutorListFilterButtonPressed());
+            },
+          ),
+        ],
+      ),
     );
   }
 }
