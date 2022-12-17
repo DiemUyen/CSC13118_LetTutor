@@ -12,7 +12,7 @@ class Feedbacks with _$Feedbacks {
     String? bookingId,
     String? firstId,
     String? secondId,
-    int? rating,
+    double? rating,
     String? content,
     String? createdAt,
     String? updatedAt,

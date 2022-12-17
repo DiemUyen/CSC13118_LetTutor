@@ -1,3 +1,4 @@
+import '../models/responses/history_response.dart';
 import '../models/responses/upcoming_response.dart';
 import '../models/responses/schedule_response.dart';
 
@@ -9,4 +10,6 @@ abstract class ScheduleRepository {
   Future<bool> bookClass(String scheduleId);
 
   Future<UpcomingResponse> getUpcomingClass();
+
+  Future<HistoryResponse> getHistoryClass(int page);
 }

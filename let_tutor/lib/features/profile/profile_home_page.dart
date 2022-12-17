@@ -86,7 +86,6 @@ class _ProfileHomePageState extends State<ProfileHomePage> {
           padding: const EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 0),
           child: Column(
             children: [
-              avatar(),
               const SizedBox(height: 32,),
 
               itemList(),

@@ -24,7 +24,7 @@ mixin _$Feedbacks {
   String? get bookingId => throw _privateConstructorUsedError;
   String? get firstId => throw _privateConstructorUsedError;
   String? get secondId => throw _privateConstructorUsedError;
-  int? get rating => throw _privateConstructorUsedError;
+  double? get rating => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $FeedbacksCopyWith<$Res> {
       String? bookingId,
       String? firstId,
       String? secondId,
-      int? rating,
+      double? rating,
       String? content,
       String? createdAt,
       String? updatedAt,
@@ -98,7 +98,7 @@ class _$FeedbacksCopyWithImpl<$Res, $Val extends Feedbacks>
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -143,7 +143,7 @@ abstract class _$$_FeedbacksCopyWith<$Res> implements $FeedbacksCopyWith<$Res> {
       String? bookingId,
       String? firstId,
       String? secondId,
-      int? rating,
+      double? rating,
       String? content,
       String? createdAt,
       String? updatedAt,
@@ -194,7 +194,7 @@ class __$$_FeedbacksCopyWithImpl<$Res>
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -241,7 +241,7 @@ class _$_Feedbacks implements _Feedbacks {
   @override
   final String? secondId;
   @override
-  final int? rating;
+  final double? rating;
   @override
   final String? content;
   @override
@@ -302,7 +302,7 @@ abstract class _Feedbacks implements Feedbacks {
       final String? bookingId,
       final String? firstId,
       final String? secondId,
-      final int? rating,
+      final double? rating,
       final String? content,
       final String? createdAt,
       final String? updatedAt,
@@ -320,7 +320,7 @@ abstract class _Feedbacks implements Feedbacks {
   @override
   String? get secondId;
   @override
-  int? get rating;
+  double? get rating;
   @override
   String? get content;
   @override

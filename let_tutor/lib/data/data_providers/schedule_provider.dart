@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:let_tutor/configs/endpoints.dart';
 
+import '../models/responses/history_response.dart';
 import '../models/responses/upcoming_response.dart';
 import '../models/responses/schedule_response.dart';
 
@@ -36,5 +37,21 @@ class ScheduleProvider {
     });
     var nextSchedules = UpcomingResponse.fromJson(response.data);
     return nextSchedules;
+  }
+
+  Future<HistoryResponse> getHistoryClass(int page) async {
+    var dateTimeLte = DateTime.now()
+        .subtract(const Duration(minutes: 35))
+        .toUtc()
+        .millisecondsSinceEpoch;
+    var response = await _dio.get(Endpoints.getBookedClass, queryParameters: {
+      'dateTimeLte': dateTimeLte,
+      'page': page,
+      'perPage': 20,
+      'orderBy': 'meeting',
+      'sortBy': 'desc'
+    });
+    var history = HistoryResponse.fromJson(response.data);
+    return history;
   }
 }

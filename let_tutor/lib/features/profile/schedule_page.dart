@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../data/models/schedule/next_schedule.dart';
 import '../../router/app_router.dart';
 import '../../widgets/widgets.dart';
 
@@ -45,7 +46,7 @@ class _SchedulePageState extends State<SchedulePage> {
                     onTap: () {
                       Navigator.pushNamed(context, AppRouter.scheduleDetailPage);
                     },
-                    child: const LessonCard()
+                    child: const LessonCard(historyInfo: NextSchedule())
                 );
               },
             ),

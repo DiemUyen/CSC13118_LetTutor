@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:let_tutor/data/models/schedule/next_schedule.dart';
 
 import '../features/authentication/forgot_password/views/forgot_password_page.dart';
 import '../features/authentication/sign_in/views/sign_in_page.dart';
@@ -11,7 +12,7 @@ import '../features/meeting_page.dart';
 import '../features/profile/become_tutor_page.dart';
 import '../features/profile/change_password/views/change_password_page.dart';
 import '../features/profile/history_detail.dart';
-import '../features/profile/history_page.dart';
+import '../features/profile/history_list/views/history_list_page.dart';
 import '../features/profile/my_courses_page.dart';
 import '../features/profile/update_user_information/views/my_profile_page.dart';
 import '../features/profile/profile_home_page.dart';
@@ -144,7 +145,7 @@ class AppRouter {
         );
       case historyDetailPage:
         return MaterialPageRoute(
-          builder: (context) => const HistoryDetail(),
+          builder: (context) => HistoryDetail(historyInfo: settings.arguments as NextSchedule,),
         );
       case myCoursesPage:
         return MaterialPageRoute(

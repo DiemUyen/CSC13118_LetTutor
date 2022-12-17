@@ -66,7 +66,7 @@ class SignUpView extends StatelessWidget {
                       const SizedBox(height: 32),
 
                       // Divider
-                      Row(
+                      /*Row(
                         children: [
                           const Expanded(
                               child: Divider(
@@ -84,7 +84,7 @@ class SignUpView extends StatelessWidget {
                                 thickness: 0.5,
                               ))
                         ],
-                      ),
+                      ),*/
 
                       const SizedBox(
                         height: 16,

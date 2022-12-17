@@ -1,3 +1,5 @@
+import 'package:let_tutor/data/models/responses/history_response.dart';
+
 import '../../exceptions/exception_handler.dart';
 import '../data_providers/data_providers.dart';
 import '../models/responses/upcoming_response.dart';
@@ -39,6 +41,14 @@ class ScheduleRepositoryImpl extends ScheduleRepository {
     // TODO: implement getUpcomingClass
     return await _scheduleProvider
         .getUpcomingClass()
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<HistoryResponse> getHistoryClass(int page) async {
+    // TODO: implement getHistoryClass
+    return await _scheduleProvider
+        .getHistoryClass(page)
         .catchError(DioExceptionHandler.handleException);
   }
 }
