@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.let_tutor">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="let_tutor"
         android:name="${applicationName}"
