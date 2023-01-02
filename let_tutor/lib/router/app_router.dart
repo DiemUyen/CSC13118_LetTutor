@@ -8,7 +8,7 @@ import '../features/course/course_detail/views/course_detail_page.dart';
 import '../features/course/course_list/views/courses_list_page.dart';
 import '../features/course/topics_page.dart';
 import '../features/home.dart';
-import '../features/meeting_page.dart';
+import '../features/meeting/views/meeting_page.dart';
 import '../features/profile/become_tutor_page.dart';
 import '../features/profile/change_password/views/change_password_page.dart';
 import '../features/profile/history_detail.dart';
@@ -161,7 +161,7 @@ class AppRouter {
         );
       case meetingPage:
         return MaterialPageRoute(
-          builder: (context) => const MeetingPage(),
+          builder: (context) => MeetingPage(meetingLink: settings.arguments as String,),
         );
       case settingPage:
         return MaterialPageRoute(

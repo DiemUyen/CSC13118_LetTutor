@@ -1,9 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.let_tutor">
+    package="com.example.let_tutor"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
+        tools:replace="android:label"
         android:label="let_tutor"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -33,5 +35,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <service android:name="org.jitsi.meet.sdk.ConnectionService"
+                android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
+                android:exported="true">
+       </service>
     </application>
 </manifest>

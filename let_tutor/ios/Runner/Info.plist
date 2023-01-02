@@ -47,11 +47,11 @@
 	<true/>
 </dict>
 <key>NSPhotoLibraryUsageDescription</key>
-<string>Need to upload image</string>
+<string>${PRODUCT_NAME} needs access to your photo library for upload images.</string>
 <key>NSCameraUsageDescription</key>
-<string>Need to upload image</string>
+<string>$(PRODUCT_NAME) needs access to your camera for meetings.</string>
 <key>NSMicrophoneUsageDescription</key>
-<string>Need to upload image</string>
+<string>$(PRODUCT_NAME) needs access to your microphone for meetings.</string>
 <key>NSAppTransportSecurity</key>
 <dict>
   <key>NSAllowsArbitraryLoads</key>

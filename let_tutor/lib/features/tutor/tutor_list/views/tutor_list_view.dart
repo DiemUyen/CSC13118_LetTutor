@@ -174,23 +174,23 @@ class _UpcomingLessonState extends State<_UpcomingLesson> {
                     ),
                     Text(
                         'Total lesson time is ${state.totalMinutes ~/ 60} hours ${state.totalMinutes % 60} minutes'),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.pushNamed(context, AppRouter.meetingPage, arguments: state.upcomingClass.studentMeetingLink);
+                      },
+                      label: Text(S.current.enter_lesson_room),
+                      icon: const Icon(Icons.play_circle_fill_outlined),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    ),
                   ],
                 );
               },
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, AppRouter.meetingPage);
-              },
-              label: Text(S.current.enter_lesson_room),
-              icon: const Icon(Icons.play_circle_fill_outlined),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                foregroundColor: Theme.of(context).colorScheme.onPrimary,
-              ),
             ),
           ],
         ),
