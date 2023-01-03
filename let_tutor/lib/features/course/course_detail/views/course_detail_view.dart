@@ -246,7 +246,11 @@ class _TopicsList extends StatelessWidget {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, AppRouter.topicsPage);
+                  Navigator.pushNamed(
+                    context,
+                    AppRouter.topicsPage,
+                    arguments: state.detailResponse.data?.topics?[index],
+                  );
                 },
                 child: Card(
                   child: Padding(

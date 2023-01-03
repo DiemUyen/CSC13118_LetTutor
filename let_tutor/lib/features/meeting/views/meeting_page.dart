@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../injector/injector.dart';
 import '../bloc/meeting_bloc.dart';
 import 'meeting_view.dart';
 
@@ -17,7 +18,7 @@ class _MeetingPageState extends State<MeetingPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MeetingBloc()
+      create: (context) => Injector.instance<MeetingBloc>()
         ..add(
           MeetingInit(
             url: widget.meetingLink,
