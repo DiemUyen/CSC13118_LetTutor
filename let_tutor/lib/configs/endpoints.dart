@@ -5,6 +5,8 @@ class Endpoints {
   static const verifyAccount = '/auth/verifyAccount';
   static const refreshToken = '/auth/refresh-token';
   static const forgotPassword = '/user/forgotPassword';
+  static const loginWithGoogle = '/auth/google';
+  static const loginWithFacebook = '/auth/facebook';
 
   // Tutor
   static const listTutor = '/tutor/more';

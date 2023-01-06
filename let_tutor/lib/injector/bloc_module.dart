@@ -10,6 +10,7 @@ import '../features/course/topic_detail/bloc/topic_detail_bloc.dart';
 import '../features/meeting/bloc/meeting_bloc.dart';
 import '../features/profile/change_password/bloc/change_password_bloc.dart';
 import '../features/profile/history_list/bloc/history_list_bloc.dart';
+import '../features/profile/profile_home/bloc/profile_home_bloc.dart';
 import '../features/profile/update_user_information/bloc/update_user_information_bloc.dart';
 import '../features/tutor/booking/bloc/booking_bloc.dart';
 import '../features/tutor/feedback/bloc/feedback_bloc.dart';
@@ -111,6 +112,10 @@ class BlocModule {
 
     injector.registerFactory(
       () => TopicDetailBloc(),
+    );
+
+    injector.registerFactory(
+      () => ProfileHomeBloc(),
     );
   }
 }

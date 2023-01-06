@@ -16,7 +16,7 @@ import '../features/profile/history_detail.dart';
 import '../features/profile/history_list/views/history_list_page.dart';
 import '../features/profile/my_courses_page.dart';
 import '../features/profile/update_user_information/views/my_profile_page.dart';
-import '../features/profile/profile_home_page.dart';
+import '../features/profile/profile_home/views/profile_home_page.dart';
 import '../features/profile/schedule_detail.dart';
 import '../features/profile/schedule_page.dart';
 import '../features/profile/wallet_page.dart';

@@ -9,7 +9,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<bool> forgotPassword(String email) async {
-    // TODO: implement forgotPassword
     return await _authProvider
         .forgotPassword(email)
         .catchError(DioExceptionHandler.handleException);
@@ -17,27 +16,27 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<AuthResponse> login(String email, String password) async {
-    // TODO: implement login
     return await _authProvider
         .login(email, password)
         .catchError(DioExceptionHandler.handleException);
   }
 
   @override
-  Future<AuthResponse> loginByFacebook(String accessToken) {
-    // TODO: implement loginByFacebook
-    throw UnimplementedError();
+  Future<AuthResponse> loginByFacebook(String accessToken) async {
+    return await _authProvider
+        .loginByFacebook(accessToken)
+        .catchError(DioExceptionHandler.handleException);
   }
 
   @override
-  Future<AuthResponse> loginByGoogle(String accessToken) {
-    // TODO: implement loginByGoogle
-    throw UnimplementedError();
+  Future<AuthResponse> loginByGoogle(String accessToken) async {
+    return await _authProvider
+        .loginByGoogle(accessToken)
+        .catchError(DioExceptionHandler.handleException);
   }
 
   @override
   Future<AuthResponse> refreshToken(String refreshToken) async {
-    // TODO: implement refreshToken
     return await _authProvider
         .refreshToken(refreshToken)
         .catchError(DioExceptionHandler.handleException);
@@ -45,7 +44,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<AuthResponse> register(String email, String password) async {
-    // TODO: implement register
     return await _authProvider
         .register(email, password)
         .catchError(DioExceptionHandler.handleException);
@@ -53,7 +51,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<bool> verifyAccount(String token) async {
-    // TODO: implement verifyAccount
     return await _authProvider
         .verifyAccount(token)
         .catchError(DioExceptionHandler.handleException);
