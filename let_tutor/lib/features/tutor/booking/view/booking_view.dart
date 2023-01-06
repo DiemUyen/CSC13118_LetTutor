@@ -137,7 +137,7 @@ class _CalendarPicker extends StatelessWidget {
         : CalendarDatePicker(
             initialDate: availableDate.first,
             firstDate: DateTime.now(),
-            lastDate: DateTime(2023),
+            lastDate: DateTime(DateTime.now().year + 1),
             onDateChanged: (DateTime selected) {
               context
                   .read<BookingBloc>()
