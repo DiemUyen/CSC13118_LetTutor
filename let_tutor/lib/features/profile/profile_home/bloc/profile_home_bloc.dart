@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../injector/injector.dart';
 import '../../../../services/shared_preferences_service.dart';
@@ -18,6 +19,8 @@ class ProfileHomeBloc extends Bloc<ProfileHomeEvent, ProfileHomeState> {
 
   void _onLogOutButtonPressed(ProfileHomeLogOutButtonPressed event, Emitter emit) async {
     try {
+      final googleSignIn = GoogleSignIn();
+      await googleSignIn.disconnect();
       await FacebookAuth.instance.logOut();
       await FirebaseAuth.instance.signOut();
       _deleteToken();

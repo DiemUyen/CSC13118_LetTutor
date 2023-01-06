@@ -296,12 +296,15 @@ class _SignInButton extends StatelessWidget {
     return BlocBuilder<SignInBloc, SignInState>(
       builder: (context, state) {
         return ElevatedButton(
-          onPressed: state.status == SignInStatus.informationInvalid ||
-                  state.status == SignInStatus.initial
+          /*onPressed: state.status == SignInStatus.informationInvalid ||
+                  state.status == SignInStatus.initial || state.status == SignInStatus.loadFailed
               ? null
               : () {
                   context.read<SignInBloc>().add(SignInSignInButtonPressed());
-                },
+                },*/
+          onPressed: state.status == SignInStatus.informationValid ? () {
+            context.read<SignInBloc>().add(SignInSignInButtonPressed());
+          } : null,
           style: ElevatedButton.styleFrom(
             backgroundColor: AppThemes.primaryColor,
             foregroundColor: Colors.white,
