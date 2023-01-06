@@ -20,9 +20,11 @@ class ProfileHomeBloc extends Bloc<ProfileHomeEvent, ProfileHomeState> {
   void _onLogOutButtonPressed(ProfileHomeLogOutButtonPressed event, Emitter emit) async {
     try {
       final googleSignIn = GoogleSignIn();
-      await googleSignIn.disconnect();
-      await FacebookAuth.instance.logOut();
-      await FirebaseAuth.instance.signOut();
+      if (await googleSignIn.isSignedIn()) {
+        await googleSignIn.disconnect();
+        await FacebookAuth.instance.logOut();
+        await FirebaseAuth.instance.signOut();
+      }
       _deleteToken();
       emit(const ProfileHomeLoadSuccess());
     }

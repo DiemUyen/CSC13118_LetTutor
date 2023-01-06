@@ -5,6 +5,8 @@ abstract class TutorListEvent extends Equatable {
 }
 
 class TutorListLoaded extends TutorListEvent {
+  const TutorListLoaded();
+
   @override
   List<Object?> get props => [];
 }
@@ -16,20 +18,6 @@ class TutorListNameSearched extends TutorListEvent {
 
   @override
   List<Object?> get props => [tutorName];
-}
-
-class TutorListFilterButtonPressed extends TutorListEvent {
-  @override
-  List<Object?> get props => [];
-}
-
-class TutorListFilterChanged extends TutorListEvent {
-  final Map<String, dynamic> filters;
-
-  const TutorListFilterChanged({required this.filters});
-
-  @override
-  List<Object?> get props => [filters];
 }
 
 class TutorListNationalityChanged extends TutorListEvent {
@@ -62,4 +50,14 @@ class TutorListFavoriteButtonPressed extends TutorListEvent {
 
   @override
   List<Object?> get props => [tutorId];
+}
+
+class TutorListChangePagePressed extends TutorListEvent {
+  final int page;
+  final int perPage;
+
+  const TutorListChangePagePressed({this.page = 1, this.perPage = 12});
+
+  @override
+  List<Object?> get props => [page, perPage];
 }

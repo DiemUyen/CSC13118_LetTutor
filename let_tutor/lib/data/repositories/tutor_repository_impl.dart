@@ -9,7 +9,6 @@ class TutorRepositoryImpl extends TutorRepository {
 
   @override
   Future<bool> addFavoriteTutor(String tutorId) async {
-    // TODO: implement addFavoriteTutor
     return await _tutorProvider
         .addFavoriteTutor(tutorId)
         .catchError(DioExceptionHandler.handleException);
@@ -17,7 +16,6 @@ class TutorRepositoryImpl extends TutorRepository {
 
   @override
   Future<TutorResponse> getListTutor({int perPage = 9, int page = 1}) async {
-    // TODO: implement getListTutor
     return await _tutorProvider
         .getListTutor(perPage, page)
         .catchError(DioExceptionHandler.handleException);
@@ -25,25 +23,22 @@ class TutorRepositoryImpl extends TutorRepository {
 
   @override
   Future<Tutor> getTutorInformation(String tutorId) async {
-    // TODO: implement getTutorInformation
     return await _tutorProvider
         .getTutorInformation(tutorId)
         .catchError(DioExceptionHandler.handleException);
   }
 
   @override
-  Future<Tutors> searchTutor(
-      Map<String, dynamic> filters, String? tutorName) async {
-    // TODO: implement searchTutor
+  Future<Tutors> searchTutor(Map<String, dynamic> filters, String? tutorName,
+      int page, int perPage) async {
     return await _tutorProvider
-        .searchTutor(filters, tutorName)
+        .searchTutor(filters, tutorName, page, perPage)
         .catchError(DioExceptionHandler.handleException);
   }
 
   @override
   Future<bool> writeReview(
       String bookingId, String userId, int rating, String content) async {
-    // TODO: implement writeReview
     return await _tutorProvider
         .writeReview(bookingId, userId, rating, content)
         .catchError(DioExceptionHandler.handleException);
@@ -51,7 +46,6 @@ class TutorRepositoryImpl extends TutorRepository {
 
   @override
   Future<List<LearnTopics>> getLearnTopics() async {
-    // TODO: implement getLearnTopics
     return await _tutorProvider
         .getLearnTopics()
         .catchError(DioExceptionHandler.handleException);
@@ -59,7 +53,6 @@ class TutorRepositoryImpl extends TutorRepository {
 
   @override
   Future<List<TestPreparation>> getTestPreparation() async {
-    // TODO: implement getTestPreparation
     return await _tutorProvider
         .getTestPreparation()
         .catchError(DioExceptionHandler.handleException);
@@ -67,7 +60,6 @@ class TutorRepositoryImpl extends TutorRepository {
 
   @override
   Future<CategoryResponse> getCategories() async {
-    // TODO: implement getCategories
     return await _tutorProvider
         .getCategories()
         .catchError(DioExceptionHandler.handleException);
@@ -75,15 +67,14 @@ class TutorRepositoryImpl extends TutorRepository {
 
   @override
   Future<bool> reportTutor(String tutorId, String content) async {
-    // TODO: implement reportTutor
     return await _tutorProvider
         .reportTutor(tutorId, content)
         .catchError(DioExceptionHandler.handleException);
   }
 
   @override
-  Future<FeedbackResponse> getFeedbacks(String tutorId, int? page, {int? perPage}) async {
-    // TODO: implement getFeedbacks
+  Future<FeedbackResponse> getFeedbacks(String tutorId, int? page,
+      {int? perPage}) async {
     return await _tutorProvider
         .getFeedbacks(tutorId, page ?? 1, perPage ?? 12)
         .catchError(DioExceptionHandler.handleException);

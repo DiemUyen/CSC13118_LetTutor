@@ -20,7 +20,8 @@ class TutorHomeCard extends StatelessWidget {
           // Information of tutor
           GestureDetector(
             onTap: () async {
-              var check = await Navigator.pushNamed(context, AppRouter.tutorDetailPage,
+              var check = await Navigator.pushNamed(
+                  context, AppRouter.tutorDetailPage,
                   arguments: tutor.userId);
               context.read<TutorListBloc>().add(TutorListLoaded());
             },
@@ -33,7 +34,9 @@ class TutorHomeCard extends StatelessWidget {
           ),
 
           // Button 'Book'
-          _BookButton(tutorId: (tutor.userId ?? ''),),
+          _BookButton(
+            tutorId: (tutor.userId ?? ''),
+          ),
         ],
       ),
     );
@@ -47,6 +50,15 @@ class _TutorInformation extends StatelessWidget {
   }) : super(key: key);
 
   final Tutor tutor;
+
+  String getTutorAvatarName(String name) {
+    final splitTutorName = name.split(' ');
+    var result = '';
+    for (var part in splitTutorName) {
+      result += part[0];
+    }
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,13 +77,16 @@ class _TutorInformation extends StatelessWidget {
                 width: 48,
                 height: 48,
                 imageUrl: tutor.avatar ?? '',
+                fit: BoxFit.fill,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  foregroundImage: imageProvider,
+                ),
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     CircularProgressIndicator(
                   value: downloadProgress.progress,
                 ),
-                errorWidget: (context, url, error) => Image.asset(
-                  'assets/images/default_avatar.png',
-                ),
+                errorWidget: (context, url, error) => CircleAvatar(
+                    child: Text(getTutorAvatarName(tutor.name ?? ''))),
               ),
               const SizedBox(
                 width: 8,
@@ -133,7 +148,10 @@ class _TutorInformation extends StatelessWidget {
             height: 16,
           ),
           // Introduction
-          Text(tutor.bio ?? ''),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(tutor.bio ?? ''),
+          ),
           const SizedBox(
             height: 40,
           ),
@@ -191,9 +209,8 @@ class _FavoriteButton extends StatelessWidget {
               alignment: Alignment.topRight,
               child: IconButton(
                 onPressed: () {
-                  context
-                      .read<TutorListBloc>()
-                      .add(TutorListFavoriteButtonPressed(tutorId: tutor.userId!));
+                  context.read<TutorListBloc>().add(
+                      TutorListFavoriteButtonPressed(tutorId: tutor.userId!));
                 },
                 icon: tutor.isfavoritetutor == '1'
                     ? const Icon(

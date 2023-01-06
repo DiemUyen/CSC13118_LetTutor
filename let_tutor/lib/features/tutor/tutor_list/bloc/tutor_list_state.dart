@@ -3,7 +3,7 @@ part of 'tutor_list_bloc.dart';
 class TutorListState extends Equatable {
   const TutorListState({
     this.tutors = const TutorResponse(),
-    this.filteredTutors = const [],
+    this.filteredTutors = const Tutors(),
     this.learnTopics = const [],
     this.testPreparations = const [],
     this.error = '',
@@ -19,7 +19,7 @@ class TutorListState extends Equatable {
   });
 
   final TutorResponse tutors;
-  final List<Tutor> filteredTutors;
+  final Tutors filteredTutors;
   final List<LearnTopics> learnTopics;
   final List<TestPreparation> testPreparations;
   final String error;
@@ -32,7 +32,7 @@ class TutorListState extends Equatable {
 
   TutorListState copyWith(
       {TutorResponse? tutors,
-      List<Tutor>? filteredTutors,
+      Tutors? filteredTutors,
       List<LearnTopics>? learnTopics,
       List<TestPreparation>? testPreparations,
       String? error,

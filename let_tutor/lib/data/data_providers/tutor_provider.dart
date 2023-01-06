@@ -34,11 +34,11 @@ class TutorProvider {
   }
 
   Future<Tutors> searchTutor(
-      Map<String, dynamic> filters, String? tutorName) async {
+      Map<String, dynamic> filters, String? tutorName, int page, int perPage) async {
     var response = tutorName == null
-        ? await _dio.post(Endpoints.searchTutor, data: {'filters': filters})
+        ? await _dio.post(Endpoints.searchTutor, data: {'filters': filters, 'page': page, 'perPage': perPage})
         : await _dio.post(Endpoints.searchTutor,
-            data: {'filters': filters, 'search': tutorName});
+            data: {'filters': filters, 'search': tutorName, 'page': page, 'perPage': perPage});
     final tutors = Tutors.fromJson(response.data);
     return tutors;
   }

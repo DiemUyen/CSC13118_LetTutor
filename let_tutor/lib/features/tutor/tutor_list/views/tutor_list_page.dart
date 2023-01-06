@@ -17,7 +17,7 @@ class _TutorHomePageState extends State<TutorHomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => Injector.instance<TutorListBloc>(),
+      create: (context) => Injector.instance<TutorListBloc>()..add(TutorListLoaded()),
       child: const TutorListView(),
     );
   }
