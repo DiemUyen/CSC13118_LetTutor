@@ -49,21 +49,6 @@ class CourseDetailItem extends StatelessWidget {
               ),
               // Description
               Text(course.description ?? ''),
-              const SizedBox(
-                height: 24,
-              ),
-              // Discover button
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, AppRouter.topicsPage);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                  minimumSize: const Size.fromHeight(48),
-                ),
-                child: Text(S.current.discover),
-              ),
             ],
           ),
         ),

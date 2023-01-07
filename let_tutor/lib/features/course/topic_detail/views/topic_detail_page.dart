@@ -16,20 +16,6 @@ class TopicsPage extends StatefulWidget {
 }
 
 class _TopicsPageState extends State<TopicsPage> {
-  /*final topicsName = ['The Internet', 'Artificial Intelligence', 'Social Media', 'Internet Privacy', 'Live Streaming'];
-
-  Widget topicsDropdownList() {
-    return DropdownButton<String>(
-      isExpanded: true,
-      value: topicsName.first,
-      items: topicsName.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(value: value, child: Text(
-            '${topicsName.indexOf(value) + 1}.     $value'
-        ),);
-      }).toList(),
-      onChanged: (String? value) { },
-    );
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +24,7 @@ class _TopicsPageState extends State<TopicsPage> {
         ..add(
           TopicDetailInit(widget.topic),
         ),
-      child: const TopicDetailView(),
+      child: TopicDetailView(topics: widget.topic,),
     );
   }
 }

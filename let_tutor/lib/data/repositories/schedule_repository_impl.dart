@@ -1,4 +1,6 @@
 import 'package:let_tutor/data/models/responses/history_response.dart';
+import 'package:let_tutor/data/models/responses/student_schedule_response.dart';
+import 'package:let_tutor/data/models/schedule/cancel_reason.dart';
 
 import '../../exceptions/exception_handler.dart';
 import '../data_providers/data_providers.dart';
@@ -14,7 +16,6 @@ class ScheduleRepositoryImpl extends ScheduleRepository {
 
   @override
   Future<ScheduleResponse> getOwnSchedule() async {
-    // TODO: implement getOwnSchedule
     return await _scheduleProvider
         .getOwnSchedule()
         .catchError(DioExceptionHandler.handleException);
@@ -22,7 +23,6 @@ class ScheduleRepositoryImpl extends ScheduleRepository {
 
   @override
   Future<ScheduleResponse> getScheduleByTutorId(String tutorId) async {
-    // TODO: implement getScheduleByTutorId
     return await _scheduleProvider
         .getScheduleByTutorId(tutorId)
         .catchError(DioExceptionHandler.handleException);
@@ -30,7 +30,6 @@ class ScheduleRepositoryImpl extends ScheduleRepository {
 
   @override
   Future<bool> bookClass(String scheduleId) async {
-    // TODO: implement bookClass
     return await _scheduleProvider
         .bookClass(scheduleId)
         .catchError(DioExceptionHandler.handleException);
@@ -38,7 +37,6 @@ class ScheduleRepositoryImpl extends ScheduleRepository {
 
   @override
   Future<UpcomingResponse> getUpcomingClass() async {
-    // TODO: implement getUpcomingClass
     return await _scheduleProvider
         .getUpcomingClass()
         .catchError(DioExceptionHandler.handleException);
@@ -46,9 +44,36 @@ class ScheduleRepositoryImpl extends ScheduleRepository {
 
   @override
   Future<HistoryResponse> getHistoryClass(int page) async {
-    // TODO: implement getHistoryClass
     return await _scheduleProvider
         .getHistoryClass(page)
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<StudentScheduleResponse> getStudentSchedule(int page) async {
+    return await _scheduleProvider
+        .getStudentSchedule(page)
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<bool> cancelBookedClass(String scheduleDetailId) async {
+    return await _scheduleProvider
+        .cancelBookedClass(scheduleDetailId)
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<List<CancelReason>> getCancelReason() {
+    // TODO: implement getCancelReason
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> updateStudentRequest(
+      String scheduleDetailId, String studentRequest) async {
+    return await _scheduleProvider
+        .updateStudentRequest(scheduleDetailId, studentRequest)
         .catchError(DioExceptionHandler.handleException);
   }
 }

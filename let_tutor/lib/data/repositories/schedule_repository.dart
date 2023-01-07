@@ -1,6 +1,8 @@
 import '../models/responses/history_response.dart';
+import '../models/responses/student_schedule_response.dart';
 import '../models/responses/upcoming_response.dart';
 import '../models/responses/schedule_response.dart';
+import '../models/schedule/cancel_reason.dart';
 
 abstract class ScheduleRepository {
   Future<ScheduleResponse> getOwnSchedule();
@@ -12,4 +14,12 @@ abstract class ScheduleRepository {
   Future<UpcomingResponse> getUpcomingClass();
 
   Future<HistoryResponse> getHistoryClass(int page);
+
+  Future<StudentScheduleResponse> getStudentSchedule(int page);
+
+  Future<List<CancelReason>> getCancelReason();
+
+  Future<bool> cancelBookedClass(String scheduleDetailId);
+
+  Future<bool> updateStudentRequest(String scheduleDetailId, String studentRequest);
 }

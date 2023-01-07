@@ -66,7 +66,6 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
           isReset: false,
           filters: Map.of(filters)));
     } catch (exception) {
-      print('EXCEPTION WHEN NAME SEARCH CHANGE: $exception');
       emit(state.copyWith(status: CourseListStatus.loadFailure, isReset: false));
     }
   }
@@ -95,7 +94,6 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
           isReset: false,
           filters: Map.of(filters)));
     } catch (exception) {
-      print('EXCEPTION WHEN LEVEL CHANGE: $exception');
       emit(state.copyWith(status: CourseListStatus.loadFailure, isReset: false));
     }
   }
@@ -118,7 +116,6 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
           isReset: false,
           filters: Map.of(filters)));
     } catch (exception) {
-      print('EXCEPTION WHEN CATEGORY CHANGE: $exception');
       emit(state.copyWith(status: CourseListStatus.loadFailure, isReset: false));
     }
   }
@@ -141,7 +138,6 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
           isReset: false,
           filters: Map.of(filters)));
     } catch (exception) {
-      print('EXCEPTION WHEN SORT CHANGE: $exception');
       emit(state.copyWith(status: CourseListStatus.loadFailure, isReset: false));
     }
   }

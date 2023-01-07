@@ -30,7 +30,9 @@ _$_NextSchedule _$$_NextScheduleFromJson(Map<String, dynamic> json) =>
           ? null
           : ScheduleDetails.fromJson(
               json['scheduleDetailInfo'] as Map<String, dynamic>),
-      classReview: json['classReview'] as String?,
+      classReview: json['classReview'] == null
+          ? null
+          : ClassReview.fromJson(json['classReview'] as Map<String, dynamic>),
       showRecordUrl: json['showRecordUrl'] as bool?,
       studentMaterials: json['studentMaterials'] as List<dynamic>?,
       feedbacks: (json['feedbacks'] as List<dynamic>?)

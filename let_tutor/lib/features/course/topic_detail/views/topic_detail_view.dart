@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pdfx/pdfx.dart';
 
+import '../../../../data/models/course/topics.dart';
 import '../bloc/topic_detail_bloc.dart';
 
 class TopicDetailView extends StatelessWidget {
-  const TopicDetailView({Key? key}) : super(key: key);
+  const TopicDetailView({Key? key, required this.topics}) : super(key: key);
+
+  final Topics topics;
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +33,31 @@ class TopicDetailView extends StatelessWidget {
                   ),
                 ],
               ),
-              body: Column(
-                children: [
-                  Text(state.name),
-                  const SizedBox(height: 8,),
-                  Expanded(
-                    child: PdfViewPinch(
-                      builders: PdfViewPinchBuilders<DefaultBuilderOptions>(
-                        options: const DefaultBuilderOptions(),
-                        documentLoaderBuilder: (_) => const Center(
-                          child: CircularProgressIndicator(),
+              body: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: [
+                    Text(state.name),
+                    const SizedBox(height: 8,),
+                    Expanded(
+                      child: PdfViewPinch(
+                        builders: PdfViewPinchBuilders<DefaultBuilderOptions>(
+                          options: const DefaultBuilderOptions(),
+                          documentLoaderBuilder: (_) => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          pageLoaderBuilder: (_) => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          errorBuilder: (_, error) => Center(
+                            child: Text('$error'),
+                          ),
                         ),
-                        pageLoaderBuilder: (_) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        errorBuilder: (_, error) => Center(
-                          child: Text('$error'),
-                        ),
+                        controller: state.pdfControllerPinch,
                       ),
-                      controller: state.pdfControllerPinch,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
