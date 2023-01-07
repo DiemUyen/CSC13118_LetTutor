@@ -57,6 +57,8 @@ class TutorListView extends StatelessWidget {
                         itemCount: state.filteredTutors.rows!.length,
                         itemBuilder: (context, index) => TutorHomeCard(
                           tutor: state.filteredTutors.rows![index],
+                          topics: state.learnTopics,
+                          testPreparations: state.testPreparations,
                         ),
                       );
                     }
@@ -333,7 +335,6 @@ class _SpecialitiesChip extends StatelessWidget {
             children: [
               Wrap(
                 spacing: 8,
-                runSpacing: 8,
                 children: learnTopics.map<Widget>((LearnTopics speciality) {
                   return FilterChip(
                       label: Text(speciality.name ?? ''),
@@ -346,12 +347,8 @@ class _SpecialitiesChip extends StatelessWidget {
                       });
                 }).toList(),
               ),
-              const SizedBox(
-                height: 8,
-              ),
               Wrap(
                 spacing: 8,
-                runSpacing: 8,
                 children:
                     testPreparations.map<Widget>((TestPreparation speciality) {
                   return FilterChip(

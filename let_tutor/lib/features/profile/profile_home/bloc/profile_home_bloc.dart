@@ -29,7 +29,6 @@ class ProfileHomeBloc extends Bloc<ProfileHomeEvent, ProfileHomeState> {
       emit(const ProfileHomeLoadSuccess());
     }
     catch (exception) {
-      print('LOG OUT: $exception');
       emit(const ProfileHomeLoadFailure());
     }
   }
