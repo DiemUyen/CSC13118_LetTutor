@@ -19,8 +19,8 @@ class _TutorDetailPageState extends State<TutorDetailPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => Injector.instance<TutorDetailBloc>(),
-      child: TutorDetailView(tutorId: widget.tutorId,),
+      create: (context) => Injector.instance<TutorDetailBloc>()..add(TutorDetailLoaded(tutorId: widget.tutorId)),
+      child: const TutorDetailView(),
     );
   }
 }

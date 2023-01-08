@@ -7,6 +7,7 @@ import '../data/models/tutor/tutor.dart';
 import '../data/models/user/learn_topics.dart';
 import '../data/models/user/test_preparation.dart';
 import '../features/tutor/tutor_list/bloc/tutor_list_bloc.dart';
+import '../generated/l10n.dart';
 import '../router/app_router.dart';
 import 'widgets.dart';
 
@@ -202,7 +203,7 @@ class _BookButton extends StatelessWidget {
                 arguments: tutorId);
           },
           icon: const Icon(Icons.edit_calendar_outlined),
-          label: const Text("Book"),
+          label: Text(S.current.book),
         ),
       ),
     );

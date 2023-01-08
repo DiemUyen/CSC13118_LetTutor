@@ -26,3 +26,12 @@ class SignUpSignUpButtonPressed extends SignUpEvent {
   @override
   List<Object?> get props => [];
 }
+
+class SignUpConfirmPasswordChanged extends SignUpEvent {
+  const SignUpConfirmPasswordChanged({required this.confirmPassword});
+
+  final String confirmPassword;
+
+  @override
+  List<Object?> get props => [confirmPassword];
+}

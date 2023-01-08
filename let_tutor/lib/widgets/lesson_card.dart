@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../data/models/schedule/next_schedule.dart';
+import '../injector/injector.dart';
+import '../services/shared_preferences_service.dart';
 
 class LessonCard extends StatelessWidget {
   const LessonCard({Key? key, required this.historyInfo}) : super(key: key);
@@ -11,6 +13,8 @@ class LessonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final service = Injector.instance<SharedPreferencesService>();
+    final String locale = service.locale;
     var startTime = DateTime.fromMillisecondsSinceEpoch(historyInfo
         .scheduleDetailInfo?.startPeriodTimestamp ?? 0);
     var endTime = DateTime.fromMillisecondsSinceEpoch(historyInfo
@@ -42,7 +46,7 @@ class LessonCard extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    DateFormat('EEE, dd MM yyyy').format(startTime),
+                    DateFormat('EEE, dd MM yyyy', locale).format(startTime),
                   ),
                   const SizedBox(
                     height: 8,

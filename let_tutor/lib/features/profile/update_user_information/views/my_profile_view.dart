@@ -365,7 +365,7 @@ class _BirthdayField extends StatelessWidget {
       return TextFormField(
         controller: controller,
         decoration: const InputDecoration(
-          border: const OutlineInputBorder(),
+          border: OutlineInputBorder(),
         ),
         readOnly: true,
         onTap: () async {
@@ -393,13 +393,14 @@ class _LevelField extends StatelessWidget {
 
   static List<String> levels = [
     'BEGINNER',
-    'PRE-INTERMEDIATE',
+    'HIGHER_BEGINNER',
+    'PRE_INTERMEDIATE',
     'INTERMEDIATE',
-    'UPPER-INTERMEDIATE',
+    'UPPER_INTERMEDIATE',
     'ADVANCED',
     'PROFICIENCY',
   ];
-  String selectedLevel = levels.first;
+  String selectedLevel = '';
 
   @override
   Widget build(BuildContext context) {
@@ -419,9 +420,9 @@ class _LevelField extends StatelessWidget {
             underline: Container(
               height: 0,
             ),
-            value: selectedLevel,
-            items: levels.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(value: value, child: Text(value));
+            value: selectedLevel.isEmpty ? null : selectedLevel,
+            items: levels.map<DropdownMenuItem<String>>((String element) {
+              return DropdownMenuItem<String>(value: element, child: Text(element));
             }).toList(),
             onChanged: (String? value) {
               selectedLevel = value ?? '';

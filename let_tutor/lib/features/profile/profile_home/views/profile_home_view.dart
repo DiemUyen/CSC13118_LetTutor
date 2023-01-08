@@ -28,7 +28,7 @@ class ProfileHomeView extends StatelessWidget {
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent)),
                       icon: const Icon(Icons.person_outline),
-                      label: const Text('My profile'),
+                      label: Text(S.current.my_profile),
                       onPressed: () {
                         Navigator.pushNamed(context, AppRouter.myProfilePage);
                       },
@@ -52,7 +52,7 @@ class ProfileHomeView extends StatelessWidget {
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent)),
                       icon: const Icon(Icons.wallet_outlined),
-                      label: const Text('My wallet'),
+                      label: Text(S.current.my_wallet),
                       onPressed: () {
                         Navigator.pushNamed(context, AppRouter.myWalletPage);
                       },
@@ -76,7 +76,7 @@ class ProfileHomeView extends StatelessWidget {
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent)),
                       icon: const Icon(Icons.calendar_today_outlined),
-                      label: const Text('My schedule'),
+                      label: Text(S.current.my_schedule),
                       onPressed: () {
                         Navigator.pushNamed(context, AppRouter.mySchedulePage);
                       },
@@ -100,7 +100,7 @@ class ProfileHomeView extends StatelessWidget {
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent)),
                       icon: const Icon(Icons.history_outlined),
-                      label: const Text('My history'),
+                      label: Text(S.current.my_history),
                       onPressed: () {
                         Navigator.pushNamed(context, AppRouter.myHistoryPage);
                       },
@@ -124,7 +124,7 @@ class ProfileHomeView extends StatelessWidget {
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent)),
                       icon: const Icon(Icons.my_library_books_outlined),
-                      label: const Text('My courses'),
+                      label: Text(S.current.my_course),
                       onPressed: () {
                         Navigator.pushNamed(context, AppRouter.myCoursesPage);
                       },
@@ -173,7 +173,7 @@ class ProfileHomeView extends StatelessWidget {
                           backgroundColor:
                               MaterialStateProperty.all(Colors.transparent)),
                       icon: const Icon(Icons.co_present),
-                      label: const Text('Become a tutor'),
+                      label: Text(S.current.become_a_tutor),
                       onPressed: () {
                         Navigator.pushNamed(context, AppRouter.becomeTutorPage);
                       },
@@ -188,7 +188,6 @@ class ProfileHomeView extends StatelessWidget {
               // Log out
               BlocListener<ProfileHomeBloc, ProfileHomeState>(
                 listener: (context, state) {
-                  // TODO: implement listener
                   if (state is ProfileHomeLoadSuccess) {
                     Navigator.pushNamedAndRemoveUntil(
                         context, AppRouter.signInPage, (route) => false);
@@ -205,7 +204,7 @@ class ProfileHomeView extends StatelessWidget {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.transparent)),
                         icon: const Icon(Icons.logout),
-                        label: const Text('Log out'),
+                        label: Text(S.current.log_out),
                         onPressed: () {
                           context
                               .read<ProfileHomeBloc>()

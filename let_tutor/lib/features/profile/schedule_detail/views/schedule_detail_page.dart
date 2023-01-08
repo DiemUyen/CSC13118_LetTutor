@@ -16,7 +16,7 @@ class ScheduleDetailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => Injector.instance<ScheduleDetailBloc>()
         ..add(ScheduleDetailLoaded(schedules)),
-      child: ScheduleDetailView(),
+      child: const ScheduleDetailView(),
     );
   }
 }

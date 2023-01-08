@@ -4,13 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:let_tutor/features/profile/schedule_detail/bloc/schedule_detail_bloc.dart';
 
+import '../../../../generated/l10n.dart';
+import '../../../../injector/injector.dart';
 import '../../../../router/app_router.dart';
+import '../../../../services/shared_preferences_service.dart';
 
 class ScheduleDetailView extends StatelessWidget {
   const ScheduleDetailView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final service = Injector.instance<SharedPreferencesService>();
+    final String locale = service.locale;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
@@ -26,7 +32,7 @@ class ScheduleDetailView extends StatelessWidget {
                           Icons.warning_amber_outlined,
                           color: Theme.of(context).colorScheme.error,
                         ),
-                        content: Text('Save Request Failed!'),
+                        content: Text(S.current.save_request_fail),
                       );
                     });
               } else if (state.isCancelSchedule) {
@@ -38,7 +44,7 @@ class ScheduleDetailView extends StatelessWidget {
                           Icons.warning_amber_outlined,
                           color: Theme.of(context).colorScheme.error,
                         ),
-                        content: Text('Cancel Schedule Failed!'),
+                        content: Text(S.current.cancel_schedule_fail),
                       );
                     });
               }
@@ -47,7 +53,7 @@ class ScheduleDetailView extends StatelessWidget {
                 Navigator.pop(context);
               } else if (state.isSaveRequest) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Successfully Save Request')));
+                    SnackBar(content: Text(S.current.save_request_success)));
               }
             }
           },
@@ -118,7 +124,7 @@ class ScheduleDetailView extends StatelessWidget {
                                         Icons.chat_bubble_outline,
                                         size: 20,
                                       ),
-                                      label: const Text('Direct Message'),
+                                      label: Text(S.current.direct_message),
                                       onPressed: () {},
                                     )
                                   ],
@@ -131,7 +137,7 @@ class ScheduleDetailView extends StatelessWidget {
                           ),
 
                           // Time
-                          const _Header(header: 'Lesson Time'),
+                          _Header(header: S.current.lesson_time),
                           Container(
                             child: ListView.builder(
                               shrinkWrap: true,
@@ -155,7 +161,7 @@ class ScheduleDetailView extends StatelessWidget {
                                   children: [
                                     _Description(
                                         content:
-                                            '${DateFormat('EEE, dd MMM yyyy').format(startTime)}, ${DateFormat('HH:mm').format(startTime)} - ${DateFormat('HH:mm').format(endTime)}'),
+                                            '${DateFormat('EEE, dd MMM yyyy', locale).format(startTime)}, ${DateFormat('HH:mm', locale).format(startTime)} - ${DateFormat('HH:mm', locale).format(endTime)}'),
                                     IconButton(
                                       onPressed: () async {
                                         final pContext = context;
@@ -164,16 +170,16 @@ class ScheduleDetailView extends StatelessWidget {
                                           context: context,
                                           builder: (context) {
                                             return AlertDialog(
-                                              title: const Text(
-                                                  'Confirm cancel booking'),
+                                              title: Text(
+                                                  S.current.confirm_cancel_booking),
                                               content: Text(
-                                                  'Cancel booking lesson with ${state.schedules.first.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name ?? ''}?'),
+                                                  '${S.current.cancel_booking_message} ${state.schedules.first.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name ?? ''}?'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () {
                                                     Navigator.pop(context);
                                                   },
-                                                  child: const Text('Discard'),
+                                                  child: Text(S.current.discard),
                                                 ),
                                                 ElevatedButton(
                                                   onPressed: () {
@@ -189,7 +195,7 @@ class ScheduleDetailView extends StatelessWidget {
                                                                     .id ??
                                                                 ''));
                                                   },
-                                                  child: const Text('Confirm'),
+                                                  child: Text(S.current.confirm),
                                                 ),
                                               ],
                                             );
@@ -201,8 +207,8 @@ class ScheduleDetailView extends StatelessWidget {
                                                       const Duration(hours: 2))
                                                   .compareTo(DateTime.now()) ==
                                               1)
-                                          ? Icon(Icons.clear)
-                                          : Icon(
+                                          ? const Icon(Icons.clear)
+                                          : const Icon(
                                               Icons.clear,
                                               color: Colors.transparent,
                                             ),
@@ -217,7 +223,7 @@ class ScheduleDetailView extends StatelessWidget {
                           ),
 
                           // Request for lesson
-                          const _Header(header: 'Request for Lesson'),
+                          _Header(header: S.current.request_for_lesson),
                           const SizedBox(
                             height: 8,
                           ),
@@ -231,47 +237,6 @@ class ScheduleDetailView extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: Row(
                       children: [
-                        /*OutlinedButton.icon(
-                          onPressed: () async {
-                            final pContext = context;
-                            return showDialog(
-                              barrierDismissible: false,
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text('Confirm cancel booking'),
-                                  content: Text(
-                                      'Cancel booking lesson with ${state.schedules.first.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name ?? ''}?'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text('Discard'),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        pContext.read<ScheduleDetailBloc>().add(
-                                            ScheduleDetailCancelBookingButtonPressed(
-                                                reasonId: 0,
-                                                scheduleId:
-                                                    state.schedules.first.id ??
-                                                        ''));
-                                      },
-                                      child: const Text('Confirm'),
-                                    )
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          icon: const Icon(Icons.clear),
-                          label: const Text('Cancel'),
-                        ),
-                        const SizedBox(
-                          width: 24,
-                        ),*/
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
@@ -286,7 +251,7 @@ class ScheduleDetailView extends StatelessWidget {
                               foregroundColor:
                                   Theme.of(context).colorScheme.onPrimary,
                             ),
-                            child: const Text('Go to meeting'),
+                            child: Text(S.current.go_meeting),
                           ),
                         )
                       ],
@@ -381,10 +346,10 @@ class _StudentRequestState extends State<_StudentRequest> {
                   border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
                   ),
-                  hintText: 'No request for lesson.',
+                  hintText: S.current.no_request_lesson,
                   errorText: (state.request.isNotEmpty &&
                           _requestController.text.isEmpty)
-                      ? 'Student request is not empty'
+                      ? S.current.student_request_empty
                       : null,
                 ),
                 maxLines: 5,
@@ -418,7 +383,7 @@ class _StudentRequestState extends State<_StudentRequest> {
                         foregroundColor:
                             Theme.of(context).colorScheme.onPrimary,
                       ),
-                      child: const Text('Save Request'),
+                      child: Text(S.current.save_request),
                     ),
                   ),
                 ],

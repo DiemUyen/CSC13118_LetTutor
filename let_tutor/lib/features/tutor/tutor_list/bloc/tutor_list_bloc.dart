@@ -9,6 +9,7 @@ import '../../../../data/models/tutor/tutors.dart';
 import '../../../../data/models/user/learn_topics.dart';
 import '../../../../data/models/user/test_preparation.dart';
 import '../../../../data/repositories/repositories.dart';
+import '../../../../generated/l10n.dart';
 
 part 'tutor_list_event.dart';
 part 'tutor_list_state.dart';
@@ -74,7 +75,7 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
           upcomingClass: upcoming,
           status: TutorListStatus.loadSuccess));
     } catch (exception) {
-      emit(state.copyWith(error: 'Load failed!'));
+      emit(state.copyWith(error: S.current.load_failed));
     }
   }
 
@@ -140,7 +141,7 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
           filteredTutors: tutors,
           status: TutorListStatus.loadSuccess));
     } catch (exception) {
-      emit(state.copyWith(error: 'Load failed!'));
+      emit(state.copyWith(error: S.current.load_failed));
     }
   }
 

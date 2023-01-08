@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +7,9 @@ import 'package:let_tutor/data/models/user/learn_topics.dart';
 
 import '../../../../data/models/user/test_preparation.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../injector/injector.dart';
 import '../../../../router/app_router.dart';
+import '../../../../services/shared_preferences_service.dart';
 import '../../../../widgets/widgets.dart';
 import '../bloc/tutor_list_bloc.dart';
 
@@ -170,6 +171,8 @@ class _UpcomingLessonState extends State<_UpcomingLesson> {
             ),
             BlocBuilder<TutorListBloc, TutorListState>(
               builder: (context, state) {
+                final service = Injector.instance<SharedPreferencesService>();
+                final String locale = service.locale;
                 if (state.upcomingClass.id != null) {
                   var startTime = DateTime.fromMillisecondsSinceEpoch(state
                           .upcomingClass
@@ -184,7 +187,7 @@ class _UpcomingLessonState extends State<_UpcomingLesson> {
                   return Column(
                     children: [
                       Text(
-                        '${DateFormat('EEE, dd MMM yy').format(startTime)} ${DateFormat('HH:mm').format(startTime)} - ${DateFormat('HH:mm').format(endTime)}',
+                        '${DateFormat('EEE, dd MMM yy', locale).format(startTime)} ${DateFormat('HH:mm', locale).format(startTime)} - ${DateFormat('HH:mm', locale).format(endTime)}',
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
@@ -194,7 +197,7 @@ class _UpcomingLessonState extends State<_UpcomingLesson> {
                         height: 8,
                       ),
                       Text(
-                        'starts in ${startTime.difference(DateTime.now()).toString().split('.').first.padLeft(8, '0')}',
+                        '${S.current.start_in} ${startTime.difference(DateTime.now()).toString().split('.').first.padLeft(8, '0')}',
                         style: TextStyle(
                           fontStyle: FontStyle.italic,
                           color: Theme.of(context).colorScheme.tertiary,
@@ -204,7 +207,7 @@ class _UpcomingLessonState extends State<_UpcomingLesson> {
                         height: 8,
                       ),
                       Text(
-                          'Total lesson time is ${state.totalMinutes ~/ 60} hours ${state.totalMinutes % 60} minutes'),
+                          '${S.current.total_lesson} ${state.totalMinutes ~/ 60} ${S.current.hour} ${state.totalMinutes % 60} ${S.current.minute}'),
                       const SizedBox(
                         height: 8,
                       ),
@@ -229,7 +232,7 @@ class _UpcomingLessonState extends State<_UpcomingLesson> {
                   return Column(
                     children: [
                       Text(
-                          'Total lesson time is ${state.totalMinutes ~/ 60} hours ${state.totalMinutes % 60} minutes'),
+                          '${S.current.total_lesson} ${state.totalMinutes ~/ 60} ${S.current.hour} ${state.totalMinutes % 60} ${S.current.minute}'),
                       const SizedBox(
                         height: 8,
                       ),

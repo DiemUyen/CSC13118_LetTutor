@@ -82,11 +82,11 @@ class _CourseListViewState extends State<CourseListView>
                         ),
                         state.filters.isNotEmpty
                             ? OutlinedButton(
-                            onPressed: () {
-                              context.read<CourseListBloc>().add(
-                                  CourseListResetFilterButtonPressed());
-                            },
-                            child: Text(S.current.reset_filters))
+                                onPressed: () {
+                                  context.read<CourseListBloc>().add(
+                                      CourseListResetFilterButtonPressed());
+                                },
+                                child: Text(S.current.reset_filters))
                             : Container(),
                       ],
                     ),
@@ -214,8 +214,8 @@ class _CategoriesFilter extends StatelessWidget {
             selectedKey = value;
             context.read<CourseListBloc>().add(CourseListCategoryFilterChanged(
                 contentCategories
-                    .firstWhere((element) => element.key == value)
-                    .id ??
+                        .firstWhere((element) => element.key == value)
+                        .id ??
                     ''));
           },
           hint: Text(S.current.choose_categories),
@@ -276,15 +276,15 @@ class _TabBar extends StatelessWidget {
         bottom: TabBar(
           controller: tabController,
           isScrollable: true,
-          tabs: const [
+          tabs: [
             Tab(
-              text: 'Courses',
+              text: S.current.course,
             ),
             Tab(
-              text: 'E-Book',
+              text: S.current.ebook,
             ),
             Tab(
-              text: 'Interactive E-Book',
+              text: S.current.interactive_ebook,
             )
           ],
         ),
@@ -319,6 +319,10 @@ class _FirstTabView extends StatelessWidget {
               },
             );
           }
+        } else if (state.status == CourseListStatus.loading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
         return Center(
           child: Text(S.current.no_data),

@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../data/models/course/courses.dart';
-import '../generated/l10n.dart';
-import '../router/app_router.dart';
 
 class CourseDetailItem extends StatelessWidget {
   const CourseDetailItem({

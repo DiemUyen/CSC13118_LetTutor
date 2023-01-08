@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:let_tutor/widgets/video_player.dart';
 
 import '../../../../configs/country_list.dart';
 import '../../../../generated/l10n.dart';
@@ -11,22 +10,13 @@ import '../../../../widgets/widgets.dart';
 import '../bloc/tutor_detail_bloc.dart';
 
 class TutorDetailView extends StatefulWidget {
-  const TutorDetailView({Key? key, required this.tutorId}) : super(key: key);
-
-  final String tutorId;
+  const TutorDetailView({Key? key}) : super(key: key);
 
   @override
   State<TutorDetailView> createState() => _TutorDetailViewState();
 }
 
 class _TutorDetailViewState extends State<TutorDetailView> {
-  @override
-  void initState() {
-    context
-        .read<TutorDetailBloc>()
-        .add(TutorDetailLoaded(tutorId: widget.tutorId));
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +288,7 @@ class _FavoriteButton extends StatelessWidget {
                         color: Colors.red,
                       )
                     : const Icon(Icons.favorite_border_rounded),
-                const Text('Favorite'),
+                Text(S.current.favorite),
               ],
             ),
           );
@@ -323,9 +313,9 @@ class _ContentReportDialog extends StatefulWidget {
 
 class _ContentReportDialogState extends State<_ContentReportDialog> {
   var reasonReports = <String>[
-    'This tutor is annoying me',
-    'This profile is pretending be someone or is fake',
-    'Inappropriate profile photo'
+    S.current.tutor_annoy,
+    S.current.tutor_fake,
+    S.current.tutor_image,
   ];
   var isChecked = <bool>[false, false, false];
   final _controller = TextEditingController();
@@ -336,14 +326,14 @@ class _ContentReportDialogState extends State<_ContentReportDialog> {
       child: Column(
         children: [
           Row(
-            children: const [
-              Icon(Icons.report),
-              SizedBox(
+            children: [
+              const Icon(Icons.report),
+              const SizedBox(
                 width: 8,
               ),
               Flexible(
                 child: Text(
-                  'Help us understand what\'s happening?',
+                  S.current.help_us_report,
                   overflow: TextOverflow.fade,
                 ),
               )
@@ -386,9 +376,9 @@ class _ContentReportDialogState extends State<_ContentReportDialog> {
           TextField(
             controller: _controller,
             maxLines: 10,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Please let us know details about your problem',
+            decoration: InputDecoration(
+              border: const OutlineInputBorder(),
+              hintText: S.current.help_detail,
             ),
           ),
         ],
@@ -413,7 +403,7 @@ class _ReportButton extends StatelessWidget {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: const Text('Report'),
+              title: Text(S.current.report),
               content: _ContentReportDialog(
                 contentReport: contentReport,
                 pContext: pContext,
@@ -421,16 +411,16 @@ class _ReportButton extends StatelessWidget {
               actions: [
                 OutlinedButton(
                   onPressed: () {
-                    Navigator.pop(context, 'Cancel');
+                    Navigator.pop(context);
                   },
-                  child: const Text('Cancel'),
+                  child: Text(S.current.cancel),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context, 'Submit');
+                    Navigator.pop(context);
                     pContext.read<TutorDetailBloc>().add(
                         TutorDetailReportButtonPressed(content: contentReport));
                   },
@@ -438,7 +428,7 @@ class _ReportButton extends StatelessWidget {
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   ),
-                  child: const Text('Submit'),
+                  child: Text(S.current.submit),
                 )
               ],
             );
@@ -446,7 +436,7 @@ class _ReportButton extends StatelessWidget {
         );
       },
       child: Column(
-        children: const [Icon(Icons.report_outlined), Text('Report')],
+        children: [const Icon(Icons.report_outlined), Text(S.current.report)],
       ),
     );
   }
@@ -468,7 +458,7 @@ class _ReviewButton extends StatelessWidget {
         );
       },
       child: Column(
-        children: const [Icon(Icons.star_outline), Text('Reviews')],
+        children: [const Icon(Icons.star_outline), Text(S.current.reviews)],
       ),
     );
   }

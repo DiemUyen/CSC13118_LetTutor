@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../injector/injector.dart';
+import '../../../../services/shared_preferences_service.dart';
 import '../bloc/booking_bloc.dart';
 
 class BookingView extends StatefulWidget {
@@ -27,18 +29,18 @@ class _BookingViewState extends State<BookingView> {
       listener: (context, state) {
         if (state.status == BookingStatus.bookSuccess) {
           showDialog(context: context, builder: (context){
-            return const AlertDialog(
-              title: Text('Booking detail'),
-              content: Text('Booking success'),
+            return AlertDialog(
+              title: Text(S.current.booking_detail),
+              content: Text(S.current.booking_success),
             );
           });
           context.read<BookingBloc>().add(BookingLoaded(tutorId: widget.tutorId));
         }
         else if (state.status == BookingStatus.bookFailed) {
           showDialog(context: context, builder: (context) {
-            return const AlertDialog(
-              title: Text('Booking detail'),
-              content: Text('Booking failed'),
+            return AlertDialog(
+              title: Text(S.current.booking_detail),
+              content: Text(S.current.booking_fail),
             );
           });
           context.read<BookingBloc>().add(BookingLoaded(tutorId: widget.tutorId));
@@ -55,20 +57,20 @@ class _BookingViewState extends State<BookingView> {
                 child: Column(
                   children: [
                     // Select date
-                    const _Header(header: 'Booking date'),
+                    _Header(header: S.current.booking_date),
                     _CalendarPicker(availableDate: state.availableDate),
                     const SizedBox(
                       height: 16,
                     ),
 
                     // Select time
-                    const _Header(header: 'Booking time'),
+                    _Header(header: S.current.booking_time),
                     const _TimePicker(),
                     const SizedBox(
                       height: 16,
                     ),
 
-                    const _Header(header: 'Price'),
+                    _Header(header: S.current.price),
                     const _PriceInformation(),
                     const SizedBox(
                       height: 16,
@@ -208,27 +210,14 @@ class _PriceInformation extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8),
       child: Column(
         children: [
-          /*Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text(
-                'Balance',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text('You have 100 lessons left')
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),*/
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Text(
-                'Price',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                S.current.price,
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              Text('1 lesson')
+              Text(S.current.a_lesson)
             ],
           )
         ],
@@ -242,6 +231,9 @@ class _BookButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final service = Injector.instance<SharedPreferencesService>();
+    final String locale = service.locale;
+
     return BlocBuilder<BookingBloc, BookingState>(
       builder: (context, state) {
         final pContext = context;
@@ -253,19 +245,19 @@ class _BookButton extends StatelessWidget {
                     barrierDismissible: false,
                     builder: (context) {
                       return AlertDialog(
-                        title: const Text('Confirm booking'),
+                        title: Text(S.current.confirm_booking),
                         content: Text(
-                            'Book lesson at ${state.timeChose}, ${DateFormat('dd MMM yyyy').format(state.dateChose!)}'),
+                            '${S.current.confirm_booking_message} ${state.timeChose}, ${DateFormat('dd MMM yyyy', locale).format(state.dateChose!)}'),
                         actions: [
                           TextButton(
                             onPressed: () {
-                              Navigator.pop(context, 'Back');
+                              Navigator.pop(context);
                             },
-                            child: const Text('Back'),
+                            child: Text(S.current.discard),
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.pop(context, 'Continue');
+                              Navigator.pop(context);
                               pContext.read<BookingBloc>().add(BookingBookButtonPressed());
                             },
                             style: ElevatedButton.styleFrom(
@@ -274,7 +266,7 @@ class _BookButton extends StatelessWidget {
                               foregroundColor:
                                   Theme.of(context).colorScheme.onPrimary,
                             ),
-                            child: const Text('Book'),
+                            child: Text(S.current.confirm),
                           )
                         ],
                       );

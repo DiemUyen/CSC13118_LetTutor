@@ -21,12 +21,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<SignUpEmailChanged>(_onEmailChanged);
     on<SignUpPasswordChanged>(_onPasswordChanged);
     on<SignUpSignUpButtonPressed>(_onSignUpButtonPressed);
+    on<SignUpConfirmPasswordChanged>(_onConfirmPasswordChanged);
   }
 
   late final AuthRepository _authRepository;
   late final SharedPreferencesService _preferencesService;
   String email = '';
   String password = '';
+  String confirmPassword = '';
   final RegExp regExp = RegExp(
     r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
   );
@@ -49,7 +51,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       emit(state.copyWith(
           emailError: '',
           emailErrorStatus: SignUpStatus.emailValid,
-          status: password.isNotEmpty
+          status: password.isNotEmpty &&
+                  confirmPassword.isNotEmpty &&
+                  password == confirmPassword
               ? SignUpStatus.informationValid
               : SignUpStatus.informationInvalid));
     }
@@ -68,7 +72,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       emit(state.copyWith(
           passwordError: '',
           passwordErrorStatus: SignUpStatus.passwordValid,
-          status: email.isNotEmpty && regExp.hasMatch(email)
+          status: email.isNotEmpty &&
+                  regExp.hasMatch(email) &&
+                  confirmPassword.isNotEmpty &&
+                  password == confirmPassword
               ? SignUpStatus.informationValid
               : SignUpStatus.informationInvalid));
     }
@@ -84,11 +91,40 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       _preferencesService.setToken(authResponse.tokens!.access!.token!);
       _preferencesService.setValue(
           key: 'refreshToken', value: authResponse.tokens!.refresh!.token!);
-      _preferencesService.setValue(key: 'userId', value: authResponse.user!.id!);
-      _preferencesService.setValue(key: 'userName', value: authResponse.user!.name!);
+      _preferencesService.setValue(
+          key: 'userId', value: authResponse.user!.id!);
       emit(state.copyWith(status: SignUpStatus.loadSuccess));
     } catch (exception) {
       emit(state.copyWith(status: SignUpStatus.loadFailed));
+    }
+  }
+
+  FutureOr<void> _onConfirmPasswordChanged(
+      SignUpConfirmPasswordChanged event, Emitter<SignUpState> emit) {
+    confirmPassword = event.confirmPassword;
+
+    if (confirmPassword.isEmpty) {
+      emit(state.copyWith(
+          confirmPasswordError: password.isNotEmpty
+              ? S.current.confirm_password_error
+              : S.current.confirm_password_empty,
+          confirmPasswordErrorStatus: SignUpStatus.confirmPasswordInvalid,
+          status: SignUpStatus.informationInvalid));
+    } else if (confirmPassword != password) {
+      emit(state.copyWith(
+          confirmPasswordError: S.current.confirm_password_error,
+          confirmPasswordErrorStatus: SignUpStatus.confirmPasswordInvalid,
+          status: SignUpStatus.informationInvalid));
+    } else {
+      emit(state.copyWith(
+          confirmPasswordError: '',
+          confirmPasswordErrorStatus: SignUpStatus.confirmPasswordValid,
+          status: email.isNotEmpty &&
+                  regExp.hasMatch(email) &&
+                  password.isNotEmpty &&
+                  password == confirmPassword
+              ? SignUpStatus.informationValid
+              : SignUpStatus.informationInvalid));
     }
   }
 }

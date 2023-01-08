@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../data/models/course/courses.dart';
+import '../generated/l10n.dart';
 
 class CourseListItem extends StatelessWidget {
   const CourseListItem({
@@ -73,7 +74,7 @@ class CourseListItem extends StatelessWidget {
                     width: 8,
                   ),
                   // The number of lessons
-                  Text('${course.topics?.length.toString() ?? '0'} Lessons'),
+                  Text('${course.topics?.length.toString() ?? '0'} ${S.current.lessons}'),
                 ],
               ),
             ],

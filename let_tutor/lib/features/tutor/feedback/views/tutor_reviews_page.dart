@@ -20,7 +20,7 @@ class _TutorReviewPageState extends State<TutorReviewPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => Injector.instance<FeedbackBloc>(),
+      create: (context) => Injector.instance<FeedbackBloc>()..add(FeedbackLoaded(tutorId: widget.tutorId, page: 1)),
       child: TutorReviewsView(tutorId: widget.tutorId,),
     );
   }

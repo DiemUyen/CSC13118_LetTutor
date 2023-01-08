@@ -275,7 +275,7 @@ class _PasswordInputTextField extends StatelessWidget {
           },
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
-            hintText: "Password",
+            hintText: S.current.password,
             errorText: state.passwordErrorStatus == SignInStatus.passwordInvalid
                 ? state.passwordError
                 : null,
@@ -296,15 +296,11 @@ class _SignInButton extends StatelessWidget {
     return BlocBuilder<SignInBloc, SignInState>(
       builder: (context, state) {
         return ElevatedButton(
-          /*onPressed: state.status == SignInStatus.informationInvalid ||
-                  state.status == SignInStatus.initial || state.status == SignInStatus.loadFailed
-              ? null
-              : () {
+          onPressed: state.status == SignInStatus.informationValid
+              ? () {
                   context.read<SignInBloc>().add(SignInSignInButtonPressed());
-                },*/
-          onPressed: state.status == SignInStatus.informationValid ? () {
-            context.read<SignInBloc>().add(SignInSignInButtonPressed());
-          } : null,
+                }
+              : null,
           style: ElevatedButton.styleFrom(
             backgroundColor: AppThemes.primaryColor,
             foregroundColor: Colors.white,

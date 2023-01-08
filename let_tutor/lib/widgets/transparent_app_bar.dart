@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:let_tutor/services/shared_preferences_service.dart';
-import '../injector/injector.dart';
 import '../router/app_router.dart';
 
 class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget{

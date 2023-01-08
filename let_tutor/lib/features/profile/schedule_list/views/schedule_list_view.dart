@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../data/models/schedule/next_schedule.dart';
+import '../../../../generated/l10n.dart';
+import '../../../../injector/injector.dart';
 import '../../../../router/app_router.dart';
+import '../../../../services/shared_preferences_service.dart';
 import '../bloc/schedule_list_bloc.dart';
 
 class ScheduleListView extends StatelessWidget {
@@ -17,7 +20,7 @@ class ScheduleListView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Schedule'),
+          title: Text(S.current.schedule),
           centerTitle: true,
         ),
         body: LayoutBuilder(builder: (context, constraints) {
@@ -39,38 +42,45 @@ class ScheduleListView extends StatelessWidget {
                       const SizedBox(
                         height: 8,
                       ),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: GridView.builder(
-                            physics: const ScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              mainAxisSpacing: 4,
-                              crossAxisSpacing: 8,
-                              crossAxisCount: crossAxisCount,
-                            ),
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: state.studentSchedule.length,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () async {
-                                  await Navigator.pushNamed(
-                                    context,
-                                    AppRouter.scheduleDetailPage,
-                                    arguments:
-                                        state.studentSchedule[index],
-                                  );
-                                  context.read<ScheduleListBloc>().add(const ScheduleListLoaded());
-                                },
-                                child: _ScheduleCard(
-                                  scheduleInfo: state.studentSchedule[index],
+                      state.studentSchedule.isEmpty
+                          ? Center(
+                              child: Text(S.current.no_data),
+                            )
+                          : Expanded(
+                              child: SingleChildScrollView(
+                                child: GridView.builder(
+                                  physics: const ScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    mainAxisSpacing: 4,
+                                    crossAxisSpacing: 8,
+                                    crossAxisCount: crossAxisCount,
+                                  ),
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: state.studentSchedule.length,
+                                  itemBuilder: (context, index) {
+                                    return GestureDetector(
+                                      onTap: () async {
+                                        await Navigator.pushNamed(
+                                          context,
+                                          AppRouter.scheduleDetailPage,
+                                          arguments:
+                                              state.studentSchedule[index],
+                                        );
+                                        context
+                                            .read<ScheduleListBloc>()
+                                            .add(const ScheduleListLoaded());
+                                      },
+                                      child: _ScheduleCard(
+                                        scheduleInfo:
+                                            state.studentSchedule[index],
+                                      ),
+                                    );
+                                  },
                                 ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
+                              ),
+                            ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -121,12 +131,12 @@ class ScheduleListView extends StatelessWidget {
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          'Load Schedule Failed!',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          S.current.load_schedule_fail,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text('Please try again.'),
+                        Text(S.current.try_again),
                       ],
                     ),
                   ),
@@ -151,6 +161,8 @@ class _ScheduleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final service = Injector.instance<SharedPreferencesService>();
+    final String locale = service.locale;
     var startTime = DateTime.fromMillisecondsSinceEpoch(
         scheduleInfo.first.scheduleDetailInfo?.startPeriodTimestamp ?? 0);
     var endTime = DateTime.fromMillisecondsSinceEpoch(
@@ -181,10 +193,10 @@ class _ScheduleCard extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Text(
-                    DateFormat('EEE, dd MM yyyy').format(startTime),
+                    DateFormat('EEE, dd MM yyyy', locale).format(startTime),
                   ),
                   Text(
-                    '${DateFormat('HH:mm').format(startTime)} - ${DateFormat('HH:mm').format(endTime)}',
+                    '${DateFormat('HH:mm', locale).format(startTime)} - ${DateFormat('HH:mm', locale).format(endTime)}',
                     style: const TextStyle(fontStyle: FontStyle.italic),
                   ),
                 ],
