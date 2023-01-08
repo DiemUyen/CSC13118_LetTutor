@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../configs/country_list.dart';
@@ -83,10 +80,6 @@ class MyProfileView extends StatelessWidget {
                         height: 16,
                       ),
                       const _UserName(),
-                      //const Text('You have 100 lesson left'),
-                      const SizedBox(
-                        height: 8,
-                      ),
                       TextButton(
                           onPressed: () {},
                           child: Text(S.current.others_review)),
@@ -173,76 +166,41 @@ class MyProfileView extends StatelessWidget {
   }
 }
 
-class _UserAvatar extends StatefulWidget {
+class _UserAvatar extends StatelessWidget {
   const _UserAvatar({Key? key}) : super(key: key);
 
-  @override
-  State<_UserAvatar> createState() => _UserAvatarState();
-}
-
-class _UserAvatarState extends State<_UserAvatar> {
-  String imageUrl = '';
-  bool isPicked = false;
-
-  void updateAvatar(BuildContext context, String path) {
-    print('${path} DUONG DAN');
-    context
-        .read<UpdateUserInformationBloc>()
-        .add(UpdateUserInformationAvatarChanged(avatarUrl: path));
-    setState(() {
-      imageUrl = path;
-    });
+  String getTutorAvatarName(String name) {
+    if (name.isNotEmpty) {
+      final splitTutorName = name.split(' ');
+      var result = '';
+      for (var part in splitTutorName) {
+        result += part[0];
+      }
+      return result;
+    }
+    return '';
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UpdateUserInformationBloc, UpdateUserInformationState>(
       builder: (context, state) {
-        if (state.status == UpdateUserInformationStatus.loadFirstSuccess) {
-          imageUrl = state.user.avatar ?? '';
-        }
-        return GestureDetector(
-          /*onTap: () async {
-            try {
-              final ImagePicker picker = ImagePicker();
-              final XFile? image =
-                  await picker.pickImage(source: ImageSource.gallery);
-              if (image != null) {
-                updateAvatar(context, image?.path ?? '');
-              } else {
-                print('No image selected');
-              }
-            } on PlatformException catch (exception) {
-              if (kDebugMode) {
-                print('Failed to pick image: $exception');
-              }
-            }
-          },*/
-          child: Container(
-            decoration: BoxDecoration(
-                border:
-                    Border.all(color: Theme.of(context).primaryColor, width: 4),
-                borderRadius: BorderRadius.circular(200)),
-            padding: const EdgeInsets.all(4),
-            child: isPicked
-                ? Image.file(
-                    File(imageUrl),
-                    width: 100,
-                    height: 100,
-                  )
-                : CachedNetworkImage(
-                    width: 100,
-                    height: 100,
-                    imageUrl: imageUrl,
-                    progressIndicatorBuilder:
-                        (context, url, downloadProgress) =>
-                            CircularProgressIndicator(
-                      value: downloadProgress.progress,
-                    ),
-                    errorWidget: (context, url, error) => Image.asset(
-                      'assets/images/default_avatar.png',
-                    ),
-                  ),
+        return Container(
+          decoration: BoxDecoration(
+              border:
+                  Border.all(color: Theme.of(context).primaryColor, width: 4),
+              borderRadius: BorderRadius.circular(200)),
+          padding: const EdgeInsets.all(4),
+          child: CachedNetworkImage(
+            width: 100,
+            height: 100,
+            imageUrl: state.user.avatar ?? '',
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                CircularProgressIndicator(
+              value: downloadProgress.progress,
+            ),
+            errorWidget: (context, url, error) => CircleAvatar(
+                child: Text(getTutorAvatarName(state.user.name ?? ''))),
           ),
         );
       },

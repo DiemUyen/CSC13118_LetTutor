@@ -9,15 +9,6 @@ class UpdateUserInformationLoaded extends UpdateUserInformationEvent {
   List<Object?> get props => [];
 }
 
-class UpdateUserInformationAvatarChanged extends UpdateUserInformationEvent {
-  final String avatarUrl;
-
-  const UpdateUserInformationAvatarChanged({required this.avatarUrl});
-
-  @override
-  List<Object?> get props => [avatarUrl];
-}
-
 class UpdateUserInformationUsernameFieldChanged extends UpdateUserInformationEvent {
   final String username;
 

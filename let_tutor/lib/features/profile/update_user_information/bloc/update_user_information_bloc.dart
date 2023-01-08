@@ -1,16 +1,13 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:let_tutor/services/shared_preferences_service.dart';
 
 import '../../../../data/models/user/learn_topics.dart';
 import '../../../../data/models/user/test_preparation.dart';
 import '../../../../data/models/user/user.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../injector/injector.dart';
 
 part 'update_user_information_event.dart';
 part 'update_user_information_state.dart';
@@ -19,7 +16,6 @@ class UpdateUserInformationBloc
     extends Bloc<UpdateUserInformationEvent, UpdateUserInformationState> {
   UpdateUserInformationBloc({
     required UserRepository userRepository,
-    this.avatarUrl = "",
     this.username = "",
     this.country = "",
     this.phone = "",
@@ -29,7 +25,6 @@ class UpdateUserInformationBloc
   }) : super(const UpdateUserInformationState()) {
     _userRepository = userRepository;
     on<UpdateUserInformationLoaded>(_onLoaded);
-    on<UpdateUserInformationAvatarChanged>(_onAvatarChanged);
     on<UpdateUserInformationUsernameFieldChanged>(_onUsernameFieldChanged);
     on<UpdateUserInformationCountryFieldChanged>(_onCountryFieldChanged);
     on<UpdateUserInformationPhoneFieldChanged>(_onPhoneFieldChanged);
@@ -45,7 +40,6 @@ class UpdateUserInformationBloc
     add(UpdateUserInformationLoaded());
   }
 
-  String avatarUrl;
   String username;
   String country;
   String phone;
@@ -65,7 +59,6 @@ class UpdateUserInformationBloc
 
     try {
       var userResponse = await _userRepository.getUserInformation();
-      avatarUrl = userResponse.user?.avatar ?? '';
       username = userResponse.user?.name ?? '';
       country = userResponse.user?.country ?? '';
       phone = userResponse.user?.phone ?? '';
@@ -92,13 +85,6 @@ class UpdateUserInformationBloc
     } catch (exception) {
       emit(state.copyWith(status: UpdateUserInformationStatus.loadFailure));
     }
-  }
-
-  FutureOr<void> _onAvatarChanged(UpdateUserInformationAvatarChanged event,
-      Emitter<UpdateUserInformationState> emit) async {
-    event.avatarUrl.isNotEmpty
-        ? avatarUrl = event.avatarUrl
-        : avatarUrl = avatarUrl;
   }
 
   FutureOr<void> _onUsernameFieldChanged(
@@ -192,7 +178,6 @@ class UpdateUserInformationBloc
 
     Map<String, dynamic> updatedInformation = {};
 
-    updatedInformation['avatar'] = avatarUrl;
     updatedInformation['name'] = username;
     updatedInformation['country'] = country;
     updatedInformation['phone'] = phone;
