@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_password_error": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu chưa trùng khớp với mật khẩu mới"),
+        "country": MessageLookupByLibrary.simpleMessage("Quốc tịch"),
         "course": MessageLookupByLibrary.simpleMessage("Khoá học"),
         "course_length":
             MessageLookupByLibrary.simpleMessage("Thời lượng khoá học"),
@@ -67,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Interactive E-book"),
         "interests": MessageLookupByLibrary.simpleMessage("Sở thích"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
+        "level": MessageLookupByLibrary.simpleMessage("Cấp độ"),
         "level_decreasing":
             MessageLookupByLibrary.simpleMessage("Độ khó giảm dần"),
         "level_increasing":
@@ -134,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
         "vietnamese_tutor":
             MessageLookupByLibrary.simpleMessage("Gia sư người Việt"),
+        "want_to_learn": MessageLookupByLibrary.simpleMessage("Tôi muốn học"),
         "what_able_to_do":
             MessageLookupByLibrary.simpleMessage("Bạn có thể học được gì?"),
         "why_take_course": MessageLookupByLibrary.simpleMessage(

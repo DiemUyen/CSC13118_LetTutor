@@ -69,5 +69,8 @@
     "specialties": "Specialties",
     "suggested_courses": "Suggested Courses",
     "interests": "Interests",
-    "teaching_experience": "Teaching experience"
+    "teaching_experience": "Teaching experience",
+    "country": "Country",
+    "level": "Level",
+    "want_to_learn": "Want to learn"
 }

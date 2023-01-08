@@ -39,4 +39,18 @@ class UserRepositoryImpl extends UserRepository {
         .getTotalCallMinutes()
         .catchError(DioExceptionHandler.handleException);
   }
+
+  @override
+  Future<List<LearnTopics>> getLearnTopics() async {
+    return await _userProvider
+        .getLearnTopics()
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<List<TestPreparation>> getTestPreparation() async {
+    return await _userProvider
+        .getTestPreparation()
+        .catchError(DioExceptionHandler.handleException);
+  }
 }

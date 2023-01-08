@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../configs/country_list.dart';
+import '../../../../data/models/user/learn_topics.dart';
+import '../../../../data/models/user/test_preparation.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/update_user_information_bloc.dart';
 
@@ -72,52 +73,89 @@ class MyProfileView extends StatelessWidget {
           body: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _UserAvatar(),
-                const SizedBox(
-                  height: 16,
+                Center(
+                  child: Column(
+                    children: [
+                      const _UserAvatar(),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      const _UserName(),
+                      //const Text('You have 100 lesson left'),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      TextButton(
+                          onPressed: () {},
+                          child: Text(S.current.others_review)),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                    ],
+                  ),
                 ),
                 Text(
-                  'username',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const Text('You have 100 lesson left'),
-                const SizedBox(
-                  height: 8,
-                ),
-                TextButton(
-                    onPressed: () {}, child: Text(S.current.others_review)),
-                const SizedBox(
-                  height: 16,
+                  S.current.username,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 _UsernameTextField(),
                 const SizedBox(
                   height: 16,
                 ),
+                Text(
+                  'Email',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 _EmailTextField(),
                 const SizedBox(
                   height: 16,
                 ),
-                const _CountryField(),
+                Text(
+                  S.current.country,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                _CountryField(),
                 const SizedBox(
                   height: 16,
+                ),
+                Text(
+                  S.current.phone,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 _PhoneField(),
                 const SizedBox(
                   height: 16,
                 ),
-                const _BirthdayField(),
+                Text(
+                  S.current.birthday,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                _BirthdayField(),
                 const SizedBox(
                   height: 16,
                 ),
-                const _LevelField(),
+                Text(
+                  S.current.level,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                _LevelField(),
                 const SizedBox(
                   height: 16,
                 ),
-                /*const _WantToLearnField(),
+                Text(
+                  S.current.want_to_learn,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const _WantToLearnField(),
                 const SizedBox(
                   height: 16,
-                ),*/
+                ),
+                Text(
+                  S.current.study_schedule,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 _StudyScheduleField(),
                 const SizedBox(
                   height: 16,
@@ -212,6 +250,22 @@ class _UserAvatarState extends State<_UserAvatar> {
   }
 }
 
+class _UserName extends StatelessWidget {
+  const _UserName({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<UpdateUserInformationBloc, UpdateUserInformationState>(
+      builder: (context, state) {
+        return Text(
+          state.user.name ?? '',
+          style: Theme.of(context).textTheme.headlineSmall,
+        );
+      },
+    );
+  }
+}
+
 class _UsernameTextField extends StatelessWidget {
   _UsernameTextField({Key? key}) : super(key: key);
 
@@ -228,7 +282,6 @@ class _UsernameTextField extends StatelessWidget {
           controller: controller,
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
-            labelText: S.current.username,
             errorText:
                 state.status == UpdateUserInformationStatus.informationInvalid
                     ? state.usernameError
@@ -260,7 +313,6 @@ class _EmailTextField extends StatelessWidget {
           controller: controller,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
-            labelText: 'Email',
           ),
           readOnly: true,
           enabled: false,
@@ -270,52 +322,17 @@ class _EmailTextField extends StatelessWidget {
   }
 }
 
-class _CountryField extends StatefulWidget {
-  const _CountryField({Key? key}) : super(key: key);
+class _CountryField extends StatelessWidget {
+  _CountryField({Key? key}) : super(key: key);
 
-  @override
-  State<_CountryField> createState() => _CountryFieldState();
-}
-
-class _CountryFieldState extends State<_CountryField> {
-  static const Map<String, String> countries = {
-    'Aruba': 'Aruba',
-    'Australia': 'Australia',
-    'Bolivia': 'Bolivia',
-    'Canada': 'Canada',
-    'Chad': 'Chad',
-    'China': 'China',
-    'Christmas Island': 'Christmas Island',
-    'Colombia': 'Colombia',
-    'Denmark': 'Denmark',
-    'FR': 'France',
-    'Guam': 'Guam',
-    'Guernsey': 'Guernsey',
-    'Hong Kong': 'Hong Kong',
-    'Indonesia': 'Indonesia',
-    'JP': 'Japan',
-    'Kiribati': 'Kiribati',
-    'Malaysia': 'Malaysia',
-    'New Zealand': 'New Zealand',
-    'Niue': 'Niue',
-    'PH': 'Philippines (the)',
-    'Saint Martin': 'Saint Martin',
-    'Tunisia': 'Tunisia',
-    'UK': 'United Kingdom',
-    'Uganda': 'Uganda',
-    'United Arab Emirates': 'United Arab Emirates',
-    'VN': 'Viet Nam',
-  };
-
-  String selectedCountry = countries.keys.first;
+  String selectedCountry = countryList.keys.first;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UpdateUserInformationBloc, UpdateUserInformationState>(
       builder: (context, state) {
         if (state.status == UpdateUserInformationStatus.loadFirstSuccess) {
-          selectedCountry =
-              countries[state.user.country] ?? countries.keys.first;
+          selectedCountry = state.user.country ?? countryList.keys.first;
         }
         return Container(
           decoration: BoxDecoration(
@@ -329,17 +346,15 @@ class _CountryFieldState extends State<_CountryField> {
             ),
             value: selectedCountry,
             items:
-                countries.values.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(value: value, child: Text(value));
+                countryList.keys.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                  value: value, child: Text(countryList[value] ?? ''));
             }).toList(),
             onChanged: (String? value) {
-              setState(() {
-                selectedCountry = value!;
-              });
+              selectedCountry = value!;
               context.read<UpdateUserInformationBloc>().add(
                   UpdateUserInformationCountryFieldChanged(
-                      country: countries.keys.firstWhere(
-                          (element) => countries[element] == value)));
+                      country: selectedCountry));
             },
           ),
         );
@@ -362,10 +377,11 @@ class _PhoneField extends StatelessWidget {
         }
         return TextField(
           controller: controller,
-          decoration: InputDecoration(
-            border: const OutlineInputBorder(),
-            labelText: S.current.phone,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
           ),
+          readOnly: true,
+          enabled: false,
           keyboardType: TextInputType.phone,
           onChanged: (value) => context
               .read<UpdateUserInformationBloc>()
@@ -376,53 +392,37 @@ class _PhoneField extends StatelessWidget {
   }
 }
 
-class _BirthdayField extends StatefulWidget {
-  const _BirthdayField({Key? key}) : super(key: key);
+class _BirthdayField extends StatelessWidget {
+  _BirthdayField({Key? key}) : super(key: key);
 
-  @override
-  State<_BirthdayField> createState() => _BirthdayFieldState();
-}
-
-class _BirthdayFieldState extends State<_BirthdayField> {
-  String selectedBirthday = '';
   final controller = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    controller.addListener(() {
-      context.read<UpdateUserInformationBloc>().add(
-          UpdateUserInformationBirthdayFieldChanged(birthday: controller.text));
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UpdateUserInformationBloc, UpdateUserInformationState>(
         builder: (context, state) {
       if (state.status == UpdateUserInformationStatus.loadFirstSuccess) {
-        selectedBirthday = state.user.birthday ?? '';
-        controller.text = selectedBirthday;
+        controller.text = state.user.birthday ?? '';
       }
       return TextFormField(
         controller: controller,
-        decoration: InputDecoration(
-            border: const OutlineInputBorder(),
-            label: Text(S.current.birthday)),
+        decoration: const InputDecoration(
+          border: const OutlineInputBorder(),
+        ),
         readOnly: true,
         onTap: () async {
           DateTime? picked = await showDatePicker(
             context: context,
-            initialDate: DateTime.parse(selectedBirthday),
+            initialDate: DateTime.parse(controller.text),
             firstDate: DateTime(1900),
             lastDate: DateTime.now(),
             helpText: S.current.select_birthday,
           );
           if (picked != null) {
-            setState(() {
-              selectedBirthday = DateFormat('yyyy-MM-dd').format(picked);
-              controller.text = selectedBirthday;
-            });
+            controller.text = DateFormat('yyyy-MM-dd').format(picked);
+            context.read<UpdateUserInformationBloc>().add(
+                UpdateUserInformationBirthdayFieldChanged(
+                    birthday: controller.text));
           }
         },
       );
@@ -430,14 +430,9 @@ class _BirthdayFieldState extends State<_BirthdayField> {
   }
 }
 
-class _LevelField extends StatefulWidget {
-  const _LevelField({Key? key}) : super(key: key);
+class _LevelField extends StatelessWidget {
+  _LevelField({Key? key}) : super(key: key);
 
-  @override
-  State<_LevelField> createState() => _LevelFieldState();
-}
-
-class _LevelFieldState extends State<_LevelField> {
   static List<String> levels = [
     'BEGINNER',
     'PRE-INTERMEDIATE',
@@ -446,7 +441,6 @@ class _LevelFieldState extends State<_LevelField> {
     'ADVANCED',
     'PROFICIENCY',
   ];
-
   String selectedLevel = levels.first;
 
   @override
@@ -472,9 +466,7 @@ class _LevelFieldState extends State<_LevelField> {
               return DropdownMenuItem<String>(value: value, child: Text(value));
             }).toList(),
             onChanged: (String? value) {
-              setState(() {
-                selectedLevel = value ?? '';
-              });
+              selectedLevel = value ?? '';
               context.read<UpdateUserInformationBloc>().add(
                   UpdateUserInformationLevelFieldChanged(level: value ?? ''));
             },
@@ -485,51 +477,53 @@ class _LevelFieldState extends State<_LevelField> {
   }
 }
 
-/*class _WantToLearnField extends StatelessWidget {
+class _WantToLearnField extends StatelessWidget {
   const _WantToLearnField({Key? key}) : super(key: key);
-
-  static const List<String> categories = [
-    'For Studying Abroad',
-    'English For Traveling',
-    'Conversational English',
-    'English For Beginners',
-    'Business English',
-    'English For Kids',
-    'STARTERS',
-    'PET',
-    'KET',
-    'MOVERS',
-    'FLYERS',
-    'TOEFL',
-    'TOEIC',
-    'IELTS'
-  ];
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UpdateUserInformationBloc, UpdateUserInformationState>(
       builder: (context, state) {
-        return Container(
-          decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Colors.black38),
-              borderRadius: BorderRadius.circular(4)),
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: DropdownButton<String>(
-            isExpanded: true,
-            underline: Container(
-              height: 0,
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Wrap(
+              spacing: 8,
+              children: state.learnTopics.map<Widget>((LearnTopics speciality) {
+                return FilterChip(
+                    label: Text(speciality.name ?? ''),
+                    selected: (state.filteredLearnTopics.indexWhere(
+                            (element) => element == speciality.id.toString()) !=
+                        -1),
+                    onSelected: (bool value) {
+                      context.read<UpdateUserInformationBloc>().add(
+                          UpdateUserInformationWantToLearnFieldChanged(
+                              learnTopicsId: [speciality]));
+                    });
+              }).toList(),
             ),
-            value: state.user.requireNote ?? categories.first,
-            items: categories.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(value: value, child: Text(value));
-            }).toList(),
-            onChanged: (String? value) {},
-          ),
+            Wrap(
+              spacing: 8,
+              children: state.testPreparations
+                  .map<Widget>((TestPreparation speciality) {
+                return FilterChip(
+                    label: Text(speciality.name ?? ''),
+                    selected: (state.filteredTestPreparations.indexWhere(
+                            (element) => element == speciality.id.toString()) !=
+                        -1),
+                    onSelected: (bool value) {
+                      context.read<UpdateUserInformationBloc>().add(
+                          UpdateUserInformationWantToLearnFieldChanged(
+                              testPreparationsId: [speciality]));
+                    });
+              }).toList(),
+            ),
+          ],
         );
       },
     );
   }
-}*/
+}
 
 class _StudyScheduleField extends StatelessWidget {
   _StudyScheduleField({Key? key}) : super(key: key);
@@ -545,9 +539,8 @@ class _StudyScheduleField extends StatelessWidget {
         }
         return TextField(
           controller: controller,
-          decoration: InputDecoration(
-            border: const OutlineInputBorder(),
-            label: Text(S.current.study_schedule),
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
           ),
           maxLines: null,
           keyboardType: TextInputType.multiline,

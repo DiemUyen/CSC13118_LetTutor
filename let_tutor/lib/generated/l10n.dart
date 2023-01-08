@@ -759,6 +759,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Country`
+  String get country {
+    return Intl.message(
+      'Country',
+      name: 'country',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Level`
+  String get level {
+    return Intl.message(
+      'Level',
+      name: 'level',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Want to learn`
+  String get want_to_learn {
+    return Intl.message(
+      'Want to learn',
+      name: 'want_to_learn',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

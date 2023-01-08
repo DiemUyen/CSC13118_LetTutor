@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../configs/country_list.dart';
 import '../data/models/tutor/tutor.dart';
 import '../data/models/user/learn_topics.dart';
 import '../data/models/user/test_preparation.dart';
@@ -132,7 +133,7 @@ class _TutorInformation extends StatelessWidget {
                         width: 8,
                       ),
                       // Nationality
-                      Text(tutor.country ?? ''),
+                      Text(countryList.containsKey(tutor.country) ? countryList[tutor.country]! : (tutor.country ?? '')),
                     ],
                   ),
                   // Rating star

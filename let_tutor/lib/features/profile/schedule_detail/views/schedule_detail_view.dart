@@ -155,7 +155,7 @@ class ScheduleDetailView extends StatelessWidget {
                                   children: [
                                     _Description(
                                         content:
-                                            '${DateFormat('EEE, dd MMM yyyy').format(startTime)}, ${DateFormat('hh:mm').format(startTime)} - ${DateFormat('hh:mm').format(endTime)}'),
+                                            '${DateFormat('EEE, dd MMM yyyy').format(startTime)}, ${DateFormat('HH:mm').format(startTime)} - ${DateFormat('HH:mm').format(endTime)}'),
                                     IconButton(
                                       onPressed: () async {
                                         final pContext = context;

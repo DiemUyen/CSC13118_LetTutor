@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "confirm_password_error": MessageLookupByLibrary.simpleMessage(
             "Confirm password does not match the new password"),
+        "country": MessageLookupByLibrary.simpleMessage("Country"),
         "course": MessageLookupByLibrary.simpleMessage("Course"),
         "course_length": MessageLookupByLibrary.simpleMessage("Course Length"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
@@ -65,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Interactive E-book"),
         "interests": MessageLookupByLibrary.simpleMessage("Interests"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "level": MessageLookupByLibrary.simpleMessage("Level"),
         "level_decreasing":
             MessageLookupByLibrary.simpleMessage("Level decreasing"),
         "level_increasing":
@@ -128,6 +130,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "vietnamese": MessageLookupByLibrary.simpleMessage("Vietnamese"),
         "vietnamese_tutor":
             MessageLookupByLibrary.simpleMessage("Vietnamese Tutor"),
+        "want_to_learn": MessageLookupByLibrary.simpleMessage("Want to learn"),
         "what_able_to_do": MessageLookupByLibrary.simpleMessage(
             "What will you be able to do?"),
         "why_take_course":

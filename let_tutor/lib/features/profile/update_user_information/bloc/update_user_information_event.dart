@@ -64,12 +64,13 @@ class UpdateUserInformationLevelFieldChanged extends UpdateUserInformationEvent 
 }
 
 class UpdateUserInformationWantToLearnFieldChanged extends UpdateUserInformationEvent {
-  final String wantToLearn;
+  final List<LearnTopics> learnTopicsId;
+  final List<TestPreparation> testPreparationsId;
 
-  const UpdateUserInformationWantToLearnFieldChanged({required this.wantToLearn});
+  const UpdateUserInformationWantToLearnFieldChanged({this.learnTopicsId = const [], this.testPreparationsId = const []});
 
   @override
-  List<Object?> get props => [wantToLearn];
+  List<Object?> get props => [learnTopicsId, testPreparationsId];
 }
 
 class UpdateUserInformationStudyScheduleFieldChanged extends UpdateUserInformationEvent {

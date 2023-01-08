@@ -13,9 +13,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   var selectedIndex = 0;
-  var screens = [const TutorHomePage(), const CoursesPage(), const ProfileHomePage()];
+  var screens = [
+    const TutorHomePage(),
+    const CoursesPage(),
+    const ProfileHomePage()
+  ];
 
   @override
   Widget build(BuildContext context) {

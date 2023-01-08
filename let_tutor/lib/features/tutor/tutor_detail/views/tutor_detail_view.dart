@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:let_tutor/widgets/video_player.dart';
 
+import '../../../../configs/country_list.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
 import '../../../../widgets/widgets.dart';
@@ -186,6 +187,15 @@ class _TutorDetailViewState extends State<TutorDetailView> {
 class _TutorInformation extends StatelessWidget {
   const _TutorInformation({Key? key}) : super(key: key);
 
+  String getTutorAvatarName(String name) {
+    final splitTutorName = name.split(' ');
+    var result = '';
+    for (var part in splitTutorName) {
+      result += part[0];
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TutorDetailBloc, TutorDetailState>(
@@ -199,13 +209,16 @@ class _TutorInformation extends StatelessWidget {
                 width: 48,
                 height: 48,
                 imageUrl: state.tutor.User?.avatar ?? '',
+                fit: BoxFit.fill,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  foregroundImage: imageProvider,
+                ),
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     CircularProgressIndicator(
-                  value: downloadProgress.progress,
-                ),
-                errorWidget: (context, url, error) => Image.asset(
-                  'assets/images/default_avatar.png',
-                ),
+                      value: downloadProgress.progress,
+                    ),
+                errorWidget: (context, url, error) => CircleAvatar(
+                    child: Text(getTutorAvatarName(state.tutor.User?.avatar ?? ''))),
               ),
               const SizedBox(
                 width: 8,
@@ -231,7 +244,7 @@ class _TutorInformation extends StatelessWidget {
                         width: 8,
                       ),
                       // Nationality
-                      Text(state.tutor.User?.country ?? ''),
+                      Text(countryList.containsKey(state.tutor.User?.country) ? countryList[state.tutor.User?.country]! : (state.tutor.User?.country ?? '')),
                     ],
                   ),
                   // Rating star

@@ -69,5 +69,8 @@
     "specialties": "Chuyên ngành",
     "suggested_courses": "Khoá học tham khảo",
     "interests": "Sở thích",
-    "teaching_experience": "Kinh nghiệm giảng dạy"
+    "teaching_experience": "Kinh nghiệm giảng dạy",
+    "country": "Quốc tịch",
+    "level": "Cấp độ",
+    "want_to_learn": "Tôi muốn học"
 }
