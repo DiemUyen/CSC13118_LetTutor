@@ -16,7 +16,7 @@ class ScheduleDetailLoading extends ScheduleDetailState {
 
 class ScheduleDetailLoadSuccess extends ScheduleDetailState {
   const ScheduleDetailLoadSuccess(this.schedules, this.request,
-      {this.isSaveRequest = false, this.isCancelSchedule = false});
+      this.isSaveRequest, this.isCancelSchedule);
 
   final List<NextSchedule> schedules;
   final String request;

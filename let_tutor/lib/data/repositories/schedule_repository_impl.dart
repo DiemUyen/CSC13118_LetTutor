@@ -1,6 +1,5 @@
 import 'package:let_tutor/data/models/responses/history_response.dart';
 import 'package:let_tutor/data/models/responses/student_schedule_response.dart';
-import 'package:let_tutor/data/models/schedule/cancel_reason.dart';
 
 import '../../exceptions/exception_handler.dart';
 import '../data_providers/data_providers.dart';
@@ -61,12 +60,6 @@ class ScheduleRepositoryImpl extends ScheduleRepository {
     return await _scheduleProvider
         .cancelBookedClass(scheduleDetailId)
         .catchError(DioExceptionHandler.handleException);
-  }
-
-  @override
-  Future<List<CancelReason>> getCancelReason() {
-    // TODO: implement getCancelReason
-    throw UnimplementedError();
   }
 
   @override

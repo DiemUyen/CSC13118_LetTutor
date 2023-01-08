@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:let_tutor/data/models/schedule/schedule_info.dart';
 
 import '../tutor/feedbacks.dart';
 import 'class_review.dart';

@@ -21,11 +21,19 @@ class ScheduleDetailBloc
 
   void _onLoaded(ScheduleDetailLoaded event, Emitter emit) {
     emit(ScheduleDetailLoadSuccess(
-        event.schedules, _getRequest(event.schedules)));
+        event.schedules, _getRequest(event.schedules,), false, false));
   }
 
   void _onCancelBookingButtonPressed(
-      ScheduleDetailCancelBookingButtonPressed event, Emitter emit) async {}
+      ScheduleDetailCancelBookingButtonPressed event, Emitter emit) async {
+    try {
+      var response = await _scheduleRepository.cancelBookedClass(event.scheduleId);
+      emit(const ScheduleDetailLoadSuccess([], '', false, true));
+    }
+    catch (exception) {
+      emit(const ScheduleDetailLoadFailure(isCancelSchedule: true));
+    }
+  }
 
   void _onSaveButtonPressed(ScheduleDetailSaveButtonPressed event, Emitter emit) async {
     try {
@@ -34,7 +42,7 @@ class ScheduleDetailBloc
       if (response) {
         emit(ScheduleDetailLoadSuccess(
             event.schedules, event.studentRequest,
-            isSaveRequest: true));
+            true, false));
       }
     } catch (exception) {
       emit(const ScheduleDetailLoadFailure(isSaveRequest: true));
@@ -44,9 +52,12 @@ class ScheduleDetailBloc
   String _getRequest(List<NextSchedule> schedules) {
     String request = '';
 
-    for (final schedule in schedules) {
-      if (schedule.studentRequest != null) {
-        request += '${schedule.studentRequest}';
+    for (int i = 0; i < schedules.length; i++) {
+      if (schedules[i].studentRequest != null) {
+        request += '${schedules[i].studentRequest}';
+      }
+      if (i + 1 != schedules.length) {
+        request += '\n';
       }
     }
 

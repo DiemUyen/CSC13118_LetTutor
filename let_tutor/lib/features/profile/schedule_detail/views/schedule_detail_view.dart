@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:let_tutor/features/profile/schedule_detail/bloc/schedule_detail_bloc.dart';
 
-import '../../../../data/models/schedule/next_schedule.dart';
 import '../../../../router/app_router.dart';
 
 class ScheduleDetailView extends StatelessWidget {
@@ -27,8 +26,7 @@ class ScheduleDetailView extends StatelessWidget {
                           Icons.warning_amber_outlined,
                           color: Theme.of(context).colorScheme.error,
                         ),
-                        content:
-                            Text('Save Request Failed!'),
+                        content: Text('Save Request Failed!'),
                       );
                     });
               } else if (state.isCancelSchedule) {
@@ -43,27 +41,19 @@ class ScheduleDetailView extends StatelessWidget {
                         content: Text('Cancel Schedule Failed!'),
                       );
                     });
-              } else if (state is ScheduleDetailLoadSuccess) {
-                if (state.isCancelSchedule) {
-                  Navigator.pop(context);
-                } else if (state.isSaveRequest) {
-                  showDialog(
-                      context: context,
-                      builder: (content) {
-                        return AlertDialog(
-                          icon: Icon(
-                            Icons.check,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                          content: Text('Successfully Save Request'),
-                        );
-                      });
-                }
+              }
+            } else if (state is ScheduleDetailLoadSuccess) {
+              if (state.isCancelSchedule) {
+                Navigator.pop(context);
+              } else if (state.isSaveRequest) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Successfully Save Request')));
               }
             }
           },
           builder: (context, state) {
             if (state is ScheduleDetailLoadSuccess) {
+              if (state.isCancelSchedule) return Container();
               return Column(
                 children: [
                   Expanded(
@@ -159,9 +149,66 @@ class ScheduleDetailView extends StatelessWidget {
                                             .scheduleDetailInfo
                                             ?.endPeriodTimestamp ??
                                         0);
-                                return _Description(
-                                    content:
-                                        '${DateFormat('EEE, dd MMM yyyy').format(startTime)}, ${DateFormat('hh:mm').format(startTime)} - ${DateFormat('hh:mm').format(endTime)}');
+                                return Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    _Description(
+                                        content:
+                                            '${DateFormat('EEE, dd MMM yyyy').format(startTime)}, ${DateFormat('hh:mm').format(startTime)} - ${DateFormat('hh:mm').format(endTime)}'),
+                                    IconButton(
+                                      onPressed: () async {
+                                        final pContext = context;
+                                        return showDialog(
+                                          barrierDismissible: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              title: const Text(
+                                                  'Confirm cancel booking'),
+                                              content: Text(
+                                                  'Cancel booking lesson with ${state.schedules.first.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name ?? ''}?'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Text('Discard'),
+                                                ),
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    pContext
+                                                        .read<
+                                                            ScheduleDetailBloc>()
+                                                        .add(ScheduleDetailCancelBookingButtonPressed(
+                                                            reasonId: 0,
+                                                            scheduleId: state
+                                                                    .schedules[
+                                                                        index]
+                                                                    .id ??
+                                                                ''));
+                                                  },
+                                                  child: const Text('Confirm'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
+                                      icon: (startTime
+                                                  .subtract(
+                                                      const Duration(hours: 2))
+                                                  .compareTo(DateTime.now()) ==
+                                              1)
+                                          ? Icon(Icons.clear)
+                                          : Icon(
+                                              Icons.clear,
+                                              color: Colors.transparent,
+                                            ),
+                                    ),
+                                  ],
+                                );
                               },
                             ),
                           ),
@@ -174,10 +221,7 @@ class ScheduleDetailView extends StatelessWidget {
                           const SizedBox(
                             height: 8,
                           ),
-                          _StudentRequest(
-                            request: state.request,
-                            schedules: state.schedules,
-                          ),
+                          const _StudentRequest(),
                         ],
                       ),
                     ),
@@ -187,39 +231,47 @@ class ScheduleDetailView extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: Row(
                       children: [
-                        OutlinedButton.icon(
+                        /*OutlinedButton.icon(
                           onPressed: () async {
+                            final pContext = context;
                             return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    title: const Text('Confirm cancel booking'),
-                                    content: const Text(
-                                        'Cancel booking lesson with April?'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context, 'No');
-                                        },
-                                        child: const Text('No'),
-                                      ),
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.pop(context, 'Confirm');
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text('Confirm'),
-                                      )
-                                    ],
-                                  );
-                                });
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text('Confirm cancel booking'),
+                                  content: Text(
+                                      'Cancel booking lesson with ${state.schedules.first.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name ?? ''}?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('Discard'),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        pContext.read<ScheduleDetailBloc>().add(
+                                            ScheduleDetailCancelBookingButtonPressed(
+                                                reasonId: 0,
+                                                scheduleId:
+                                                    state.schedules.first.id ??
+                                                        ''));
+                                      },
+                                      child: const Text('Confirm'),
+                                    )
+                                  ],
+                                );
+                              },
+                            );
                           },
                           icon: const Icon(Icons.clear),
                           label: const Text('Cancel'),
                         ),
                         const SizedBox(
                           width: 24,
-                        ),
+                        ),*/
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
@@ -303,12 +355,9 @@ class _Description extends StatelessWidget {
 }
 
 class _StudentRequest extends StatefulWidget {
-  const _StudentRequest(
-      {Key? key, required this.request, required this.schedules})
-      : super(key: key);
-
-  final String request;
-  final List<NextSchedule> schedules;
+  const _StudentRequest({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<_StudentRequest> createState() => _StudentRequestState();
@@ -316,58 +365,69 @@ class _StudentRequest extends StatefulWidget {
 
 class _StudentRequestState extends State<_StudentRequest> {
   final _requestController = TextEditingController();
-
-  @override
-  void initState() {
-    _requestController.text = widget.request;
-    super.initState();
-  }
+  bool isEditing = false;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          controller: _requestController,
-          decoration: InputDecoration(
-            border: const OutlineInputBorder(
-              borderSide: BorderSide.none,
-            ),
-            hintText: 'No request for lesson.',
-            errorText:
-                (widget.request.isNotEmpty && _requestController.text.isEmpty)
-                    ? 'Student request is not empty'
-                    : null,
-          ),
-          maxLines: 5,
-          onChanged: (_) {
-            setState(() {});
-          },
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        Row(
-          children: [
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {
-                  context.read<ScheduleDetailBloc>().add(
-                        ScheduleDetailSaveButtonPressed(widget.schedules,
-                            studentRequest: _requestController.text,
-                            scheduleId: widget.schedules.first.id ?? ''),
-                      );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+    return BlocBuilder<ScheduleDetailBloc, ScheduleDetailState>(
+      builder: (context, state) {
+        if (state is ScheduleDetailLoadSuccess) {
+          if (!isEditing) _requestController.text = state.request;
+          return Column(
+            children: [
+              TextField(
+                controller: _requestController,
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                  hintText: 'No request for lesson.',
+                  errorText: (state.request.isNotEmpty &&
+                          _requestController.text.isEmpty)
+                      ? 'Student request is not empty'
+                      : null,
                 ),
-                child: const Text('Save'),
+                maxLines: 5,
+                onChanged: (_) {
+                  setState(() {
+                    isEditing = true;
+                  });
+                },
               ),
-            ),
-          ],
-        ),
-      ],
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: (state.request.isNotEmpty &&
+                              _requestController.text.isEmpty)
+                          ? null
+                          : () {
+                              context.read<ScheduleDetailBloc>().add(
+                                    ScheduleDetailSaveButtonPressed(
+                                        state.schedules,
+                                        studentRequest: _requestController.text,
+                                        scheduleId:
+                                            state.schedules.first.id ?? ''),
+                                  );
+                            },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor:
+                            Theme.of(context).colorScheme.onPrimary,
+                      ),
+                      child: const Text('Save Request'),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        }
+        return Container();
+      },
     );
   }
 }

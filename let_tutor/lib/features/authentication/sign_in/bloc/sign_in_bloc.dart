@@ -115,7 +115,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       }
     }
     catch (exception) {
-      print('EXCEPTION: $exception');
       emit(state.copyWith(status: SignInStatus.loadFailed));
     }
   }

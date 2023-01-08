@@ -5,7 +5,6 @@ import '../models/responses/history_response.dart';
 import '../models/responses/student_schedule_response.dart';
 import '../models/responses/upcoming_response.dart';
 import '../models/responses/schedule_response.dart';
-import '../models/schedule/cancel_reason.dart';
 
 class ScheduleProvider {
   const ScheduleProvider(this._dio);
@@ -76,11 +75,6 @@ class ScheduleProvider {
       'scheduleDetailIds': [scheduleDetailId]
     });
     return response.statusCode == 200;
-  }
-
-  Future<List<CancelReason>> getCancelReason() {
-    // TODO: implement getCancelReason
-    throw UnimplementedError();
   }
 
   Future<bool> updateStudentRequest(

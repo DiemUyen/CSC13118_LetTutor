@@ -31,7 +31,8 @@ class ScheduleListBloc extends Bloc<ScheduleListEvent, ScheduleListState> {
               group.last.scheduleDetailInfo?.endPeriodTimestamp ?? 0);
           final startTime = DateTime.fromMillisecondsSinceEpoch(
               schedule.scheduleDetailInfo?.startPeriodTimestamp ?? 0);
-          if (startTime.subtract(const Duration(minutes: 5)) == endTime) {
+          final checkSameTeacher = group.last.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name == schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name;
+          if (startTime.subtract(const Duration(minutes: 5)) == endTime && checkSameTeacher) {
             group.add(schedule);
             added = true;
           }
@@ -60,7 +61,8 @@ class ScheduleListBloc extends Bloc<ScheduleListEvent, ScheduleListState> {
               group.last.scheduleDetailInfo?.endPeriodTimestamp ?? 0);
           final startTime = DateTime.fromMillisecondsSinceEpoch(
               schedule.scheduleDetailInfo?.startPeriodTimestamp ?? 0);
-          if (startTime.subtract(const Duration(minutes: 5)) == endTime) {
+          final checkSameTeacher = group.last.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name == schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name;
+          if (startTime.subtract(const Duration(minutes: 5)) == endTime && checkSameTeacher) {
             group.add(schedule);
             added = true;
           }
