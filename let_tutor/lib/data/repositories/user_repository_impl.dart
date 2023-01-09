@@ -9,7 +9,6 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<bool> changePassword(String password, String newPassword) async {
-    // TODO: implement changePassword
     return await _userProvider
         .changePassword(password, newPassword)
         .catchError(DioExceptionHandler.handleException);
@@ -17,7 +16,6 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<UserResponse> getUserInformation() async {
-    // TODO: implement getUserInformation
     return await _userProvider
         .getUserInformation()
         .catchError(DioExceptionHandler.handleException);
@@ -26,7 +24,6 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future<UserResponse> updateUserInformation(
       Map<String, dynamic> updateInformation) async {
-    // TODO: implement updateUserInformation
     return await _userProvider
         .updateUserInformation(updateInformation)
         .catchError(DioExceptionHandler.handleException);
@@ -34,9 +31,22 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<int> getTotalCallMinutes() async {
-    // TODO: implement getTotalCallMinutes
     return await _userProvider
         .getTotalCallMinutes()
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<List<LearnTopics>> getLearnTopics() async {
+    return await _userProvider
+        .getLearnTopics()
+        .catchError(DioExceptionHandler.handleException);
+  }
+
+  @override
+  Future<List<TestPreparation>> getTestPreparation() async {
+    return await _userProvider
+        .getTestPreparation()
         .catchError(DioExceptionHandler.handleException);
   }
 }

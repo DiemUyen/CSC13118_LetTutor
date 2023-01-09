@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../generated/l10n.dart';
 
 class MyCoursesPage extends StatelessWidget {
   const MyCoursesPage({Key? key}) : super(key: key);
@@ -9,10 +10,10 @@ class MyCoursesPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
-        body: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Center(
-            child: Text("No data"),
+            child: Text(S.current.no_data),
           ),
         ),
       ),

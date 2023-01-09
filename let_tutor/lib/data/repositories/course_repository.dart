@@ -1,5 +1,6 @@
 import '../../exceptions/exception_handler.dart';
 import '../data_providers/data_providers.dart';
+import '../models/responses/content_category_response.dart';
 import '../models/responses/course_detail_response.dart';
 import '../models/responses/course_response.dart';
 
@@ -9,4 +10,8 @@ abstract class CourseRepository {
   Future<CourseResponse> getListCourses({int page = 1, int size = 100});
 
   Future<CourseDetailResponse> getDetailCourse(String courseId);
+
+  Future<ContentCategoryResponse> getContentCategories();
+
+  Future<CourseResponse> searchCourses(int page, int size, Map<String, dynamic> filters);
 }

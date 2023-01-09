@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "109040197086",
+    "project_id": "let-tutor-3e9b5",
+    "storage_bucket": "let-tutor-3e9b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109040197086:android:5c2360fc8c031641d0114f",
+        "android_client_info": {
+          "package_name": "com.example.let_tutor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109040197086-dhugjhf2vhkoovmtkilvc8gl9lqvv1f4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.let_tutor",
+            "certificate_hash": "f4f7da36961a4324a2df83f6e1eabb00de5a9f74"
+          }
+        },
+        {
+          "client_id": "109040197086-7afb0dpkerh7sf75nhoj843q4mcpuvab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC58D3Yair3fxhJlimh6fRfOxbKf1y2IKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109040197086-7afb0dpkerh7sf75nhoj843q4mcpuvab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

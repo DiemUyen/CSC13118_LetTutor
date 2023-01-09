@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:let_tutor/data/models/schedule/schedule_info.dart';
 
 import '../tutor/feedbacks.dart';
+import 'class_review.dart';
 import 'schedule_details.dart';
 
 part 'next_schedule.freezed.dart';
@@ -29,7 +29,7 @@ class NextSchedule with _$NextSchedule {
     String? calendarId,
     bool? isDeleted,
     ScheduleDetails? scheduleDetailInfo,
-    String? classReview,
+    ClassReview? classReview,
     bool? showRecordUrl,
     List? studentMaterials,
     List<Feedbacks>? feedbacks,

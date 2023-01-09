@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:let_tutor/data/models/schedule/next_schedule.dart';
 
+import '../data/models/course/topics.dart';
 import '../features/authentication/forgot_password/views/forgot_password_page.dart';
 import '../features/authentication/sign_in/views/sign_in_page.dart';
 import '../features/authentication/sign_up/views/sign_up_page.dart';
 import '../features/course/course_detail/views/course_detail_page.dart';
 import '../features/course/course_list/views/courses_list_page.dart';
-import '../features/course/topics_page.dart';
+import '../features/course/topic_detail/views/topic_detail_page.dart';
 import '../features/home.dart';
-import '../features/meeting_page.dart';
+import '../features/meeting/views/meeting_page.dart';
 import '../features/profile/become_tutor_page.dart';
 import '../features/profile/change_password/views/change_password_page.dart';
 import '../features/profile/history_detail.dart';
 import '../features/profile/history_list/views/history_list_page.dart';
 import '../features/profile/my_courses_page.dart';
 import '../features/profile/update_user_information/views/my_profile_page.dart';
-import '../features/profile/profile_home_page.dart';
-import '../features/profile/schedule_detail.dart';
-import '../features/profile/schedule_page.dart';
+import '../features/profile/profile_home/views/profile_home_page.dart';
+import '../features/profile/schedule_detail/views/schedule_detail_page.dart';
+import '../features/profile/schedule_list/views/schedule_list_page.dart';
 import '../features/profile/wallet_page.dart';
 import '../features/application/setting_page.dart';
 import '../features/tutor/booking/view/booking_page.dart';
@@ -117,7 +118,7 @@ class AppRouter {
         );
       case topicsPage:
         return MaterialPageRoute(
-          builder: (context) => const TopicsPage(),
+          builder: (context) => TopicsPage(topic: settings.arguments as Topics,),
         );
       case profileHomePage:
         return MaterialPageRoute(
@@ -137,7 +138,7 @@ class AppRouter {
         );
       case scheduleDetailPage:
         return MaterialPageRoute(
-          builder: (context) => const ScheduleDetail(),
+          builder: (context) => ScheduleDetailPage(schedules: settings.arguments as List<NextSchedule>,),
         );
       case myHistoryPage:
         return MaterialPageRoute(
@@ -161,7 +162,7 @@ class AppRouter {
         );
       case meetingPage:
         return MaterialPageRoute(
-          builder: (context) => const MeetingPage(),
+          builder: (context) => MeetingPage(meetingLink: settings.arguments as String,),
         );
       case settingPage:
         return MaterialPageRoute(

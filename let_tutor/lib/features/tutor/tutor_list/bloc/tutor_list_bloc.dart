@@ -5,10 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/models/responses/tutor_response.dart';
 import '../../../../data/models/schedule/next_schedule.dart';
-import '../../../../data/models/tutor/tutor.dart';
+import '../../../../data/models/tutor/tutors.dart';
 import '../../../../data/models/user/learn_topics.dart';
 import '../../../../data/models/user/test_preparation.dart';
 import '../../../../data/repositories/repositories.dart';
+import '../../../../generated/l10n.dart';
 
 part 'tutor_list_event.dart';
 part 'tutor_list_state.dart';
@@ -24,26 +25,27 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
     _scheduleRepository = scheduleRepository;
     on<TutorListLoaded>(_onLoaded);
     on<TutorListNameSearched>(_onSearchTutorName);
-    on<TutorListFilterButtonPressed>(_onFilterButtonPressed);
-    on<TutorListFilterChanged>(_onFilterChanged);
     on<TutorListNationalityChanged>(_onNationalityChanged);
     on<TutorListSpecialityChosen>(_onSpecialityChosen);
     on<TutorListResetFilterButtonPressed>(_onResetFilterButtonPressed);
     on<TutorListFavoriteButtonPressed>(_onFavoriteButtonPressed);
+    on<TutorListChangePagePressed>(_onChangePagePressed);
   }
 
   late final TutorRepository _tutorRepository;
   late final UserRepository _userRepository;
   late final ScheduleRepository _scheduleRepository;
   String? tutorName;
+  static const int page = 1;
+  static const int perPage = 12;
 
   FutureOr<void> _onLoaded(
       TutorListLoaded event, Emitter<TutorListState> emit) async {
     emit(state.copyWith(status: TutorListStatus.loading));
     try {
       var tutorResponse = await _tutorRepository.getListTutor();
-      var response =
-          await _tutorRepository.searchTutor(state.filters, tutorName);
+      var response = await _tutorRepository.searchTutor(
+          state.filters, tutorName, page, perPage);
       tutorResponse.tutors?.rows?.sort((a, b) {
         if (a.rating == null || b.rating == null) return 0;
         return a.rating!.compareTo(b.rating!);
@@ -58,21 +60,22 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
         return (a.scheduleDetailInfo!.startPeriodTimestamp!
             .compareTo(b.scheduleDetailInfo!.startPeriodTimestamp!));
       });
-      var upcoming = upcomingClasses.data?.firstWhere((element) => (element
-              .scheduleDetailInfo?.startPeriodTimestamp
-              ?.compareTo(DateTime.now().millisecondsSinceEpoch) ==
-          1)) ?? const NextSchedule();
+      var upcoming = upcomingClasses.data?.firstWhere(
+          (element) => (element.scheduleDetailInfo?.startPeriodTimestamp
+                  ?.compareTo(DateTime.now().millisecondsSinceEpoch) ==
+              1),
+          orElse: () => const NextSchedule());
 
       emit(state.copyWith(
           tutors: tutorResponse,
-          filteredTutors: response.rows!,
+          filteredTutors: response,
           learnTopics: learnTopics,
           testPreparations: testPreparations,
           totalMinutes: totalCallMinutes,
           upcomingClass: upcoming,
           status: TutorListStatus.loadSuccess));
     } catch (exception) {
-      emit(state.copyWith(error: 'Load failed!'));
+      emit(state.copyWith(error: S.current.load_failed));
     }
   }
 
@@ -83,29 +86,10 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
     tutorName = event.tutorName;
 
     try {
-      var response =
-          await _tutorRepository.searchTutor(state.filters, tutorName);
+      var response = await _tutorRepository.searchTutor(
+          state.filters, tutorName, page, perPage);
       emit(state.copyWith(
-          filteredTutors: response.rows, status: TutorListStatus.loadSuccess));
-    } catch (exception) {
-      emit(state.copyWith(status: TutorListStatus.loadFailure));
-    }
-  }
-
-  FutureOr<void> _onFilterButtonPressed(
-      TutorListFilterButtonPressed event, Emitter<TutorListState> emit) {
-    emit(state.copyWith(isReset: false, isSearching: !state.isSearching));
-  }
-
-  FutureOr<void> _onFilterChanged(
-      TutorListFilterChanged event, Emitter<TutorListState> emit) async {
-    state.filters.addAll(event.filters);
-    emit(state.copyWith(isReset: false, filters: Map.of(state.filters)));
-    try {
-      var response =
-          await _tutorRepository.searchTutor(state.filters, tutorName);
-      emit(state.copyWith(
-          filteredTutors: response.rows, status: TutorListStatus.loadSuccess));
+          filteredTutors: response, status: TutorListStatus.loadSuccess));
     } catch (exception) {
       emit(state.copyWith(status: TutorListStatus.loadFailure));
     }
@@ -119,9 +103,10 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
     });
     emit(state.copyWith(isReset: false, filters: Map.of(filters)));
     try {
-      var response = await _tutorRepository.searchTutor(filters, tutorName);
+      var response =
+          await _tutorRepository.searchTutor(filters, tutorName, page, perPage);
       emit(state.copyWith(
-          filteredTutors: response.rows, status: TutorListStatus.loadSuccess));
+          filteredTutors: response, status: TutorListStatus.loadSuccess));
     } catch (exception) {
       emit(state.copyWith(status: TutorListStatus.loadFailure));
     }
@@ -132,9 +117,10 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
       Emitter<TutorListState> emit) async {
     var filters =
         Map.of({'specialties': <String>[], 'nationality': <String, bool>{}});
-    var response = await _tutorRepository.searchTutor(filters, null);
+    var response =
+        await _tutorRepository.searchTutor(filters, null, page, perPage);
     emit(state.copyWith(
-        filteredTutors: response.rows ?? [],
+        filteredTutors: response,
         filters: Map.of(
             {'specialties': <String>[], 'nationality': <String, bool>{}}),
         isReset: true,
@@ -148,13 +134,14 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
     var response = await _tutorRepository.addFavoriteTutor(event.tutorId);
     try {
       var tutorResponse = await _tutorRepository.getListTutor();
-      var tutors = await _tutorRepository.searchTutor(state.filters, tutorName);
+      var tutors = await _tutorRepository.searchTutor(
+          state.filters, tutorName, page, perPage);
       emit(state.copyWith(
           tutors: tutorResponse,
-          filteredTutors: tutors.rows,
+          filteredTutors: tutors,
           status: TutorListStatus.loadSuccess));
     } catch (exception) {
-      emit(state.copyWith(error: 'Load failed!'));
+      emit(state.copyWith(error: S.current.load_failed));
     }
   }
 
@@ -166,9 +153,22 @@ class TutorListBloc extends Bloc<TutorListEvent, TutorListState> {
     });
     emit(state.copyWith(isReset: false, filters: Map.of(filters)));
     try {
-      var response = await _tutorRepository.searchTutor(filters, tutorName);
+      var response =
+          await _tutorRepository.searchTutor(filters, tutorName, page, perPage);
       emit(state.copyWith(
-          filteredTutors: response.rows, status: TutorListStatus.loadSuccess));
+          filteredTutors: response, status: TutorListStatus.loadSuccess));
+    } catch (exception) {
+      emit(state.copyWith(status: TutorListStatus.loadFailure));
+    }
+  }
+
+  FutureOr<void> _onChangePagePressed(
+      TutorListChangePagePressed event, Emitter<TutorListState> emit) async {
+    try {
+      var response = await _tutorRepository.searchTutor(
+          state.filters, tutorName, event.page, event.perPage);
+      emit(state.copyWith(
+          filteredTutors: response, status: TutorListStatus.loadSuccess));
     } catch (exception) {
       emit(state.copyWith(status: TutorListStatus.loadFailure));
     }

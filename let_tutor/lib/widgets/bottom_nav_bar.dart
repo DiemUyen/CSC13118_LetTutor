@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../generated/l10n.dart';
+
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar(
       {Key? key, required this.selectedIndex, required this.onClicked})
@@ -29,13 +31,13 @@ class BottomNavBar extends StatelessWidget {
         child: BottomNavigationBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          items: const [
+          items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.co_present_outlined), label: 'Tutor'),
+                icon: const Icon(Icons.co_present_outlined), label: S.current.tutor),
             BottomNavigationBarItem(
-                icon: Icon(Icons.book_outlined), label: 'Courses'),
+                icon: const Icon(Icons.book_outlined), label: S.current.course),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline), label: 'Profile'),
+                icon: const Icon(Icons.person_outline), label: S.current.profile),
           ],
           currentIndex: selectedIndex,
           onTap: onClicked,

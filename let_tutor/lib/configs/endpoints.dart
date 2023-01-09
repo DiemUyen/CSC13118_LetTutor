@@ -5,6 +5,8 @@ class Endpoints {
   static const verifyAccount = '/auth/verifyAccount';
   static const refreshToken = '/auth/refresh-token';
   static const forgotPassword = '/user/forgotPassword';
+  static const loginWithGoogle = '/auth/google';
+  static const loginWithFacebook = '/auth/facebook';
 
   // Tutor
   static const listTutor = '/tutor/more';
@@ -25,6 +27,7 @@ class Endpoints {
   static const bookClass = '/booking';
   static const cancelBookClass = '/booking';
   static const updateStudentRequest = '/booking/student-request';
+  static const cancelReason = '/booking/cancel-reason';
 
   // Course
   static const listCourses = '/course';

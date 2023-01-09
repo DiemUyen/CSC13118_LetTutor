@@ -39,7 +39,7 @@ mixin _$NextSchedule {
   String? get calendarId => throw _privateConstructorUsedError;
   bool? get isDeleted => throw _privateConstructorUsedError;
   ScheduleDetails? get scheduleDetailInfo => throw _privateConstructorUsedError;
-  String? get classReview => throw _privateConstructorUsedError;
+  ClassReview? get classReview => throw _privateConstructorUsedError;
   bool? get showRecordUrl => throw _privateConstructorUsedError;
   List<dynamic>? get studentMaterials => throw _privateConstructorUsedError;
   List<Feedbacks>? get feedbacks => throw _privateConstructorUsedError;
@@ -76,12 +76,13 @@ abstract class $NextScheduleCopyWith<$Res> {
       String? calendarId,
       bool? isDeleted,
       ScheduleDetails? scheduleDetailInfo,
-      String? classReview,
+      ClassReview? classReview,
       bool? showRecordUrl,
       List<dynamic>? studentMaterials,
       List<Feedbacks>? feedbacks});
 
   $ScheduleDetailsCopyWith<$Res>? get scheduleDetailInfo;
+  $ClassReviewCopyWith<$Res>? get classReview;
 }
 
 /// @nodoc
@@ -201,7 +202,7 @@ class _$NextScheduleCopyWithImpl<$Res, $Val extends NextSchedule>
       classReview: freezed == classReview
           ? _value.classReview
           : classReview // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ClassReview?,
       showRecordUrl: freezed == showRecordUrl
           ? _value.showRecordUrl
           : showRecordUrl // ignore: cast_nullable_to_non_nullable
@@ -226,6 +227,18 @@ class _$NextScheduleCopyWithImpl<$Res, $Val extends NextSchedule>
 
     return $ScheduleDetailsCopyWith<$Res>(_value.scheduleDetailInfo!, (value) {
       return _then(_value.copyWith(scheduleDetailInfo: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ClassReviewCopyWith<$Res>? get classReview {
+    if (_value.classReview == null) {
+      return null;
+    }
+
+    return $ClassReviewCopyWith<$Res>(_value.classReview!, (value) {
+      return _then(_value.copyWith(classReview: value) as $Val);
     });
   }
 }
@@ -258,13 +271,15 @@ abstract class _$$_NextScheduleCopyWith<$Res>
       String? calendarId,
       bool? isDeleted,
       ScheduleDetails? scheduleDetailInfo,
-      String? classReview,
+      ClassReview? classReview,
       bool? showRecordUrl,
       List<dynamic>? studentMaterials,
       List<Feedbacks>? feedbacks});
 
   @override
   $ScheduleDetailsCopyWith<$Res>? get scheduleDetailInfo;
+  @override
+  $ClassReviewCopyWith<$Res>? get classReview;
 }
 
 /// @nodoc
@@ -382,7 +397,7 @@ class __$$_NextScheduleCopyWithImpl<$Res>
       classReview: freezed == classReview
           ? _value.classReview
           : classReview // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ClassReview?,
       showRecordUrl: freezed == showRecordUrl
           ? _value.showRecordUrl
           : showRecordUrl // ignore: cast_nullable_to_non_nullable
@@ -471,7 +486,7 @@ class _$_NextSchedule implements _NextSchedule {
   @override
   final ScheduleDetails? scheduleDetailInfo;
   @override
-  final String? classReview;
+  final ClassReview? classReview;
   @override
   final bool? showRecordUrl;
   final List<dynamic>? _studentMaterials;
@@ -615,7 +630,7 @@ abstract class _NextSchedule implements NextSchedule {
       final String? calendarId,
       final bool? isDeleted,
       final ScheduleDetails? scheduleDetailInfo,
-      final String? classReview,
+      final ClassReview? classReview,
       final bool? showRecordUrl,
       final List<dynamic>? studentMaterials,
       final List<Feedbacks>? feedbacks}) = _$_NextSchedule;
@@ -662,7 +677,7 @@ abstract class _NextSchedule implements NextSchedule {
   @override
   ScheduleDetails? get scheduleDetailInfo;
   @override
-  String? get classReview;
+  ClassReview? get classReview;
   @override
   bool? get showRecordUrl;
   @override

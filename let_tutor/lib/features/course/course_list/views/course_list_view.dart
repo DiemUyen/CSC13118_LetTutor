@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../data/models/course/categories.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
 import '../../../../widgets/widgets.dart';
@@ -15,7 +16,6 @@ class CourseListView extends StatefulWidget {
 
 class _CourseListViewState extends State<CourseListView>
     with SingleTickerProviderStateMixin {
-  bool visibilityFilter = false;
   late TabController _tabController;
 
   @override
@@ -27,112 +27,90 @@ class _CourseListViewState extends State<CourseListView>
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CourseListBloc, CourseListState>(
-      listener: (context, state) {
-        if (state.status == CourseListStatus.loading) {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              backgroundColor: Colors.transparent,
-              contentPadding: const EdgeInsets.symmetric(vertical: 24.0),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: CircularProgressIndicator(),
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            children: [
+              // Search and filter
+              Row(
+                children: [
+                  // Search bar
+                  Expanded(
+                    flex: 1,
+                    child: _SearchBar(),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  // Filter
+                  IconButton(
+                    icon: const Icon(Icons.filter_list_outlined),
+                    onPressed: () {
+                      context
+                          .read<CourseListBloc>()
+                          .add(CourseListFilterButtonPressed());
+                    },
                   ),
                 ],
               ),
-            ),
-          );
-        } else if (state.status == CourseListStatus.loadSuccess) {
-          Navigator.pop(context);
-        } else if (state.status == CourseListStatus.loadFailure) {
-          Navigator.pop(context);
-        }
-      },
-      child: SafeArea(
-        child: Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-                // Search and filter
-                Column(
-                  children: [
-                    Row(
+              const SizedBox(
+                height: 8,
+              ),
+              BlocBuilder<CourseListBloc, CourseListState>(
+                builder: (context, state) {
+                  return Visibility(
+                    visible: state.isFilterSearch,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Search bar
-                        Expanded(
-                          flex: 1,
-                          child: SearchBar(hintText: S.current.search_course),
-                        ),
+                        // Level
+                        const _LevelFilter(),
                         const SizedBox(
-                          width: 16,
+                          height: 8,
                         ),
-                        // Filter
-                        IconButton(
-                          icon: const Icon(Icons.filter_list_outlined),
-                          onPressed: () {
-                            setState(() {
-                              visibilityFilter = !visibilityFilter;
-                            });
-                          },
+                        // Categories
+                        const _CategoriesFilter(),
+                        const SizedBox(
+                          height: 8,
                         ),
+                        // Sort by level
+                        const _SortLevel(),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        state.filters.isNotEmpty
+                            ? OutlinedButton(
+                                onPressed: () {
+                                  context.read<CourseListBloc>().add(
+                                      CourseListResetFilterButtonPressed());
+                                },
+                                child: Text(S.current.reset_filters))
+                            : Container(),
                       ],
                     ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Visibility(
-                      visible: visibilityFilter,
-                      child: Column(
-                        children: const [
-                          // Level
-                          _LevelFilter(),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          // Categories
-                          _CategoriesFilter(),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          // Sort by level
-                          _SortLevel(),
-                          SizedBox(
-                            height: 8,
-                          )
-                        ],
-                      ),
-                    )
+                  );
+                },
+              ),
+              _TabBar(
+                tabController: _tabController,
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: const [
+                    // First tab view
+                    _FirstTabView(),
+                    // Second tab view
+                    _SecondTabView(),
+                    // Third tab view
+                    _ThirdTabView(),
                   ],
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                _TabBar(
-                  tabController: _tabController,
-                ),
-                Expanded(
-                  child: TabBarView(
-                    controller: _tabController,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: const [
-                      // First tab view
-                      _FirstTabView(),
-                      // Second tab view
-                      _SecondTabView(),
-                      // Third tab view
-                      _ThirdTabView(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -140,11 +118,42 @@ class _CourseListViewState extends State<CourseListView>
   }
 }
 
-class _LevelFilter extends StatelessWidget {
-  const _LevelFilter({super.key});
+class _SearchBar extends StatelessWidget {
+  _SearchBar({Key? key}) : super(key: key);
 
+  final _controller = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CourseListBloc, CourseListState>(
+      builder: (context, state) {
+        if (state.isReset) {
+          _controller.text = '';
+        }
+        return TextFormField(
+          controller: _controller,
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.search_outlined),
+            border: const OutlineInputBorder(),
+            hintText: S.current.search_course,
+          ),
+          onChanged: (value) {
+            context
+                .read<CourseListBloc>()
+                .add(CourseListNameSearchChanged(_controller.text));
+          },
+        );
+      },
+    );
+  }
+}
+
+class _LevelFilter extends StatelessWidget {
+  const _LevelFilter();
+
+  static String? selectedLevel;
   static const List<String> levels = [
-    'All level',
+    'Any level',
     'Beginner',
     'Upper-Beginner',
     'Pre-Intermediate',
@@ -157,78 +166,103 @@ class _LevelFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      isExpanded: true,
-      //value: levels.first,
-      items: levels.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(value: value, child: Text(value));
-      }).toList(),
-      onChanged: (String? value) {},
-      hint: Text(S.current.choose_level),
+    return BlocBuilder<CourseListBloc, CourseListState>(
+      builder: (context, state) {
+        if (state.isReset) {
+          selectedLevel = null;
+        }
+        return DropdownButton<String>(
+          isExpanded: true,
+          value: selectedLevel,
+          items: levels.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(value: value, child: Text(value));
+          }).toList(),
+          onChanged: (String? value) {
+            selectedLevel = value;
+            context.read<CourseListBloc>().add(CourseListLevelFilterChanged(
+                levels.indexOf(selectedLevel ?? '')));
+          },
+          hint: Text(S.current.choose_level),
+        );
+      },
     );
   }
 }
 
 class _CategoriesFilter extends StatelessWidget {
-  const _CategoriesFilter({super.key});
+  const _CategoriesFilter();
 
-  static const List<String> categories = [
-    'All categories',
-    'For Studying Abroad',
-    'English For Traveling',
-    'Conversational English',
-    'English For Beginners',
-    'Business English',
-    'English For Kids',
-    'STARTERS',
-    'PET',
-    'KET',
-    'MOVERS',
-    'FLYERS',
-    'TOEFL',
-    'TOEIC',
-    'IELTS'
-  ];
+  static String? selectedKey;
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      isExpanded: true,
-      //value: categories.first,
-      items: categories.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(value: value, child: Text(value));
-      }).toList(),
-      onChanged: (String? value) {},
-      hint: Text(S.current.choose_categories),
+    return BlocBuilder<CourseListBloc, CourseListState>(
+      builder: (context, state) {
+        final contentCategories = state.categories;
+        if (state.isReset) {
+          selectedKey = null;
+        }
+        return DropdownButton<String>(
+          isExpanded: true,
+          value: selectedKey,
+          items: contentCategories
+              .map<DropdownMenuItem<String>>((Categories element) {
+            return DropdownMenuItem<String>(
+                value: element.key, child: Text(element.title ?? ''));
+          }).toList(),
+          onChanged: (String? value) {
+            selectedKey = value;
+            context.read<CourseListBloc>().add(CourseListCategoryFilterChanged(
+                contentCategories
+                        .firstWhere((element) => element.key == value)
+                        .id ??
+                    ''));
+          },
+          hint: Text(S.current.choose_categories),
+        );
+      },
     );
   }
 }
 
 class _SortLevel extends StatelessWidget {
-  const _SortLevel({super.key});
+  const _SortLevel();
 
-  static List<String> sortLevels = [
-    S.current.sort_level,
-    S.current.level_decreasing,
-    S.current.level_increasing,
-  ];
+  static String? selectedLevel;
+
+  static Map<String, String> sortLevels = {
+    S.current.level_decreasing: 'DESC',
+    S.current.level_increasing: 'ASC',
+  };
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      isExpanded: true,
-      //value: sortLevels.first,
-      items: sortLevels.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(value: value, child: Text(value));
-      }).toList(),
-      onChanged: (String? value) {},
-      hint: Text(S.current.sort_level),
+    return BlocBuilder<CourseListBloc, CourseListState>(
+      builder: (context, state) {
+        if (state.isReset) {
+          selectedLevel = null;
+        }
+        return DropdownButton<String>(
+          isExpanded: true,
+          value: selectedLevel,
+          items: sortLevels.keys.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(value: value, child: Text(value));
+          }).toList(),
+          onChanged: (String? value) {
+            selectedLevel = value;
+            context
+                .read<CourseListBloc>()
+                .add(CourseListSortFilterChanged(sortLevels[value] ?? ''));
+          },
+          hint: Text(S.current.sort_level),
+        );
+      },
     );
   }
 }
 
 class _TabBar extends StatelessWidget {
-  const _TabBar({super.key, required this.tabController});
+  const _TabBar({required this.tabController});
 
   final TabController tabController;
 
@@ -242,15 +276,15 @@ class _TabBar extends StatelessWidget {
         bottom: TabBar(
           controller: tabController,
           isScrollable: true,
-          tabs: const [
+          tabs: [
             Tab(
-              text: 'Courses',
+              text: S.current.course,
             ),
             Tab(
-              text: 'E-Book',
+              text: S.current.ebook,
             ),
             Tab(
-              text: 'Interactive E-Book',
+              text: S.current.interactive_ebook,
             )
           ],
         ),
@@ -260,37 +294,46 @@ class _TabBar extends StatelessWidget {
 }
 
 class _FirstTabView extends StatelessWidget {
-  const _FirstTabView({super.key});
+  const _FirstTabView();
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CourseListBloc, CourseListState>(
       builder: (context, state) {
         if (state.status == CourseListStatus.loadSuccess) {
-          return ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemCount: state.courses.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, AppRouter.courseDetailPage, arguments: state.courses[index].id);
-                },
-                child: CourseListItem(
-                  course: state.courses[index],
-                ),
-              );
-            },
+          if (state.filteredCourses.isNotEmpty) {
+            return ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: state.filteredCourses.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRouter.courseDetailPage,
+                        arguments: state.filteredCourses[index].id);
+                  },
+                  child: CourseListItem(
+                    course: state.filteredCourses[index],
+                  ),
+                );
+              },
+            );
+          }
+        } else if (state.status == CourseListStatus.loading) {
+          return const Center(
+            child: CircularProgressIndicator(),
           );
         }
-        return Container();
+        return Center(
+          child: Text(S.current.no_data),
+        );
       },
     );
   }
 }
 
 class _SecondTabView extends StatelessWidget {
-  const _SecondTabView({super.key});
+  const _SecondTabView();
 
   @override
   Widget build(BuildContext context) {
@@ -301,7 +344,7 @@ class _SecondTabView extends StatelessWidget {
 }
 
 class _ThirdTabView extends StatelessWidget {
-  const _ThirdTabView({super.key});
+  const _ThirdTabView();
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:let_tutor/configs/endpoints.dart';
 
 import '../models/responses/history_response.dart';
+import '../models/responses/student_schedule_response.dart';
 import '../models/responses/upcoming_response.dart';
 import '../models/responses/schedule_response.dart';
 
@@ -42,7 +43,6 @@ class ScheduleProvider {
   Future<HistoryResponse> getHistoryClass(int page) async {
     var dateTimeLte = DateTime.now()
         .subtract(const Duration(minutes: 35))
-        .toUtc()
         .millisecondsSinceEpoch;
     var response = await _dio.get(Endpoints.getBookedClass, queryParameters: {
       'dateTimeLte': dateTimeLte,
@@ -53,5 +53,35 @@ class ScheduleProvider {
     });
     var history = HistoryResponse.fromJson(response.data);
     return history;
+  }
+
+  Future<StudentScheduleResponse> getStudentSchedule(int page) async {
+    var dateTimeGte = DateTime.now()
+        .subtract(const Duration(minutes: 30))
+        .millisecondsSinceEpoch;
+    var response = await _dio.get(Endpoints.getBookedClass, queryParameters: {
+      'page': page,
+      'perPage': 20,
+      'dateTimeGte': dateTimeGte,
+      'orderBy': 'meeting',
+      'sortBy': 'asc'
+    });
+    var schedule = StudentScheduleResponse.fromJson(response.data['data']);
+    return schedule;
+  }
+
+  Future<bool> cancelBookedClass(String scheduleDetailId) async {
+    var response = await _dio.delete(Endpoints.cancelBookClass, data: {
+      'scheduleDetailIds': [scheduleDetailId]
+    });
+    return response.statusCode == 200;
+  }
+
+  Future<bool> updateStudentRequest(
+      String scheduleDetailId, String studentRequest) async {
+    var response = await _dio.post(
+        '${Endpoints.updateStudentRequest}/$scheduleDetailId',
+        data: {'studentRequest': studentRequest});
+    return response.statusCode == 200;
   }
 }

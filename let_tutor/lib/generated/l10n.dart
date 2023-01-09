@@ -759,6 +759,616 @@ class S {
       args: [],
     );
   }
+
+  /// `Country`
+  String get country {
+    return Intl.message(
+      'Country',
+      name: 'country',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Level`
+  String get level {
+    return Intl.message(
+      'Level',
+      name: 'level',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Want to learn`
+  String get want_to_learn {
+    return Intl.message(
+      'Want to learn',
+      name: 'want_to_learn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password is not empty`
+  String get confirm_password_empty {
+    return Intl.message(
+      'Confirm password is not empty',
+      name: 'confirm_password_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History`
+  String get history {
+    return Intl.message(
+      'History',
+      name: 'history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Profile`
+  String get my_profile {
+    return Intl.message(
+      'My Profile',
+      name: 'my_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Wallet`
+  String get my_wallet {
+    return Intl.message(
+      'My Wallet',
+      name: 'my_wallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Schedule`
+  String get my_schedule {
+    return Intl.message(
+      'My Schedule',
+      name: 'my_schedule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My History`
+  String get my_history {
+    return Intl.message(
+      'My History',
+      name: 'my_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Course`
+  String get my_course {
+    return Intl.message(
+      'My Course',
+      name: 'my_course',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Become a Tutor`
+  String get become_a_tutor {
+    return Intl.message(
+      'Become a Tutor',
+      name: 'become_a_tutor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log Out`
+  String get log_out {
+    return Intl.message(
+      'Log Out',
+      name: 'log_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Request Failed!`
+  String get save_request_fail {
+    return Intl.message(
+      'Save Request Failed!',
+      name: 'save_request_fail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Schedule Failed!`
+  String get cancel_schedule_fail {
+    return Intl.message(
+      'Cancel Schedule Failed!',
+      name: 'cancel_schedule_fail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully Save Request`
+  String get save_request_success {
+    return Intl.message(
+      'Successfully Save Request',
+      name: 'save_request_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Direct Message`
+  String get direct_message {
+    return Intl.message(
+      'Direct Message',
+      name: 'direct_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lesson Time`
+  String get lesson_time {
+    return Intl.message(
+      'Lesson Time',
+      name: 'lesson_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm cancel booking`
+  String get confirm_cancel_booking {
+    return Intl.message(
+      'Confirm cancel booking',
+      name: 'confirm_cancel_booking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to cancel booking lesson with`
+  String get cancel_booking_message {
+    return Intl.message(
+      'Are you sure to cancel booking lesson with',
+      name: 'cancel_booking_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discard`
+  String get discard {
+    return Intl.message(
+      'Discard',
+      name: 'discard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request for Lesson`
+  String get request_for_lesson {
+    return Intl.message(
+      'Request for Lesson',
+      name: 'request_for_lesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to meeting`
+  String get go_meeting {
+    return Intl.message(
+      'Go to meeting',
+      name: 'go_meeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No request for lesson.`
+  String get no_request_lesson {
+    return Intl.message(
+      'No request for lesson.',
+      name: 'no_request_lesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Student request is not empty`
+  String get student_request_empty {
+    return Intl.message(
+      'Student request is not empty',
+      name: 'student_request_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Request`
+  String get save_request {
+    return Intl.message(
+      'Save Request',
+      name: 'save_request',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Schedule`
+  String get schedule {
+    return Intl.message(
+      'Schedule',
+      name: 'schedule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Load Schedule Failed!`
+  String get load_schedule_fail {
+    return Intl.message(
+      'Load Schedule Failed!',
+      name: 'load_schedule_fail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please try again.`
+  String get try_again {
+    return Intl.message(
+      'Please try again.',
+      name: 'try_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review from Tutor`
+  String get review_from_tutor {
+    return Intl.message(
+      'Review from Tutor',
+      name: 'review_from_tutor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No review`
+  String get no_review {
+    return Intl.message(
+      'No review',
+      name: 'no_review',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record session`
+  String get record_session {
+    return Intl.message(
+      'Record session',
+      name: 'record_session',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rating`
+  String get rating {
+    return Intl.message(
+      'Rating',
+      name: 'rating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report`
+  String get report {
+    return Intl.message(
+      'Report',
+      name: 'report',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking result`
+  String get booking_detail {
+    return Intl.message(
+      'Booking result',
+      name: 'booking_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking success`
+  String get booking_success {
+    return Intl.message(
+      'Booking success',
+      name: 'booking_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking failed`
+  String get booking_fail {
+    return Intl.message(
+      'Booking failed',
+      name: 'booking_fail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking available date`
+  String get booking_date {
+    return Intl.message(
+      'Booking available date',
+      name: 'booking_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking available time`
+  String get booking_time {
+    return Intl.message(
+      'Booking available time',
+      name: 'booking_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1 lesson`
+  String get a_lesson {
+    return Intl.message(
+      '1 lesson',
+      name: 'a_lesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm booking`
+  String get confirm_booking {
+    return Intl.message(
+      'Confirm booking',
+      name: 'confirm_booking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to book lesson at`
+  String get confirm_booking_message {
+    return Intl.message(
+      'Are you sure to book lesson at',
+      name: 'confirm_booking_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reviews`
+  String get reviews {
+    return Intl.message(
+      'Reviews',
+      name: 'reviews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite`
+  String get favorite {
+    return Intl.message(
+      'Favorite',
+      name: 'favorite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This tutor is annoying me`
+  String get tutor_annoy {
+    return Intl.message(
+      'This tutor is annoying me',
+      name: 'tutor_annoy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This profile is pretending be someone or is fake`
+  String get tutor_fake {
+    return Intl.message(
+      'This profile is pretending be someone or is fake',
+      name: 'tutor_fake',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inappropriate profile photo`
+  String get tutor_image {
+    return Intl.message(
+      'Inappropriate profile photo',
+      name: 'tutor_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help us understand what\'s happening?`
+  String get help_us_report {
+    return Intl.message(
+      'Help us understand what\\\'s happening?',
+      name: 'help_us_report',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please let us know details about your problem`
+  String get help_detail {
+    return Intl.message(
+      'Please let us know details about your problem',
+      name: 'help_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `starts in`
+  String get start_in {
+    return Intl.message(
+      'starts in',
+      name: 'start_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total lesson time is`
+  String get total_lesson {
+    return Intl.message(
+      'Total lesson time is',
+      name: 'total_lesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hours`
+  String get hour {
+    return Intl.message(
+      'hours',
+      name: 'hour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes`
+  String get minute {
+    return Intl.message(
+      'minutes',
+      name: 'minute',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tutor`
+  String get tutor {
+    return Intl.message(
+      'Tutor',
+      name: 'tutor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lessons`
+  String get lessons {
+    return Intl.message(
+      'Lessons',
+      name: 'lessons',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book`
+  String get book {
+    return Intl.message(
+      'Book',
+      name: 'book',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

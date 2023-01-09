@@ -2,15 +2,21 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../configs/country_list.dart';
 import '../data/models/tutor/tutor.dart';
+import '../data/models/user/learn_topics.dart';
+import '../data/models/user/test_preparation.dart';
 import '../features/tutor/tutor_list/bloc/tutor_list_bloc.dart';
+import '../generated/l10n.dart';
 import '../router/app_router.dart';
 import 'widgets.dart';
 
 class TutorHomeCard extends StatelessWidget {
-  const TutorHomeCard({Key? key, required this.tutor}) : super(key: key);
+  const TutorHomeCard({Key? key, required this.tutor, required this.topics, required this.testPreparations}) : super(key: key);
 
   final Tutor tutor;
+  final List<LearnTopics> topics;
+  final List<TestPreparation> testPreparations;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +26,12 @@ class TutorHomeCard extends StatelessWidget {
           // Information of tutor
           GestureDetector(
             onTap: () async {
-              var check = await Navigator.pushNamed(context, AppRouter.tutorDetailPage,
+              var check = await Navigator.pushNamed(
+                  context, AppRouter.tutorDetailPage,
                   arguments: tutor.userId);
               context.read<TutorListBloc>().add(TutorListLoaded());
             },
-            child: _TutorInformation(tutor: tutor),
+            child: _TutorInformation(tutor: tutor, topics: topics, testPreparations: testPreparations,),
           ),
 
           // Icon button 'Favorite'
@@ -33,7 +40,9 @@ class TutorHomeCard extends StatelessWidget {
           ),
 
           // Button 'Book'
-          _BookButton(tutorId: (tutor.userId ?? ''),),
+          _BookButton(
+            tutorId: (tutor.userId ?? ''),
+          ),
         ],
       ),
     );
@@ -43,10 +52,35 @@ class TutorHomeCard extends StatelessWidget {
 class _TutorInformation extends StatelessWidget {
   const _TutorInformation({
     Key? key,
-    required this.tutor,
+    required this.tutor, required this.topics, required this.testPreparations,
   }) : super(key: key);
 
   final Tutor tutor;
+  final List<LearnTopics> topics;
+  final List<TestPreparation> testPreparations;
+
+  String getTutorAvatarName(String name) {
+    final splitTutorName = name.split(' ');
+    var result = '';
+    for (var part in splitTutorName) {
+      result += part[0];
+    }
+    return result;
+  }
+
+  String getSpecialtyName(String key) {
+    for (var topic in topics) {
+      if (topic.key == key) {
+        return topic.name!;
+      }
+    }
+    for (var testPreparation in testPreparations) {
+      if (testPreparation.key == key) {
+        return testPreparation.name!;
+      }
+    }
+    return key;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,13 +99,16 @@ class _TutorInformation extends StatelessWidget {
                 width: 48,
                 height: 48,
                 imageUrl: tutor.avatar ?? '',
+                fit: BoxFit.fill,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  foregroundImage: imageProvider,
+                ),
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     CircularProgressIndicator(
                   value: downloadProgress.progress,
                 ),
-                errorWidget: (context, url, error) => Image.asset(
-                  'assets/images/default_avatar.png',
-                ),
+                errorWidget: (context, url, error) => CircleAvatar(
+                    child: Text(getTutorAvatarName(tutor.name ?? ''))),
               ),
               const SizedBox(
                 width: 8,
@@ -97,7 +134,7 @@ class _TutorInformation extends StatelessWidget {
                         width: 8,
                       ),
                       // Nationality
-                      Text(tutor.country ?? ''),
+                      Text(countryList.containsKey(tutor.country) ? countryList[tutor.country]! : (tutor.country ?? '')),
                     ],
                   ),
                   // Rating star
@@ -119,11 +156,10 @@ class _TutorInformation extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Wrap(
               spacing: 8,
-              runSpacing: 8,
               children: specialities
                   .map(
                     (element) => Chip(
-                      label: Text(element),
+                      label: Text(getSpecialtyName(element)),
                     ),
                   )
                   .toList(),
@@ -133,7 +169,10 @@ class _TutorInformation extends StatelessWidget {
             height: 16,
           ),
           // Introduction
-          Text(tutor.bio ?? ''),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(tutor.bio ?? ''),
+          ),
           const SizedBox(
             height: 40,
           ),
@@ -164,7 +203,7 @@ class _BookButton extends StatelessWidget {
                 arguments: tutorId);
           },
           icon: const Icon(Icons.edit_calendar_outlined),
-          label: const Text("Book"),
+          label: Text(S.current.book),
         ),
       ),
     );
@@ -191,9 +230,8 @@ class _FavoriteButton extends StatelessWidget {
               alignment: Alignment.topRight,
               child: IconButton(
                 onPressed: () {
-                  context
-                      .read<TutorListBloc>()
-                      .add(TutorListFavoriteButtonPressed(tutorId: tutor.userId!));
+                  context.read<TutorListBloc>().add(
+                      TutorListFavoriteButtonPressed(tutorId: tutor.userId!));
                 },
                 icon: tutor.isfavoritetutor == '1'
                     ? const Icon(

@@ -9,9 +9,7 @@ import '../../../../widgets/widgets.dart';
 import '../bloc/course_detail_bloc.dart';
 
 class CourseDetailView extends StatefulWidget {
-  const CourseDetailView({Key? key, required this.courseId}) : super(key: key);
-
-  final String courseId;
+  const CourseDetailView({Key? key}) : super(key: key);
 
   @override
   State<CourseDetailView> createState() => _CourseDetailViewState();
@@ -29,14 +27,6 @@ class _CourseDetailViewState extends State<CourseDetailView> {
     '7': 'Advanced',
     '8': 'Very Advanced'
   };
-
-  @override
-  void initState() {
-    context
-        .read<CourseDetailBloc>()
-        .add(CourseDetailLoaded(courseId: widget.courseId));
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -246,7 +236,11 @@ class _TopicsList extends StatelessWidget {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, AppRouter.topicsPage);
+                  Navigator.pushNamed(
+                    context,
+                    AppRouter.topicsPage,
+                    arguments: state.detailResponse.data?.topics?[index],
+                  );
                 },
                 child: Card(
                   child: Padding(

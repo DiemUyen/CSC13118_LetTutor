@@ -7,23 +7,14 @@ import 'package:let_tutor/data/models/user/learn_topics.dart';
 
 import '../../../../data/models/user/test_preparation.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../injector/injector.dart';
 import '../../../../router/app_router.dart';
+import '../../../../services/shared_preferences_service.dart';
 import '../../../../widgets/widgets.dart';
 import '../bloc/tutor_list_bloc.dart';
 
-class TutorListView extends StatefulWidget {
+class TutorListView extends StatelessWidget {
   const TutorListView({Key? key}) : super(key: key);
-
-  @override
-  State<TutorListView> createState() => _TutorListViewState();
-}
-
-class _TutorListViewState extends State<TutorListView> {
-  @override
-  void initState() {
-    context.read<TutorListBloc>().add(TutorListLoaded());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,55 +33,92 @@ class _TutorListViewState extends State<TutorListView> {
               const SizedBox(
                 height: 8,
               ),
-              BlocBuilder<TutorListBloc, TutorListState>(
-                  builder: (context, state) {
-                return Visibility(
-                  visible: state.isSearching,
-                  child: Column(
-                    children: const [
-                      _NationalitiesFilter(),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      _AvailableDateFilter(),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      _StartTimeFilter(),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      _EndTimeFilter(),
-                    ],
-                  ),
-                );
-              }),
+              const _NationalitiesFilter(),
               const SizedBox(
-                height: 16,
+                height: 8,
               ),
-              _SpecialitiesChip(),
+              /*const SizedBox(
+                height: 16,
+              ),*/
+              const _SpecialitiesChip(),
               const SizedBox(
                 height: 16,
               ),
               BlocBuilder<TutorListBloc, TutorListState>(
                 builder: (context, state) {
                   if (state.status == TutorListStatus.loading) {
-                    return const CircularProgressIndicator();
+                    return const Center(child: CircularProgressIndicator());
                   }
                   if (state.status == TutorListStatus.loadSuccess) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: state.filteredTutors.length,
-                      itemBuilder: (context, index) => TutorHomeCard(
-                        tutor: state.filteredTutors[index],
-                      ),
+                    if (state.filteredTutors.rows!.isNotEmpty) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: state.filteredTutors.rows!.length,
+                        itemBuilder: (context, index) => TutorHomeCard(
+                          tutor: state.filteredTutors.rows![index],
+                          topics: state.learnTopics,
+                          testPreparations: state.testPreparations,
+                        ),
+                      );
+                    }
+                  }
+                  return Center(
+                    child: Text(
+                      S.current.no_data,
+                    ),
+                  );
+                },
+              ),
+              BlocBuilder<TutorListBloc, TutorListState>(
+                builder: (context, state) {
+                  if (state.status == TutorListStatus.loadSuccess) {
+                    int pageCount = (state.filteredTutors.count ?? 0) % 12 == 0
+                        ? (state.filteredTutors.count ?? 0) ~/ 12
+                        : (state.filteredTutors.count ?? 0) ~/ 12 + 1;
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const IconButton(
+                          onPressed: null,
+                          icon: Icon(
+                            Icons.chevron_left,
+                            size: 32,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 250,
+                          height: 48,
+                          child: Center(
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              itemCount: pageCount,
+                              itemBuilder: (context, index) => TextButton(
+                                onPressed: () {
+                                  context.read<TutorListBloc>().add(
+                                      TutorListChangePagePressed(
+                                          page: index + 1));
+                                },
+                                child: Text('${index + 1}'),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const IconButton(
+                          onPressed: null,
+                          icon: Icon(
+                            Icons.chevron_right,
+                            size: 32,
+                          ),
+                        ),
+                      ],
                     );
                   }
                   return Container();
                 },
-              )
+              ),
             ],
           ),
         ),
@@ -122,6 +150,7 @@ class _UpcomingLessonState extends State<_UpcomingLesson> {
     _timer.cancel();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -142,55 +171,75 @@ class _UpcomingLessonState extends State<_UpcomingLesson> {
             ),
             BlocBuilder<TutorListBloc, TutorListState>(
               builder: (context, state) {
-                var startTime = DateTime.fromMillisecondsSinceEpoch(state
-                        .upcomingClass
-                        .scheduleDetailInfo
-                        ?.startPeriodTimestamp ??
-                    0);
-                var endTime = DateTime.fromMillisecondsSinceEpoch(state
-                        .upcomingClass.scheduleDetailInfo?.endPeriodTimestamp ??
-                    0);
-                return Column(
-                  children: [
-                    Text(
-                      '${DateFormat('EEE, dd MMM yy').format(startTime)} ${DateFormat('HH:mm').format(startTime)} - ${DateFormat('HH:mm').format(endTime)}',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+                final service = Injector.instance<SharedPreferencesService>();
+                final String locale = service.locale;
+                if (state.upcomingClass.id != null) {
+                  var startTime = DateTime.fromMillisecondsSinceEpoch(state
+                          .upcomingClass
+                          .scheduleDetailInfo
+                          ?.startPeriodTimestamp ??
+                      0);
+                  var endTime = DateTime.fromMillisecondsSinceEpoch(state
+                          .upcomingClass
+                          .scheduleDetailInfo
+                          ?.endPeriodTimestamp ??
+                      0);
+                  return Column(
+                    children: [
+                      Text(
+                        '${DateFormat('EEE, dd MMM yy', locale).format(startTime)} ${DateFormat('HH:mm', locale).format(startTime)} - ${DateFormat('HH:mm', locale).format(endTime)}',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      'starts in ${startTime.difference(DateTime.now()).toString().split('.').first.padLeft(8, '0')}',
-                      style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        color: Theme.of(context).colorScheme.tertiary,
+                      const SizedBox(
+                        height: 8,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                        'Total lesson time is ${state.totalMinutes ~/ 60} hours ${state.totalMinutes % 60} minutes'),
-                  ],
-                );
+                      Text(
+                        '${S.current.start_in} ${startTime.difference(DateTime.now()).toString().split('.').first.padLeft(8, '0')}',
+                        style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Theme.of(context).colorScheme.tertiary,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                          '${S.current.total_lesson} ${state.totalMinutes ~/ 60} ${S.current.hour} ${state.totalMinutes % 60} ${S.current.minute}'),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRouter.meetingPage,
+                              arguments:
+                                  state.upcomingClass.studentMeetingLink);
+                        },
+                        label: Text(S.current.enter_lesson_room),
+                        icon: const Icon(Icons.play_circle_fill_outlined),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          foregroundColor:
+                              Theme.of(context).colorScheme.onPrimary,
+                        ),
+                      ),
+                    ],
+                  );
+                } else {
+                  return Column(
+                    children: [
+                      Text(
+                          '${S.current.total_lesson} ${state.totalMinutes ~/ 60} ${S.current.hour} ${state.totalMinutes % 60} ${S.current.minute}'),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                    ],
+                  );
+                }
               },
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, AppRouter.meetingPage);
-              },
-              label: Text(S.current.enter_lesson_room),
-              icon: const Icon(Icons.play_circle_fill_outlined),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                foregroundColor: Theme.of(context).colorScheme.onPrimary,
-              ),
             ),
           ],
         ),
@@ -212,36 +261,18 @@ class _SearchBar extends StatelessWidget {
           controller.text = '';
         }
       },
-      child: Row(
-        children: [
-          // Search bar
-          Expanded(
-            flex: 1,
-            child: TextField(
-              controller: controller,
-              onChanged: (value) {
-                context
-                    .read<TutorListBloc>()
-                    .add(TutorListNameSearched(tutorName: value));
-              },
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search_outlined),
-                border: const OutlineInputBorder(),
-                hintText: S.current.search_tutor_name,
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 16,
-          ),
-          // Filter
-          IconButton(
-            icon: const Icon(Icons.filter_list_outlined),
-            onPressed: () {
-              context.read<TutorListBloc>().add(TutorListFilterButtonPressed());
-            },
-          ),
-        ],
+      child: TextField(
+        controller: controller,
+        onChanged: (value) {
+          context
+              .read<TutorListBloc>()
+              .add(TutorListNameSearched(tutorName: value));
+        },
+        decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.search_outlined),
+          border: const OutlineInputBorder(),
+          hintText: S.current.search_tutor_name,
+        ),
       ),
     );
   }
@@ -264,122 +295,49 @@ class _NationalitiesFilterState extends State<_NationalitiesFilter> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: DropdownButton<String>(
-        isExpanded: true,
-        hint: Text(S.current.select_tutor_nationality),
-        items: nationalities.keys.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(value: value, child: Text(value));
-        }).toList(),
-        value: selectedValue,
-        onChanged: (String? value) {
-          context.read<TutorListBloc>().add(
-              TutorListNationalityChanged(nationality: nationalities[value]!));
-          setState(() {
-            selectedValue = value;
-          });
-        },
-      ),
-    );
-  }
-}
-
-class _AvailableDateFilter extends StatelessWidget {
-  const _AvailableDateFilter({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: const InputDecoration(
-          suffixIcon: Icon(Icons.calendar_today_outlined),
-          border: OutlineInputBorder(),
-          //hintText: datePicker,
-          hintStyle: TextStyle(color: Colors.black)),
-      readOnly: true,
-      onTap: () async {
-        DateTime? picked = await showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime.now(),
-            lastDate: DateTime(DateTime.now().year + 1),
-            helpText: 'Select available tutoring day');
-        if (picked != null) {}
-      },
-    );
-  }
-}
-
-class _StartTimeFilter extends StatelessWidget {
-  const _StartTimeFilter({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: const InputDecoration(
-          suffixIcon: Icon(Icons.access_time),
-          border: OutlineInputBorder(),
-          //hintText: startTimePicker,
-          hintStyle: TextStyle(color: Colors.black)),
-      readOnly: true,
-      onTap: () async {
-        TimeOfDay? picked = await showTimePicker(
-            context: context,
-            initialTime: TimeOfDay.now(),
-            helpText: 'Select start time');
-        if (picked != null) {}
-      },
-    );
-  }
-}
-
-class _EndTimeFilter extends StatelessWidget {
-  const _EndTimeFilter({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: const InputDecoration(
-          suffixIcon: Icon(Icons.access_time),
-          border: OutlineInputBorder(),
-          //hintText: endTimePicker,
-          hintStyle: TextStyle(color: Colors.black)),
-      readOnly: true,
-      onTap: () async {
-        TimeOfDay? picked = await showTimePicker(
-            context: context,
-            initialTime: TimeOfDay.now(),
-            helpText: 'Select end time');
-        if (picked != null) {
-          /*setState(() {
-            endTimePicker = picked.format(context);
-          });*/
-        }
+    return BlocBuilder<TutorListBloc, TutorListState>(
+      builder: (context, state) {
+        if (state.isReset) selectedValue = null;
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: DropdownButton<String>(
+            isExpanded: true,
+            hint: Text(S.current.select_tutor_nationality),
+            items: nationalities.keys
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(value: value, child: Text(value));
+            }).toList(),
+            value: selectedValue,
+            onChanged: (String? value) {
+              context.read<TutorListBloc>().add(TutorListNationalityChanged(
+                  nationality: nationalities[value]!));
+              setState(() {
+                selectedValue = value;
+              });
+            },
+          ),
+        );
       },
     );
   }
 }
 
 class _SpecialitiesChip extends StatelessWidget {
-  _SpecialitiesChip({Key? key}) : super(key: key);
-
-  List<LearnTopics> learnTopics = [];
-  List<TestPreparation> testPreparations = [];
+  const _SpecialitiesChip({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TutorListBloc, TutorListState>(
       builder: (context, state) {
         if (state.status == TutorListStatus.loadSuccess) {
-          learnTopics = state.learnTopics;
-          testPreparations = state.testPreparations;
+          var learnTopics = state.learnTopics;
+          var testPreparations = state.testPreparations;
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Wrap(
                 spacing: 8,
-                runSpacing: 8,
                 children: learnTopics.map<Widget>((LearnTopics speciality) {
                   return FilterChip(
                       label: Text(speciality.name ?? ''),
@@ -392,12 +350,8 @@ class _SpecialitiesChip extends StatelessWidget {
                       });
                 }).toList(),
               ),
-              const SizedBox(
-                height: 8,
-              ),
               Wrap(
                 spacing: 8,
-                runSpacing: 8,
                 children:
                     testPreparations.map<Widget>((TestPreparation speciality) {
                   return FilterChip(

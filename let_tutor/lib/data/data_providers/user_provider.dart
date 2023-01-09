@@ -1,8 +1,9 @@
 
 import 'package:dio/dio.dart';
-import 'package:let_tutor/configs/endpoints.dart';
-
+import '../../configs/endpoints.dart';
 import '../models/responses/user_response.dart';
+import '../models/user/learn_topics.dart';
+import '../models/user/test_preparation.dart';
 
 class UserProvider {
   const UserProvider(this._dio);
@@ -33,8 +34,8 @@ class UserProvider {
   Future<UserResponse> updateUserInformation(
       Map<String, dynamic> updateInformation) async {
     try {
-      var response = await _dio.put(Endpoints.userInformation,
-          data: updateInformation);
+      var response =
+          await _dio.put(Endpoints.userInformation, data: updateInformation);
       final UserResponse user = UserResponse.fromJson(response.data);
       return user;
     } catch (exception) {
@@ -43,10 +44,26 @@ class UserProvider {
   }
 
   Future<int> getTotalCallMinutes() async {
-      var response = await _dio.get(Endpoints.getTotalCall);
-      var total = response.data['total'];
-      return total;
+    var response = await _dio.get(Endpoints.getTotalCall);
+    var total = response.data['total'];
+    return total;
   }
 
+  Future<List<LearnTopics>> getLearnTopics() async {
+    var response = await _dio.get(Endpoints.getLearnTopics);
+    var listLearnTopics = <LearnTopics>[];
+    for (var element in (response.data as List)) {
+      listLearnTopics.add(LearnTopics.fromJson(element));
+    }
+    return listLearnTopics;
+  }
 
+  Future<List<TestPreparation>> getTestPreparation() async {
+    var response = await _dio.get(Endpoints.getTestPreparations);
+    var listTestPreparations = <TestPreparation>[];
+    for (var element in (response.data as List)) {
+      listTestPreparations.add(TestPreparation.fromJson(element));
+    }
+    return listTestPreparations;
+  }
 }

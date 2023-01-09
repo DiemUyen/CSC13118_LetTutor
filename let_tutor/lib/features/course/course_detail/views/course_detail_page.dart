@@ -13,8 +13,8 @@ class CourseDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => Injector.instance<CourseDetailBloc>(),
-      child: CourseDetailView(courseId: courseId,),
+      create: (context) => Injector.instance<CourseDetailBloc>()..add(CourseDetailLoaded(courseId: courseId)),
+      child: const CourseDetailView(),
     );
   }
 }

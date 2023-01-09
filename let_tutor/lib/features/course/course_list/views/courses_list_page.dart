@@ -12,9 +12,7 @@ class CoursesPage extends StatefulWidget {
   State<CoursesPage> createState() => _CoursesPageState();
 }
 
-class _CoursesPageState extends State<CoursesPage>
-    with SingleTickerProviderStateMixin {
-
+class _CoursesPageState extends State<CoursesPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

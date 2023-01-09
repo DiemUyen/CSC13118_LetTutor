@@ -35,7 +35,6 @@ class TutorDetailBloc extends Bloc<TutorDetailEvent, TutorDetailState> {
       var testPreparations = await _tutorRepository.getTestPreparation();
       var categories = await _tutorRepository.getCategories();
       var tutor = await _tutorRepository.getTutorInformation(event.tutorId);
-      print(tutor.User);
       emit(state.copyWith(
         learnTopics: learnTopics,
         testPreparations: testPreparations,

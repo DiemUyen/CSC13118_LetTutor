@@ -65,27 +65,6 @@ class SignUpView extends StatelessWidget {
                       const _LogoApp(),
                       const SizedBox(height: 32),
 
-                      // Divider
-                      /*Row(
-                        children: [
-                          const Expanded(
-                              child: Divider(
-                                thickness: 0.5,
-                              )),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(S.current.or),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          const Expanded(
-                              child: Divider(
-                                thickness: 0.5,
-                              ))
-                        ],
-                      ),*/
-
                       const SizedBox(
                         height: 16,
                       ),
@@ -95,7 +74,10 @@ class SignUpView extends StatelessWidget {
                         height: 8,
                       ),
                       const _PasswordInputTextField(),
-
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      const _ConfirmPasswordInputTextField(),
                       const SizedBox(
                         height: 8,
                       ),
@@ -196,9 +178,36 @@ class _PasswordInputTextField extends StatelessWidget {
           },
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
-            hintText: "Password",
+            hintText: S.current.password,
             errorText: state.passwordErrorStatus == SignUpStatus.passwordInvalid
                 ? state.passwordError
+                : null,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _ConfirmPasswordInputTextField extends StatelessWidget {
+  const _ConfirmPasswordInputTextField({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpBloc, SignUpState>(
+      builder: (context, state) {
+        return TextField(
+          obscureText: true,
+          onChanged: (value) {
+            context
+                .read<SignUpBloc>()
+                .add(SignUpConfirmPasswordChanged(confirmPassword: value));
+          },
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(),
+            hintText: S.current.confirm_password,
+            errorText: state.confirmPasswordErrorStatus == SignUpStatus.confirmPasswordInvalid
+                ? state.confirmPasswordError
                 : null,
           ),
         );

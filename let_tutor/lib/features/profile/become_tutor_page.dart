@@ -23,76 +23,6 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
   var selectedSpecialities = [false, false, false, false, false];
   var specialities = ['English for Kids', 'English for Business', 'TOEIC', 'IELTS', 'TOEFL'];
 
-  Widget header(BuildContext context, String header) {
-    return Row(
-      children: [
-        const SizedBox(width: 24, child: Divider(),),
-        const SizedBox(width: 8,),
-        Text(header, style: Theme.of(context).textTheme.headlineSmall,),
-        const SizedBox(width: 8,),
-        const Expanded(child: Divider())
-      ],
-    );
-  }
-
-  Widget introductionStepOne() {
-    return Column(
-      children: [
-        const Icon(Icons.person_outline),
-        Text('Set up your tutor profile', style: Theme.of(context).textTheme.headlineSmall,),
-        const Text('Your tutor profile is your chance to market yourself to students on Tutoring. You can make edits later on your profile settings page.'),
-        const Text('New students may browse tutor profiles to find a tutor that fits their learning goals and personality. Returning students may use the tutor profiles to find tutors they\'ve had great experiences with already.')
-      ],
-    );
-  }
-
-  Widget avatar() {
-    return InkWell(
-      onTap: () {
-        setState(() {
-
-        });
-      },
-      child: SizedBox(
-        height: 100,
-        width: 100,
-        child: Container(
-          color: Colors.brown,
-        ),
-      ),
-    );
-  }
-
-  Widget nameField() {
-    return TextFormField(
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Tutoring name'
-      ),
-    );
-  }
-
-  Widget countryField() {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(width: 1, color: Colors.black38),
-          borderRadius: BorderRadius.circular(4)
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: DropdownButton<String>(
-        isExpanded: true,
-        underline: Container(
-          height: 0,
-        ),
-        value: countries.first,
-        items: countries.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(value: value, child: Text(value));
-        }).toList(),
-        onChanged: (String? value) { },
-      ),
-    );
-  }
-
   Widget birthdayField() {
     return TextFormField(
       decoration: const InputDecoration(
@@ -114,50 +44,6 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
           });
         }
       },
-    );
-  }
-
-  Widget interestField() {
-    return TextFormField(
-      maxLines: null,
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          hintMaxLines: 3,
-          hintText: 'Interests, hobbies, memorable life experiences, or anything else you\'d like to share',
-          labelText: 'Interests'
-      ),
-    );
-  }
-
-  Widget educationField() {
-    return TextFormField(
-      maxLines: null,
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          hintMaxLines: 3,
-          hintText: "Example: 'Bachelor of Arts in English from Cambly University, Second Language Acquisition and Teaching certificate'",
-          labelText: 'Education'
-      ),
-    );
-  }
-
-  Widget experienceField() {
-    return TextFormField(
-      maxLines: null,
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Experience'
-      ),
-    );
-  }
-
-  Widget positionField() {
-    return TextFormField(
-      maxLines: null,
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Current or Previous Profession'
-      ),
     );
   }
 
@@ -218,28 +104,6 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
             }
         );
       },
-    );
-  }
-
-  Widget languagesField() {
-    return TextFormField(
-      maxLines: null,
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Languages'
-      ),
-    );
-  }
-
-  Widget introductionTutorField() {
-    return TextFormField(
-      maxLines: null,
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          hintMaxLines: 3,
-          hintText: "Example: 'I was a doctor and can help you practice business and medical English'",
-          labelText: 'Introduction'
-      ),
     );
   }
 
@@ -308,38 +172,38 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
         content: Column(
           children: [
             // Introduction step 1
-            introductionStepOne(),
+            _IntroductionStepOne(context: context),
             const SizedBox(height: 16,),
 
             // Basic Info
-            header(context, 'Basic Info'),
+            _Header(context: context, header: 'Basic Info'),
             // Image avatar
-            avatar(),
+            const _Avatar(),
             const SizedBox(height: 16,),
             // Tutoring name
-            nameField(),
+            const _NameField(),
             const SizedBox(height: 16,),
             // Country
-            countryField(),
+            _CountryField(countries: countries),
             const SizedBox(height: 16,),
             // Birthday
             birthdayField(),
             const SizedBox(height: 16,),
 
             // CV
-            header(context, 'CV'),
+            _Header(context: context, header: 'CV'),
             const SizedBox(height: 8,),
             // Interests
-            interestField(),
+            const _InterestField(),
             const SizedBox(height: 8,),
             // Education
-            educationField(),
+            const _EducationField(),
             const SizedBox(height: 8,),
             // Experience
-            experienceField(),
+            const _ExperienceField(),
             const SizedBox(height: 8,),
             // Current or Previous Profession
-            positionField(),
+            const _PositionField(),
             const SizedBox(height: 8,),
             // Certificate
             Row(
@@ -369,16 +233,16 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
             const SizedBox(height: 16,),
 
             // Languages I speak
-            header(context, 'Languages I speak'),
+            _Header(context: context, header: 'Languages I speak'),
             const SizedBox(height: 8,),
-            languagesField(),
+            const _LanguagesField(),
             const SizedBox(height: 16,),
 
             // Who I teach
-            header(context, 'Who I teach'),
+            _Header(context: context, header: 'Who I teach'),
             // Introduction about tutor
             const SizedBox(height: 8,),
-            introductionTutorField(),
+            const _IntroductionField(),
             const SizedBox(height: 8,),
 
             // Best teaching
@@ -398,16 +262,6 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
     );
   }
 
-  Widget introductionStepTwo() {
-    return Column(
-      children: [
-        const Icon(Icons.video_stable_outlined),
-        Text('Introduce yourself', style: Theme.of(context).textTheme.headlineSmall,),
-        const Text('Let students know what they can expect from a lesson with you by recording a video highlighting your teaching style, expertise and personality. Students can be nervous to speak with a foreigner, so it really helps to have a friendly video that introduces yourself and invites students to call you.'),
-      ],
-    );
-  }
-  
   Step stepTwo(BuildContext context) {
     return Step(
         isActive: _index >= 1,
@@ -415,11 +269,11 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
         content: Column(
           children: [
             // Introduction step 2
-            introductionStepTwo(),
+            _IntroductionStepTwo(context: context),
             const SizedBox(height: 16,),
 
             // Introduction video
-            header(context, 'Introduction video'),
+            _Header(context: context, header: 'Introduction video'),
             const SizedBox(height: 8,),
             Card(
               child: Padding(
@@ -530,6 +384,246 @@ class _BecomeTutorPageState extends State<BecomeTutorPage> {
           );
         }),
       ),
+    );
+  }
+}
+
+class _IntroductionStepTwo extends StatelessWidget {
+  const _IntroductionStepTwo({
+    Key? key,
+    required this.context,
+  }) : super(key: key);
+
+  final BuildContext context;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Icon(Icons.video_stable_outlined),
+        Text('Introduce yourself', style: Theme.of(context).textTheme.headlineSmall,),
+        const Text('Let students know what they can expect from a lesson with you by recording a video highlighting your teaching style, expertise and personality. Students can be nervous to speak with a foreigner, so it really helps to have a friendly video that introduces yourself and invites students to call you.'),
+      ],
+    );
+  }
+}
+
+class _IntroductionField extends StatelessWidget {
+  const _IntroductionField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      maxLines: null,
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          hintMaxLines: 3,
+          hintText: "Example: 'I was a doctor and can help you practice business and medical English'",
+          labelText: 'Introduction'
+      ),
+    );
+  }
+}
+
+class _LanguagesField extends StatelessWidget {
+  const _LanguagesField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      maxLines: null,
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Languages'
+      ),
+    );
+  }
+}
+
+class _PositionField extends StatelessWidget {
+  const _PositionField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      maxLines: null,
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Current or Previous Profession'
+      ),
+    );
+  }
+}
+
+class _ExperienceField extends StatelessWidget {
+  const _ExperienceField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      maxLines: null,
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Experience'
+      ),
+    );
+  }
+}
+
+class _EducationField extends StatelessWidget {
+  const _EducationField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      maxLines: null,
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          hintMaxLines: 3,
+          hintText: "Example: 'Bachelor of Arts in English from Cambly University, Second Language Acquisition and Teaching certificate'",
+          labelText: 'Education'
+      ),
+    );
+  }
+}
+
+class _InterestField extends StatelessWidget {
+  const _InterestField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      maxLines: null,
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          hintMaxLines: 3,
+          hintText: 'Interests, hobbies, memorable life experiences, or anything else you\'d like to share',
+          labelText: 'Interests'
+      ),
+    );
+  }
+}
+
+class _CountryField extends StatelessWidget {
+  const _CountryField({
+    Key? key,
+    required this.countries,
+  }) : super(key: key);
+
+  final List<String> countries;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(width: 1, color: Colors.black38),
+          borderRadius: BorderRadius.circular(4)
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: DropdownButton<String>(
+        isExpanded: true,
+        underline: Container(
+          height: 0,
+        ),
+        value: countries.first,
+        items: countries.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(value: value, child: Text(value));
+        }).toList(),
+        onChanged: (String? value) { },
+      ),
+    );
+  }
+}
+
+class _NameField extends StatelessWidget {
+  const _NameField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Tutoring name'
+      ),
+    );
+  }
+}
+
+class _Avatar extends StatelessWidget {
+  const _Avatar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: SizedBox(
+        height: 100,
+        width: 100,
+        child: Container(
+          color: Colors.brown,
+        ),
+      ),
+    );
+  }
+}
+
+class _IntroductionStepOne extends StatelessWidget {
+  const _IntroductionStepOne({
+    Key? key,
+    required this.context,
+  }) : super(key: key);
+
+  final BuildContext context;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Icon(Icons.person_outline),
+        Text('Set up your tutor profile', style: Theme.of(context).textTheme.headlineSmall,),
+        const Text('Your tutor profile is your chance to market yourself to students on Tutoring. You can make edits later on your profile settings page.'),
+        const Text('New students may browse tutor profiles to find a tutor that fits their learning goals and personality. Returning students may use the tutor profiles to find tutors they\'ve had great experiences with already.')
+      ],
+    );
+  }
+}
+
+class _Header extends StatelessWidget {
+  const _Header({
+    Key? key,
+    required this.context,
+    required this.header,
+  }) : super(key: key);
+
+  final BuildContext context;
+  final String header;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(width: 24, child: Divider(),),
+        const SizedBox(width: 8,),
+        Text(header, style: Theme.of(context).textTheme.headlineSmall,),
+        const SizedBox(width: 8,),
+        const Expanded(child: Divider())
+      ],
     );
   }
 }

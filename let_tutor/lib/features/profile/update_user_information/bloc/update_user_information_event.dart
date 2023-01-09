@@ -9,15 +9,6 @@ class UpdateUserInformationLoaded extends UpdateUserInformationEvent {
   List<Object?> get props => [];
 }
 
-class UpdateUserInformationAvatarChanged extends UpdateUserInformationEvent {
-  final String avatarUrl;
-
-  const UpdateUserInformationAvatarChanged({required this.avatarUrl});
-
-  @override
-  List<Object?> get props => [avatarUrl];
-}
-
 class UpdateUserInformationUsernameFieldChanged extends UpdateUserInformationEvent {
   final String username;
 
@@ -64,12 +55,13 @@ class UpdateUserInformationLevelFieldChanged extends UpdateUserInformationEvent 
 }
 
 class UpdateUserInformationWantToLearnFieldChanged extends UpdateUserInformationEvent {
-  final String wantToLearn;
+  final List<LearnTopics> learnTopicsId;
+  final List<TestPreparation> testPreparationsId;
 
-  const UpdateUserInformationWantToLearnFieldChanged({required this.wantToLearn});
+  const UpdateUserInformationWantToLearnFieldChanged({this.learnTopicsId = const [], this.testPreparationsId = const []});
 
   @override
-  List<Object?> get props => [wantToLearn];
+  List<Object?> get props => [learnTopicsId, testPreparationsId];
 }
 
 class UpdateUserInformationStudyScheduleFieldChanged extends UpdateUserInformationEvent {

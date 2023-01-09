@@ -46,4 +46,16 @@ class AuthProvider {
       return false;
     }
   }
+
+  Future<AuthResponse> loginByFacebook(String accessToken) async {
+    var response = await _dio.post(Endpoints.loginWithFacebook, data: {'access_token': accessToken});
+    final AuthResponse authResponse = AuthResponse.fromJson(response.data);
+    return authResponse;
+  }
+
+  Future<AuthResponse> loginByGoogle(String accessToken) async {
+    var response = await _dio.post(Endpoints.loginWithGoogle, data: {'access_token': accessToken});
+    final AuthResponse authResponse = AuthResponse.fromJson(response.data);
+    return authResponse;
+  }
 }

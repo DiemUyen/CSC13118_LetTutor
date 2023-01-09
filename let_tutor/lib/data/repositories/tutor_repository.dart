@@ -1,4 +1,3 @@
-
 import '../../exceptions/exception_handler.dart';
 import '../data_providers/tutor_provider.dart';
 import '../models/responses/category_response.dart';
@@ -14,11 +13,13 @@ part 'tutor_repository_impl.dart';
 abstract class TutorRepository {
   Future<TutorResponse> getListTutor({int perPage = 9, int page = 1});
 
-  Future<bool> writeReview(String bookingId, String userId, int rating, String content);
+  Future<bool> writeReview(
+      String bookingId, String userId, int rating, String content);
 
   Future<Tutor> getTutorInformation(String tutorId);
 
-  Future<Tutors> searchTutor(Map<String, dynamic> filters, String? tutorName);
+  Future<Tutors> searchTutor(
+      Map<String, dynamic> filters, String? tutorName, int page, int perPage);
 
   Future<bool> addFavoriteTutor(String tutorId);
 
@@ -30,5 +31,6 @@ abstract class TutorRepository {
 
   Future<bool> reportTutor(String tutorId, String content);
 
-  Future<FeedbackResponse> getFeedbacks(String tutorId, int? page, {int? perPage});
+  Future<FeedbackResponse> getFeedbacks(String tutorId, int? page,
+      {int? perPage});
 }

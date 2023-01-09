@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:dio/adapter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:let_tutor/configs/app_config.dart';
 import 'package:let_tutor/exceptions/interceptor.dart';
@@ -20,6 +23,13 @@ class RestClientModule {
             baseUrl: AppConfig.baseUrl,
           ),
         );
+
+        (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+            (HttpClient client) {
+          client.badCertificateCallback =
+              (X509Certificate cert, String host, int port) => true;
+          return client;
+        };
 
         dio.interceptors.add(DioInterceptor(
           dio,

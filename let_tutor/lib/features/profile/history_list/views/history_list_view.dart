@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:let_tutor/data/models/schedule/next_schedule.dart';
 
+import '../../../../data/models/schedule/next_schedule.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
 import '../../../../widgets/widgets.dart';
 import '../bloc/history_list_bloc.dart';
@@ -27,7 +28,7 @@ class _HistoryListViewState extends State<HistoryListView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('History'),
+          title: Text(S.current.history),
           centerTitle: true,
         ),
         body: LayoutBuilder(builder: (context, constraints) {
